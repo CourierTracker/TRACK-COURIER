@@ -1,22 +1,25 @@
-document.getElementById('trackingForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+const trackingForm = document.getElementById('trackingForm');
+const trackingSteps = document.getElementById('trackingSteps');
+const trackingNumberInput = document.getElementById('tracking-number');
 
-  const trackingInput = document.getElementById('tracking-number').value.trim();
-  const statusDiv = document.getElementById('status');
-  const shipmentInfo = document.getElementById('shipmentInfo');
+trackingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const trackingNumber = trackingNumberInput.value.trim();
 
-  if (trackingInput === "") {
-    statusDiv.textContent = "⚠️ Please enter a tracking number.";
-    shipmentInfo.classList.add('hidden');
-    return;
-  }
+    // Validate format: Track- followed by digits
+    const regex = /^Track-\d{6,10}$/i;
+    if (!regex.test(trackingNumber)) {
+        alert("Invalid tracking number! Use format: Track-123456789");
+        return;
+    }
 
-  // For demo, we assume Track-246800000 is valid
-  if (trackingInput === "Track-246800000") {
-    statusDiv.textContent = "✅ Tracking number found!";
-    shipmentInfo.classList.remove('hidden');
-  } else {
-    statusDiv.textContent = "❌ Tracking number not found.";
-    shipmentInfo.classList.add('hidden');
-  }
+    // Show steps container
+    trackingSteps.classList.remove('hidden');
+    const steps = trackingSteps.querySelectorAll('li');
+
+    // Reset all steps
+    steps.forEach(step => step.classList.remove('show', 'delivered'));
+
+    // Only show "In Transit" step (3rd step)
+    steps[2].classList.add('show');
 });
