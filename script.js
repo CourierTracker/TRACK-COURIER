@@ -12,11 +12,22 @@ trackingForm.addEventListener('submit', (e) => {
         return;
     }
 
-    // Show tracking steps after searching
+    // Hide steps first
     trackingSteps.classList.remove('hidden');
-
-    // Highlight last step (Delivered) in green
     const steps = trackingSteps.querySelectorAll('li');
-    steps.forEach(step => step.style.borderColor = '#3498db'); // reset all to blue
-    steps[steps.length - 1].style.borderColor = '#2ecc71'; // green for Delivered
+    steps.forEach(step => {
+        step.style.display = 'none'; // hide all steps
+        step.style.borderColor = '#3498db'; // reset color
+    });
+
+    // Animate steps one by one
+    steps.forEach((step, index) => {
+        setTimeout(() => {
+            step.style.display = 'block';
+            // Last step in green
+            if(index === steps.length - 1) {
+                step.style.borderColor = '#2ecc71';
+            }
+        }, index * 800); // 800ms between steps
+    });
 });
