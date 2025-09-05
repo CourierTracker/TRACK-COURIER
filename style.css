@@ -146,3 +146,28 @@ footer {
     border-left: 4px solid #3498db; /* blue for steps */
     margin-bottom: 10px;
 }
+
+
+.tracking-steps li {
+    padding: 12px 15px;
+    margin-bottom: 12px;
+    border-left: 4px solid #3498db;
+    background: #f9f9f9;
+    border-radius: 8px;
+    font-weight: bold;
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.5s ease-in-out;
+}
+
+/* When step is shown */
+.tracking-steps li.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Delivered step in green */
+.tracking-steps li.delivered {
+    border-left-color: #2ecc71;
+    background: #eafaf1;
+}
