@@ -48,3 +48,27 @@ document.addEventListener("DOMContentLoaded", function () {
     resultBox.style.display = "block";
   });
 });
+
+const trackingNumberDemo = "PKG-123456789"; // Your demo tracking number
+
+const trackingSteps = [
+  { status: "Order Placed", time: "2025-09-05 09:00" },
+  { status: "Shipped", time: "2025-09-06 12:00" },
+  { status: "In Transit", time: "2025-09-07 15:00" },
+  { status: "Delivered", time: "2025-09-08 10:00" },
+];
+
+function trackPackage() {
+  const input = document.getElementById("trackingInput").value.trim();
+  const statusDiv = document.getElementById("status");
+  statusDiv.innerHTML = "";
+
+  if (input === trackingNumberDemo) {
+    trackingSteps.forEach((step, index) => {
+      const stepColor = index === 0 ? "blue" : index === trackingSteps.length - 1 ? "green" : "gray";
+      statusDiv.innerHTML += `<p style="color:${stepColor}">${step.status} - ${step.time}</p>`;
+    });
+  } else {
+    statusDiv.innerHTML = "<p style='color:red'>Tracking number not found.</p>";
+  }
+}
