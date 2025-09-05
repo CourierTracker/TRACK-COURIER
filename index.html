@@ -25,26 +25,17 @@
       <li>Delivered</li>
     </ul>
 
-    <div class="ad-section">
+<div class="ad-section">
   <p>💡 Tip: Track multiple packages easily with your account!</p>
   <p>📦 Special: Fast delivery for premium members.</p>
     </div>
-    
 
     <!-- Main Content -->
     <main>
       <form id="trackingForm">
-        <input type="text" id="tracking-number" placeholder="Enter Tracking Number (Track-246800000)">
+        <input type="text" id="tracking-number" placeholder="Enter Tracking Number (Track-123456789)">
         <button type="submit">TRACK</button>
-      </form>
-      <div id="status"></div>
-      <table class="shipment-details">
-        <div class="search-section">
-  <input type="text" id="trackingInput" placeholder="Enter tracking number">
-  <button onclick="searchTracking()">Track</button>
-</div>
-
-<div class="shipment-container" id="shipmentContainer" style="display: none;">
+        <div class="shipment-container" id="shipmentContainer" style="display: none;">
   <table class="shipment-details">
     <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
     <tr><td>Sender:</td><td>Obiechina Tochukwu</td></tr>
@@ -52,8 +43,18 @@
     <tr><td>Estimated Delivery:</td><td>05 Sep 2025</td></tr>
   </table>
   <div class="ad-section">
-    Check out our premium shipping services!
+    <!-- Your ad content here -->
+    <p>Check out our premium shipping services!</p>
   </div>
+</div>
+
+<!-- Input for tracking -->
+<div class="search-section">
+  <input type="text" id="trackingInput" placeholder="Enter tracking number">
+  <button onclick="searchTracking()">Track</button>
+</div>
+      </form>
+      <div id="status"></div>
     </main>
 
   </div> <!-- End of page-container -->
