@@ -1,24 +1,96 @@
-/* Tracking Steps List */
-.tracking-steps {
-  list-style: none;
+/* style.css */
+
+/* General page style */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f5f7fa;
+  margin: 0;
   padding: 0;
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* Each step */
-.tracking-steps li {
-  padding: 10px;
-  margin: 5px 0;
-  border-left: 4px solid blue; /* Blue for all steps */
-  color: blue;
-  background-color: #f0f8ff;   /* Light blue background */
-  border-radius: 4px;
+/* Header */
+header {
+  background-color: #1e3a8a; /* deep blue */
+  color: white;
+  text-align: center;
+  padding: 20px;
+  width: 100%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
 }
 
-/* Current step */
-.tracking-steps li.current {
-  border-left-color: green;    /* Green for current step */
-  color: green;
+header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+header p {
+  margin: 5px 0 0;
+  font-size: 16px;
+}
+
+/* Form container */
+main {
+  margin-top: 40px;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+form label {
+  display: block;
   font-weight: bold;
-  background-color: #e6ffe6;   /* Light green background */
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+form input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+form input:focus {
+  border-color: #1e3a8a;
+  outline: none;
+}
+
+/* Button */
+form button {
+  background-color: #1e3a8a;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+form button:hover {
+  background-color: #0f2459;
+}
+
+/* Result box (created by JS) */
+.result-box {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
 }
