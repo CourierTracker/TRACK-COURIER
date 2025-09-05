@@ -4,11 +4,12 @@ const trackingNumberInput = document.getElementById('tracking-number');
 
 trackingForm.addEventListener('submit', (e) => {
     e.preventDefault();
-
     const trackingNumber = trackingNumberInput.value.trim();
 
-    if(trackingNumber === "") {
-        alert("Please enter a tracking number.");
+    // Validate format: Track- followed by digits
+    const regex = /^Track-\d{6,10}$/i;
+    if (!regex.test(trackingNumber)) {
+        alert("Invalid tracking number! Use format: Track-123456789");
         return;
     }
 
@@ -16,18 +17,10 @@ trackingForm.addEventListener('submit', (e) => {
     trackingSteps.classList.remove('hidden');
     const steps = trackingSteps.querySelectorAll('li');
 
-    // Reset steps
-    steps.forEach(step => {
-        step.classList.remove('show', 'delivered');
-    });
+    // Hide all steps first
+    steps.forEach(step => step.classList.remove('show', 'delivered'));
 
-    // Animate each step with checkmark
-    steps.forEach((step, index) => {
-        setTimeout(() => {
-            step.classList.add('show');
-            if (index === steps.length - 1) {
-                step.classList.add('delivered'); // last step green
-            }
-        }, index * 900);
-    });
+    // Only show "In Transit" step (3rd step)
+    const inTransitStep = steps[2]; // 0 = Order Placed, 1 = Shipped, 2 = In Transit
+    inTransitStep.classList.add('show');
 });
