@@ -130,3 +130,19 @@ footer {
     font-size: 15px;
   }
 }
+
+.hidden {
+    display: none;
+}
+
+.tracking-steps {
+    list-style: none;
+    margin-top: 20px;
+    padding-left: 0;
+}
+
+.tracking-steps li {
+    padding: 10px;
+    border-left: 4px solid #3498db; /* blue for steps */
+    margin-bottom: 10px;
+}
