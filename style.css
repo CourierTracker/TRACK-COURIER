@@ -1,94 +1,95 @@
 /* Body & General */
 body {
   font-family: Arial, sans-serif;
-  background: #f0f4ff; /* light soft blue background for the page */
-  padding: 20px;
-  color: #333;
+  background: #f0f4ff; /* soft light blue background */
+  padding: 0;
   margin: 0;
+  color: #333;
 }
 
 /* Header */
 header {
   text-align: center;
-  margin-bottom: 30px;
+  padding: 20px 10px;
+  background-color: #e0e7ff; /* subtle blue header background */
 }
 
 header h1 {
   font-size: 32px;
   color: #1e3a8a; /* deep blue */
   font-weight: bold;
+  margin: 0;
 }
 
 header p {
   font-size: 16px;
-  color: #1e40af; /* slightly lighter blue */
+  color: #1e40af;
   margin-top: 5px;
 }
 
 /* Form & Input */
 form {
-  max-width: 400px;
-  margin: 0 auto 20px auto;
+  max-width: 450px;
+  margin: 20px auto;
   text-align: center;
+  padding: 0 10px;
 }
 
 input[type="text"] {
-  width: calc(100% - 22px);
+  width: 100%;
   padding: 12px;
   font-size: 16px;
-  margin: 5px 0;
+  margin-bottom: 10px;
   border-radius: 6px;
-  border: 1px solid #3b82f6; /* blue border */
+  border: 1px solid #3b82f6;
   box-sizing: border-box;
 }
 
 button {
-  padding: 12px 20px;
+  width: 100%; /* full width button */
+  padding: 15px;
   font-size: 16px;
   font-weight: bold;
-  margin-top: 5px;
   border: none;
   border-radius: 6px;
-  background-color: #3b82f6; /* bright blue */
+  background-color: #3b82f6;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #2563eb; /* darker blue on hover */
+  background-color: #2563eb;
+  transform: scale(1.02); /* subtle expand effect on hover */
 }
 
 /* Tracking Steps List */
 .tracking-steps {
   list-style: none;
   padding: 0;
-  margin: 20px auto 0;
+  margin: 20px auto;
   max-width: 450px;
 }
 
-/* Each Step */
 .tracking-steps li {
   padding: 12px 15px;
   margin: 8px 0;
-  border-left: 5px solid #3b82f6; /* blue for completed steps */
+  border-left: 5px solid #3b82f6; /* blue */
   color: #1e40af;                 /* deep blue text */
-  background-color: #dbeafe;       /* soft light blue background */
+  background-color: #dbeafe;       /* light blue */
   border-radius: 6px;
   font-size: 16px;
   font-weight: bold;
   transition: all 0.3s ease;
 }
 
-/* Current Step */
 .tracking-steps li.current {
   border-left-color: #22c55e;    /* green border */
   color: #16a34a;                /* green text */
-  background-color: #dcfce7;     /* light green background */
+  background-color: #dcfce7;     /* light green */
   font-weight: bold;
 }
 
-/* Hover effect for steps */
 .tracking-steps li:hover {
   background-color: #bfdbfe;
 }
@@ -96,8 +97,29 @@ button:hover {
 /* Footer */
 footer {
   text-align: center;
-  margin-top: 40px;
+  padding: 15px 10px;
+  background-color: #3b82f6; /* full blue footer background */
+  color: white;               /* white text */
   font-size: 14px;
-  color: #1e3a8a; /* blue footer text */
   font-weight: bold;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 28px;
+  }
+
+  .tracking-steps li {
+    font-size: 15px;
+    padding: 10px 12px;
+  }
+
+  button {
+    padding: 14px;
+    font-size: 15px;
+  }
+  }
