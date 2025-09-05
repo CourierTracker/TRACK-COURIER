@@ -1,96 +1,103 @@
-/* style.css */
-
-/* General page style */
+/* Body & General */
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #f5f7fa;
+  font-family: Arial, sans-serif;
+  background: #f0f4ff; /* light soft blue background for the page */
+  padding: 20px;
+  color: #333;
   margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 /* Header */
 header {
-  background-color: #1e3a8a; /* deep blue */
-  color: white;
   text-align: center;
-  padding: 20px;
-  width: 100%;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  margin-bottom: 30px;
 }
 
 header h1 {
-  margin: 0;
-  font-size: 28px;
+  font-size: 32px;
+  color: #1e3a8a; /* deep blue */
+  font-weight: bold;
 }
 
 header p {
-  margin: 5px 0 0;
   font-size: 16px;
+  color: #1e40af; /* slightly lighter blue */
+  margin-top: 5px;
 }
 
-/* Form container */
-main {
-  margin-top: 40px;
-  background: white;
-  padding: 30px 40px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  width: 90%;
+/* Form & Input */
+form {
   max-width: 400px;
+  margin: 0 auto 20px auto;
   text-align: center;
 }
 
-form label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 10px;
-  font-size: 18px;
-}
-
-form input {
-  width: 100%;
+input[type="text"] {
+  width: calc(100% - 22px);
   padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
   font-size: 16px;
-  transition: border-color 0.3s;
+  margin: 5px 0;
+  border-radius: 6px;
+  border: 1px solid #3b82f6; /* blue border */
+  box-sizing: border-box;
 }
 
-form input:focus {
-  border-color: #1e3a8a;
-  outline: none;
-}
-
-/* Button */
-form button {
-  background-color: #1e3a8a;
-  color: white;
-  border: none;
+button {
   padding: 12px 20px;
-  border-radius: 8px;
   font-size: 16px;
   font-weight: bold;
+  margin-top: 5px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3b82f6; /* bright blue */
+  color: white;
   cursor: pointer;
-  transition: background 0.3s;
-  width: 100%;
+  transition: background-color 0.3s ease;
 }
 
-form button:hover {
-  background-color: #0f2459;
+button:hover {
+  background-color: #2563eb; /* darker blue on hover */
 }
 
-/* Result box (created by JS) */
-.result-box {
-  margin-top: 20px;
-  padding: 15px;
-  border-radius: 10px;
-  background-color: #ffffff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+/* Tracking Steps List */
+.tracking-steps {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto 0;
+  max-width: 450px;
+}
+
+/* Each Step */
+.tracking-steps li {
+  padding: 12px 15px;
+  margin: 8px 0;
+  border-left: 5px solid #3b82f6; /* blue for completed steps */
+  color: #1e40af;                 /* deep blue text */
+  background-color: #dbeafe;       /* soft light blue background */
+  border-radius: 6px;
   font-size: 16px;
-  line-height: 1.5;
-  text-align: left;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+/* Current Step */
+.tracking-steps li.current {
+  border-left-color: #22c55e;    /* green border */
+  color: #16a34a;                /* green text */
+  background-color: #dcfce7;     /* light green background */
+  font-weight: bold;
+}
+
+/* Hover effect for steps */
+.tracking-steps li:hover {
+  background-color: #bfdbfe;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  font-size: 14px;
+  color: #1e3a8a; /* blue footer text */
+  font-weight: bold;
 }
