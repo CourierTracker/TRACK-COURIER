@@ -18,7 +18,7 @@ trackingForm.addEventListener('submit', (e) => {
     const steps = trackingSteps.querySelectorAll('li');
 
     // Reset all steps
-    steps.forEach(step => step.classList.remove('show', 'delivered'));
+    steps.forEach(step => step.classList.remove('show', 'In Transit'));
 
     // Only show "In Transit" step (3rd step)
     steps[2].classList.add('show');
