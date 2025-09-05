@@ -25,9 +25,7 @@ trackingForm.addEventListener('submit', (e) => {
     inTransitStep.classList.add('show');
 });
 
-
-// Add this to your existing trackingData array, or create it if it doesn't exist
-const trackingData = [
+trackingData.push(
   {
     trackingNumber: "Track-246800000",
     status: "Order Received",
@@ -38,4 +36,4 @@ const trackingData = [
     status: "On Transit",
     dateTime: "2025-09-05 03:00 PM",
   }
-];
+);
