@@ -17,33 +17,37 @@
       <p>Track your shipment quickly and easily</p>
     </header>
 
-    <!-- Tracking Steps (hidden by default) -->
-        <ul id="trackingSteps" class="tracking-steps hidden">
-    <div class="tracking-step completed">Order Received - 01 Sep 2025, 10:30 AM</div>
-<div class="tracking-step completed">In Transit - 02 Sep 2025, 03:15 PM</div>
-<div class="tracking-step current">Out for Delivery - 03 Sep 2025, 08:00 AM</div>
-<div class="tracking-step pending">Delivered
-</div>         
-    </ul>
-    
-    <table class="shipment-details">
-  <tr><td>Tracking Number:</td><td>Track-246800000</td></tr>
-  <tr><td>Sender:</td><td>Obiechina Tochukwu</td></tr>
-  <tr><td>Receiver:</td><td>Jane Doe</td></tr>
-  <tr><td>Estimated Delivery:</td><td>05 Sep 2025</td></tr>
-    </table>
-    <div class="ad-section">
-  <p>💡 Tip: Track multiple packages easily with your account!</p>
-  <p>📦 Special: Fast delivery for premium members.</p>
-    </div>
-    
-    <!-- Main Content -->
+    <!-- Tracking Form -->
     <main>
       <form id="trackingForm">
         <input type="text" id="tracking-number" placeholder="Enter Tracking Number (Track-123456789)">
         <button type="submit">TRACK</button>
       </form>
+
+      <!-- Status message -->
       <div id="status"></div>
+
+      <!-- Shipment Details (hidden initially) -->
+      <div id="shipmentInfo" class="hidden">
+        <ul id="trackingSteps" class="tracking-steps">
+          <li class="tracking-step completed">Order Received - 01 Sep 2025, 10:30 AM</li>
+          <li class="tracking-step completed">In Transit - 02 Sep 2025, 03:15 PM</li>
+          <li class="tracking-step current">Out for Delivery - 03 Sep 2025, 08:00 AM</li>
+          <li class="tracking-step pending">Delivered</li>         
+        </ul>
+
+        <table class="shipment-details">
+          <tr><td>Tracking Number:</td><td>Track-246800000</td></tr>
+          <tr><td>Sender:</td><td>Obiechina Tochukwu</td></tr>
+          <tr><td>Receiver:</td><td>Jane Doe</td></tr>
+          <tr><td>Estimated Delivery:</td><td>05 Sep 2025</td></tr>
+        </table>
+
+        <div class="ad-section">
+          <p>💡 Tip: Track multiple packages easily with your account!</p>
+          <p>📦 Special: Fast delivery for premium members.</p>
+        </div>
+      </div>
     </main>
 
   </div> <!-- End of page-container -->
