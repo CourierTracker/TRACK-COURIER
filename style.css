@@ -147,31 +147,3 @@ footer {
   font-style: italic;
   color: #0d47a1;
 }
-
-
-.tracking-steps {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-
-.tracking-steps li {
-  padding: 10px;
-  margin-bottom: 5px;
-  border-left: 4px solid #ccc;
-  position: relative;
-}
-
-.tracking-steps li.completed {
-  border-left-color: green;
-  color: green;
-  font-weight: bold;
-}
-
-.tracking-steps li.completed::after {
-  content: "✔";
-  position: absolute;
-  left: -25px;
-  color: green;
-  font-weight: bold;
-}
