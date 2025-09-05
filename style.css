@@ -4,6 +4,7 @@ body {
   background-color: #f8f9fa;
   padding: 20px;
   color: #333;
+  margin: 0;
 }
 
 /* Header */
@@ -65,13 +66,12 @@ button:hover {
 
 /* Each step */
 .tracking-steps li {
-  padding: 10px 15px;
+  padding: 10px;
   margin: 5px 0;
-  border-left: 4px solid blue;
+  border-left: 4px solid blue; /* Completed steps */
   color: blue;
-  background-color: #f0f8ff;
+  background-color: #f0f8ff;  /* Light blue background */
   border-radius: 4px;
-  transition: all 0.3s ease;
   font-size: 16px;
 }
 
@@ -80,12 +80,7 @@ button:hover {
   border-left-color: green;
   color: green;
   font-weight: bold;
-  background-color: #e6ffe6;
-}
-
-/* Hover effect */
-.tracking-steps li:hover {
-  background-color: #d0eaff;
+  background-color: #e6ffe6; /* Light green background */
 }
 
 /* Result Box */
@@ -98,8 +93,7 @@ button:hover {
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
   font-size: 16px;
   line-height: 1.5;
-  display: none; /* Hidden by default */
-  font-family: Arial, sans-serif;
+  display: none; /* Hidden initially */
 }
 
 /* Footer */
