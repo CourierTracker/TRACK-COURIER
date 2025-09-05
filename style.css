@@ -196,3 +196,38 @@ button:hover {
     width: 100%;
   }
 }
+
+.shipment-container {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  max-width: 500px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.shipment-details {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.shipment-details td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.shipment-details td:first-child {
+  font-weight: bold;
+  width: 40%;
+}
+
+.ad-section {
+  padding: 10px;
+  background-color: #e3f2fd;
+  border-radius: 8px;
+  text-align: center;
+  font-style: italic;
+  color: #0d47a1;
+}
