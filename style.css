@@ -106,3 +106,26 @@ footer {
   box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
   width: 100%;
 }
+
+.tracking-steps {
+  list-style: none;
+  padding: 0;
+  max-width: 300px; /* optional: limits width */
+  font-family: Arial, sans-serif;
+}
+
+.tracking-steps li {
+  padding: 10px;
+  margin: 5px 0;
+  border-left: 4px solid blue;
+  color: blue;
+  background-color: #f0f8ff; /* light blue background for visibility */
+  border-radius: 4px;
+}
+
+.tracking-steps li.current {
+  border-left-color: green;
+  color: green;
+  font-weight: bold;
+  background-color: #e6ffe6; /* light green background */
+}
