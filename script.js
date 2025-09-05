@@ -3,7 +3,7 @@ const trackingSteps = document.getElementById('trackingSteps');
 const trackingNumberInput = document.getElementById('tracking-number');
 
 trackingForm.addEventListener('submit', (e) => {
-    e.preventDefault(); // prevent page refresh
+    e.preventDefault();
 
     const trackingNumber = trackingNumberInput.value.trim();
 
@@ -12,22 +12,22 @@ trackingForm.addEventListener('submit', (e) => {
         return;
     }
 
-    // Hide steps first
+    // Show steps container
     trackingSteps.classList.remove('hidden');
     const steps = trackingSteps.querySelectorAll('li');
+
+    // Reset steps
     steps.forEach(step => {
-        step.style.display = 'none'; // hide all steps
-        step.style.borderColor = '#3498db'; // reset color
+        step.classList.remove('show', 'delivered');
     });
 
-    // Animate steps one by one
+    // Animate each step
     steps.forEach((step, index) => {
         setTimeout(() => {
-            step.style.display = 'block';
-            // Last step in green
-            if(index === steps.length - 1) {
-                step.style.borderColor = '#2ecc71';
+            step.classList.add('show');
+            if (index === steps.length - 1) {
+                step.classList.add('delivered'); // last step green
             }
-        }, index * 800); // 800ms between steps
+        }, index * 900);
     });
 });
