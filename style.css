@@ -129,3 +129,80 @@ footer {
   font-weight: bold;
   background-color: #e6ffe6; /* light green background */
 }
+
+/* Container styling */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+header h1 {
+  text-align: center;
+  color: #333;
+}
+
+header p {
+  text-align: center;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Tracking input */
+.tracking-input {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.tracking-input input {
+  padding: 8px;
+  width: 200px;
+  margin-right: 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.tracking-input button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tracking-input button:hover {
+  background-color: #0056b3;
+}
+
+/* Tracking steps */
+.tracking-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.tracking-steps {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+}
+
+.tracking-steps li {
+  padding: 10px;
+  margin: 5px 0;
+  border-left: 4px solid blue;
+  color: blue;
+  background-color: #f0f8ff;
+  border-radius: 4px;
+}
+
+.tracking-steps li.current {
+  border-left-color: green;
+  color: green;
+  font-weight: bold;
+  background-color: #e6ffe6;
+}
