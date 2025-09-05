@@ -4,24 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Package Tracker</title>
-  <!-- Link to your CSS file -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Header -->
   <header>
     <h1>📦 Package Tracker</h1>
-    <p>Track your shipment easily and quickly</p>
+    <p>Track your shipment quickly and easily</p>
   </header>
 
+  <!-- Main Content -->
   <main>
-    <h2>Enter Tracking Number</h2>
-    <input type="text" id="trackingNumber" placeholder="e.g. 123456789">
-    <button onclick="trackPackage()">Track</button>
-
-    <div id="result"></div>
+    <form>
+      <label for="tracking-number">Enter Tracking Number</label>
+      <input type="text" id="tracking-number" placeholder="e.g. 123456789">
+      <button type="submit">Track</button>
+    </form>
   </main>
 
-  <!-- Link to your JavaScript file -->
+  <!-- Script -->
   <script src="script.js"></script>
 </body>
 </html>
