@@ -21,7 +21,7 @@ trackingForm.addEventListener('submit', (e) => {
         step.classList.remove('show', 'delivered');
     });
 
-    // Animate each step
+    // Animate each step with checkmark
     steps.forEach((step, index) => {
         setTimeout(() => {
             step.classList.add('show');
