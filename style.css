@@ -1,29 +1,29 @@
 /* Body & General */
 body {
   font-family: Arial, sans-serif;
-  background: #f0f4ff; /* soft light blue background */
+  background: #e0f2fe; /* soft sky-blue background */
   padding: 0;
   margin: 0;
-  color: #333;
+  color: #111;
 }
 
 /* Header */
 header {
   text-align: center;
-  padding: 20px 10px;
-  background-color: #e0e7ff; /* subtle blue header background */
+  padding: 25px 10px;
+  background-color: #1e40af; /* vivid deep blue header */
 }
 
 header h1 {
   font-size: 32px;
-  color: #1e3a8a; /* deep blue */
+  color: #ffffff; /* white text for strong contrast */
   font-weight: bold;
   margin: 0;
 }
 
 header p {
   font-size: 16px;
-  color: #1e40af;
+  color: #bfdbfe; /* light blue subtitle */
   margin-top: 5px;
 }
 
@@ -37,46 +37,46 @@ form {
 
 input[type="text"] {
   width: 100%;
-  padding: 12px;
+  padding: 14px;
   font-size: 16px;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
   border-radius: 6px;
-  border: 1px solid #3b82f6;
+  border: 2px solid #1e40af; /* vivid blue border */
   box-sizing: border-box;
 }
 
 button {
   width: 100%; /* full width button */
-  padding: 15px;
+  padding: 16px;
   font-size: 16px;
   font-weight: bold;
   border: none;
   border-radius: 6px;
-  background-color: #3b82f6;
-  color: white;
+  background-color: #1e3a8a; /* strong blue */
+  color: #ffffff;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #2563eb;
-  transform: scale(1.02); /* subtle expand effect on hover */
+  background-color: #1e40af; /* slightly lighter on hover */
+  transform: scale(1.03);
 }
 
 /* Tracking Steps List */
 .tracking-steps {
   list-style: none;
   padding: 0;
-  margin: 20px auto;
+  margin: 20px auto 0;
   max-width: 450px;
 }
 
 .tracking-steps li {
-  padding: 12px 15px;
+  padding: 14px 15px;
   margin: 8px 0;
-  border-left: 5px solid #3b82f6; /* blue */
-  color: #1e40af;                 /* deep blue text */
-  background-color: #dbeafe;       /* light blue */
+  border-left: 6px solid #1e3a8a; /* vivid blue */
+  color: #1e3a8a;                 /* deep blue text */
+  background-color: #dbeafe;       /* light blue background */
   border-radius: 6px;
   font-size: 16px;
   font-weight: bold;
@@ -84,26 +84,24 @@ button:hover {
 }
 
 .tracking-steps li.current {
-  border-left-color: #22c55e;    /* green border */
-  color: #16a34a;                /* green text */
-  background-color: #dcfce7;     /* light green */
+  border-left-color: #16a34a;     /* vivid green */
+  color: #16a34a;
+  background-color: #bbf7d0;      /* light green background */
   font-weight: bold;
 }
 
 .tracking-steps li:hover {
-  background-color: #bfdbfe;
+  background-color: #bfdbfe;       /* hover effect for visibility */
 }
 
 /* Footer */
 footer {
   text-align: center;
-  padding: 15px 10px;
-  background-color: #3b82f6; /* full blue footer background */
-  color: white;               /* white text */
+  padding: 20px 10px;
+  background-color: #1e40af; /* strong blue footer */
+  color: #ffffff;
   font-size: 14px;
   font-weight: bold;
-  position: relative;
-  bottom: 0;
   width: 100%;
 }
 
@@ -115,11 +113,11 @@ footer {
 
   .tracking-steps li {
     font-size: 15px;
-    padding: 10px 12px;
+    padding: 12px 12px;
   }
 
   button {
     padding: 14px;
     font-size: 15px;
   }
-  }
+}
