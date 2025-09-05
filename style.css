@@ -112,3 +112,87 @@ footer {
         padding: 10px 12px;
     }
 }
+
+/* Center everything in the container */
+.shipment-container {
+  margin: 20px auto;         /* Centers horizontally */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  max-width: 500px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  text-align: center;        /* Center text for ads */
+}
+
+/* Table styling */
+.shipment-details {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+.shipment-details td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+}
+
+.shipment-details td:first-child {
+  font-weight: bold;
+  width: 40%;
+  text-align: left;           /* Align first column left */
+}
+
+.ad-section {
+  padding: 10px;
+  background-color: #e3f2fd;
+  border-radius: 8px;
+  font-style: italic;
+  color: #0d47a1;
+  margin-top: 10px;
+}
+
+/* Input & button styling */
+.search-section {
+  text-align: center;
+  margin-top: 50px;
+}
+
+#trackingInput {
+  padding: 10px;
+  width: 200px;
+  max-width: 80%;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px 15px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #0d47a1;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #1565c0;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .shipment-container {
+    margin: 10px;
+    padding: 15px;
+  }
+
+  #trackingInput {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
