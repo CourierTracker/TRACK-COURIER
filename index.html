@@ -39,6 +39,21 @@
       </form>
       <div id="status"></div>
       <table class="shipment-details">
+        <div class="search-section">
+  <input type="text" id="trackingInput" placeholder="Enter tracking number">
+  <button onclick="searchTracking()">Track</button>
+</div>
+
+<div class="shipment-container" id="shipmentContainer" style="display: none;">
+  <table class="shipment-details">
+    <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
+    <tr><td>Sender:</td><td>Obiechina Tochukwu</td></tr>
+    <tr><td>Receiver:</td><td>Jane Doe</td></tr>
+    <tr><td>Estimated Delivery:</td><td>05 Sep 2025</td></tr>
+  </table>
+  <div class="ad-section">
+    Check out our premium shipping services!
+  </div>
     </main>
 
   </div> <!-- End of page-container -->
