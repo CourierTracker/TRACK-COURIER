@@ -24,3 +24,18 @@ trackingForm.addEventListener('submit', (e) => {
     const inTransitStep = steps[2]; // 0 = Order Placed, 1 = Shipped, 2 = In Transit
     inTransitStep.classList.add('show');
 });
+
+
+// Add this to your existing trackingData array, or create it if it doesn't exist
+const trackingData = [
+  {
+    trackingNumber: "Track-246800000",
+    status: "Order Received",
+    dateTime: "2025-09-05 10:00 AM",
+  },
+  {
+    trackingNumber: "Track-246800000",
+    status: "On Transit",
+    dateTime: "2025-09-05 03:00 PM",
+  }
+];
