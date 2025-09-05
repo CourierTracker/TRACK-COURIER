@@ -7,37 +7,34 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>PACKAGE-TRACKER</h1>
-      <p>Fast, secure, and reliable deliveries</p>
-    </header>
+  <!-- Header -->
+  <header>
+    <h1>📦 Package Tracker</h1>
+    <p>Track your shipment quickly and easily</p>
+  </header>
 
-    <main>
-      <!-- Tracking input -->
-      <div class="tracking-input">
-        <label for="tracking-number">Enter your tracking number:</label>
-        <input type="text" id="tracking-number" placeholder="1234567890">
-        <button>Track</button>
-      </div>
+  <ul class="tracking-steps">
+  <li class="completed">Order Placed</li>
+  <li class="completed">Shipped</li>
+  <li class="completed">Out for Delivery</li>
+  <li class="current">Delivered</li>
+</ul>
 
-      <!-- Tracking steps -->
-      <div class="tracking-container">
-        <h2>Package Tracking Status</h2>
-        <ul class="tracking-steps">
-          <li class="completed">Order Placed</li>
-          <li class="completed">Shipped</li>
-          <li class="completed">Out for Delivery</li>
-          <li class="current">Delivered</li>
-        </ul>
-        <p>Tracking number: 1234567890</p>
-        <p>Estimated delivery: Today</p>
-      </div>
-    </main>
+  <!-- Main Content -->
+  <main>
+    <form>
+      <label for="tracking-number">Enter Tracking Number</label>
+      <input type="text" id="tracking-number" placeholder="e.g. 123456789">
+      <button type="submit">Track</button>
+    </form>
+  </main>
 
-    <footer>
-      <p>&copy; 2025 PACKAGE-TRACKER</p>
-    </footer>
-  </div>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Package Tracker – All rights reserved</p>
+  </footer>
+
+  <!-- Script -->
+  <script src="script.js"></script>
 </body>
-  </html>
+</html>
