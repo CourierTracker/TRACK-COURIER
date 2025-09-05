@@ -5,119 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Package Tracker</title>
   <link rel="stylesheet" href="style.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-    }
-    header {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    input, button {
-      padding: 10px;
-      margin: 5px 0;
-      font-size: 16px;
-    }
-    ul.tracking-steps {
-      list-style: none;
-      padding: 0;
-      margin-top: 20px;
-    }
-    ul.tracking-steps li {
-      padding: 10px;
-      border-left: 4px solid gray;
-      margin-bottom: 10px;
-    }
-    ul.tracking-steps li.completed {
-      color: blue;
-      border-left-color: blue;
-    }
-    ul.tracking-steps li.current {
-      color: green;
-      border-left-color: green;
-      font-weight: bold;
-    }
-  </style>
 </head>
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>📦 Package Tracker</h1>
-    <p>Track your shipment quickly and easily</p>
-  </header>
+  <!-- Page Wrapper -->
+  <div class="page-container">
 
-  <!-- Tracking Form -->
-  <main>
-    <form id="trackingForm">
-      <label for="trackingInput">Enter Tracking Number</label>
-      <input type="text" id="trackingInput" placeholder="e.g. PKG-123456789" required>
-      <button type="submit">Track</button>
-    </form>
+    <!-- Header -->
+    <header>
+      <h1>📦 PACKAGE TRACKER</h1>
+      <p>Track your shipment quickly and easily</p>
+    </header>
 
-    <!-- Status / Steps -->
-    <ul class="tracking-steps" id="status"></ul>
-    <button id="nextStepBtn" style="display:none;">Next Step</button>
-  </main>
+    <!-- Tracking Steps -->
+    <ul class="tracking-steps">
+      <li class="current">Order Placed</li>
+      <li>Shipped</li>
+      <li>In Transit</li>
+      <li>Delivered</li>
+    </ul>
+
+    <!-- Main Content -->
+    <main>
+      <form id="trackingForm">
+        <input type="text" id="tracking-number" placeholder="Enter Tracking Number">
+        <button type="submit">TRACK</button>
+      </form>
+      <div id="status"></div>
+    </main>
+
+  </div> <!-- End of page-container -->
 
   <!-- Footer -->
   <footer>
-    <p>© 2025 Package Tracker – All rights reserved</p>
+    © 2025 Package Tracker – All rights reserved
   </footer>
 
-  <!-- Script -->
-  <script>
-    const demoTrackingNumber = "PKG-123456789";
-
-    const trackingSteps = [
-      { status: "Order Placed", time: "2025-09-05 09:00" },
-      { status: "Shipped", time: "2025-09-06 12:00" },
-      { status: "Out for Delivery", time: "2025-09-07 15:00" },
-      { status: "Delivered", time: "2025-09-08 10:00" },
-    ];
-
-    const form = document.getElementById("trackingForm");
-    const statusList = document.getElementById("status");
-    const nextStepBtn = document.getElementById("nextStepBtn");
-    let currentStepIndex = 0;
-
-    form.addEventListener("submit", function(e) {
-      e.preventDefault();
-      const input = document.getElementById("trackingInput").value.trim();
-      statusList.innerHTML = "";
-      currentStepIndex = 0;
-
-      if(input === demoTrackingNumber) {
-        showCurrentStep();
-        nextStepBtn.style.display = "inline-block";
-      } else {
-        statusList.innerHTML = "<li style='color:red;'>Tracking number not found.</li>";
-        nextStepBtn.style.display = "none";
-      }
-    });
-
-    nextStepBtn.addEventListener("click", function() {
-      currentStepIndex++;
-      showCurrentStep();
-      if(currentStepIndex >= trackingSteps.length - 1) {
-        nextStepBtn.style.display = "none"; // Hide button at last step
-      }
-    });
-
-    function showCurrentStep() {
-      statusList.innerHTML = "";
-      trackingSteps.forEach((step, index) => {
-        const li = document.createElement("li");
-        if(index < currentStepIndex) {
-          li.classList.add("completed");
-        } else if(index === currentStepIndex) {
-          li.classList.add("current");
-        }
-        li.textContent = `${step.status} - ${step.time}`;
-        statusList.appendChild(li);
-      });
-    }
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
