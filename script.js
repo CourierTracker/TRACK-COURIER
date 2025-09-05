@@ -23,3 +23,6 @@ trackingForm.addEventListener('submit', (e) => {
     // Only show "In Transit" step (3rd step)
     steps[2].classList.add('show');
 });
+document.querySelectorAll('.tracking-step').forEach((step, index) => {
+  setTimeout(() => step.classList.add('highlight'), index * 1000);
+});
