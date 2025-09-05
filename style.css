@@ -8,18 +8,27 @@
 /* Body & General */
 body {
   font-family: Arial, sans-serif;
-  background: #e0f2fe; /* soft sky-blue background */
-  color: #111;
+  background: #e0f2fe;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  color: #111;
+}
+
+/* Page Container to center content */
+.page-container {
+  flex: 1;
+  width: 100%;
+  max-width: 450px;
+  margin: 0 auto;
+  padding: 20px 10px;
 }
 
 /* Header */
 header {
   text-align: center;
-  padding: 25px 10px;
-  background-color: #1e40af; /* vivid deep blue header */
+  padding: 25px 0;
+  background-color: #1e40af;
 }
 
 header h1 {
@@ -35,14 +44,6 @@ header p {
 }
 
 /* Form & Input */
-main {
-  flex: 1;
-  width: 100%;
-  max-width: 450px;
-  margin: 20px auto;
-  padding: 0 10px;
-}
-
 form {
   text-align: center;
 }
@@ -74,12 +75,11 @@ button:hover {
   transform: scale(1.03);
 }
 
-/* Tracking Steps List */
+/* Tracking Steps */
 .tracking-steps {
   list-style: none;
   padding: 0;
-  margin: 20px auto;
-  max-width: 450px;
+  margin: 20px 0;
 }
 
 .tracking-steps li {
@@ -97,7 +97,6 @@ button:hover {
   border-left-color: #16a34a;
   color: #16a34a;
   background-color: #bbf7d0;
-  font-weight: bold;
 }
 
 .tracking-steps li:hover {
@@ -108,12 +107,11 @@ button:hover {
 footer {
   text-align: center;
   padding: 20px 10px;
-  background-color: #1e40af; /* strong blue */
+  background-color: #1e40af;
   color: #ffffff;
   font-size: 14px;
   font-weight: bold;
   width: 100%;
-  flex-shrink: 0;
 }
 
 /* Responsive Adjustments */
