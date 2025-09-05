@@ -1,348 +1,114 @@
-/* Global Box Sizing */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-/* Body & General */
+/* General Page Styling */
 body {
-  font-family: Arial, sans-serif;
-  background: #e0f2fe;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  color: #111;
-}
-
-/* Page Container to center content */
-.page-container {
-  flex: 1;
-  width: 100%;
-  max-width: 450px;
-  margin: 0 auto;
-  padding: 20px 10px;
-}
-
-/* Header */
-header {
-  text-align: center;
-  padding: 25px 0;
-  background-color: #1e40af;
-}
-
-header h1 {
-  font-size: 32px;
-  color: #ffffff;
-  font-weight: bold;
-}
-
-header p {
-  font-size: 16px;
-  color: #bfdbfe;
-  margin-top: 5px;
-}
-
-/* Form & Input */
-form {
-  text-align: center;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 14px;
-  font-size: 16px;
-  margin-bottom: 12px;
-  border-radius: 6px;
-  border: 2px solid #1e40af;
-}
-
-button {
-  width: 100%;
-  padding: 16px;
-  font-size: 16px;
-  font-weight: bold;
-  border: none;
-  border-radius: 6px;
-  background-color: #1e3a8a;
-  color: #ffffff;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
-  background-color: #1e40af;
-  transform: scale(1.03);
-}
-
-/* Tracking Steps */
-.tracking-steps {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-
-.tracking-steps li {
-  padding: 14px 15px;
-  margin: 8px 0;
-  border-left: 6px solid #1e3a8a;
-  color: #1e3a8a;
-  background-color: #dbeafe;
-  border-radius: 6px;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.tracking-steps li.current {
-  border-left-color: #16a34a;
-  color: #16a34a;
-  background-color: #bbf7d0;
-}
-
-.tracking-steps li:hover {
-  background-color: #bfdbfe;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px 10px;
-  background-color: #1e40af;
-  color: #ffffff;
-  font-size: 14px;
-  font-weight: bold;
-  width: 100%;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 28px;
-  }
-
-  .tracking-steps li {
-    font-size: 15px;
-    padding: 12px 12px;
-  }
-
-  button {
-    padding: 14px;
-    font-size: 15px;
-  }
-}
-
-.hidden {
-    display: none;
-}
-
-.tracking-steps {
-    list-style: none;
-    margin-top: 20px;
-    padding-left: 0;
-}
-
-.tracking-steps li {
-    padding: 10px;
-    border-left: 4px solid #3498db; /* blue for steps */
-    margin-bottom: 10px;
-}
-
-
-.tracking-steps li {
-    padding: 12px 15px;
-    margin-bottom: 12px;
-    border-left: 4px solid #3498db;
-    background: #f9f9f9;
-    border-radius: 8px;
-    font-weight: bold;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.5s ease-in-out;
-}
-
-/* When step is shown */
-.tracking-steps li.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Delivered step in green */
-.tracking-steps li.delivered {
-    border-left-color: #2ecc71;
-    background: #eafaf1;
-}
-
-
-.tracking-steps li {
-    position: relative;
-    padding: 12px 15px 12px 40px; /* space for icon */
-    margin-bottom: 12px;
-    border-left: 4px solid #3498db;
-    background: #f9f9f9;
-    border-radius: 8px;
-    font-weight: bold;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.5s ease-in-out;
-}
-
-/* Show step animation */
-.tracking-steps li.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Delivered step in green */
-.tracking-steps li.delivered {
-    border-left-color: #2ecc71;
-    background: #eafaf1;
-}
-
-/* Checkmark icon */
-.tracking-steps li::before {
-    content: "✔";
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #3498db; /* default color for steps */
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-/* Show checkmark when step is shown */
-.tracking-steps li.show::before {
-    opacity: 1;
-}
-
-/* Delivered checkmark green */
-.tracking-steps li.delivered::before {
-    color: #2ecc71;
-}
-
-.hidden {
-    display: none;
-}
-
-.tracking-steps {
-    list-style: none;
-    margin-top: 20px;
-    padding-left: 0;
-}
-
-.tracking-steps li {
-    position: relative;
-    padding: 12px 15px 12px 40px; /* space for icon */
-    margin-bottom: 12px;
-    border-left: 4px solid #3498db;
-    background: #f9f9f9;
-    border-radius: 8px;
-    font-weight: bold;
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.5s ease-in-out;
-}
-
-/* Show step animation */
-.tracking-steps li.show {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Checkmark icon */
-.tracking-steps li::before {
-    content: "✔";
-    position: absolute;
-    left: 12px;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #3498db;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-/* Show checkmark when step is shown */
-.tracking-steps li.show::before {
-    opacity: 1;
-}
-
-
-/* General Page Styles */
-body {
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    background-color: #f9f9f9;
     color: #333;
 }
 
-/* Container for tracking section */
-.tracking-container {
+.page-container {
     max-width: 600px;
     margin: 40px auto;
     padding: 20px;
     background-color: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    text-align: center;
 }
 
-/* Tracking input */
-.tracking-input {
-    width: 100%;
-    padding: 12px 16px;
+/* Header */
+header h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+header p {
+    font-size: 16px;
+    color: #666;
+    margin-top: 0;
+}
+
+/* Tracking Form */
+#trackingForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+#trackingForm input {
+    padding: 12px;
     font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    box-sizing: border-box;
-    margin-bottom: 20px;
+    border-radius: 6px;
 }
 
-/* Tracking steps */
+#trackingForm button {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#trackingForm button:hover {
+    background-color: #0056b3;
+}
+
+/* Tracking Steps */
 .tracking-steps {
     list-style: none;
     padding: 0;
-    margin: 0;
+    margin: 30px 0 0 0;
+    text-align: left;
 }
 
-.tracking-step {
-    padding: 12px 16px;
-    margin-bottom: 12px;
-    border-left: 4px solid #007bff; /* Your current blue */
-    border-radius: 4px;
-    background-color: #f9f9f9;
+.tracking-steps li {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-left: 4px solid #007bff;
+    background-color: #f1f5f9;
+    border-radius: 6px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
 }
 
-.tracking-step.completed {
-    border-left-color: #28a745; /* Green for Delivered */
+/* Active step */
+.tracking-steps li.show {
+    opacity: 1;
+    font-weight: bold;
 }
 
-/* Step text */
-.tracking-step span {
-    display: block;
-    font-size: 14px;
+/* Delivered step */
+.tracking-steps li.delivered {
+    border-left-color: #28a745;
+    background-color: #e6f5ea;
 }
 
 /* Footer */
 footer {
     text-align: center;
-    padding: 20px;
+    margin-top: 40px;
     font-size: 14px;
     color: #666;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .tracking-container {
+    .page-container {
         margin: 20px;
         padding: 16px;
     }
 
-    .tracking-input {
+    #trackingForm input,
+    #trackingForm button {
         font-size: 15px;
-        padding: 10px 14px;
+        padding: 10px;
     }
 
-    .tracking-step {
-        padding: 10px 14px;
+    .tracking-steps li {
+        padding: 10px 12px;
     }
 }
