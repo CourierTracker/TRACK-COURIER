@@ -1,5 +1,3 @@
-// script.js
-
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.querySelector("form");
   const input = document.querySelector("input");
@@ -17,9 +15,19 @@ document.addEventListener("DOMContentLoaded", function () {
   resultBox.style.display = "none"; // hidden at first
   form.parentNode.appendChild(resultBox);
 
+  const trackingNumberDemo = "PKG-123456789"; // Demo tracking number
+
+  const trackingSteps = [
+    { status: "Order Placed", time: "2025-09-05 09:00" },
+    { status: "Shipped", time: "2025-09-06 12:00" },
+    { status: "In Transit", time: "2025-09-07 15:00" },
+    { status: "Delivered", time: "2025-09-08 10:00" },
+  ];
+
   form.addEventListener("submit", function (e) {
     e.preventDefault(); // stop page reload
     const trackingNumber = input.value.trim();
+    resultBox.innerHTML = "";
 
     if (trackingNumber === "") {
       resultBox.textContent = "❌ Please enter a tracking number.";
@@ -28,47 +36,18 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Fake tracking results
-    const fakeStatuses = [
-      "📦 Package received at facility.",
-      "🚚 Package in transit.",
-      "🏙️ Package arrived at destination city.",
-      "📬 Out for delivery.",
-      "✅ Package delivered successfully!"
-    ];
-
-    // Pick a random status to show
-    const randomStatus = fakeStatuses[Math.floor(Math.random() * fakeStatuses.length)];
-
-    resultBox.innerHTML = `
-      <strong>Tracking Number:</strong> ${trackingNumber}<br>
-      <strong>Status:</strong> ${randomStatus}
-    `;
-    resultBox.style.color = "#333";
-    resultBox.style.display = "block";
+    if (trackingNumber === trackingNumberDemo) {
+      trackingSteps.forEach((step, index) => {
+        const stepColor = index === 0 ? "blue" : index === trackingSteps.length - 1 ? "green" : "gray";
+        const p = document.createElement("p");
+        p.style.color = stepColor;
+        p.textContent = `${step.status} - ${step.time}`;
+        resultBox.appendChild(p);
+      });
+      resultBox.style.display = "block";
+    } else {
+      resultBox.innerHTML = "<p style='color:red'>Tracking number not found.</p>";
+      resultBox.style.display = "block";
+    }
   });
 });
-
-const trackingNumberDemo = "PKG-123456789"; // Your demo tracking number
-
-const trackingSteps = [
-  { status: "Order Placed", time: "2025-09-05 09:00" },
-  { status: "Shipped", time: "2025-09-06 12:00" },
-  { status: "In Transit", time: "2025-09-07 15:00" },
-  { status: "Delivered", time: "2025-09-08 10:00" },
-];
-
-function trackPackage() {
-  const input = document.getElementById("trackingInput").value.trim();
-  const statusDiv = document.getElementById("status");
-  statusDiv.innerHTML = "";
-
-  if (input === trackingNumberDemo) {
-    trackingSteps.forEach((step, index) => {
-      const stepColor = index === 0 ? "blue" : index === trackingSteps.length - 1 ? "green" : "gray";
-      statusDiv.innerHTML += `<p style="color:${stepColor}">${step.status} - ${step.time}</p>`;
-    });
-  } else {
-    statusDiv.innerHTML = "<p style='color:red'>Tracking number not found.</p>";
-  }
-}
