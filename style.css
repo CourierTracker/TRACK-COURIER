@@ -112,3 +112,38 @@ footer {
         padding: 10px 12px;
     }
 }
+
+.tracking-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: Arial, sans-serif;
+}
+
+.tracking-step {
+  display: flex;
+  align-items: center;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #e0f0ff; /* light blue for in-progress */
+  color: #0077cc;
+  font-weight: 500;
+}
+
+.tracking-step.completed {
+  background-color: #cce5ff;
+  color: #0077cc;
+}
+
+.tracking-step.delivered {
+  background-color: #d4edda; /* light green */
+  color: #155724; /* dark green text */
+}
+
+.step-icon {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 18px;
+}
