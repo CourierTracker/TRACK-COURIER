@@ -1,15 +1,111 @@
-.tracking-steps li {
-padding: 10px;
-margin: 5px 0;
-border-left: 4px solid blue;
-color: blue;
-background-color: #f0f8ff;
-border-radius: 4px;
+/* Body & General */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
+  padding: 20px;
+  color: #333;
 }
 
+/* Header */
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+header p {
+  margin: 5px 0 0;
+  font-size: 16px;
+  color: #555;
+}
+
+/* Form & Input */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+input[type="text"] {
+  width: calc(100% - 22px);
+  padding: 10px;
+  font-size: 16px;
+  margin: 5px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  padding: 10px 15px;
+  font-size: 16px;
+  margin-top: 5px;
+  border: none;
+  border-radius: 6px;
+  background-color: #007bff;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Tracking Steps List */
+.tracking-steps {
+  list-style: none;
+  padding: 0;
+  margin: 20px auto 0;
+  max-width: 400px;
+}
+
+/* Each step */
+.tracking-steps li {
+  padding: 10px 15px;
+  margin: 5px 0;
+  border-left: 4px solid blue;
+  color: blue;
+  background-color: #f0f8ff;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+/* Current step */
 .tracking-steps li.current {
-border-left-color: green;
-color: green;
-font-weight: bold;
-background-color: #e6ffe6;
+  border-left-color: green;
+  color: green;
+  font-weight: bold;
+  background-color: #e6ffe6;
+}
+
+/* Hover effect */
+.tracking-steps li:hover {
+  background-color: #d0eaff;
+}
+
+/* Result Box */
+.result-box {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  font-size: 16px;
+  line-height: 1.5;
+  display: none; /* Hidden by default */
+  font-family: Arial, sans-serif;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #777;
+  font-size: 14px;
 }
