@@ -17,23 +17,9 @@ trackingForm.addEventListener('submit', (e) => {
     trackingSteps.classList.remove('hidden');
     const steps = trackingSteps.querySelectorAll('li');
 
-    // Hide all steps first
+    // Reset all steps
     steps.forEach(step => step.classList.remove('show', 'delivered'));
 
     // Only show "In Transit" step (3rd step)
-    const inTransitStep = steps[2]; // 0 = Order Placed, 1 = Shipped, 2 = In Transit
-    inTransitStep.classList.add('show');
+    steps[2].classList.add('show');
 });
-
-trackingData.push(
-  {
-    trackingNumber: "Track-246800000",
-    status: "Order Received",
-    dateTime: "2025-09-05 10:00 AM",
-  },
-  {
-    trackingNumber: "Track-246800000",
-    status: "On Transit",
-    dateTime: "2025-09-05 03:00 PM",
-  }
-);
