@@ -11,9 +11,9 @@ Dfunction trackPackage() {
   // Fake demo result (replace with real API later if needed)
   result.style.display = "block";
   result.innerHTML = `
-    <h3>Tracking Number: ${number}</h3>
+    <h3>Tracking Number: ${246800}</h3>
     <p>Status: 🚚 In Transit</p>
-    <p>Last Location: Lagos, Nigeria</p>
+    <p>Last Location: LONDON, UNITED KINGDOM</p>
     <p>Expected Delivery: 2-3 Business Days</p>
   `;
 }
