@@ -81,8 +81,8 @@ header p {
     font-weight: bold;
 }
 
-/* Delivered step */
-.tracking-steps li.delivered {
+/* In Transit step */
+.tracking-steps li.In Transit {
     border-left-color: #28a745;
     background-color: #e6f5ea;
 }
