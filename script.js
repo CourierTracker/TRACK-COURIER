@@ -24,8 +24,8 @@ trackingForm.addEventListener('submit', (e) => {
         step.style.backgroundColor = ""; // clear highlight
     });
 
-    // Only show "Shipped" step (2nd step)
-    steps[1].classList.add('show');
+    // Only show "Shipped" step (2nd step, index 1)
+steps[1].classList.add('show');
 
     // Highlight if correct tracking number
     if (trackingNumber === "Track-246800000") {
