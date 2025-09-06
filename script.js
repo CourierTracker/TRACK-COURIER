@@ -3,9 +3,6 @@ const trackingSteps = document.getElementById('trackingSteps');
 const trackingNumberInput = document.getElementById('tracking-number');
 const shipmentContainer = document.getElementById('shipmentContainer');
 
-// Read current step from hidden input
-const currentStepInput = document.getElementById('currentStep');
-
 trackingForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const trackingNumber = trackingNumberInput.value.trim();
@@ -24,20 +21,15 @@ trackingForm.addEventListener('submit', (e) => {
     // Reset all steps
     steps.forEach(step => {
         step.classList.remove('show');
-        step.style.backgroundColor = "";
+        step.style.backgroundColor = ""; // clear highlight
     });
 
-    // 🔹 Read value from hidden input
-    const currentStep = parseInt(currentStepInput.value);
+    // Only show "In Transit" step (3rd step)
+    steps[2].classList.add('show');
 
-    // Highlight all steps up to currentStep
-    for (let i = 0; i < currentStep; i++) {
-        steps[i].classList.add('show');
-        steps[i].style.backgroundColor = "lightblue";
-    }
-
-    // Show shipment details only for the correct tracking number
+    // Highlight if correct tracking number
     if (trackingNumber === "Track-246800000") {
+        steps[2].style.backgroundColor = "lightblue";
         shipmentContainer.style.display = "block";
     } else {
         shipmentContainer.style.display = "none";
