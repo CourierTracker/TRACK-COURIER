@@ -24,12 +24,12 @@ trackingForm.addEventListener('submit', (e) => {
         step.style.backgroundColor = ""; // clear highlight
     });
 
-    // Only show "Shipped" step (2nd step)
-    steps[2].classList.add('show');
+    // ✅ Show "Shipped" step (2nd item, index 1)
+    steps[1].classList.add('show');
 
     // Highlight if correct tracking number
     if (trackingNumber === "Track-246800000") {
-        steps[2].style.backgroundColor = "lightblue";
+        steps[1].style.backgroundColor = "lightblue";
         shipmentContainer.style.display = "block";
     } else {
         shipmentContainer.style.display = "none";
