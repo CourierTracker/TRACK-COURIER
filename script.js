@@ -24,7 +24,7 @@ trackingForm.addEventListener('submit', (e) => {
         step.style.backgroundColor = ""; // clear highlight
     });
 
-    // Only show "In Transit" step (3rd step)
+    // Only show "Shipped" step (2nd step)
     steps[2].classList.add('show');
 
     // Highlight if correct tracking number
