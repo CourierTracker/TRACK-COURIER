@@ -18,10 +18,18 @@ trackingForm.addEventListener('submit', (e) => {
     const steps = trackingSteps.querySelectorAll('li');
 
     // Reset all steps
-    steps.forEach(step => step.classList.remove('show', 'In Transit'));
+    steps.forEach(step => {
+        step.classList.remove('show');
+        step.style.backgroundColor = ""; // clear previous highlight
+    });
 
     // Only show "In Transit" step (3rd step)
     steps[2].classList.add('show');
+
+    // Highlight "In Transit" if correct tracking number
+    if (trackingNumber === "Track-246800000") {
+        steps[2].style.backgroundColor = "lightblue";
+    }
 });
 
 function searchTracking() {
@@ -33,6 +41,12 @@ function searchTracking() {
   
   if (input === correctTracking) {
     container.style.display = "block";
+
+    // Also highlight "In Transit" step when found
+    const steps = trackingSteps.querySelectorAll('li');
+    if (steps[2]) {
+      steps[2].style.backgroundColor = "lightblue";
+    }
   } else {
     container.style.display = "none";
     alert("Tracking number not found!");
