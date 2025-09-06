@@ -81,8 +81,8 @@ header p {
     font-weight: bold;
 }
 
-/* In Transit step */
-.tracking-steps li.In Transit {
+/* Shipped step */
+.tracking-steps li.Shipped {
     border-left-color: #28a745;
     background-color: #e6f5ea;
 }
