@@ -9,7 +9,7 @@ trackingForm.addEventListener('submit', (e) => {
     // Validate format: Track- followed by digits
     const regex = /^Track-\d{6,10}$/i;
     if (!regex.test(trackingNumber)) {
-        alert("Invalid tracking number! Use format: Track-123456789");
+        alert("Invalid tracking number! Use format: Track-246800000");
         return;
     }
 
