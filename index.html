@@ -192,23 +192,29 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
 });
 </script>
 
-<style>
-/* Loading dots are handled in JS, no extra CSS needed */
+if (trackingNumberInput === correctTrackingNumber) {
+    // Show loading animation
+    let dots = 0;
+    statusDiv.textContent = "🔍 Tracking your package";
+    const loadingInterval = setInterval(() => {
+        dots = (dots + 1) % 4;
+        statusDiv.textContent = "🔍 Tracking your package" + ".".repeat(dots);
+    }, 500);
 
-/* Shake animation for invalid input */
-#status.shake {
-    display: inline-block;
-    animation: shake 0.5s;
-}
+    // Step-by-step progress
+    trackingSteps[0].classList.add("in-transit"); // Order Placed
+    setTimeout(() => {
+        trackingSteps[1].classList.add("in-transit"); // Shipped
+    }, 2000); // after 2s
 
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
+    setTimeout(() => {
+        clearInterval(loadingInterval); // stop loading dots
+        shipmentContainer.style.display = "block"; // show shipment details
+        trackingNumberDisplay.textContent = trackingNumberInput;
+        statusDiv.textContent = "✅ Package status updated!";
+        trackingSteps[2].classList.add("in-transit"); // In Transit
+    }, 5000); // final step after 5s
 }
-</style>
                                                              </script>
 </body>
 </html>
