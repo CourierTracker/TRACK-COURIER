@@ -204,6 +204,35 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
     }
 });
 </script>
+    const steps = document.querySelectorAll('.step');
+let stepIndex = 0;
+
+function showLoading() {
+    document.getElementById('loading').style.display = 'block';
+}
+
+function hideLoading() {
+    document.getElementById('loading').style.display = 'none';
+}
+
+function highlightStep() {
+    if (stepIndex < steps.length) {
+        steps[stepIndex].classList.add('highlight');
+        stepIndex++;
+        setTimeout(highlightStep, 1250); // 4 steps × 1.25s ≈ 5 seconds
+    } else {
+        hideLoading();
+    }
+}
+
+function trackPackage() {
+    stepIndex = 0;
+    steps.forEach(step => step.classList.remove('highlight')); // reset highlights
+    showLoading();
+    highlightStep();
+}
+
+document.getElementById('trackBtn').addEventListener('click', trackPackage);
                                                              </script>
 </body>
 </html>
