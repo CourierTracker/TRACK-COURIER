@@ -1,91 +1,86 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Tracker</title>
+    <!-- Add this line to use the truck icon from Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+    <!-- Your page content goes here -->
+</body></html>
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Package Tracker</title>
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <style>
-    /* Light blue highlight for In Transit */
-    .tracking-steps li.active {
-      background-color: #cce7ff;
-      font-weight: bold;
-      padding: 5px 10px;
-      border-radius: 5px;
-    }
-
-    /* Loading message */
-    #status {
-      background-color: #cce7ff;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 5px;
-      font-weight: bold;
-      text-align: center;
-    }
-  </style>
 </head>
 <body>
 
-<div class="page-container">
+  <!-- Page Wrapper -->
+  <div class="page-container">
 
-  <!-- Header -->
-  <header>
-    <h1>📦 PACKAGE TRACKER</h1>
-    <p>Track your shipment quickly and easily</p>
-  </header>
+    <!-- Header -->
+    <header>
+      <h1>📦 PACKAGE TRACKER</h1>
+      <p>Track your shipment quickly and easily</p>
+    </header>
 
-  <!-- Tracking Steps -->
-  <ul id="trackingSteps">
-    <li id="step1">Order Placed</li>
-    <li id="step2">Shipped</li>
-    <li id="step3"><i class="fas fa-plane"></i> In Transit</li>
-    <li id="step4">Delivered</li>
-  </ul>
+    <!-- Tracking Steps (hidden by default) -->
+    <ul id="trackingSteps" class="tracking-steps hidden">
+      <li>Order Placed</li>
+      <li>Shipped</li>
+      <li><i class="fas fa-plane"></i> In Transit</li>
+      <li>Delivered</li>
+    </ul>
 
-  <div class="ad-section">
-    <p>💡 Tip: Track multiple packages easily with your account!</p>
-    <p>📦 Special: Fast delivery for premium members.</p>
-  </div>
+    <div class="ad-section">
+      <p>💡 Tip: Track multiple packages easily with your account!</p>
+      <p>📦 Special: Fast delivery for premium members.</p>
+    </div>
 
-  <!-- Main Content -->
-  <main>
-    <form id="trackingForm">
-      <div class="shipment-container" id="shipmentContainer" style="display: none;">
-        <table class="shipment-details">
-          <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
-          <tr><td>Sender:</td><td>Obiechina Tochukwu</td></tr>
-          <tr><td>Receiver:</td><td>Jane Doe</td></tr>
-          <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
-        </table>
-        <div class="ad-section">
-          <p>Check out our premium shipping services!</p>
+    <!-- Main Content -->
+    <main>
+      <form id="trackingForm">
+        <div class="shipment-container" id="shipmentContainer" style="display: none;">
+          <table class="shipment-details">
+            <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
+            <tr><td>Sender:</td><td>Obiechina Tochukwu</td></tr>
+            <tr><td>Receiver:</td><td>Jane Doe</td></tr>
+            <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
+          </table>
+          <div class="ad-section">
+            <p>Check out our premium shipping services!</p>
+          </div>
         </div>
-      </div>
 
-      <div class="search-section">
-        <input type="text" id="tracking-number" placeholder="Enter tracking number">
-        <button type="submit">Track</button>
-      </div>
-    </form>
-    <div id="status"></div>
-  </main>
-
-</div> <!-- page-container -->
-
+        <!-- Input for tracking -->
+        <div class="search-section">
+          <!-- 🔹 Changed id to match JS -->
+          <input type="text" id="tracking-number" placeholder="Enter tracking number">
+          <button type="submit">Track</button>
+        </div>
+      </form>
+      <div id="status"></div>
+    </main>
+</div> <!-- End of page-container -->
+  
 <!-- Products / Advert Section -->
 <section class="products">
   <h2>Our Featured Products</h2>
   <div class="product-grid">
-
+    
     <!-- Product 1 -->
     <div class="product-card">
       <img src="Box.png" alt="Fast Shipping Box">
       <h3>Fast Shipping Box</h3>
       <p>Durable and affordable packaging for your shipments.</p>
       <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Fast%20Shipping%20Box" 
-         class="buy-btn" target="_blank">Buy Now</a>
+         class="buy-btn" target="_blank">
+         Buy Now
+      </a>
     </div>
 
     <!-- Product 2 -->
@@ -94,7 +89,9 @@
       <h3>Courier Bag</h3>
       <p>Lightweight waterproof courier bags for safe delivery.</p>
       <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Courier%20Bag" 
-         class="buy-btn" target="_blank">Shop Now</a>
+         class="buy-btn" target="_blank">
+         Shop Now
+      </a>
     </div>
 
     <!-- Product 3 -->
@@ -103,7 +100,9 @@
       <h3>Protective Envelope</h3>
       <p>Bubble-lined envelopes to protect fragile shipments.</p>
       <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Protective%20Envelope" 
-         class="buy-btn" target="_blank">Buy Now</a>
+         class="buy-btn" target="_blank">
+         Buy Now
+      </a>
     </div>
 
     <!-- Product 4 -->
@@ -112,60 +111,37 @@
       <h3>Sealing Tape</h3>
       <p>Strong adhesive tape for secure package sealing.</p>
       <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20Sealing%20Tape" 
-         class="buy-btn" target="_blank">Shop Now</a>
+         class="buy-btn" target="_blank">
+         Shop Now
+      </a>
     </div>
 
-  </div>
+ </div>
 </section>
-
+  
 <!-- About Us Section -->
 <section class="about">
+    
   <h2>About Us</h2>
   <p>At Package Tracker, we are dedicated to providing fast, secure, and affordable delivery services. 
      Whether it’s small parcels or bulk shipments, we ensure your packages arrive safely and on time.</p>
 </section>
-
-<!-- Contact Us Section -->
+  
+<!<!-- Contact Us Section -->
 <section class="contact">
   <h2>Contact Us</h2>
   <p>Have questions about your shipment or our services? Reach out to us:</p>
+  
   <div class="contact-options">
     <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn">💬 WhatsApp</a>
     <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn">📧 Email</a>
   </div>
 </section>
-
+  
 <footer>
-  © 2025 Package Tracker – All rights reserved
-</footer>
+    © 2025 Package Tracker – All rights reserved
+  </footer>
 
-<!-- JS for 5-second delay and In Transit highlight -->
-<script>
-  const form = document.getElementById('trackingForm');
-  const trackingInput = document.getElementById('tracking-number');
-  const shipmentContainer = document.getElementById('shipmentContainer');
-  const statusDiv = document.getElementById('status');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault(); // stop page refresh
-
-    shipmentContainer.style.display = 'none';
-    statusDiv.innerHTML = 'Loading, please wait...';
-
-    setTimeout(() => {
-      statusDiv.innerHTML = '';
-      shipmentContainer.style.display = 'block';
-
-      // Highlight "In Transit"
-      const steps = document.querySelectorAll('#trackingSteps li');
-      steps.forEach(step => step.classList.remove('active'));
-      document.getElementById('step3').classList.add('active');
-
-      // Update tracking number
-      document.getElementById('trackingNumber').innerText = trackingInput.value;
-    }, 5000);
-  });
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
