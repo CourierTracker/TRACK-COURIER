@@ -193,6 +193,32 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
     }
 });
 </script>
+    } else {
+        // Invalid tracking number animation
+        statusDiv.textContent = "❌ Invalid tracking number. Please try again.";
+        statusDiv.classList.add("shake");
+        setTimeout(() => statusDiv.classList.remove("shake"), 500);
+    }
+});
+</script>
+
+<style>
+/* Loading dots are handled in JS, no extra CSS needed */
+
+/* Shake animation for invalid input */
+#status.shake {
+    display: inline-block;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+</style>
                                                              </script>
 </body>
 </html>
