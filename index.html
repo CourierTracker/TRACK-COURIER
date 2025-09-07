@@ -156,4 +156,33 @@
     });
   </script>
 </body>
+
+<script>
+  const form = document.getElementById('trackingForm');
+  const trackingInput = document.getElementById('tracking-number');
+  const shipmentContainer = document.getElementById('shipmentContainer');
+  const statusDiv = document.getElementById('status');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault(); // Stop the page from refreshing
+
+    // Hide previous results and show loading
+    shipmentContainer.style.display = 'none';
+    statusDiv.innerHTML = 'Loading, please wait...';
+
+    // Wait 5 seconds, then show results
+    setTimeout(() => {
+      statusDiv.innerHTML = '';
+      shipmentContainer.style.display = 'block';
+
+      // Highlight "In Transit"
+      const steps = document.querySelectorAll('#trackingSteps li');
+      steps.forEach(step => step.classList.remove('active'));
+      document.getElementById('step3').classList.add('active');
+
+      // Update tracking number in table
+      document.getElementById('trackingNumber').innerText = trackingInput.value;
+    }, 5000);
+  });
+  </script>
 </html>
