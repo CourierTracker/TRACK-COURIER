@@ -60,7 +60,43 @@
   <section class="products">
     <h2>Our Featured Products</h2>
     <div class="product-grid">
-      <!-- Product cards go here -->
+
+      <!-- Product 1 -->
+      <div class="product-card">
+        <img src="Box.png" alt="Fast Shipping Box">
+        <h3>Fast Shipping Box</h3>
+        <p>Durable and affordable packaging for your shipments.</p>
+        <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Fast%20Shipping%20Box" 
+           class="buy-btn" target="_blank">Buy Now</a>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="product-card">
+        <img src="Luggage.png" alt="Courier Bag">
+        <h3>Courier Bag</h3>
+        <p>Lightweight waterproof courier bags for safe delivery.</p>
+        <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Courier%20Bag" 
+           class="buy-btn" target="_blank">Shop Now</a>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="product-card">
+        <img src="Throw.png" alt="Protective Envelope">
+        <h3>Protective Envelope</h3>
+        <p>Bubble-lined envelopes to protect fragile shipments.</p>
+        <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Protective%20Envelope" 
+           class="buy-btn" target="_blank">Buy Now</a>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="product-card">
+        <img src="Tape.jpg" alt="Sealing Tape">
+        <h3>Sealing Tape</h3>
+        <p>Strong adhesive tape for secure package sealing.</p>
+        <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20Sealing%20Tape" 
+           class="buy-btn" target="_blank">Shop Now</a>
+      </div>
+
     </div>
   </section>
 
@@ -103,7 +139,6 @@
       setTimeout(() => {
         statusDiv.innerHTML = '';
         shipmentContainer.style.display = 'block';
-        // Update tracking number dynamically
         document.getElementById('trackingNumber').innerText = trackingInput.value;
       }, 5000);
     });
