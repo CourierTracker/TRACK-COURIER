@@ -143,6 +143,23 @@
 
     <!-- JavaScript for 5-second delay + In Transit highlight -->
     <script>
+const correctTrackingNumber = "Track-246800000";
+
+document.getElementById("trackingForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const trackingNumberInput = document.getElementById("tracking-number").value.trim();
+    const statusDiv = document.getElementById("status");
+    const shipmentContainer = document.getElementById("shipmentContainer");
+    const trackingNumberDisplay = document.getElementById("trackingNumber");
+    const trackingSteps = document.querySelectorAll("#trackingSteps li");
+
+    // Reset previous state
+    trackingSteps.forEach(li => li.classList.remove("in-transit"));
+    document.getElementById("trackingSteps").classList.remove("hidden");
+    shipmentContainer.style.display = "none";
+    statusDiv.classList.remove("shake");
+
     if (trackingNumberInput === correctTrackingNumber) {
     // Show loading animation
     let dots = 0;
@@ -169,6 +186,7 @@
         trackingSteps[2].classList.add("in-transit"); // In Transit
     }, 7000); // final step after 7 seconds
 }
+</style>
                                                              </script>
 </body>
 </html>
