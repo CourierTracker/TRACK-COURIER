@@ -5,9 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Package Tracker</title>
-    <!-- Add this line to use the truck icon from Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Highlight "In Transit" step */
+        #trackingSteps li.in-transit {
+            color: #007bff; /* blue */
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>  
     <!-- Page Wrapper -->
@@ -123,7 +128,7 @@
         © 2025 Package Tracker – All rights reserved
     </footer>
 
-    <!-- Add 5-second tracking delay without changing layout -->
+    <!-- JavaScript for 5-second delay + In Transit highlight -->
     <script>
         document.getElementById("trackingForm").addEventListener("submit", function(e) {
             e.preventDefault();
@@ -133,16 +138,22 @@
             const shipmentContainer = document.getElementById("shipmentContainer");
             const trackingNumberDisplay = document.getElementById("trackingNumber");
 
-            // Show tracking message immediately
             statusDiv.textContent = "🔍 Tracking your package...";
             shipmentContainer.style.display = "none";
 
-            // Show shipment info after 5 seconds
+            // Remove previous highlight
+            document.querySelectorAll("#trackingSteps li").forEach(li => li.classList.remove("in-transit"));
+            document.getElementById("trackingSteps").classList.remove("hidden");
+
+            // After 5 seconds, show shipment info and highlight "In Transit"
             setTimeout(() => {
                 shipmentContainer.style.display = "block";
                 trackingNumberDisplay.textContent = trackingNumberInput || "Track-246800000";
                 statusDiv.textContent = "✅ Package status updated!";
-            }, 5000); // 5000ms = 5 seconds
+                
+                const inTransitStep = document.querySelector("#trackingSteps li:nth-child(3)");
+                inTransitStep.classList.add("in-transit");
+            }, 5000);
         });
     </script>
 </body>
