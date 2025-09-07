@@ -25,6 +25,14 @@
     50% { box-shadow: 0 0 15px rgba(0, 123, 255, 0.6); }
     100% { box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); }
 }
+
+/* Highlight animation for step.js */
+.step.highlight {
+    background-color: rgba(0, 123, 255, 0.1);
+    color: #007bff;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
 </style>
 </head>
 <body>  
@@ -36,14 +44,17 @@
             <p>Track your shipment quickly and easily</p>
         </header>
 
+        <!-- Spinner for loading -->
         <div id="loading" style="display: none; text-align:center; margin: 20px 0;">
-  <i class="fas fa-spinner fa-spin fa-2x"></i> Loading...
-        </div><!-- Tracking Steps (hidden by default) -->
+            <i class="fas fa-spinner fa-spin fa-2x"></i> Loading...
+        </div>
+
+        <!-- Tracking Steps (hidden by default) -->
         <ul id="trackingSteps" class="tracking-steps hidden">
-            <li>Order Placed</li>
-            <li>Shipped</li>
-            <li><i class="fas fa-plane"></i> In Transit</li>
-            <li>Delivered</li>
+            <li class="step">Order Placed</li>
+            <li class="step">Shipped</li>
+            <li class="step"><i class="fas fa-plane"></i> In Transit</li>
+            <li class="step">Delivered</li>
         </ul>
 
         <div class="ad-section">
@@ -69,7 +80,8 @@
                 <!-- Input for tracking -->
                 <div class="search-section">
                     <input type="text" id="tracking-number" placeholder="Enter tracking number">
-                    <button type="submit">Track</button>
+                    <!-- Added ID to button for spinner script -->
+                    <button type="button" id="trackBtn">Track Package</button>
                 </div>
             </form>
             <div id="status"></div>
@@ -158,7 +170,7 @@
 }
 </style>
 
-<!-- JavaScript for 7-second delayed tracking -->
+<!-- JavaScript for 7-second delayed tracking + spinner -->
 <script>
 const correctTrackingNumber = "Track-246800000";
 
@@ -178,7 +190,10 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
     statusDiv.classList.remove("shake");
 
     if (trackingNumberInput === correctTrackingNumber) {
-        // Show loading animation
+        // Show spinner
+        document.getElementById('loading').style.display = 'block';
+
+        // Show loading animation in status
         let dots = 0;
         statusDiv.textContent = "🔍 Tracking your package";
         const loadingInterval = setInterval(() => {
@@ -195,6 +210,8 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
             trackingNumberDisplay.textContent = trackingNumberInput;
             statusDiv.textContent = "✅ Package status updated!";
             trackingSteps[2].classList.add("in-transit"); // In Transit
+            // Hide spinner
+            document.getElementById('loading').style.display = 'none';
         }, 7000);
     } else {
         // Invalid tracking number
@@ -203,8 +220,9 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
         setTimeout(() => statusDiv.classList.remove("shake"), 500);
     }
 });
-</script>
-    const steps = document.querySelectorAll('.step');
+
+// Optional: Additional step-highlight spinner functionality
+const steps = document.querySelectorAll('.step');
 let stepIndex = 0;
 
 function showLoading() {
@@ -219,7 +237,7 @@ function highlightStep() {
     if (stepIndex < steps.length) {
         steps[stepIndex].classList.add('highlight');
         stepIndex++;
-        setTimeout(highlightStep, 1250); // 4 steps × 1.25s ≈ 5 seconds
+        setTimeout(highlightStep, 1250);
     } else {
         hideLoading();
     }
@@ -227,12 +245,12 @@ function highlightStep() {
 
 function trackPackage() {
     stepIndex = 0;
-    steps.forEach(step => step.classList.remove('highlight')); // reset highlights
+    steps.forEach(step => step.classList.remove('highlight'));
     showLoading();
     highlightStep();
 }
 
 document.getElementById('trackBtn').addEventListener('click', trackPackage);
-                                                             </script>
+</script>
 </body>
 </html>
