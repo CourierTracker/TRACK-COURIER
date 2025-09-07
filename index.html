@@ -143,8 +143,40 @@
 
     <!-- JavaScript for 5-second delay + In Transit highlight -->
     <script>
-        document.getElementById("trackingForm").addEventListener("submit", function(e) {
-            e.preventDefault();
+    // Correct tracking number
+    const correctTrackingNumber = "Track-246800000";
+
+    document.getElementById("trackingForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const trackingNumberInput = document.getElementById("tracking-number").value.trim();
+        const statusDiv = document.getElementById("status");
+        const shipmentContainer = document.getElementById("shipmentContainer");
+        const trackingNumberDisplay = document.getElementById("trackingNumber");
+
+        // Reset previous state
+        document.querySelectorAll("#trackingSteps li").forEach(li => li.classList.remove("in-transit"));
+        document.getElementById("trackingSteps").classList.remove("hidden");
+        shipmentContainer.style.display = "none";
+
+        if (trackingNumberInput === correctTrackingNumber) {
+            // Show tracking progress
+            statusDiv.textContent = "🔍 Tracking your package...";
+
+            setTimeout(() => {
+                shipmentContainer.style.display = "block";
+                trackingNumberDisplay.textContent = trackingNumberInput;
+                statusDiv.textContent = "✅ Package status updated!";
+                
+                const inTransitStep = document.querySelector("#trackingSteps li:nth-child(3)");
+                inTransitStep.classList.add("in-transit");
+            }, 5000);
+        } else {
+            // Invalid tracking number
+            statusDiv.textContent = "❌ Invalid tracking number. Please try again.";
+        }
+    });
+    </script>
 
             const trackingNumberInput = document.getElementById("tracking-number").value;
             const statusDiv = document.getElementById("status");
