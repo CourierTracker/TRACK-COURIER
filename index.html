@@ -141,15 +141,12 @@
         © 2025 Package Tracker – All rights reserved
     </footer>
 
-<!-- JavaScript for 7-second delayed tracking -->
-<script>
 <!-- Shake animation for invalid input -->
 <style>
 #status.shake {
     display: inline-block;
     animation: shake 0.5s;
 }
-
 @keyframes shake {
     0% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -188,14 +185,8 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
         }, 500);
 
         // Step-by-step progress
-        setTimeout(() => {
-            trackingSteps[0].classList.add("in-transit"); // Order Placed
-        }, 3000);
-
-        setTimeout(() => {
-            trackingSteps[1].classList.add("in-transit"); // Shipped
-        }, 5000);
-
+        setTimeout(() => trackingSteps[0].classList.add("in-transit"), 3000); // Order Placed
+        setTimeout(() => trackingSteps[1].classList.add("in-transit"), 5000); // Shipped
         setTimeout(() => {
             clearInterval(loadingInterval);
             shipmentContainer.style.display = "block";
@@ -211,21 +202,6 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
     }
 });
 </script>
-<style>
-/* Shake animation for invalid input */
-#status.shake {
-    display: inline-block;
-    animation: shake 0.5s;
-}
-
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-}
-</style>
                                                              </script>
 </body>
 </html>
