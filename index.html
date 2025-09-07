@@ -141,8 +141,8 @@
         © 2025 Package Tracker – All rights reserved
     </footer>
 
-    <!-- JavaScript for 5-second delay + In Transit highlight -->
-    <script>
+<!-- JavaScript for 7-second delayed tracking -->
+<script>
 const correctTrackingNumber = "Track-246800000";
 
 document.getElementById("trackingForm").addEventListener("submit", function(e) {
@@ -161,32 +161,38 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
     statusDiv.classList.remove("shake");
 
     if (trackingNumberInput === correctTrackingNumber) {
-    // Show loading animation
-    let dots = 0;
-    statusDiv.textContent = "🔍 Tracking your package";
-    const loadingInterval = setInterval(() => {
-        dots = (dots + 1) % 4;
-        statusDiv.textContent = "🔍 Tracking your package" + ".".repeat(dots);
-    }, 500);
+        // Show loading animation
+        let dots = 0;
+        statusDiv.textContent = "🔍 Tracking your package";
+        const loadingInterval = setInterval(() => {
+            dots = (dots + 1) % 4;
+            statusDiv.textContent = "🔍 Tracking your package" + ".".repeat(dots);
+        }, 500);
 
-    // Step-by-step progress
-    setTimeout(() => {
-        trackingSteps[0].classList.add("in-transit"); // Order Placed
-    }, 3000); // after 3 seconds
+        // Step-by-step progress
+        setTimeout(() => {
+            trackingSteps[0].classList.add("in-transit"); // Order Placed
+        }, 3000); // 3 seconds
 
-    setTimeout(() => {
-        trackingSteps[1].classList.add("in-transit"); // Shipped
-    }, 5000); // after 5 seconds
+        setTimeout(() => {
+            trackingSteps[1].classList.add("in-transit"); // Shipped
+        }, 5000); // 5 seconds
 
-    setTimeout(() => {
-        clearInterval(loadingInterval); // stop loading dots
-        shipmentContainer.style.display = "block"; // show shipment details
-        trackingNumberDisplay.textContent = trackingNumberInput;
-        statusDiv.textContent = "✅ Package status updated!";
-        trackingSteps[2].classList.add("in-transit"); // In Transit
-    }, 7000); // final step after 7 seconds
-}
-</style>
+        setTimeout(() => {
+            clearInterval(loadingInterval); // stop loading dots
+            shipmentContainer.style.display = "block"; // show shipment details
+            trackingNumberDisplay.textContent = trackingNumberInput;
+            statusDiv.textContent = "✅ Package status updated!";
+            trackingSteps[2].classList.add("in-transit"); // In Transit
+        }, 7000); // 7 seconds
+    } else {
+        // Invalid tracking number
+        statusDiv.textContent = "❌ Invalid tracking number. Please try again.";
+        statusDiv.classList.add("shake");
+        setTimeout(() => statusDiv.classList.remove("shake"), 500);
+    }
+});
+</script>
                                                              </script>
 </body>
 </html>
