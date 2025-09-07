@@ -176,30 +176,6 @@
             statusDiv.textContent = "❌ Invalid tracking number. Please try again.";
         }
     });
-    </script>
-
-            const trackingNumberInput = document.getElementById("tracking-number").value;
-            const statusDiv = document.getElementById("status");
-            const shipmentContainer = document.getElementById("shipmentContainer");
-            const trackingNumberDisplay = document.getElementById("trackingNumber");
-
-            statusDiv.textContent = "🔍 Tracking your package...";
-            shipmentContainer.style.display = "none";
-
-            // Remove previous highlight
-            document.querySelectorAll("#trackingSteps li").forEach(li => li.classList.remove("in-transit"));
-            document.getElementById("trackingSteps").classList.remove("hidden");
-
-            // After 5 seconds, show shipment info and highlight "In Transit"
-            setTimeout(() => {
-                shipmentContainer.style.display = "block";
-                trackingNumberDisplay.textContent = trackingNumberInput || "Track-246800000";
-                statusDiv.textContent = "✅ Package status updated!";
-                
-                const inTransitStep = document.querySelector("#trackingSteps li:nth-child(3)");
-                inTransitStep.classList.add("in-transit");
-            }, 5000);
-        });
-    </script>
+                                                             </script>
 </body>
 </html>
