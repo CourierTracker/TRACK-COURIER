@@ -143,6 +143,24 @@
 
 <!-- JavaScript for 7-second delayed tracking -->
 <script>
+<!-- Shake animation for invalid input -->
+<style>
+#status.shake {
+    display: inline-block;
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+</style>
+
+<!-- JavaScript for 7-second delayed tracking -->
+<script>
 const correctTrackingNumber = "Track-246800000";
 
 document.getElementById("trackingForm").addEventListener("submit", function(e) {
@@ -172,19 +190,19 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
         // Step-by-step progress
         setTimeout(() => {
             trackingSteps[0].classList.add("in-transit"); // Order Placed
-        }, 3000); // 3 seconds
+        }, 3000);
 
         setTimeout(() => {
             trackingSteps[1].classList.add("in-transit"); // Shipped
-        }, 5000); // 5 seconds
+        }, 5000);
 
         setTimeout(() => {
-            clearInterval(loadingInterval); // stop loading dots
-            shipmentContainer.style.display = "block"; // show shipment details
+            clearInterval(loadingInterval);
+            shipmentContainer.style.display = "block";
             trackingNumberDisplay.textContent = trackingNumberInput;
             statusDiv.textContent = "✅ Package status updated!";
             trackingSteps[2].classList.add("in-transit"); // In Transit
-        }, 7000); // 7 seconds
+        }, 7000);
     } else {
         // Invalid tracking number
         statusDiv.textContent = "❌ Invalid tracking number. Please try again.";
@@ -193,18 +211,7 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
     }
 });
 </script>
-    } else {
-        // Invalid tracking number animation
-        statusDiv.textContent = "❌ Invalid tracking number. Please try again.";
-        statusDiv.classList.add("shake");
-        setTimeout(() => statusDiv.classList.remove("shake"), 500);
-    }
-});
-</script>
-
 <style>
-/* Loading dots are handled in JS, no extra CSS needed */
-
 /* Shake animation for invalid input */
 #status.shake {
     display: inline-block;
