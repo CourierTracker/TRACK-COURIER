@@ -27,13 +27,11 @@
 
 <div class="page-container">
 
-  <!-- Header -->
   <header>
     <h1>📦 PACKAGE TRACKER</h1>
     <p>Track your shipment quickly and easily</p>
   </header>
 
-  <!-- Tracking Steps -->
   <ul id="trackingSteps">
     <li id="step1">Order Placed</li>
     <li id="step2">Shipped</li>
@@ -41,12 +39,6 @@
     <li id="step4">Delivered</li>
   </ul>
 
-  <div class="ad-section">
-    <p>💡 Tip: Track multiple packages easily with your account!</p>
-    <p>📦 Special: Fast delivery for premium members.</p>
-  </div>
-
-  <!-- Main Content -->
   <main>
     <form id="trackingForm">
       <div class="shipment-container" id="shipmentContainer" style="display: none;">
@@ -56,9 +48,6 @@
           <tr><td>Receiver:</td><td>Jane Doe</td></tr>
           <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
         </table>
-        <div class="ad-section">
-          <p>Check out our premium shipping services!</p>
-        </div>
       </div>
 
       <div class="search-section">
@@ -69,20 +58,16 @@
     <div id="status"></div>
   </main>
 
-</div> <!-- page-container -->
+  <section class="products">
+    <!-- Add your product cards here -->
+  </section>
 
-<!-- Products / Advert Section -->
-<section class="products">
-  <!-- Your product cards here -->
-</section>
-
-<!-- About and Contact sections here -->
+</div>
 
 <footer>
   © 2025 Package Tracker – All rights reserved
 </footer>
 
-<!-- JS for 5-second delay and In Transit highlight -->
 <script>
   const form = document.getElementById('trackingForm');
   const trackingInput = document.getElementById('tracking-number');
@@ -92,21 +77,17 @@
   form.addEventListener('submit', function(e) {
     e.preventDefault(); // stop page refresh
 
-    // Show loading
     shipmentContainer.style.display = 'none';
     statusDiv.innerHTML = 'Loading, please wait...';
 
-    // 5-second delay
     setTimeout(() => {
       statusDiv.innerHTML = '';
       shipmentContainer.style.display = 'block';
 
-      // Highlight "In Transit"
       const steps = document.querySelectorAll('#trackingSteps li');
       steps.forEach(step => step.classList.remove('active'));
       document.getElementById('step3').classList.add('active');
 
-      // Update tracking number
       document.getElementById('trackingNumber').innerText = trackingInput.value;
     }, 5000);
   });
