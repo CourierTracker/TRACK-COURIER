@@ -380,10 +380,11 @@ footer {
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(120deg, #a1c4fd, #c2e9fb);
+  background: linear-gradient(135deg, #a1c4fd 0%, #b3d9fc 50%, #c2e9fb 100%);
   background-size: 200% 200%;
   animation: gradientShift 20s ease infinite;
 }
+
 
 @keyframes gradientShift {
   0% {
