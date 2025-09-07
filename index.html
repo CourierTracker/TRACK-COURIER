@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">      
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Package Tracker</title>
-    <!-- Font Awesome for icons -->
+    <!-- Add this line to use the truck icon from Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Your custom CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body>  
     <!-- Page Wrapper -->
     <div class="page-container">
         <!-- Header -->
@@ -45,6 +45,7 @@
                         <p>Check out our premium shipping services!</p>
                     </div>
                 </div>
+
                 <!-- Input for tracking -->
                 <div class="search-section">
                     <input type="text" id="tracking-number" placeholder="Enter tracking number">
@@ -68,6 +69,7 @@
                     Buy Now
                 </a>
             </div>
+
             <!-- Product 2 -->
             <div class="product-card">
                 <img src="Luggage.png" alt="Courier Bag">
@@ -77,6 +79,7 @@
                     Shop Now
                 </a>
             </div>
+
             <!-- Product 3 -->
             <div class="product-card">
                 <img src="Throw.png" alt="Protective Envelope">
@@ -86,6 +89,7 @@
                     Buy Now
                 </a>
             </div>
+
             <!-- Product 4 -->
             <div class="product-card">
                 <img src="Tape.jpg" alt="Sealing Tape">
@@ -115,30 +119,30 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         © 2025 Package Tracker – All rights reserved
     </footer>
 
-    <!-- JavaScript -->
+    <!-- Add 5-second tracking delay without changing layout -->
     <script>
-        // Add 5-second tracking delay without changing original layout
         document.getElementById("trackingForm").addEventListener("submit", function(e) {
-            e.preventDefault(); // prevent page reload
+            e.preventDefault();
 
             const trackingNumberInput = document.getElementById("tracking-number").value;
             const statusDiv = document.getElementById("status");
             const shipmentContainer = document.getElementById("shipmentContainer");
             const trackingNumberDisplay = document.getElementById("trackingNumber");
 
+            // Show tracking message immediately
             statusDiv.textContent = "🔍 Tracking your package...";
             shipmentContainer.style.display = "none";
 
+            // Show shipment info after 5 seconds
             setTimeout(() => {
                 shipmentContainer.style.display = "block";
                 trackingNumberDisplay.textContent = trackingNumberInput || "Track-246800000";
                 statusDiv.textContent = "✅ Package status updated!";
-            }, 5000);
+            }, 5000); // 5000ms = 5 seconds
         });
     </script>
 </body>
