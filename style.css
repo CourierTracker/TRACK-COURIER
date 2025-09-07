@@ -376,24 +376,19 @@ footer {
   margin-bottom: 10px;
 }
 
-/* Soft Growing Background */
-body {
+/* Soft Growing Background - Full Page */
+html, body {
   margin: 0;
-  height: 100vh;
+  padding: 0;
+  height: 100%; /* Ensure body and html cover full page */
   background: linear-gradient(135deg, #a1c4fd 0%, #b3d9fc 50%, #c2e9fb 100%);
   background-size: 200% 200%;
   animation: gradientShift 20s ease infinite;
 }
 
-
 @keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+
 }
