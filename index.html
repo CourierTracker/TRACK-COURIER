@@ -202,10 +202,13 @@ if (trackingNumberInput === correctTrackingNumber) {
     }, 500);
 
     // Step-by-step progress
-    trackingSteps[0].classList.add("in-transit"); // Order Placed
+    setTimeout(() => {
+        trackingSteps[0].classList.add("in-transit"); // Order Placed
+    }, 3000); // after 3 seconds
+
     setTimeout(() => {
         trackingSteps[1].classList.add("in-transit"); // Shipped
-    }, 2000); // after 2s
+    }, 5000); // after 5 seconds
 
     setTimeout(() => {
         clearInterval(loadingInterval); // stop loading dots
@@ -213,7 +216,7 @@ if (trackingNumberInput === correctTrackingNumber) {
         trackingNumberDisplay.textContent = trackingNumberInput;
         statusDiv.textContent = "✅ Package status updated!";
         trackingSteps[2].classList.add("in-transit"); // In Transit
-    }, 5000); // final step after 5s
+    }, 7000); // final step after 7 seconds
 }
                                                              </script>
 </body>
