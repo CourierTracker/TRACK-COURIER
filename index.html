@@ -60,7 +60,7 @@ header p { color: #555; font-size: 1.1em; }
 .search-section button:hover { background:#0056b3; }
 
 /* Shipment Details */
-.shipment-details { width:100%; max-width:500px; margin:10px auto; border-collapse: collapse;}
+.shipment-details { width:100%; max-width:500px; margin:10px auto; border-collapse: collapse; background:white; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
 .shipment-details td { padding:8px; border-bottom:1px solid #ddd; }
 
 /* Product Grid */
@@ -71,7 +71,7 @@ header p { color: #555; font-size: 1.1em; }
 .product-card h3 { margin:5px 0; color:#007bff;}
 .product-card p { font-size:0.95em; color:#555; margin:5px 0 10px;}
 .product-card a { display:inline-block; padding:8px 15px; background:#007bff; color:white; border-radius:5px; text-decoration:none; transition:0.3s;}
-.product-card a:hover { background:#0056b3; transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.15);}
+.product-card a:hover { background:#0056b3; transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
 
 /* Sections */
 section { padding:30px 20px; max-width:1000px; margin:auto; }
@@ -106,14 +106,14 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 </header>
 
 <!-- Tracking Steps -->
-<ul id="trackingSteps" class="tracking-steps">
+<ul id="trackingSteps" class="tracking-steps hidden">
 <li><i class="fas fa-box"></i> Order Placed</li>
 <li><i class="fas fa-truck"></i> Shipped</li>
 <li><i class="fas fa-plane"></i> In Transit</li>
 <li><i class="fas fa-check"></i> Delivered</li>
 </ul>
 
-<!-- Ads / Tips -->
+<!-- Ad Section -->
 <div class="ad-section" style="text-align:center; margin-bottom:20px;">
 <p>💡 Tip: Track multiple packages easily with your account!</p>
 <p>📦 Special: Fast delivery for premium members.</p>
@@ -209,8 +209,8 @@ document.getElementById("trackingForm").addEventListener("submit", function(e){
     const trackingSteps = document.querySelectorAll("#trackingSteps li");
     const spinner = document.getElementById("spinner");
 
-    // Reset steps
     trackingSteps.forEach(li => li.classList.remove("in-transit"));
+    document.getElementById("trackingSteps").classList.remove("hidden");
     shipmentContainer.style.display = "none";
     statusDiv.classList.remove("shake");
     spinner.style.display = "none";
@@ -224,17 +224,17 @@ document.getElementById("trackingForm").addEventListener("submit", function(e){
             statusDiv.textContent = "🔍 Tracking your package"+ ".".repeat(dots);
         },500);
 
-        setTimeout(()=>trackingSteps[0].classList.add("in-transit"),1000); // Order Placed
-        setTimeout(()=>trackingSteps[1].classList.add("in-transit"),3000); // Shipped
-        setTimeout(()=>trackingSteps[2].classList.add("in-transit"),5000); // In Transit
+        setTimeout(()=>trackingSteps[0].classList.add("in-transit"),2000);
+        setTimeout(()=>trackingSteps[1].classList.add("in-transit"),4000);
+        setTimeout(()=>trackingSteps[2].classList.add("in-transit"),6000);
         setTimeout(()=>{
             clearInterval(loadingInterval);
             spinner.style.display="none";
             shipmentContainer.style.display="block";
             trackingNumberDisplay.textContent=trackingNumberInput;
-            statusDiv.textContent="✅ Package Delivered!";
-            trackingSteps[3].classList.add("in-transit"); // Delivered
-        },7000);
+            statusDiv.textContent="✅ Package status updated!";
+            trackingSteps[3].classList.add("in-transit");
+        },8000);
     } else {
         statusDiv.textContent="❌ Invalid tracking number. Please try again.";
         statusDiv.classList.add("shake");
@@ -242,7 +242,7 @@ document.getElementById("trackingForm").addEventListener("submit", function(e){
     }
 });
 
-// Navbar active link highlighting
+// Active navbar section highlight
 const sections=document.querySelectorAll("section, header");
 const navLinks=document.querySelectorAll(".navbar a");
 window.addEventListener("scroll", ()=>{
@@ -260,6 +260,5 @@ window.addEventListener("scroll", ()=>{
     });
 });
 </script>
-
 </body>
 </html>
