@@ -3,35 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Package Tracker – Fast & Reliable Tracking</title>
-    <meta name="description" content="Track your packages quickly and securely with Package Tracker. Easy tracking for all your shipments in one place.">
+    <title>Package Tracker</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
 
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://packagetracker247.netlify.app">
-
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Package Tracker – Fast & Reliable Tracking">
-    <meta property="og:description" content="Track your packages quickly and securely with Package Tracker. Easy tracking for all your shipments in one place.">
+    <meta property="og:title" content="Package Tracker">
+    <meta property="og:description" content="Track your packages easily in one place.">
     <meta property="og:image" content="https://packagetracker247.netlify.app/logo.png">
     <meta property="og:url" content="https://packagetracker247.netlify.app">
     <meta property="og:type" content="website">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Package Tracker – Fast & Reliable Tracking">
-    <meta name="twitter:description" content="Track your packages quickly and securely with Package Tracker. Easy tracking for all your shipments in one place.">
+    <meta name="twitter:title" content="Package Tracker">
+    <meta name="twitter:description" content="Track your packages easily in one place.">
     <meta name="twitter:image" content="https://packagetracker247.netlify.app/logo.png">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
-    html { scroll-behavior: smooth; font-family: Arial, sans-serif; }
-
-    body { margin: 0; padding: 0; background: #f9f9f9; color: #333; }
+    html { scroll-behavior: smooth; font-family: Arial, sans-serif; margin:0; padding:0; }
 
     /* Navbar */
     .navbar {
@@ -53,60 +47,54 @@
         color: white;
         text-decoration: none;
         font-weight: bold;
-        padding-bottom: 2px;
         transition: color 0.3s, border-bottom 0.3s;
+        padding-bottom: 2px;
     }
     .navbar a:hover, .navbar a.active {
         color: #ffdd57;
         border-bottom: 2px solid #ffdd57;
     }
 
-    /* Header */
     header {
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
         margin: 20px 0;
-        padding: 20px;
     }
     header .logo {
         height: 60px;
         margin-bottom: 10px;
     }
-    header h1 { font-size: 2em; margin: 5px 0; }
-    header p { font-size: 1.1em; color: #555; }
 
-    /* Tracking steps */
     #trackingSteps {
         list-style: none;
         padding: 0;
         margin: 20px auto;
-        max-width: 600px;
+        max-width: 400px;
     }
     #trackingSteps li {
         padding: 8px 12px;
-        margin-bottom: 8px;
+        margin-bottom: 6px;
         border-radius: 5px;
-        background: #eee;
+        background-color: #f1f1f1;
         display: flex;
         align-items: center;
         gap: 10px;
+        font-weight: bold;
     }
     #trackingSteps li.in-transit {
         color: #007bff;
-        font-weight: bold;
         background-color: rgba(0, 123, 255, 0.1);
         box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
         animation: pulse 2s infinite;
     }
     @keyframes pulse {
-        0% { box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); }
-        50% { box-shadow: 0 0 15px rgba(0, 123, 255, 0.6); }
-        100% { box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); }
+        0% { box-shadow: 0 0 8px rgba(0,123,255,0.3); }
+        50% { box-shadow: 0 0 15px rgba(0,123,255,0.6); }
+        100% { box-shadow: 0 0 8px rgba(0,123,255,0.3); }
     }
 
-    /* Spinner */
     #spinner {
         display: none;
         text-align: center;
@@ -120,10 +108,12 @@
         100% { transform: rotate(360deg);}
     }
 
-    /* Shake animation */
     #status.shake {
         display: inline-block;
         animation: shake 0.5s;
+        color: red;
+        font-weight: bold;
+        margin-top: 10px;
     }
     @keyframes shake {
         0% { transform: translateX(0); }
@@ -133,49 +123,23 @@
         100% { transform: translateX(0); }
     }
 
-    /* Shipment table */
-    .shipment-details {
-        width: 100%;
-        border-collapse: collapse;
-        margin-bottom: 15px;
-    }
-    .shipment-details td { padding: 6px 10px; border: 1px solid #ccc; }
-
-    /* Product grid */
     .product-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 20px;
-        padding: 20px;
+        margin: 20px 10px;
     }
-    .product-card {
-        background: white;
-        border-radius: 8px;
-        padding: 15px;
-        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-        text-align: center;
-    }
-    .product-card img { max-width: 100%; border-radius: 5px; }
-    .buy-btn, .contact-btn {
-        display: inline-block;
-        margin-top: 8px;
-        padding: 6px 12px;
-        background: #007bff;
-        color: white;
-        text-decoration: none;
-        border-radius: 4px;
-    }
-    .buy-btn:hover, .contact-btn:hover { background: #0056b3; }
+    .product-card { background:#f9f9f9; padding:15px; border-radius:8px; text-align:center; }
+    .product-card img { width:100%; max-height:150px; object-fit:cover; border-radius:5px; }
+    .buy-btn { display:inline-block; margin-top:10px; padding:6px 12px; background:#007bff; color:white; border-radius:5px; text-decoration:none; }
+    .buy-btn:hover { background:#0056b3; }
 
-    section { padding: 20px; max-width: 1200px; margin: auto; }
+    .shipment-details { width:100%; border-collapse: collapse; margin-bottom:10px; }
+    .shipment-details td { padding:5px 8px; border:1px solid #ddd; }
 
-    footer {
-        text-align: center;
-        padding: 15px;
-        background: #007bff;
-        color: white;
-        margin-top: 20px;
-    }
+    .ad-section { text-align:center; margin:10px 0; font-size:0.9em; color:#555; }
+
+    footer { text-align:center; padding:15px 0; background:#f1f1f1; margin-top:20px; }
     </style>
 </head>
 <body>
@@ -190,11 +154,10 @@
         </ul>
     </nav>
 
-    <!-- Header -->
     <header id="home">
         <img src="logo.png" alt="Package Tracker Logo" class="logo">
         <h1>PACKAGE TRACKER</h1>
-        <p>Track your shipment quickly and securely</p>
+        <p>Track your shipment quickly and easily</p>
     </header>
 
     <!-- Tracking Steps -->
@@ -204,6 +167,12 @@
         <li><i class="fas fa-plane"></i> In Transit</li>
         <li><i class="fas fa-check"></i> Delivered</li>
     </ul>
+
+    <!-- Tips -->
+    <div class="ad-section">
+        <p>💡 Tip: Track multiple packages easily with your account!</p>
+        <p>📦 Special: Fast delivery for premium members.</p>
+    </div>
 
     <!-- Tracking Form -->
     <main id="track">
@@ -215,10 +184,12 @@
                     <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
                     <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
                 </table>
-                <p>Check out our premium shipping services!</p>
+                <div class="ad-section">
+                    <p>Check out our premium shipping services!</p>
+                </div>
             </div>
 
-            <div class="search-section">
+            <div class="search-section" style="text-align:center; margin-bottom:10px;">
                 <label for="tracking-number">Enter Tracking Number:</label>
                 <input type="text" id="tracking-number" placeholder="Enter tracking number">
                 <button type="submit">Track</button>
@@ -229,9 +200,9 @@
         <div id="status"></div>
     </main>
 
-    <!-- Products -->
+    <!-- Products Section -->
     <section class="products" id="products">
-        <h2>Our Featured Products</h2>
+        <h2 style="text-align:center;">Our Featured Products</h2>
         <div class="product-grid">
             <div class="product-card">
                 <img src="Box.png" alt="Fast Shipping Box">
@@ -260,21 +231,24 @@
         </div>
     </section>
 
-    <!-- About -->
+    <!-- About Section -->
     <section class="about" id="about">
-        <h2>About Us</h2>
-        <p>PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily. Fast, secure, and user-friendly.</p>
+        <h2 style="text-align:center;">About Us</h2>
+        <p style="max-width:800px; margin:auto; text-align:center;">
+            PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily. It's designed to be fast, secure, and user-friendly.
+        </p>
     </section>
 
-    <!-- Contact -->
+    <!-- Contact Section -->
     <section class="contact" id="contact">
-        <h2>Contact Us</h2>
-        <p>Questions about your shipment or our services? Reach out:</p>
-        <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn">💬 WhatsApp</a>
-        <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn">📧 Email</a>
+        <h2 style="text-align:center;">Contact Us</h2>
+        <p style="text-align:center;">Have questions about your shipment or our services? Reach out to us:</p>
+        <div class="contact-options" style="display:flex; justify-content:center; gap:20px;">
+            <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn">💬 WhatsApp</a>
+            <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn">📧 Email</a>
+        </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         © 2025 Package Tracker – All rights reserved
     </footer>
@@ -282,55 +256,60 @@
     <!-- JavaScript -->
     <script>
     const correctTrackingNumber = "Track-246800000";
+    const form = document.getElementById("trackingForm");
+    const statusDiv = document.getElementById("status");
+    const shipmentContainer = document.getElementById("shipmentContainer");
+    const trackingNumberDisplay = document.getElementById("trackingNumber");
+    const trackingSteps = document.querySelectorAll("#trackingSteps li");
+    const spinner = document.getElementById("spinner");
 
-    document.getElementById("trackingForm").addEventListener("submit", function(e) {
+    form.addEventListener("submit", function(e) {
         e.preventDefault();
-        const input = document.getElementById("tracking-number").value.trim();
-        const status = document.getElementById("status");
-        const container = document.getElementById("shipmentContainer");
-        const displayNumber = document.getElementById("trackingNumber");
-        const steps = document.querySelectorAll("#trackingSteps li");
-        const spinner = document.getElementById("spinner");
+        const trackingNumberInput = document.getElementById("tracking-number").value.trim();
 
-        steps.forEach(li => li.classList.remove("in-transit"));
+        trackingSteps.forEach(li => li.classList.remove("in-transit"));
         document.getElementById("trackingSteps").classList.remove("hidden");
-        container.style.display = "none";
-        status.classList.remove("shake");
+        shipmentContainer.style.display = "none";
+        statusDiv.classList.remove("shake");
         spinner.style.display = "none";
 
-        if(input === correctTrackingNumber){
+        if(trackingNumberInput === correctTrackingNumber){
             spinner.style.display = "block";
             let dots = 0;
-            status.textContent = "🔍 Tracking your package";
-            const interval = setInterval(()=>{dots=(dots+1)%4; status.textContent="🔍 Tracking your package"+ ".".repeat(dots)},500);
-            setTimeout(()=>steps[0].classList.add("in-transit"),3000);
-            setTimeout(()=>steps[1].classList.add("in-transit"),5000);
-            setTimeout(()=>{
-                clearInterval(interval);
-                spinner.style.display="none";
-                container.style.display="block";
-                displayNumber.textContent=input;
-                status.textContent="✅ Package status updated!";
-                steps[2].classList.add("in-transit");
-            },7000);
-        }else{
-            status.textContent="❌ Invalid tracking number. Please try again.";
-            status.classList.add("shake");
-            setTimeout(()=>status.classList.remove("shake"),500);
+            statusDiv.textContent = "🔍 Tracking your package";
+            const loadingInterval = setInterval(() => {
+                dots = (dots +1) %4;
+                statusDiv.textContent = "🔍 Tracking your package" + ".".repeat(dots);
+            }, 500);
+
+            setTimeout(() => trackingSteps[0].classList.add("in-transit"), 3000);
+            setTimeout(() => trackingSteps[1].classList.add("in-transit"), 5000);
+            setTimeout(() => {
+                clearInterval(loadingInterval);
+                spinner.style.display = "none";
+                shipmentContainer.style.display = "block";
+                trackingNumberDisplay.textContent = trackingNumberInput;
+                statusDiv.textContent = "✅ Package status updated!";
+                trackingSteps[2].classList.add("in-transit");
+            }, 7000);
+        } else {
+            statusDiv.textContent = "❌ Invalid tracking number. Please try again.";
+            statusDiv.classList.add("shake");
+            setTimeout(()=>statusDiv.classList.remove("shake"), 500);
         }
     });
 
+    // Navbar scroll highlight
     const sections = document.querySelectorAll("section, header");
     const navLinks = document.querySelectorAll(".navbar a");
-    window.addEventListener("scroll", ()=>{
-        let current="";
-        sections.forEach(section=>{
-            const top=section.offsetTop-80, height=section.clientHeight;
-            if(pageYOffset>=top && pageYOffset<top+height) current=section.getAttribute("id");
+    window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 80;
+            const sectionHeight = section.clientHeight;
+            if(pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight){
+                current = section.getAttribute("id");
+            }
         });
-        navLinks.forEach(link=>link.classList.remove("active"));
-        navLinks.forEach(link=>{if(link.getAttribute("href")==="#"+current) link.classList.add("active");});
-    });
-    </script>
-</body>
-</html>
+        navLinks.forEach(link => {
+            link
