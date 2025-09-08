@@ -24,7 +24,6 @@
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Custom CSS -->
 <style>
 html { scroll-behavior: smooth; font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0; }
 
@@ -120,12 +119,6 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 <li><i class="fas fa-check"></i> Delivered</li>
 </ul>
 
-<!-- Ad Section -->
-<div class="ad-section" style="text-align:center; margin-bottom:20px;">
-<p>💡 Tip: Track multiple packages easily with your account!</p>
-<p>📦 Special: Fast delivery for premium members.</p>
-</div>
-
 <!-- Tracking Form -->
 <main id="track">
 <form id="trackingForm">
@@ -136,9 +129,6 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
 <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
 </table>
-<div class="ad-section" style="text-align:center;">
-<p>Check out our premium shipping services!</p>
-</div>
 </div>
 
 <div class="search-section">
@@ -148,7 +138,6 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 </div>
 
 <div id="spinner">⏳</div>
-</form>
 <div id="status" style="text-align:center; margin-top:10px;"></div>
 </main>
 
@@ -204,46 +193,46 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 © 2025 Package Tracker – All rights reserved
 </footer>
 
-<!-- JavaScript -->
 <script>
 const correctTrackingNumber = "Track-246800000";
+
 document.getElementById("trackingForm").addEventListener("submit", function(e){
     e.preventDefault();
-    const trackingNumberInput = document.getElementById("tracking-number").value.trim();
+    const input = document.getElementById("tracking-number").value.trim();
     const statusDiv = document.getElementById("status");
     const shipmentContainer = document.getElementById("shipmentContainer");
     const trackingNumberDisplay = document.getElementById("trackingNumber");
-    const trackingSteps = document.querySelectorAll("#trackingSteps li");
+    const steps = document.querySelectorAll("#trackingSteps li");
+    const stepsContainer = document.getElementById("trackingSteps");
     const spinner = document.getElementById("spinner");
-    const trackingStepsContainer = document.getElementById("trackingSteps");
 
-    trackingSteps.forEach(li => li.classList.remove("in-transit"));
-    trackingStepsContainer.classList.remove("hidden");
-    trackingStepsContainer.style.opacity = "1";
-    shipmentContainer.style.display = "none";
+    steps.forEach(li => li.classList.remove("in-transit"));
+    stepsContainer.classList.remove("hidden");
+    stepsContainer.style.opacity="1";
+    shipmentContainer.style.display="none";
     shipmentContainer.querySelector(".shipment-details").classList.remove("show");
     statusDiv.classList.remove("shake");
-    spinner.style.display = "none";
+    spinner.style.display="none";
 
-    if(trackingNumberInput === correctTrackingNumber){
-        spinner.style.display = "block";
-        let dots = 0;
-        statusDiv.textContent = "🔍 Tracking your package";
-        const loadingInterval = setInterval(()=>{
-            dots = (dots+1)%4;
-            statusDiv.textContent = "🔍 Tracking your package"+ ".".repeat(dots);
+    if(input === correctTrackingNumber){
+        spinner.style.display="block";
+        let dots=0;
+        statusDiv.textContent="🔍 Tracking your package";
+        const loading = setInterval(()=>{
+            dots=(dots+1)%4;
+            statusDiv.textContent="🔍 Tracking your package"+ ".".repeat(dots);
         },500);
 
-        setTimeout(()=>trackingSteps[0].classList.add("in-transit"),3000);
-        setTimeout(()=>trackingSteps[1].classList.add("in-transit"),5000);
+        setTimeout(()=>steps[0].classList.add("in-transit"),3000);
+        setTimeout(()=>steps[1].classList.add("in-transit"),5000);
         setTimeout(()=>{
-            clearInterval(loadingInterval);
+            clearInterval(loading);
             spinner.style.display="none";
             shipmentContainer.style.display="block";
             shipmentContainer.querySelector(".shipment-details").classList.add("show");
-            trackingNumberDisplay.textContent=trackingNumberInput;
+            trackingNumberDisplay.textContent=input;
             statusDiv.textContent="✅ Package status updated!";
-            trackingSteps[2].classList.add("in-transit");
+            steps[2].classList.add("in-transit");
         },7000);
     } else {
         statusDiv.textContent="❌ Invalid tracking number. Please try again.";
@@ -252,16 +241,16 @@ document.getElementById("trackingForm").addEventListener("submit", function(e){
     }
 });
 
-// Active navbar section highlight
+// Navbar active link
 const sections=document.querySelectorAll("section, header");
 const navLinks=document.querySelectorAll(".navbar a");
-window.addEventListener("scroll", ()=>{
+window.addEventListener("scroll",()=>{
     let current="";
-    sections.forEach(section=>{
-        const sectionTop=section.offsetTop-80;
-        const sectionHeight=section.clientHeight;
-        if(pageYOffset>=sectionTop && pageYOffset < sectionTop+sectionHeight){
-            current=section.getAttribute("id");
+    sections.forEach(sec=>{
+        const top=sec.offsetTop-80;
+        const height=sec.clientHeight;
+        if(pageYOffset>=top && pageYOffset<top+height){
+            current=sec.getAttribute("id");
         }
     });
     navLinks.forEach(link=>{
