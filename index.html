@@ -5,37 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Package Tracker</title>
 
-<!-- For link preview -->
-<!-- Basic metadata -->
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Package Tracker</title>
-
-<!-- Open Graph / Facebook -->
-<meta property="og:title" content="Package Tracker">
-<meta property="og:description" content="Track your packages easily in one place.">
-<meta property="og:image" content="https://packagetracker247.netlify.app/path-to-logo.png">
-<meta property="og:url" content="https://yourdomain.com">
-<meta property="og:type" content="website">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Package Tracker">
-<meta name="twitter:description" content="Track your packages easily in one place.">
-<meta name="twitter:image" content="https://yourdomain.com/path-to-logo.png">
-
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="Package Tracker">
+    <meta property="og:description" content="Track your packages easily in one place.">
+    <meta property="og:image" content="https://packagetracker247.netlify.app/logo.png">
+    <meta property="og:url" content="https://packagetracker247.netlify.app">
+    <meta property="og:type" content="website">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Package Tracker">
+    <meta name="twitter:description" content="Track your packages easily in one place.">
+    <meta name="twitter:image" content="https://packagetracker247.netlify.app/logo.png">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 
     <style>
-    /* Smooth scrolling */
     html { scroll-behavior: smooth; }
 
-    /* Navbar */
     .navbar {
         background: #007bff;
         padding: 15px;
@@ -63,7 +55,6 @@
         border-bottom: 2px solid #ffdd57;
     }
 
-    /* Header logo */
     header {
         display: flex;
         flex-direction: column;
@@ -76,7 +67,6 @@
         margin-bottom: 10px;
     }
 
-    /* Highlight "In Transit" step */
     #trackingSteps li.in-transit {
         color: #007bff;
         font-weight: bold;
@@ -93,7 +83,6 @@
         100% { box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); }
     }
 
-    /* Spinner */
     #spinner {
         display: none;
         text-align: center;
@@ -107,7 +96,6 @@
         100% { transform: rotate(360deg);}
     }
 
-    /* Shake animation for invalid input */
     #status.shake {
         display: inline-block;
         animation: shake 0.5s;
@@ -120,7 +108,6 @@
         100% { transform: translateX(0); }
     }
 
-    /* Responsive product grid */
     .product-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -130,7 +117,6 @@
     </style>
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav class="navbar">
         <ul>
             <li><a href="#home" class="active">Home</a></li>
@@ -141,16 +127,13 @@
         </ul>
     </nav>
 
-    <!-- Page Wrapper -->
     <div class="page-container">
-        <!-- Header with Logo -->
         <header id="home">
             <img src="logo.png" alt="Package Tracker Logo" class="logo">
             <h1>PACKAGE TRACKER</h1>
             <p>Track your shipment quickly and easily</p>
         </header>
 
-        <!-- Tracking Steps -->
         <ul id="trackingSteps" class="tracking-steps hidden">
             <li><i class="fas fa-box"></i> Order Placed</li>
             <li><i class="fas fa-truck"></i> Shipped</li>
@@ -163,7 +146,6 @@
             <p>📦 Special: Fast delivery for premium members.</p>
         </div>
 
-        <!-- Main Content -->
         <main id="track">
             <form id="trackingForm">
                 <div class="shipment-container" id="shipmentContainer" style="display: none;">
@@ -190,7 +172,6 @@
         </main>
     </div>
 
-    <!-- Products Section -->
     <section class="products" id="products">
         <h2>Our Featured Products</h2>
         <div class="product-grid">
@@ -221,13 +202,11 @@
         </div>
     </section>
 
-    <!-- About Us Section -->
     <section class="about" id="about">
         <h2>About Us</h2>
         <p>PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily. It's designed to be fast, secure, and user-friendly.</p>
     </section>
 
-    <!-- Contact Us Section -->
     <section class="contact" id="contact">
         <h2>Contact Us</h2>
         <p>Have questions about your shipment or our services? Reach out to us:</p>
@@ -241,7 +220,6 @@
         © 2025 Package Tracker – All rights reserved
     </footer>
 
-    <!-- JavaScript -->
     <script>
     const correctTrackingNumber = "Track-246800000";
     document.getElementById("trackingForm").addEventListener("submit", function(e) {
@@ -285,7 +263,6 @@
         }
     });
 
-    // Highlight active section in navbar
     const sections = document.querySelectorAll("section, header");
     const navLinks = document.querySelectorAll(".navbar a");
     window.addEventListener("scroll", () => {
