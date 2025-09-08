@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <style>
+    /* Smooth scrolling */
+    html {
+        scroll-behavior: smooth;
+    }
+
     /* Navbar */
     .navbar {
         background: #007bff;
@@ -27,15 +32,20 @@
         color: white;
         text-decoration: none;
         font-weight: bold;
-        transition: color 0.3s;
+        transition: color 0.3s, border-bottom 0.3s;
+        padding-bottom: 2px;
     }
     .navbar a:hover {
         color: #ffdd57;
     }
+    .navbar a.active {
+        color: #ffdd57;
+        border-bottom: 2px solid #ffdd57;
+    }
 
-    /* Highlight "In Transit" step with smooth fade and subtle pulse */
+    /* Highlight "In Transit" step */
     #trackingSteps li.in-transit {
-        color: #007bff;  /* blue text */
+        color: #007bff;
         font-weight: bold;
         background-color: rgba(0, 123, 255, 0.1);
         padding: 5px 10px;
@@ -147,7 +157,7 @@
         </main>
     </div> <!-- End of page-container -->
 
-    <!-- Products / Advert Section -->
+    <!-- Products Section -->
     <section class="products" id="products">
         <h2>Our Featured Products</h2>
         <div class="product-grid">
@@ -181,7 +191,8 @@
     <!-- About Us Section -->
     <section class="about" id="about">
         <h2>About Us</h2>
-        <p>PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily.  It's designed to be fast,  secure and user - friendly.</p>
+        <p>At Package Tracker, we are dedicated to providing fast, secure, and affordable delivery services. 
+           Whether it’s small parcels or bulk shipments, we ensure your packages arrive safely and on time.</p>
     </section>
 
     <!-- Contact Us Section -->
@@ -240,6 +251,27 @@
             statusDiv.classList.add("shake");
             setTimeout(() => statusDiv.classList.remove("shake"), 500);
         }
+    });
+
+    // Highlight active section in navbar
+    const sections = document.querySelectorAll("section, header");
+    const navLinks = document.querySelectorAll(".navbar a");
+
+    window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 80;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                current = section.getAttribute("id");
+            }
+        });
+        navLinks.forEach(link => {
+            link.classList.remove("active");
+            if (link.getAttribute("href") === "#" + current) {
+                link.classList.add("active");
+            }
+        });
     });
     </script>
 </body>
