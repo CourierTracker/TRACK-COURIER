@@ -40,11 +40,10 @@ header h1 { margin: 0; color: #007bff;}
 header p { color: #555; font-size: 1.1em; }
 
 /* Tracking Steps */
-#trackingSteps { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding:0; margin:20px 0; opacity:0; transition: opacity 0.5s ease; }
+#trackingSteps { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding:0; margin:20px 0; }
 #trackingSteps li { padding: 8px 15px; border-radius: 5px; background: #e0e0e0; display: flex; align-items: center; gap:5px; font-weight: bold; color:#555; transition: 0.3s;}
 #trackingSteps li.in-transit { color: #007bff; font-weight: bold; background-color: rgba(0,123,255,0.1); box-shadow: 0 0 8px rgba(0,123,255,0.3); animation: pulse 2s infinite; }
 @keyframes pulse { 0% { box-shadow: 0 0 8px rgba(0,123,255,0.3);} 50% { box-shadow: 0 0 15px rgba(0,123,255,0.6);} 100% { box-shadow: 0 0 8px rgba(0,123,255,0.3);} }
-.hidden { display:none; }
 
 /* Spinner */
 #spinner { display: none; text-align: center; margin: 10px 0; font-size: 2em; color: #007bff; animation: spin 1s linear infinite; }
@@ -61,8 +60,7 @@ header p { color: #555; font-size: 1.1em; }
 .search-section button:hover { background:#0056b3; }
 
 /* Shipment Details */
-.shipment-details { width:100%; max-width:500px; margin:10px auto; border-collapse: collapse; opacity:0; transition: opacity 0.5s ease; }
-.shipment-details.show { opacity:1; }
+.shipment-details { width:100%; max-width:500px; margin:10px auto; border-collapse: collapse;}
 .shipment-details td { padding:8px; border-bottom:1px solid #ddd; }
 
 /* Product Grid */
@@ -72,13 +70,8 @@ header p { color: #555; font-size: 1.1em; }
 .product-card img { max-width:100%; border-radius:5px; margin-bottom:10px;}
 .product-card h3 { margin:5px 0; color:#007bff;}
 .product-card p { font-size:0.95em; color:#555; margin:5px 0 10px;}
-.product-card a { display:inline-block; padding:10px 18px; background:#007bff; color:white; border-radius:5px; text-decoration:none; font-weight:bold; transition: all 0.3s; }
-/* Enhanced Hover Effect */
-.product-card a:hover {
-    background:#0056b3;
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-}
+.product-card a { display:inline-block; padding:8px 15px; background:#007bff; color:white; border-radius:5px; text-decoration:none; transition:0.3s;}
+.product-card a:hover { background:#0056b3; transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.15);}
 
 /* Sections */
 section { padding:30px 20px; max-width:1000px; margin:auto; }
@@ -89,6 +82,7 @@ section { padding:30px 20px; max-width:1000px; margin:auto; }
 
 /* Footer */
 footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; color:#555; border-top:1px solid #ddd; }
+
 </style>
 </head>
 <body>
@@ -112,12 +106,18 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 </header>
 
 <!-- Tracking Steps -->
-<ul id="trackingSteps" class="tracking-steps hidden">
+<ul id="trackingSteps" class="tracking-steps">
 <li><i class="fas fa-box"></i> Order Placed</li>
 <li><i class="fas fa-truck"></i> Shipped</li>
 <li><i class="fas fa-plane"></i> In Transit</li>
 <li><i class="fas fa-check"></i> Delivered</li>
 </ul>
+
+<!-- Ads / Tips -->
+<div class="ad-section" style="text-align:center; margin-bottom:20px;">
+<p>💡 Tip: Track multiple packages easily with your account!</p>
+<p>📦 Special: Fast delivery for premium members.</p>
+</div>
 
 <!-- Tracking Form -->
 <main id="track">
@@ -129,6 +129,9 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
 <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
 </table>
+<div class="ad-section" style="text-align:center;">
+<p>Check out our premium shipping services!</p>
+</div>
 </div>
 
 <div class="search-section">
@@ -138,6 +141,7 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 </div>
 
 <div id="spinner">⏳</div>
+</form>
 <div id="status" style="text-align:center; margin-top:10px;"></div>
 </main>
 
@@ -155,7 +159,7 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 <img src="Luggage.png" alt="Courier Bag">
 <h3>Courier Bag</h3>
 <p>Lightweight waterproof courier bags for safe delivery.</p>
-<a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Courier%20Bag" target="_blank">Buy Now</a>
+<a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Courier%20Bag" target="_blank">Shop Now</a>
 </div>
 <div class="product-card">
 <img src="Throw.png" alt="Protective Envelope">
@@ -167,7 +171,7 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 <img src="Tape.jpg" alt="Sealing Tape">
 <h3>Sealing Tape</h3>
 <p>Strong adhesive tape for secure package sealing.</p>
-<a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20Sealing%20Tape" target="_blank">Buy Now</a>
+<a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20Sealing%20Tape" target="_blank">Shop Now</a>
 </div>
 </div>
 </section>
@@ -193,46 +197,43 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 © 2025 Package Tracker – All rights reserved
 </footer>
 
+<!-- JavaScript -->
 <script>
 const correctTrackingNumber = "Track-246800000";
-
 document.getElementById("trackingForm").addEventListener("submit", function(e){
     e.preventDefault();
-    const input = document.getElementById("tracking-number").value.trim();
+    const trackingNumberInput = document.getElementById("tracking-number").value.trim();
     const statusDiv = document.getElementById("status");
     const shipmentContainer = document.getElementById("shipmentContainer");
     const trackingNumberDisplay = document.getElementById("trackingNumber");
-    const steps = document.querySelectorAll("#trackingSteps li");
-    const stepsContainer = document.getElementById("trackingSteps");
+    const trackingSteps = document.querySelectorAll("#trackingSteps li");
     const spinner = document.getElementById("spinner");
 
-    steps.forEach(li => li.classList.remove("in-transit"));
-    stepsContainer.classList.remove("hidden");
-    stepsContainer.style.opacity="1";
-    shipmentContainer.style.display="none";
-    shipmentContainer.querySelector(".shipment-details").classList.remove("show");
+    // Reset steps
+    trackingSteps.forEach(li => li.classList.remove("in-transit"));
+    shipmentContainer.style.display = "none";
     statusDiv.classList.remove("shake");
-    spinner.style.display="none";
+    spinner.style.display = "none";
 
-    if(input === correctTrackingNumber){
-        spinner.style.display="block";
-        let dots=0;
-        statusDiv.textContent="🔍 Tracking your package";
-        const loading = setInterval(()=>{
-            dots=(dots+1)%4;
-            statusDiv.textContent="🔍 Tracking your package"+ ".".repeat(dots);
+    if(trackingNumberInput === correctTrackingNumber){
+        spinner.style.display = "block";
+        let dots = 0;
+        statusDiv.textContent = "🔍 Tracking your package";
+        const loadingInterval = setInterval(()=>{
+            dots = (dots+1)%4;
+            statusDiv.textContent = "🔍 Tracking your package"+ ".".repeat(dots);
         },500);
 
-        setTimeout(()=>steps[0].classList.add("in-transit"),3000);
-        setTimeout(()=>steps[1].classList.add("in-transit"),5000);
+        setTimeout(()=>trackingSteps[0].classList.add("in-transit"),1000); // Order Placed
+        setTimeout(()=>trackingSteps[1].classList.add("in-transit"),3000); // Shipped
+        setTimeout(()=>trackingSteps[2].classList.add("in-transit"),5000); // In Transit
         setTimeout(()=>{
-            clearInterval(loading);
+            clearInterval(loadingInterval);
             spinner.style.display="none";
             shipmentContainer.style.display="block";
-            shipmentContainer.querySelector(".shipment-details").classList.add("show");
-            trackingNumberDisplay.textContent=input;
-            statusDiv.textContent="✅ Package status updated!";
-            steps[2].classList.add("in-transit");
+            trackingNumberDisplay.textContent=trackingNumberInput;
+            statusDiv.textContent="✅ Package Delivered!";
+            trackingSteps[3].classList.add("in-transit"); // Delivered
         },7000);
     } else {
         statusDiv.textContent="❌ Invalid tracking number. Please try again.";
@@ -241,16 +242,16 @@ document.getElementById("trackingForm").addEventListener("submit", function(e){
     }
 });
 
-// Navbar active link
+// Navbar active link highlighting
 const sections=document.querySelectorAll("section, header");
 const navLinks=document.querySelectorAll(".navbar a");
-window.addEventListener("scroll",()=>{
+window.addEventListener("scroll", ()=>{
     let current="";
-    sections.forEach(sec=>{
-        const top=sec.offsetTop-80;
-        const height=sec.clientHeight;
-        if(pageYOffset>=top && pageYOffset<top+height){
-            current=sec.getAttribute("id");
+    sections.forEach(section=>{
+        const sectionTop=section.offsetTop-80;
+        const sectionHeight=section.clientHeight;
+        if(pageYOffset>=sectionTop && pageYOffset < sectionTop+sectionHeight){
+            current=section.getAttribute("id");
         }
     });
     navLinks.forEach(link=>{
@@ -259,5 +260,6 @@ window.addEventListener("scroll",()=>{
     });
 });
 </script>
+
 </body>
 </html>
