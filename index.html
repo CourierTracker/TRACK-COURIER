@@ -25,63 +25,171 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-html { scroll-behavior: smooth; font-family: Arial, sans-serif; background: #f7f7f7; margin:0; padding:0; }
+html { scroll-behavior: smooth; font-family: 'Arial', sans-serif; background: #f9f9f9; color: #333; }
 
 /* Navbar */
-.navbar { background: #007bff; padding: 15px; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1);}
-.navbar ul { list-style: none; display: flex; justify-content: center; gap: 25px; margin: 0; padding: 0;}
-.navbar a { color: white; text-decoration: none; font-weight: bold; padding-bottom: 2px; transition: 0.3s;}
-.navbar a:hover, .navbar a.active { color: #ffdd57; border-bottom: 2px solid #ffdd57;}
+.navbar {
+  background: #007bff;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.navbar ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+.navbar a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding-bottom: 2px;
+  transition: 0.3s;
+}
+.navbar a:hover, .navbar a.active {
+  color: #ffdd57;
+  border-bottom: 2px solid #ffdd57;
+}
 
 /* Header */
-header { display: flex; flex-direction: column; align-items: center; text-align: center; margin: 30px 0;}
-header .logo { height: 60px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.2); border-radius: 10px;}
-header h1 { margin: 0; color: #007bff;}
-header p { color: #555; font-size: 1.1em; }
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 30px 0;
+}
+header .logo {
+  height: 70px;
+  margin-bottom: 15px;
+}
+header h1 {
+  font-size: 2.2em;
+  color: #007bff;
+  margin-bottom: 5px;
+}
+header p { font-size: 1.1em; color: #555; }
 
 /* Tracking Steps */
-#trackingSteps { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; padding:0; margin:20px 0; }
-#trackingSteps li { padding: 8px 15px; border-radius: 5px; background: #e0e0e0; display: flex; align-items: center; gap:5px; font-weight: bold; color:#555; transition: 0.3s;}
-#trackingSteps li.in-transit { color: #007bff; font-weight: bold; background-color: rgba(0,123,255,0.1); box-shadow: 0 0 8px rgba(0,123,255,0.3); animation: pulse 2s infinite; }
-@keyframes pulse { 0% { box-shadow: 0 0 8px rgba(0,123,255,0.3);} 50% { box-shadow: 0 0 15px rgba(0,123,255,0.6);} 100% { box-shadow: 0 0 8px rgba(0,123,255,0.3);} }
+#trackingSteps {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
+  padding: 0;
+}
+#trackingSteps li {
+  padding: 8px 15px;
+  border-radius: 10px;
+  background-color: #e6f0ff;
+  color: #007bff;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.5;
+  transition: all 0.5s ease;
+}
+#trackingSteps li.in-transit {
+  opacity: 1;
+  background-color: #007bff;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,123,255,0.4);
+  animation: pulse 2s infinite;
+}
+@keyframes pulse {
+  0% { box-shadow: 0 0 8px rgba(0,123,255,0.3); }
+  50% { box-shadow: 0 0 15px rgba(0,123,255,0.6); }
+  100% { box-shadow: 0 0 8px rgba(0,123,255,0.3); }
+}
+
+/* Tracking Card */
+.shipment-container {
+  max-width: 500px;
+  margin: 20px auto;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  padding: 20px;
+  display: none;
+  transition: transform 0.3s, opacity 0.3s;
+}
+.shipment-container.show {
+  display: block;
+  transform: translateY(0);
+  opacity: 1;
+}
+.shipment-details td:first-child { font-weight: bold; color: #555; padding-right: 10px; }
+.shipment-details td { padding: 8px 0; }
 
 /* Spinner */
-#spinner { display: none; text-align: center; margin: 10px 0; font-size: 2em; color: #007bff; animation: spin 1s linear infinite; }
+#spinner {
+  display: none;
+  text-align: center;
+  margin: 15px 0;
+  font-size: 2em;
+  color: #007bff;
+  animation: spin 1s linear infinite;
+}
 @keyframes spin { 0% { transform: rotate(0deg);} 100% { transform: rotate(360deg);} }
 
-/* Shake for invalid input */
-#status.shake { display:inline-block; animation: shake 0.5s; }
-@keyframes shake { 0%{transform:translateX(0);}25%{transform:translateX(-5px);}50%{transform:translateX(5px);}75%{transform:translateX(-5px);}100%{transform:translateX(0);} }
-
-/* Form & Inputs */
-.search-section { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; margin: 20px 0; }
-.search-section input { padding:10px; width:250px; border-radius:5px; border:1px solid #ccc; box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-.search-section button { padding:10px 20px; border:none; border-radius:5px; background:#007bff; color:white; font-weight:bold; cursor:pointer; transition:0.3s;}
-.search-section button:hover { background:#0056b3; }
-
-/* Shipment Details */
-.shipment-details { width:100%; max-width:500px; margin:10px auto; border-collapse: collapse; background:white; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-.shipment-details td { padding:8px; border-bottom:1px solid #ddd; }
+/* Status */
+#status { text-align: center; margin-top: 10px; font-weight: bold; font-size: 1.1em; }
+#status.shake { display: inline-block; animation: shake 0.5s; }
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
 
 /* Product Grid */
-.product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:20px; margin:20px 0;}
-.product-card { background:white; border-radius:10px; padding:15px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,0.1); transition:0.3s;}
-.product-card:hover { transform: translateY(-5px); box-shadow:0 4px 12px rgba(0,0,0,0.15);}
-.product-card img { max-width:100%; border-radius:5px; margin-bottom:10px;}
-.product-card h3 { margin:5px 0; color:#007bff;}
-.product-card p { font-size:0.95em; color:#555; margin:5px 0 10px;}
-.product-card a { display:inline-block; padding:8px 15px; background:#007bff; color:white; border-radius:5px; text-decoration:none; transition:0.3s;}
-.product-card a:hover { background:#0056b3; transform: translateY(-3px); box-shadow: 0 4px 8px rgba(0,0,0,0.15); }
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin: 20px 0;
+}
+.product-card {
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+}
+.product-card img { max-width: 100%; border-radius: 8px; }
+.buy-btn {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 7px 15px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+.buy-btn:hover { background: #0056b3; }
 
 /* Sections */
-section { padding:30px 20px; max-width:1000px; margin:auto; }
-.about, .contact { background:white; border-radius:10px; margin:20px 0; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.1);}
-.contact-options { display:flex; gap:15px; flex-wrap:wrap; }
-.contact-btn { padding:10px 15px; background:#25d366; color:white; text-decoration:none; border-radius:5px; font-weight:bold; transition:0.3s;}
-.contact-btn:hover { background:#128c7e; }
+section { padding: 30px 15px; text-align: center; }
+footer { padding: 15px; text-align: center; background: #f0f0f0; margin-top: 20px; border-top: 1px solid #ddd; }
 
-/* Footer */
-footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; color:#555; border-top:1px solid #ddd; }
+/* Form */
+.search-section { display: flex; justify-content: center; align-items: center; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.search-section input { padding: 8px 12px; border-radius: 6px; border: 1px solid #ccc; width: 220px; max-width: 80%; }
+.search-section button { padding: 8px 15px; border: none; border-radius: 6px; background: #007bff; color: white; cursor: pointer; transition: 0.3s; }
+.search-section button:hover { background: #0056b3; }
 
 </style>
 </head>
@@ -98,167 +206,166 @@ footer { text-align:center; padding:15px; background:#f1f1f1; margin-top:30px; c
 </ul>
 </nav>
 
-<!-- Header -->
-<header id="home">
-<img src="logo.png" alt="Package Tracker Logo" class="logo">
-<h1>PACKAGE TRACKER</h1>
-<p>Track your shipment quickly and easily</p>
-</header>
+<div class="page-container">
+  <!-- Header -->
+  <header id="home">
+    <img src="logo.png" alt="Package Tracker Logo" class="logo">
+    <h1>PACKAGE TRACKER</h1>
+    <p>Track your shipment quickly and easily</p>
+  </header>
 
-<!-- Tracking Steps -->
-<ul id="trackingSteps" class="tracking-steps hidden">
-<li><i class="fas fa-box"></i> Order Placed</li>
-<li><i class="fas fa-truck"></i> Shipped</li>
-<li><i class="fas fa-plane"></i> In Transit</li>
-<li><i class="fas fa-check"></i> Delivered</li>
-</ul>
+  <!-- Tracking Steps -->
+  <ul id="trackingSteps" class="tracking-steps">
+    <li><i class="fas fa-box"></i> Order Placed</li>
+    <li><i class="fas fa-truck"></i> Shipped</li>
+    <li><i class="fas fa-plane"></i> In Transit</li>
+    <li><i class="fas fa-check"></i> Delivered</li>
+  </ul>
 
-<!-- Ad Section -->
-<div class="ad-section" style="text-align:center; margin-bottom:20px;">
-<p>💡 Tip: Track multiple packages easily with your account!</p>
-<p>📦 Special: Fast delivery for premium members.</p>
+  <!-- Ads / Tips -->
+  <div class="ad-section">
+    <p>💡 Tip: Track multiple packages easily with your account!</p>
+    <p>📦 Special: Fast delivery for premium members.</p>
+  </div>
+
+  <!-- Tracking Form -->
+  <main id="track">
+    <form id="trackingForm">
+      <div class="shipment-container" id="shipmentContainer">
+        <table class="shipment-details">
+          <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
+          <tr><td>Sender:</td><td>George Martin</td></tr>
+          <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
+          <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
+        </table>
+      </div>
+
+      <div class="search-section">
+        <input type="text" id="tracking-number" placeholder="Enter tracking number">
+        <button type="submit">Track</button>
+      </div>
+
+      <div id="spinner">⏳</div>
+    </form>
+    <div id="status"></div>
+  </main>
 </div>
 
-<!-- Tracking Form -->
-<main id="track">
-<form id="trackingForm">
-<div class="shipment-container" id="shipmentContainer" style="display:none;">
-<table class="shipment-details">
-<tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
-<tr><td>Sender:</td><td>George Martin</td></tr>
-<tr><td>Receiver:</td><td>Jane Anabel</td></tr>
-<tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
-</table>
-<div class="ad-section" style="text-align:center;">
-<p>Check out our premium shipping services!</p>
-</div>
-</div>
-
-<div class="search-section">
-<label for="tracking-number">Enter Tracking Number:</label>
-<input type="text" id="tracking-number" placeholder="Enter tracking number">
-<button type="submit">Track</button>
-</div>
-
-<div id="spinner">⏳</div>
-</form>
-<div id="status" style="text-align:center; margin-top:10px;"></div>
-</main>
-
-<!-- Products Section -->
+<!-- Products -->
 <section class="products" id="products">
-<h2 style="text-align:center;">Our Featured Products</h2>
+<h2>Our Featured Products</h2>
 <div class="product-grid">
-<div class="product-card">
-<img src="Box.png" alt="Fast Shipping Box">
-<h3>Fast Shipping Box</h3>
-<p>Durable and affordable packaging for your shipments.</p>
-<a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Fast%20Shipping%20Box" target="_blank">Buy Now</a>
-</div>
-<div class="product-card">
-<img src="Luggage.png" alt="Courier Bag">
-<h3>Courier Bag</h3>
-<p>Lightweight waterproof courier bags for safe delivery.</p>
-<a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Courier%20Bag" target="_blank">Shop Now</a>
-</div>
-<div class="product-card">
-<img src="Throw.png" alt="Protective Envelope">
-<h3>Protective Envelope</h3>
-<p>Bubble-lined envelopes to protect fragile shipments.</p>
-<a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Protective%20Envelope" target="_blank">Buy Now</a>
-</div>
-<div class="product-card">
-<img src="Tape.jpg" alt="Sealing Tape">
-<h3>Sealing Tape</h3>
-<p>Strong adhesive tape for secure package sealing.</p>
-<a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20Sealing%20Tape" target="_blank">Shop Now</a>
-</div>
+  <div class="product-card">
+    <img src="Box.png" alt="Fast Shipping Box">
+    <h3>Fast Shipping Box</h3>
+    <p>Durable and affordable packaging for your shipments.</p>
+    <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Fast%20Shipping%20Box" class="buy-btn" target="_blank">Buy Now</a>
+  </div>
+  <div class="product-card">
+    <img src="Luggage.png" alt="Courier Bag">
+    <h3>Courier Bag</h3>
+    <p>Lightweight waterproof courier bags for safe delivery.</p>
+    <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Courier%20Bag" class="buy-btn" target="_blank">Shop Now</a>
+  </div>
+  <div class="product-card">
+    <img src="Throw.png" alt="Protective Envelope">
+    <h3>Protective Envelope</h3>
+    <p>Bubble-lined envelopes to protect fragile shipments.</p>
+    <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Protective%20Envelope" class="buy-btn" target="_blank">Buy Now</a>
+  </div>
+  <div class="product-card">
+    <img src="Tape.jpg" alt="Sealing Tape">
+    <h3>Sealing Tape</h3>
+    <p>Strong adhesive tape for secure package sealing.</p>
+    <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20Sealing%20Tape" class="buy-btn" target="_blank">Shop Now</a>
+  </div>
 </div>
 </section>
 
-<!-- About Section -->
+<!-- About -->
 <section class="about" id="about">
 <h2>About Us</h2>
 <p>PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily. It's designed to be fast, secure, and user-friendly.</p>
 </section>
 
-<!-- Contact Section -->
+<!-- Contact -->
 <section class="contact" id="contact">
 <h2>Contact Us</h2>
 <p>Have questions about your shipment or our services? Reach out to us:</p>
 <div class="contact-options">
-<a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn">💬 WhatsApp</a>
-<a href="mailto:Charlesowen01122@gmail.com" class="contact-btn">📧 Email</a>
+  <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn">💬 WhatsApp</a>
+  <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn">📧 Email</a>
 </div>
 </section>
 
-<!-- Footer -->
 <footer>
 © 2025 Package Tracker – All rights reserved
 </footer>
 
-<!-- JavaScript -->
 <script>
 const correctTrackingNumber = "Track-246800000";
-document.getElementById("trackingForm").addEventListener("submit", function(e){
-    e.preventDefault();
-    const trackingNumberInput = document.getElementById("tracking-number").value.trim();
-    const statusDiv = document.getElementById("status");
-    const shipmentContainer = document.getElementById("shipmentContainer");
-    const trackingNumberDisplay = document.getElementById("trackingNumber");
-    const trackingSteps = document.querySelectorAll("#trackingSteps li");
-    const spinner = document.getElementById("spinner");
+const trackingForm = document.getElementById("trackingForm");
+const statusDiv = document.getElementById("status");
+const shipmentContainer = document.getElementById("shipmentContainer");
+const trackingNumberDisplay = document.getElementById("trackingNumber");
+const trackingSteps = document.querySelectorAll("#trackingSteps li");
+const spinner = document.getElementById("spinner");
 
-    trackingSteps.forEach(li => li.classList.remove("in-transit"));
-    document.getElementById("trackingSteps").classList.remove("hidden");
-    shipmentContainer.style.display = "none";
-    statusDiv.classList.remove("shake");
-    spinner.style.display = "none";
+trackingForm.addEventListener("submit", function(e){
+  e.preventDefault();
+  const trackingNumberInput = document.getElementById("tracking-number").value.trim();
 
-    if(trackingNumberInput === correctTrackingNumber){
-        spinner.style.display = "block";
-        let dots = 0;
-        statusDiv.textContent = "🔍 Tracking your package";
-        const loadingInterval = setInterval(()=>{
-            dots = (dots+1)%4;
-            statusDiv.textContent = "🔍 Tracking your package"+ ".".repeat(dots);
-        },500);
+  trackingSteps.forEach(li => li.classList.remove("in-transit"));
+  shipmentContainer.classList.remove("show");
+  statusDiv.classList.remove("shake");
+  spinner.style.display = "none";
 
-        setTimeout(()=>trackingSteps[0].classList.add("in-transit"),2000);
-        setTimeout(()=>trackingSteps[1].classList.add("in-transit"),4000);
-        setTimeout(()=>trackingSteps[2].classList.add("in-transit"),6000);
-        setTimeout(()=>{
-            clearInterval(loadingInterval);
-            spinner.style.display="none";
-            shipmentContainer.style.display="block";
-            trackingNumberDisplay.textContent=trackingNumberInput;
-            statusDiv.textContent="✅ Package status updated!";
-            trackingSteps[3].classList.add("in-transit");
-        },8000);
-    } else {
-        statusDiv.textContent="❌ Invalid tracking number. Please try again.";
-        statusDiv.classList.add("shake");
-        setTimeout(()=>statusDiv.classList.remove("shake"),500);
-    }
+  if(trackingNumberInput === correctTrackingNumber){
+    spinner.style.display = "block";
+    let dots = 0;
+    statusDiv.textContent = "🔍 Tracking your package";
+    const loadingInterval = setInterval(()=>{
+      dots = (dots + 1) % 4;
+      statusDiv.textContent = "🔍 Tracking your package" + ".".repeat(dots);
+    }, 500);
+
+    setTimeout(()=> trackingSteps[0].classList.add("in-transit"), 2000);
+    setTimeout(()=> trackingSteps[1].classList.add("in-transit"), 4000);
+    setTimeout(()=> trackingSteps[2].classList.add("in-transit"), 6000);
+    setTimeout(()=>{
+      clearInterval(loadingInterval);
+      spinner.style.display = "none";
+      shipmentContainer.classList.add("show");
+      trackingNumberDisplay.textContent = trackingNumberInput;
+      statusDiv.textContent = "📦 Package is In Transit";
+    }, 6500);
+  } else {
+    statusDiv.textContent = "❌ Invalid tracking number. Please try again.";
+    statusDiv.classList.add("shake");
+    setTimeout(()=> statusDiv.classList.remove("shake"), 500);
+  }
 });
 
-// Active navbar section highlight
-const sections=document.querySelectorAll("section, header");
-const navLinks=document.querySelectorAll(".navbar a");
+// Navbar active link highlighting
+const sections = document.querySelectorAll("section, header");
+const navLinks = document.querySelectorAll(".navbar a");
 window.addEventListener("scroll", ()=>{
-    let current="";
-    sections.forEach(section=>{
-        const sectionTop=section.offsetTop-80;
-        const sectionHeight=section.clientHeight;
-        if(pageYOffset>=sectionTop && pageYOffset < sectionTop+sectionHeight){
-            current=section.getAttribute("id");
-        }
-    });
-    navLinks.forEach(link=>{
-        link.classList.remove("active");
-        if(link.getAttribute("href")==="#"+current) link.classList.add("active");
-    });
+  let current = "";
+  sections.forEach(section=>{
+    const sectionTop = section.offsetTop - 80;
+    const sectionHeight = section.clientHeight;
+    if(pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight){
+      current = section.getAttribute("id");
+    }
+  });
+  navLinks.forEach(link=>{
+    link.classList.remove("active");
+    if(link.getAttribute("href") === "#" + current){
+      link.classList.add("active");
+    }
+  });
 });
 </script>
+
 </body>
 </html>
