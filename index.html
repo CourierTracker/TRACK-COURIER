@@ -72,7 +72,12 @@ header p { color: #555; font-size: 1.1em; }
 .product-card h3 { margin:5px 0; color:#007bff;}
 .product-card p { font-size:0.95em; color:#555; margin:5px 0 10px;}
 .product-card a { display:inline-block; padding:8px 15px; background:#007bff; color:white; border-radius:5px; text-decoration:none; transition:0.3s;}
-.product-card a:hover { background:#0069d9; } /* subtle hover effect */
+/* UPDATED Hover Effect for Buy Now / Shop Now buttons */
+.product-card a:hover { 
+    background:#0056b3; 
+    transform: translateY(-3px); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
 
 /* Sections */
 section { padding:30px 20px; max-width:1000px; margin:auto; }
