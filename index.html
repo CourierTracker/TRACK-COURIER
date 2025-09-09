@@ -6,19 +6,10 @@
 <title>Package Tracker</title>
 
 <!-- Favicon -->
-<link rel="icon" type="image/png" href="Images/favicon.png">
+<link rel="icon" type="image/png" href="favicon.png">
 
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- Open Graph / Social Sharing Meta Tags -->
-<meta property="og:title" content="Package Tracker">
-<meta property="og:description" content="Track your shipment quickly and easily with Package Tracker.">
-<meta property="og:image" content="Images/logo.png">
-<meta property="og:url" content="https://packagetracker247.netlify.app">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Package Tracker">
-<meta name="twitter:card" content="summary_large_image">
 
 <style>
 html { scroll-behavior: smooth; }
@@ -128,73 +119,71 @@ header .logo {
     margin: 15px 0;
     transition: background-color 0.3s;
 }
-.share-btn:hover {
-    background-color: #128C7E;
-}
+.share-btn:hover { background-color: #128C7E; }
 </style>
 </head>
 <body>
 
 <!-- Navbar -->
 <nav class="navbar">
-    <ul>
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#track">Track</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
+<ul>
+    <li><a href="#home" class="active">Home</a></li>
+    <li><a href="#track">Track</a></li>
+    <li><a href="#products">Products</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+</ul>
 </nav>
 
 <!-- Page Container -->
 <div class="page-container">
 
-    <!-- Header -->
-    <header id="home">
-        <img src="Images/logo.png" alt="Package Tracker Logo" class="logo">
-        <h1>PACKAGE TRACKER</h1>
-        <p>Track your shipment quickly and easily</p>
-        <a class="share-btn" href="https://wa.me/?text=Check%20out%20Package%20Tracker:%20https://packagetracker247.netlify.app" target="_blank">Share on WhatsApp</a>
-    </header>
+<!-- Header -->
+<header id="home">
+    <img src="Images/logo.png" alt="Package Tracker Logo" class="logo">
+    <h1>PACKAGE TRACKER</h1>
+    <p>Track your shipment quickly and easily</p>
+    <a class="share-btn" href="https://wa.me/?text=Check%20out%20Package%20Tracker:%20https://packagetracker247.netlify.app" target="_blank">Share on WhatsApp</a>
+</header>
 
-    <!-- Tracking Steps -->
-    <ul id="trackingSteps" class="tracking-steps hidden">
-        <li><i class="fas fa-box"></i> Order Placed</li>
-        <li><i class="fas fa-truck"></i> Shipped</li>
-        <li><i class="fas fa-plane"></i> In Transit</li>
-        <li><i class="fas fa-check"></i> Delivered</li>
-    </ul>
+<!-- Tracking Steps -->
+<ul id="trackingSteps" class="tracking-steps hidden">
+    <li><i class="fas fa-box"></i> Order Placed</li>
+    <li><i class="fas fa-truck"></i> Shipped</li>
+    <li><i class="fas fa-plane"></i> In Transit</li>
+    <li><i class="fas fa-check"></i> Delivered</li>
+</ul>
 
-    <div class="ad-section">
-        <p>💡 Tip: Track multiple packages easily with your account!</p>
-        <p>📦 Special: Fast delivery for premium members.</p>
+<div class="ad-section">
+    <p>💡 Tip: Track multiple packages easily with your account!</p>
+    <p>📦 Special: Fast delivery for premium members.</p>
+</div>
+
+<!-- Tracking Form -->
+<main id="track">
+<form id="trackingForm">
+    <div class="shipment-container" id="shipmentContainer" style="display: none;">
+        <table class="shipment-details">
+            <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
+            <tr><td>Sender:</td><td>George Martin</td></tr>
+            <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
+            <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
+        </table>
+        <div class="ad-section">
+            <p>Check out our premium shipping services!</p>
+        </div>
     </div>
 
-    <!-- Tracking Form -->
-    <main id="track">
-        <form id="trackingForm">
-            <div class="shipment-container" id="shipmentContainer" style="display: none;">
-                <table class="shipment-details">
-                    <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
-                    <tr><td>Sender:</td><td>George Martin</td></tr>
-                    <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
-                    <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
-                </table>
-                <div class="ad-section">
-                    <p>Check out our premium shipping services!</p>
-                </div>
-            </div>
+    <div class="search-section">
+        <label for="tracking-number">Enter Tracking Number:</label>
+        <input type="text" id="tracking-number" placeholder="Enter tracking number">
+        <button type="submit">Track</button>
+    </div>
 
-            <div class="search-section">
-                <label for="tracking-number">Enter Tracking Number:</label>
-                <input type="text" id="tracking-number" placeholder="Enter tracking number">
-                <button type="submit">Track</button>
-            </div>
-
-            <div id="spinner">⏳</div>
-        </form>
-        <div id="status"></div>
-    </main>
+    <div id="spinner">⏳</div>
+</form>
+<div id="status"></div>
+</main>
 </div>
 
 <!-- Products -->
@@ -248,7 +237,6 @@ header .logo {
 © 2025 Package Tracker – All rights reserved
 </footer>
 
-<!-- JavaScript -->
 <script>
 const correctTrackingNumber = "Track-246800000";
 const trackingForm = document.getElementById("trackingForm");
@@ -262,6 +250,7 @@ trackingForm.addEventListener("submit", function(e) {
     e.preventDefault();
     const trackingNumberInput = document.getElementById("tracking-number").value.trim();
 
+    // Reset all states
     trackingSteps.forEach(li => li.classList.remove("in-transit"));
     document.getElementById("trackingSteps").classList.remove("hidden");
     shipmentContainer.style.display = "none";
@@ -277,6 +266,7 @@ trackingForm.addEventListener("submit", function(e) {
             statusDiv.textContent = "🔍 Tracking your package" + ".".repeat(dots);
         }, 500);
 
+        // Animate to "In Transit" only
         setTimeout(() => trackingSteps[0].classList.add("in-transit"), 3000);
         setTimeout(() => trackingSteps[1].classList.add("in-transit"), 5000);
         setTimeout(() => {
@@ -285,7 +275,7 @@ trackingForm.addEventListener("submit", function(e) {
             shipmentContainer.style.display = "block";
             trackingNumberDisplay.textContent = trackingNumberInput;
             statusDiv.textContent = "📦 Your package is In Transit!";
-            trackingSteps[2].classList.add("in-transit");
+            trackingSteps[2].classList.add("in-transit"); // Stop here
         }, 7000);
 
     } else {
@@ -295,6 +285,7 @@ trackingForm.addEventListener("submit", function(e) {
     }
 });
 
+// Navbar active link highlighting
 const sections = document.querySelectorAll("section, header");
 const navLinks = document.querySelectorAll(".navbar a");
 window.addEventListener("scroll", () => {
