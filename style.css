@@ -418,3 +418,45 @@ header p {
     font-size: 0.9em;
     color: #555;
 }
+
+/* === Header: Responsive Flex Layout === */
+header {
+    display: flex;
+    align-items: center;      /* vertically center logo with text */
+    gap: 15px;                /* space between logo and text */
+    flex-wrap: wrap;          /* allow wrapping on small screens */
+    justify-content: center;  /* center header content on mobile */
+    text-align: center;       /* keep text centered when wrapping */
+}
+
+header img {
+    height: 50px;             /* consistent logo size */
+    flex-shrink: 0;           /* prevent shrinking */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+}
+
+header p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;  /* stack logo and text */
+        gap: 8px;                /* smaller gap on tiny screens */
+    }
+
+    header h1 {
+        font-size: 1.3em;
+    }
+
+    header p {
+        font-size: 0.8em;
+    }
+}
