@@ -452,41 +452,49 @@ header p {
         gap: 8px;                /* smaller gap on tiny screens */
     }
 
+    /* === Header Styling === */
+header {
+    display: flex;               /* use flexbox */
+    align-items: center;         /* vertically center logo and text */
+    justify-content: flex-start; /* align everything to the left on desktop */
+    gap: 15px;                   /* space between logo and text */
+    width: 100%;                 /* full width of container */
+    padding: 10px 0;             /* optional vertical spacing */
+    text-align: left;            /* left-align text */
+}
+
+header img {
+    height: 50px;                /* logo size */
+    flex-shrink: 0;              /* prevent shrinking */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+header p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* === Mobile Header === */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;   /* stack logo above text */
+        align-items: center;      /* center horizontally */
+        justify-content: center;  /* center vertically */
+        gap: 8px;                 /* smaller gap for mobile */
+        text-align: center;       /* center text */
+    }
+
     header h1 {
         font-size: 1.3em;
     }
 
     header p {
         font-size: 0.8em;
-    }
-}
-
-header {
-    display: flex;
-    align-items: center;        /* vertical centering of logo and text */
-    justify-content: flex-start; /* align content to left side */
-    gap: 15px;                  /* space between logo and text */
-    width: 100%;                /* take full container width */
-    text-align: left;           /* keep text aligned left */
-    padding: 10px 0;            /* optional spacing top/bottom */
-}
-
-header img {
-    height: 50px;
-    flex-shrink: 0;             /* prevent shrinking */
-}
-
-header h1, header p {
-    margin: 0;
-    color: #555;
-}
-
-/* Mobile */
-@media (max-width: 480px) {
-    header {
-        flex-direction: column;
-        align-items: center;   /* center on tiny screens */
-        gap: 8px;
-        text-align: center;
     }
 }
