@@ -401,3 +401,20 @@ header {
 header img {
     height: 50px; /* same as inline style, optional */
 }
+
+header {
+    display: flex;
+    align-items: center;  /* vertically center logo with text */
+    gap: 15px;            /* space between logo and text */
+}
+
+header h1 {
+    margin: 0;            /* remove default margin */
+    font-size: 1.5em;
+}
+
+header p {
+    margin: 0;            /* remove default margin */
+    font-size: 0.9em;
+    color: #555;
+}
