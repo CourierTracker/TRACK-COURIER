@@ -28,122 +28,116 @@
 
 <style>
 /* Reset & Base */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-family: 'Montserrat', sans-serif; }
-body { color: #333; line-height: 1.6; background: #f9f9f9; }
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family:'Montserrat', sans-serif; background:#E6F0FF; color:#333; line-height:1.6; }
 
 /* Navbar */
 .navbar {
-    background: #007BFF;
-    padding: 15px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background:#007BFF;
+    padding:15px 20px;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 .navbar ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 25px;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
 }
 .navbar a {
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-    padding-bottom: 4px;
-    transition: 0.3s;
+    color:white;
+    text-decoration:none;
+    font-weight:600;
+    padding-bottom:4px;
+    transition:0.3s;
 }
-.navbar a:hover, .navbar a.active {
-    color: #ffdd57;
-    border-bottom: 2px solid #ffdd57;
-}
+.navbar a:hover, .navbar a.active { color:#ffdd57; border-bottom:2px solid #ffdd57; }
 
 /* Header */
 header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 50px 20px 40px;
-    background: linear-gradient(to bottom, #007BFF, #0056b3);
-    color: white;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:60px 20px 40px;
+    background:#D6E6FF;
+    border-bottom:1px solid #B0D1FF;
+    border-radius:0 0 20px 20px;
 }
-header .logo { height: 70px; margin-bottom: 15px; }
-header h1 { font-size: 2.5em; margin-bottom: 10px; }
-header p { font-size: 1.2em; margin-bottom: 20px; }
+header .logo { height:70px; margin-bottom:15px; }
+header h1 { font-size:2.5em; margin-bottom:10px; }
+header p { font-size:1.2em; margin-bottom:20px; }
 header .share-btn {
-    background-color: #25D366;
-    color: white;
-    padding: 12px 25px;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    transition: background 0.3s, transform 0.3s;
+    background-color:#25D366;
+    color:white;
+    padding:12px 25px;
+    border-radius:30px;
+    font-weight:600;
+    text-decoration:none;
+    box-shadow:0 4px 8px rgba(0,0,0,0.2);
+    transition:0.3s;
 }
-header .share-btn:hover { background-color: #128C7E; transform: translateY(-2px); }
+header .share-btn:hover { background-color:#128C7E; transform:translateY(-2px); }
 
 /* Tracking Steps */
 #trackingSteps {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin: 30px 0;
-    flex-wrap: wrap;
+    list-style:none;
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    margin:30px 20px;
+    flex-wrap:wrap;
 }
 #trackingSteps li {
-    padding: 12px 18px;
-    border-radius: 8px;
-    border: 2px solid #007BFF;
-    color: #555;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    transition: all 0.4s;
+    padding:12px 18px;
+    border-radius:8px;
+    border:2px solid #007BFF;
+    color:#555;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    transition:all 0.4s;
+    background:white;
+    box-shadow:0 3px 6px rgba(0,0,0,0.1);
 }
 #trackingSteps li.in-transit {
-    background-color: #007BFF;
-    color: white;
-    box-shadow: 0 0 12px rgba(0, 123, 255, 0.4);
+    background:#007BFF;
+    color:white;
+    box-shadow:0 0 12px rgba(0,123,255,0.4);
 }
 @keyframes pulse {
-    0% { box-shadow: 0 0 10px rgba(0,123,255,0.3); }
-    50% { box-shadow: 0 0 20px rgba(0,123,255,0.5); }
-    100% { box-shadow: 0 0 10px rgba(0,123,255,0.3); }
+    0%{box-shadow:0 0 10px rgba(0,123,255,0.3);}
+    50%{box-shadow:0 0 20px rgba(0,123,255,0.5);}
+    100%{box-shadow:0 0 10px rgba(0,123,255,0.3);}
 }
 
 /* Spinner */
-#spinner { display: none; font-size: 2em; text-align: center; color: #007BFF; animation: spin 1s linear infinite; margin: 15px 0; }
-@keyframes spin { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+#spinner { display:none; font-size:2em; text-align:center; color:#007BFF; animation:spin 1s linear infinite; margin:15px 0; }
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
 
 /* Shake animation */
-#status.shake { animation: shake 0.5s; display: inline-block; }
-@keyframes shake {
-    0%{transform:translateX(0);}
-    25%{transform:translateX(-5px);}
-    50%{transform:translateX(5px);}
-    75%{transform:translateX(-5px);}
-    100%{transform:translateX(0);}
-}
+#status.shake{animation:shake 0.5s; display:inline-block;}
+@keyframes shake{0%{transform:translateX(0);}25%{transform:translateX(-5px);}50%{transform:translateX(5px);}75%{transform:translateX(-5px);}100%{transform:translateX(0);}}
 
 /* Tracking Form */
-#track { text-align:center; margin: 40px 20px; }
+#track { text-align:center; margin:40px 20px; }
 .shipment-details {
-    width: 100%; max-width: 450px; margin: 20px auto; border-collapse: collapse; background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width:100%; max-width:450px; margin:20px auto; border-collapse:collapse; 
+    background:white; border-radius:15px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
-.shipment-details td { padding: 12px 15px; border-bottom: 1px solid #eee; }
-.shipment-details tr:last-child td { border-bottom: none; }
-.search-section input {
-    padding: 10px 15px; width: 250px; max-width: 80%; border: 2px solid #007BFF; border-radius: 8px;
+.shipment-details td { padding:12px 15px; border-bottom:1px solid #eee; }
+.shipment-details tr:last-child td { border-bottom:none; }
+.search-section input{
+    padding:10px 15px; width:250px; max-width:80%; border:2px solid #007BFF; border-radius:10px;
 }
-.search-section button {
-    padding: 10px 20px; border-radius: 8px; border:none; background:#007BFF; color:white; font-weight:600; cursor:pointer; transition:0.3s;
+.search-section button{
+    padding:10px 20px; border-radius:10px; border:none; background:#007BFF; color:white; font-weight:600; cursor:pointer; transition:0.3s;
 }
-.search-section button:hover { background:#0056b3; }
+.search-section button:hover{ background:#0056b3; }
 
 /* Products Grid */
 .product-grid {
@@ -153,22 +147,22 @@ header .share-btn:hover { background-color: #128C7E; transform: translateY(-2px)
     margin:40px 20px;
 }
 .product-card {
-    background:white; border-radius:10px; padding:20px; text-align:center;
+    background:white; border-radius:15px; padding:20px; text-align:center;
     transition:0.3s; box-shadow:0 3px 8px rgba(0,0,0,0.1);
 }
 .product-card:hover { transform: translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
-.product-card img { max-width:100%; height:auto; border-radius:8px; margin-bottom:12px; }
-.buy-btn { display:inline-block; margin-top:10px; background:#007BFF; color:white; padding:10px 18px; border-radius:8px; text-decoration:none; font-weight:600; transition:0.3s; }
+.product-card img { max-width:100%; height:auto; border-radius:10px; margin-bottom:12px; }
+.buy-btn { display:inline-block; margin-top:10px; background:#007BFF; color:white; padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:600; transition:0.3s; }
 .buy-btn:hover { background:#0056b3; }
 
 /* About & Contact */
-section { padding:50px 20px; max-width:1000px; margin:auto; text-align:center; }
+section { padding:50px 20px; max-width:1000px; margin:auto; text-align:center; background:#D6E6FF; border-radius:15px; margin-bottom:30px; box-shadow:0 3px 10px rgba(0,0,0,0.1);}
 .contact-options { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px; }
 .contact-btn { padding:12px 25px; border-radius:30px; background:#25D366; color:white; text-decoration:none; font-weight:600; transition:0.3s; }
 .contact-btn:hover { background:#128C7E; }
 
 /* Footer */
-footer { text-align:center; padding:20px; background:#f1f1f1; margin-top:40px; font-size:0.9em; }
+footer { text-align:center; padding:20px; background:#BFD9FF; border-radius:15px; margin:20px; font-size:0.9em; }
 
 /* Responsive Adjustments */
 @media(max-width:600px){
@@ -283,17 +277,17 @@ footer { text-align:center; padding:20px; background:#f1f1f1; margin-top:40px; f
 
 <!-- JavaScript -->
 <script>
-const correctTrackingNumber = "Track-246800000";
-const trackingForm = document.getElementById("trackingForm");
-const statusDiv = document.getElementById("status");
-const shipmentContainer = document.getElementById("shipmentContainer");
-const trackingNumberDisplay = document.getElementById("trackingNumber");
-const trackingSteps = document.querySelectorAll("#trackingSteps li");
-const spinner = document.getElementById("spinner");
+const correctTrackingNumber="Track-246800000";
+const trackingForm=document.getElementById("trackingForm");
+const statusDiv=document.getElementById("status");
+const shipmentContainer=document.getElementById("shipmentContainer");
+const trackingNumberDisplay=document.getElementById("trackingNumber");
+const trackingSteps=document.querySelectorAll("#trackingSteps li");
+const spinner=document.getElementById("spinner");
 
-trackingForm.addEventListener("submit", function(e){
+trackingForm.addEventListener("submit",function(e){
     e.preventDefault();
-    const trackingNumberInput = document.getElementById("tracking-number").value.trim();
+    const trackingNumberInput=document.getElementById("tracking-number").value.trim();
     trackingSteps.forEach(li=>li.classList.remove("in-transit"));
     document.getElementById("trackingSteps").classList.remove("hidden");
     shipmentContainer.style.display="none";
@@ -304,7 +298,7 @@ trackingForm.addEventListener("submit", function(e){
         spinner.style.display="block";
         let dots=0;
         statusDiv.textContent="🔍 Tracking your package";
-        const loadingInterval = setInterval(()=>{
+        const loadingInterval=setInterval(()=>{
             dots=(dots+1)%4;
             statusDiv.textContent="🔍 Tracking your package"+ ".".repeat(dots);
         },500);
@@ -315,12 +309,12 @@ trackingForm.addEventListener("submit", function(e){
             clearInterval(loadingInterval);
             spinner.style.display="none";
             shipmentContainer.style.display="block";
-            trackingNumberDisplay.textContent = trackingNumberInput;
+            trackingNumberDisplay.textContent=trackingNumberInput;
             statusDiv.textContent="📦 Your package is In Transit!";
             trackingSteps[2].classList.add("in-transit");
         },7000);
 
-    } else {
+    }else{
         statusDiv.textContent="❌ Invalid tracking number. Please try again.";
         statusDiv.classList.add("shake");
         setTimeout(()=>statusDiv.classList.remove("shake"),500);
@@ -330,7 +324,7 @@ trackingForm.addEventListener("submit", function(e){
 // Navbar highlight
 const sections=document.querySelectorAll("section, header");
 const navLinks=document.querySelectorAll(".navbar a");
-window.addEventListener("scroll", ()=>{
+window.addEventListener("scroll",()=>{
     let current="";
     sections.forEach(section=>{
         const sectionTop=section.offsetTop-80;
