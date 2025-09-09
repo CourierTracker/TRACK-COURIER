@@ -393,11 +393,43 @@ html, body {
 
 }
 
-/* Header Navigation Buttons */
+/* === Header Styles === */
+header {
+    display: flex;
+    align-items: center;        /* vertical centering of logo and text */
+    justify-content: space-between; /* space between logo/text and nav buttons */
+    width: 100%;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    background-color: transparent; /* or any color you prefer */
+}
+
+header .logo-title {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* space between logo and text */
+}
+
+header .logo-title img {
+    height: 50px;
+    flex-shrink: 0;
+}
+
+header .logo-title h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+header .logo-title p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
 header nav {
     display: flex;
     gap: 12px;
-    margin-left: 20px; /* space from logo/text */
 }
 
 header nav a {
@@ -416,9 +448,21 @@ header nav a:hover {
 
 /* Mobile adjustments */
 @media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+    }
+
+    header .logo-title {
+        flex-direction: column;
+        gap: 4px;
+    }
+
     header nav {
+        justify-content: center;
+        margin-top: 8px;
         width: 100%;
-        justify-content: center; /* center buttons on mobile */
-        margin-top: 10px;
     }
 }
