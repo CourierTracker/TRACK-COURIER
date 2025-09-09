@@ -7,23 +7,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Package Tracker</title>
 
+<!-- Styles -->
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Open Graph and Twitter Meta Tags -->
+<!-- Open Graph Meta Tags -->
 <meta property="og:title" content="Package Tracker" />
 <meta property="og:description" content="Track your packages easily with our simple tracking website." />
 <meta property="og:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png" />
 <meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/?v=1" />
 <meta property="og:type" content="website" />
+
+<!-- Twitter Card Meta Tags -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Package Tracker" />
 <meta name="twitter:description" content="Track your packages easily with our simple tracking website." />
 <meta name="twitter:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png" />
 
 <style>
-html { scroll-behavior: smooth; }
-
 /* Highlight "In Transit" step */
 #trackingSteps li.in-transit {
     color: #007bff;
@@ -69,116 +70,116 @@ html { scroll-behavior: smooth; }
 }
 </style>
 </head>
-<body>
+<body>  
 
-<!-- Header -->
-<header>
-  <div class="logo-title">
-    <img src="logo.png" alt="Package Tracker Logo">
-    <div>
-      <h1>PACKAGE TRACKER</h1>
-      <p>Track your shipments easily</p>
-    </div>
-  </div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<!-- Main Page Content -->
-<div id="home" class="page-container">
-
-  <ul id="trackingSteps" class="tracking-steps hidden">
-    <li><i class="fas fa-cart-plus"></i> Order Placed</li>
-    <li><i class="fas fa-truck"></i> Shipped</li>
-    <li><i class="fas fa-plane"></i> In Transit</li>
-    <li><i class="fas fa-box-open"></i> Delivered</li>
-  </ul>
-
-  <div class="ad-section">
-    <p>💡 Tip: Track multiple packages easily with your account!</p>
-    <p>📦 Special: Fast delivery for premium members.</p>
-  </div>
-
-  <!-- Tracking Form -->
-  <main>
-    <form id="trackingForm">
-      <div class="shipment-container" id="shipmentContainer" style="display: none;">
-        <table class="shipment-details">
-          <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
-          <tr><td>Sender:</td><td>George Martin</td></tr>
-          <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
-          <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
-        </table>
-        <div class="ad-section">
-          <p>Check out our premium shipping services!</p>
+<!-- Page Wrapper -->
+<div class="page-container">
+    <!-- Header -->
+    <header>
+        <div class="logo-title">
+            <img src="logo.png" alt="Package Tracker Logo">
+            <div>
+                <h1>PACKAGE TRACKER</h1>
+                <p>Track your shipments easily</p>
+            </div>
         </div>
-      </div>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
 
-      <div class="search-section">
-        <input type="text" id="tracking-number" placeholder="Enter tracking number">
-        <button type="submit">Track</button>
-      </div>
+    <!-- Tracking Steps -->
+    <ul id="trackingSteps" class="tracking-steps hidden">
+        <li><i class="fas fa-cart-plus"></i> Order Placed</li>
+        <li><i class="fas fa-truck"></i> Shipped</li>
+        <li><i class="fas fa-plane"></i> In Transit</li>
+        <li><i class="fas fa-box-open"></i> Delivered</li>
+    </ul>
 
-      <div id="spinner">⏳</div>
-    </form>
-    <div id="status"></div>
-  </main>
+    <!-- Ads / Tips -->
+    <div class="ad-section">
+        <p>💡 Tip: Track multiple packages easily with your account!</p>
+        <p>📦 Special: Fast delivery for premium members.</p>
+    </div>
 
-  <!-- Products Section -->
-  <section class="products">
+    <!-- Main Tracking Form -->
+    <main>
+        <form id="trackingForm">
+            <div class="shipment-container" id="shipmentContainer" style="display: none;">
+                <table class="shipment-details">
+                    <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
+                    <tr><td>Sender:</td><td>George Martin</td></tr>
+                    <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
+                    <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
+                </table>
+                <div class="ad-section">
+                    <p>Check out our premium shipping services!</p>
+                </div>
+            </div>
+
+            <div class="search-section">
+                <input type="text" id="tracking-number" placeholder="Enter tracking number">
+                <button type="submit">Track</button>
+            </div>
+
+            <div id="spinner">⏳</div>
+        </form>
+        <div id="status"></div>
+    </main>
+</div> <!-- End page-container -->
+
+<!-- Products Section -->
+<section class="products">
     <h2>Our Featured Products</h2>
     <div class="product-grid">
-      <div class="product-card">
-        <img src="Box.png" alt="Fast Shipping Box">
-        <h3>Fast Shipping Box</h3>
-        <p>Durable and affordable packaging for your shipments.</p>
-        <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Fast%20Shipping%20Box" class="buy-btn" target="_blank">Buy Now</a>
-      </div>
-      <div class="product-card">
-        <img src="Luggage.png" alt="Courier Bag">
-        <h3>Courier Bag</h3>
-        <p>Lightweight waterproof courier bags for safe delivery.</p>
-        <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Courier%20Bag" class="buy-btn" target="_blank">Shop Now</a>
-      </div>
-      <div class="product-card">
-        <img src="Throw.png" alt="Protective Envelope">
-        <h3>Protective Envelope</h3>
-        <p>Bubble-lined envelopes to protect fragile shipments.</p>
-        <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Protective%20Envelope" class="buy-btn" target="_blank">Buy Now</a>
-      </div>
-      <div class="product-card">
-        <img src="Tape.jpg" alt="Sealing Tape">
-        <h3>Sealing Tape</h3>
-        <p>Strong adhesive tape for secure package sealing.</p>
-        <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20Sealing%20Tape" class="buy-btn" target="_blank">Shop Now</a>
-      </div>
+        <div class="product-card">
+            <img src="Box.png" alt="Fast Shipping Box">
+            <h3>Fast Shipping Box</h3>
+            <p>Durable and affordable packaging for your shipments.</p>
+            <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Fast%20Shipping%20Box" class="buy-btn" target="_blank">Buy Now</a>
+        </div>
+        <div class="product-card">
+            <img src="Luggage.png" alt="Courier Bag">
+            <h3>Courier Bag</h3>
+            <p>Lightweight waterproof courier bags for safe delivery.</p>
+            <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Courier%20Bag" class="buy-btn" target="_blank">Shop Now</a>
+        </div>
+        <div class="product-card">
+            <img src="Throw.png" alt="Protective Envelope">
+            <h3>Protective Envelope</h3>
+            <p>Bubble-lined envelopes to protect fragile shipments.</p>
+            <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Protective%20Envelope" class="buy-btn" target="_blank">Buy Now</a>
+        </div>
+        <div class="product-card">
+            <img src="Tape.jpg" alt="Sealing Tape">
+            <h3>Sealing Tape</h3>
+            <p>Strong adhesive tape for secure package sealing.</p>
+            <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20Sealing%20Tape" class="buy-btn" target="_blank">Shop Now</a>
+        </div>
     </div>
-  </section>
+</section>
 
-  <!-- About Section -->
-  <section id="about" class="about">
+<!-- About Us Section -->
+<section class="about">
     <h2>About Us</h2>
     <p>At Package Tracker, we are dedicated to providing fast, secure, and affordable delivery services. 
        Whether it’s small parcels or bulk shipments, we ensure your packages arrive safely and on time.</p>
-  </section>
+</section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
+<!-- Contact Section -->
+<section class="contact">
     <h2>Contact Us</h2>
     <p>Have questions about your shipment or our services? Reach out to us:</p>
     <div class="contact-options">
-      <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn">💬 WhatsApp</a>
-      <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn">📧 Email</a>
+        <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn">💬 WhatsApp</a>
+        <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn">📧 Email</a>
     </div>
-  </section>
-
-</div> <!-- End of page-container -->
+</section>
 
 <footer>
-  © 2025 Package Tracker – All rights reserved
+    © 2025 Package Tracker – All rights reserved
 </footer>
 
 <!-- Tracking JavaScript -->
@@ -194,7 +195,9 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
     const trackingSteps = document.querySelectorAll("#trackingSteps li");
     const spinner = document.getElementById("spinner");
 
+    // Reset
     trackingSteps.forEach(li => li.classList.remove("in-transit"));
+    document.getElementById("trackingSteps").classList.remove("hidden");
     shipmentContainer.style.display = "none";
     statusDiv.classList.remove("shake");
     spinner.style.display = "none";
