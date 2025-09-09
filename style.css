@@ -393,50 +393,32 @@ html, body {
 
 }
 
-/* === Header: Logo + Title === */
-header {
+/* Header Navigation Buttons */
+header nav {
     display: flex;
-    align-items: center;      /* vertically center logo with text */
-    justify-content: center;  /* horizontally center header content */
-    gap: 15px;                /* space between logo and text */
-    flex-wrap: wrap;          /* allow wrapping on small screens */
-    padding: 20px 0;          /* top/bottom spacing */
-    text-align: center;
+    gap: 12px;
+    margin-left: 20px; /* space from logo/text */
 }
 
-header img {
-    height: 60px;             /* adjust logo size */
-    flex-shrink: 0;           /* prevent shrinking */
+header nav a {
+    text-decoration: none;
+    padding: 8px 14px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 6px;
+    font-size: 0.95em;
+    transition: background 0.3s ease;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 1.8em;
-    color: #333;
+header nav a:hover {
+    background-color: #0056b3;
 }
 
-header p {
-    margin: 0;
-    font-size: 1em;
-    color: #555;
-}
-
-/* Mobile Header */
+/* Mobile adjustments */
 @media (max-width: 480px) {
-    header {
-        flex-direction: column;  /* stack logo and text */
-        gap: 10px;
-    }
-
-    header h1 {
-        font-size: 1.4em;
-    }
-
-    header p {
-        font-size: 0.9em;
-    }
-
-    header img {
-        height: 50px;  /* slightly smaller logo */
+    header nav {
+        width: 100%;
+        justify-content: center; /* center buttons on mobile */
+        margin-top: 10px;
     }
 }
