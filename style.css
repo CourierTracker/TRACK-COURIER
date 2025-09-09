@@ -393,108 +393,50 @@ html, body {
 
 }
 
-header {
-    display: flex;
-    align-items: center;
-    gap: 10px; /* space between logo and text */
-}
-header img {
-    height: 50px; /* same as inline style, optional */
-}
-
-header {
-    display: flex;
-    align-items: center;  /* vertically center logo with text */
-    gap: 15px;            /* space between logo and text */
-}
-
-header h1 {
-    margin: 0;            /* remove default margin */
-    font-size: 1.5em;
-}
-
-header p {
-    margin: 0;            /* remove default margin */
-    font-size: 0.9em;
-    color: #555;
-}
-
-/* === Header: Responsive Flex Layout === */
+/* === Header: Logo + Title === */
 header {
     display: flex;
     align-items: center;      /* vertically center logo with text */
+    justify-content: center;  /* horizontally center header content */
     gap: 15px;                /* space between logo and text */
     flex-wrap: wrap;          /* allow wrapping on small screens */
-    justify-content: center;  /* center header content on mobile */
-    text-align: center;       /* keep text centered when wrapping */
+    padding: 20px 0;          /* top/bottom spacing */
+    text-align: center;
 }
 
 header img {
-    height: 50px;             /* consistent logo size */
+    height: 60px;             /* adjust logo size */
     flex-shrink: 0;           /* prevent shrinking */
 }
 
 header h1 {
     margin: 0;
-    font-size: 1.5em;
-}
-
-header p {
-    margin: 0;
-    font-size: 0.9em;
-    color: #555;
-}
-
-/* Mobile tweaks */
-@media (max-width: 480px) {
-    header {
-        flex-direction: column;  /* stack logo and text */
-        gap: 8px;                /* smaller gap on tiny screens */
-    }
-
-    /* === Header Styling === */
-header {
-    display: flex;               /* use flexbox */
-    align-items: center;         /* vertically center logo and text */
-    justify-content: flex-start; /* align everything to the left on desktop */
-    gap: 15px;                   /* space between logo and text */
-    width: 100%;                 /* full width of container */
-    padding: 10px 0;             /* optional vertical spacing */
-    text-align: left;            /* left-align text */
-}
-
-header img {
-    height: 50px;                /* logo size */
-    flex-shrink: 0;              /* prevent shrinking */
-}
-
-header h1 {
-    margin: 0;
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: #333;
 }
 
 header p {
     margin: 0;
-    font-size: 0.9em;
-    color: #666;
+    font-size: 1em;
+    color: #555;
 }
 
-/* === Mobile Header === */
+/* Mobile Header */
 @media (max-width: 480px) {
     header {
-        flex-direction: column;   /* stack logo above text */
-        align-items: center;      /* center horizontally */
-        justify-content: center;  /* center vertically */
-        gap: 8px;                 /* smaller gap for mobile */
-        text-align: center;       /* center text */
+        flex-direction: column;  /* stack logo and text */
+        gap: 10px;
     }
 
     header h1 {
-        font-size: 1.3em;
+        font-size: 1.4em;
     }
 
     header p {
-        font-size: 0.8em;
+        font-size: 0.9em;
+    }
+
+    header img {
+        height: 50px;  /* slightly smaller logo */
     }
 }
