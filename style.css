@@ -460,3 +460,33 @@ header p {
         font-size: 0.8em;
     }
 }
+
+header {
+    display: flex;
+    align-items: center;        /* vertical centering of logo and text */
+    justify-content: flex-start; /* align content to left side */
+    gap: 15px;                  /* space between logo and text */
+    width: 100%;                /* take full container width */
+    text-align: left;           /* keep text aligned left */
+    padding: 10px 0;            /* optional spacing top/bottom */
+}
+
+header img {
+    height: 50px;
+    flex-shrink: 0;             /* prevent shrinking */
+}
+
+header h1, header p {
+    margin: 0;
+    color: #555;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: center;   /* center on tiny screens */
+        gap: 8px;
+        text-align: center;
+    }
+}
