@@ -77,20 +77,50 @@
     <!-- Page Wrapper -->
     <div class="page-container">
         <!-- Header -->
-        <header>
-    <div class="logo-title">
-        <img src="logo.png" alt="Package Tracker Logo">
-        <div>
-            <h1>PACKAGE TRACKER</h1>
-            <p>Track your shipments easily</p>
-        </div>
+        <!-- Header -->
+<header>
+  <div class="logo-title">
+    <img src="logo.png" alt="Package Tracker Logo">
+    <div>
+      <h1>PACKAGE TRACKER</h1>
+      <p>Track your shipments easily</p>
     </div>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
-    </nav>
-        </header>
+  </div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<!-- Page Wrapper with Home ID -->
+<div id="home" class="page-container">
+  ...
+</div>
+
+<!-- About Us Section -->
+<section id="about" class="about">
+  <h2>About Us</h2>
+  <p>At Package Tracker, we are dedicated to providing fast, secure, and affordable delivery services. 
+     Whether it’s small parcels or bulk shipments, we ensure your packages arrive safely and on time.</p>
+</section>
+
+<!-- Contact Us Section -->
+<section id="contact" class="contact">
+  <h2>Contact Us</h2>
+  <p>Have questions about your shipment or our services? Reach out to us:</p>
+  <div class="contact-options">
+    <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn">💬 WhatsApp</a>
+    <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn">📧 Email</a>
+  </div>
+</section>
+
+<!-- Smooth scroll in CSS -->
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
 
         <ul id="trackingSteps" class="tracking-steps hidden">
     <li><i class="fas fa-cart-plus"></i> Order Placed</li>
