@@ -1,343 +1,225 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">      
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Package Tracker</title>
-
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="Images/favicon.png">
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- Open Graph / Social Sharing Meta Tags -->
-<meta property="og:title" content="Package Tracker">
-<meta property="og:description" content="Track your shipment quickly and easily with Package Tracker.">
-<meta property="og:image" content="https://packagetracker247.netlify.app/Images/og-image.png">
-<meta property="og:url" content="https://packagetracker247.netlify.app">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Package Tracker">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Package Tracker">
-<meta name="twitter:description" content="Track your shipment quickly and easily with Package Tracker.">
-<meta name="twitter:image" content="https://packagetracker247.netlify.app/Images/og-image.png">
-
-<style>
-/* Reset & Base */
-* { margin:0; padding:0; box-sizing:border-box; }
-body { font-family:'Montserrat', sans-serif; background:#E6F0FF; color:#333; line-height:1.6; }
-
-/* Navbar */
-.navbar {
-    background:#007BFF;
-    padding:15px 20px;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    box-shadow:0 2px 5px rgba(0,0,0,0.1);
-}
-.navbar ul {
-    list-style:none;
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:25px;
-}
-.navbar a {
-    color:white;
-    text-decoration:none;
-    font-weight:600;
-    padding-bottom:4px;
-    transition:0.3s;
-}
-.navbar a:hover, .navbar a.active { color:#ffdd57; border-bottom:2px solid #ffdd57; }
-
-/* Header */
-header {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    padding:60px 20px 40px;
-    background:#D6E6FF;
-    border-bottom:1px solid #B0D1FF;
-    border-radius:0 0 20px 20px;
-}
-header .logo { height:70px; margin-bottom:15px; }
-header h1 { font-size:2.5em; margin-bottom:10px; }
-header p { font-size:1.2em; margin-bottom:20px; }
-header .share-btn {
-    background-color:#25D366;
-    color:white;
-    padding:12px 25px;
-    border-radius:30px;
-    font-weight:600;
-    text-decoration:none;
-    box-shadow:0 4px 8px rgba(0,0,0,0.2);
-    transition:0.3s;
-}
-header .share-btn:hover { background-color:#128C7E; transform:translateY(-2px); }
-
-/* Tracking Steps */
-#trackingSteps {
-    list-style:none;
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    margin:30px 20px;
-    flex-wrap:wrap;
-}
-#trackingSteps li {
-    padding:12px 18px;
-    border-radius:8px;
-    border:2px solid #007BFF;
-    color:#555;
-    font-weight:600;
-    display:flex;
-    align-items:center;
-    gap:8px;
-    transition:all 0.4s;
-    background:white;
-    box-shadow:0 3px 6px rgba(0,0,0,0.1);
-}
-#trackingSteps li.in-transit {
-    background:#007BFF;
-    color:white;
-    box-shadow:0 0 12px rgba(0,123,255,0.4);
-}
-@keyframes pulse {
-    0%{box-shadow:0 0 10px rgba(0,123,255,0.3);}
-    50%{box-shadow:0 0 20px rgba(0,123,255,0.5);}
-    100%{box-shadow:0 0 10px rgba(0,123,255,0.3);}
-}
-
-/* Spinner */
-#spinner { display:none; font-size:2em; text-align:center; color:#007BFF; animation:spin 1s linear infinite; margin:15px 0; }
-@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
-
-/* Shake animation */
-#status.shake{animation:shake 0.5s; display:inline-block;}
-@keyframes shake{0%{transform:translateX(0);}25%{transform:translateX(-5px);}50%{transform:translateX(5px);}75%{transform:translateX(-5px);}100%{transform:translateX(0);}}
-
-/* Tracking Form */
-#track { text-align:center; margin:40px 20px; }
-.shipment-details {
-    width:100%; max-width:450px; margin:20px auto; border-collapse:collapse; 
-    background:white; border-radius:15px; overflow:hidden; box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-.shipment-details td { padding:12px 15px; border-bottom:1px solid #eee; }
-.shipment-details tr:last-child td { border-bottom:none; }
-.search-section input{
-    padding:10px 15px; width:250px; max-width:80%; border:2px solid #007BFF; border-radius:10px;
-}
-.search-section button{
-    padding:10px 20px; border-radius:10px; border:none; background:#007BFF; color:white; font-weight:600; cursor:pointer; transition:0.3s;
-}
-.search-section button:hover{ background:#0056b3; }
-
-/* Products Grid */
-.product-grid {
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
-    gap:25px;
-    margin:40px 20px;
-}
-.product-card {
-    background:white; border-radius:15px; padding:20px; text-align:center;
-    transition:0.3s; box-shadow:0 3px 8px rgba(0,0,0,0.1);
-}
-.product-card:hover { transform: translateY(-5px); box-shadow:0 8px 20px rgba(0,0,0,0.15); }
-.product-card img { max-width:100%; height:auto; border-radius:10px; margin-bottom:12px; }
-.buy-btn { display:inline-block; margin-top:10px; background:#007BFF; color:white; padding:10px 18px; border-radius:10px; text-decoration:none; font-weight:600; transition:0.3s; }
-.buy-btn:hover { background:#0056b3; }
-
-/* About & Contact */
-section { padding:50px 20px; max-width:1000px; margin:auto; text-align:center; background:#D6E6FF; border-radius:15px; margin-bottom:30px; box-shadow:0 3px 10px rgba(0,0,0,0.1);}
-.contact-options { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:20px; }
-.contact-btn { padding:12px 25px; border-radius:30px; background:#25D366; color:white; text-decoration:none; font-weight:600; transition:0.3s; }
-.contact-btn:hover { background:#128C7E; }
-
-/* Footer */
-footer { text-align:center; padding:20px; background:#BFD9FF; border-radius:15px; margin:20px; font-size:0.9em; }
-
-/* Responsive Adjustments */
-@media(max-width:600px){
-    header h1{font-size:2em;}
-    #trackingSteps li{padding:10px; font-size:0.9em;}
-    .search-section input{width:70%;}
-}
-</style>
-</head>
-<body>
-
-<!-- Navbar -->
-<nav class="navbar">
-    <ul>
-        <li><a href="#home" class="active">Home</a></li>
-        <li><a href="#track">Track</a></li>
-        <li><a href="#products">Products</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
-    </ul>
-</nav>
-
-<!-- Header -->
-<header id="home">
-    <img src="Images/logo.png" alt="Package Tracker Logo" class="logo">
-    <h1>PACKAGE TRACKER</h1>
-    <p>Track your shipment quickly and easily</p>
-    <a class="share-btn" href="https://wa.me/?text=Check%20out%20Package%20Tracker:%20https://packagetracker247.netlify.app" target="_blank">Share on WhatsApp</a>
-</header>
-
-<!-- Tracking Steps -->
-<ul id="trackingSteps" class="tracking-steps hidden">
-    <li><i class="fas fa-box"></i> Order Placed</li>
-    <li><i class="fas fa-truck"></i> Shipped</li>
-    <li><i class="fas fa-plane"></i> In Transit</li>
-    <li><i class="fas fa-check"></i> Delivered</li>
-</ul>
-
-<!-- Tracking Form -->
-<main id="track">
-    <form id="trackingForm">
-        <div class="shipment-container" id="shipmentContainer" style="display: none;">
-            <table class="shipment-details">
-                <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
-                <tr><td>Sender:</td><td>George Martin</td></tr>
-                <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
-                <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
-            </table>
-        </div>
-
-        <div class="search-section">
-            <label for="tracking-number">Enter Tracking Number:</label><br>
-            <input type="text" id="tracking-number" placeholder="Enter tracking number">
-            <button type="submit">Track</button>
-        </div>
-
-        <div id="spinner">⏳</div>
-    </form>
-    <div id="status"></div>
-</main>
-
-<!-- Products -->
-<section class="products" id="products">
-    <h2>Our Featured Products</h2>
-    <div class="product-grid">
-        <div class="product-card">
-            <img src="Images/Box.png" alt="Fast Shipping Box">
-            <h3>Fast Shipping Box</h3>
-            <p>Durable and affordable packaging for your shipments.</p>
-            <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Fast%20Shipping%20Box" class="buy-btn" target="_blank">Buy Now</a>
-        </div>
-        <div class="product-card">
-            <img src="Images/Luggage.png" alt="Courier Bag">
-            <h3>Courier Bag</h3>
-            <p>Lightweight waterproof courier bags for safe delivery.</p>
-            <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Courier%20Bag" class="buy-btn" target="_blank">Shop Now</a>
-        </div>
-        <div class="product-card">
-            <img src="Images/Throw.png" alt="Protective Envelope">
-            <h3>Protective Envelope</h3>
-            <p>Bubble-lined envelopes to protect fragile shipments.</p>
-            <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Protective%20Envelope" class="buy-btn" target="_blank">Buy Now</a>
-        </div>
-        <div class="product-card">
-            <img src="Images/Tape.jpg" alt="Sealing Tape">
-            <h3>Sealing Tape</h3>
-            <p>Strong adhesive tape for secure package sealing.</p>
-            <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20Sealing%20Tape" class="buy-btn" target="_blank">Shop Now</a>
-        </div>
-    </div>
-</section>
-
-<!-- About -->
-<section class="about" id="about">
-    <h2>About Us</h2>
-    <p>PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily. It's designed to be fast, secure, and user-friendly.</p>
-</section>
-
-<!-- Contact -->
-<section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <p>Have questions about your shipment or our services? Reach out to us:</p>
-    <div class="contact-options">
-        <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn">💬 WhatsApp</a>
-        <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn">📧 Email</a>
-    </div>
-</section>
-
-<footer>
-    © 2025 Package Tracker – All rights reserved
-</footer>
-
-<!-- JavaScript -->
-<script>
-const correctTrackingNumber="Track-246800000";
-const trackingForm=document.getElementById("trackingForm");
-const statusDiv=document.getElementById("status");
-const shipmentContainer=document.getElementById("shipmentContainer");
-const trackingNumberDisplay=document.getElementById("trackingNumber");
-const trackingSteps=document.querySelectorAll("#trackingSteps li");
-const spinner=document.getElementById("spinner");
-
-trackingForm.addEventListener("submit",function(e){
-    e.preventDefault();
-    const trackingNumberInput=document.getElementById("tracking-number").value.trim();
-    trackingSteps.forEach(li=>li.classList.remove("in-transit"));
-    document.getElementById("trackingSteps").classList.remove("hidden");
-    shipmentContainer.style.display="none";
-    statusDiv.classList.remove("shake");
-    spinner.style.display="none";
-
-    if(trackingNumberInput===correctTrackingNumber){
-        spinner.style.display="block";
-        let dots=0;
-        statusDiv.textContent="🔍 Tracking your package";
-        const loadingInterval=setInterval(()=>{
-            dots=(dots+1)%4;
-            statusDiv.textContent="🔍 Tracking your package"+ ".".repeat(dots);
-        },500);
-
-        setTimeout(()=>trackingSteps[0].classList.add("in-transit"),3000);
-        setTimeout(()=>trackingSteps[1].classList.add("in-transit"),5000);
-        setTimeout(()=>{
-            clearInterval(loadingInterval);
-            spinner.style.display="none";
-            shipmentContainer.style.display="block";
-            trackingNumberDisplay.textContent=trackingNumberInput;
-            statusDiv.textContent="📦 Your package is In Transit!";
-            trackingSteps[2].classList.add("in-transit");
-        },7000);
-
-    }else{
-        statusDiv.textContent="❌ Invalid tracking number. Please try again.";
-        statusDiv.classList.add("shake");
-        setTimeout(()=>statusDiv.classList.remove("shake"),500);
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package Tracker</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    /* Highlight "In Transit" step with smooth fade and subtle pulse */
+    #trackingSteps li.in-transit {
+        color: #007bff;  /* blue text */
+        font-weight: bold;
+        background-color: rgba(0, 123, 255, 0.1); /* light blue background */
+        padding: 5px 10px;
+        border-radius: 5px;
+        transition: all 0.5s ease;
+        box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); /* subtle glowing effect */
+        animation: pulse 2s infinite;
     }
-});
 
-// Navbar highlight
-const sections=document.querySelectorAll("section, header");
-const navLinks=document.querySelectorAll(".navbar a");
-window.addEventListener("scroll",()=>{
-    let current="";
-    sections.forEach(section=>{
-        const sectionTop=section.offsetTop-80;
-        const sectionHeight=section.clientHeight;
-        if(pageYOffset>=sectionTop && pageYOffset<sectionTop+sectionHeight){
-            current=section.getAttribute("id");
+    /* Pulse animation */
+    @keyframes pulse {
+        0% { box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); }
+        50% { box-shadow: 0 0 15px rgba(0, 123, 255, 0.6); }
+        100% { box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); }
+    }
+
+    /* Spinner */
+    #spinner {
+        display: none;
+        text-align: center;
+        margin: 10px 0;
+        font-size: 2em;
+        color: #007bff;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg);}
+        100% { transform: rotate(360deg);}
+    }
+
+    /* Shake animation for invalid input */
+    #status.shake {
+        display: inline-block;
+        animation: shake 0.5s;
+    }
+    @keyframes shake {
+        0% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        50% { transform: translateX(5px); }
+        75% { transform: translateX(-5px); }
+        100% { transform: translateX(0); }
+    }
+    </style>
+</head>
+<body>  
+    <!-- Page Wrapper -->
+    <div class="page-container">
+        <!-- Header -->
+        <header>
+            <h1>📦 PACKAGE TRACKER</h1>
+            <p>Track your shipment quickly and easily</p>
+        </header>
+
+        <!-- Tracking Steps (hidden by default) -->
+        <ul id="trackingSteps" class="tracking-steps hidden">
+            <li>Order Placed</li>
+            <li>Shipped</li>
+            <li><i class="fas fa-plane"></i> In Transit</li>
+            <li>Delivered</li>
+        </ul>
+
+        <div class="ad-section">
+            <p>💡 Tip: Track multiple packages easily with your account!</p>
+            <p>📦 Special: Fast delivery for premium members.</p>
+        </div>
+
+        <!-- Main Content -->
+        <main>
+            <form id="trackingForm">
+                <div class="shipment-container" id="shipmentContainer" style="display: none;">
+                    <table class="shipment-details">
+                        <tr><td>Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
+                        <tr><td>Sender:</td><td>George Martin</td></tr>
+                        <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
+                        <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
+                    </table>
+                    <div class="ad-section">
+                        <p>Check out our premium shipping services!</p>
+                    </div>
+                </div>
+
+                <!-- Input for tracking -->
+                <div class="search-section">
+                    <input type="text" id="tracking-number" placeholder="Enter tracking number">
+                    <button type="submit">Track</button>
+                </div>
+                <!-- Spinner -->
+                <div id="spinner">⏳</div>
+            </form>
+            <div id="status"></div>
+        </main>
+    </div> <!-- End of page-container -->
+
+    <!-- Products / Advert Section -->
+    <section class="products">
+        <h2>Our Featured Products</h2>
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="Box.png" alt="Fast Shipping Box">
+                <h3>Fast Shipping Box</h3>
+                <p>Durable and affordable packaging for your shipments.</p>
+                <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Fast%20Shipping%20Box" class="buy-btn" target="_blank">
+                    Buy Now
+                </a>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="Luggage.png" alt="Courier Bag">
+                <h3>Courier Bag</h3>
+                <p>Lightweight waterproof courier bags for safe delivery.</p>
+                <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Courier%20Bag" class="buy-btn" target="_blank">
+                    Shop Now
+                </a>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="product-card">
+                <img src="Throw.png" alt="Protective Envelope">
+                <h3>Protective Envelope</h3>
+                <p>Bubble-lined envelopes to protect fragile shipments.</p>
+                <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20a%20Protective%20Envelope" class="buy-btn" target="_blank">
+                    Buy Now
+                </a>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="product-card">
+                <img src="Tape.jpg" alt="Sealing Tape">
+                <h3>Sealing Tape</h3>
+                <p>Strong adhesive tape for secure package sealing.</p>
+                <a href="https://wa.me/+2349031408205?text=Hello%20I%20want%20to%20order%20Sealing%20Tape" class="buy-btn" target="_blank">
+                    Shop Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us Section -->
+    <section class="about">
+        <h2>About Us</h2>
+        <p>At Package Tracker, we are dedicated to providing fast, secure, and affordable delivery services. 
+           Whether it’s small parcels or bulk shipments, we ensure your packages arrive safely and on time.</p>
+    </section>
+
+    <!-- Contact Us Section -->
+    <section class="contact">
+        <h2>Contact Us</h2>
+        <p>Have questions about your shipment or our services? Reach out to us:</p>
+        <div class="contact-options">
+            <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn">💬 WhatsApp</a>
+            <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn">📧 Email</a>
+        </div>
+    </section>
+
+    <footer>
+        © 2025 Package Tracker – All rights reserved
+    </footer>
+
+    <!-- JavaScript for 7-second delayed tracking with spinner -->
+    <script>
+    const correctTrackingNumber = "Track-246800000";
+
+    document.getElementById("trackingForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        const trackingNumberInput = document.getElementById("tracking-number").value.trim();
+        const statusDiv = document.getElementById("status");
+        const shipmentContainer = document.getElementById("shipmentContainer");
+        const trackingNumberDisplay = document.getElementById("trackingNumber");
+        const trackingSteps = document.querySelectorAll("#trackingSteps li");
+        const spinner = document.getElementById("spinner");
+
+        // Reset previous state
+        trackingSteps.forEach(li => li.classList.remove("in-transit"));
+        document.getElementById("trackingSteps").classList.remove("hidden");
+        shipmentContainer.style.display = "none";
+        statusDiv.classList.remove("shake");
+        spinner.style.display = "none";
+
+        if (trackingNumberInput === correctTrackingNumber) {
+            // Show spinner and loading animation
+            spinner.style.display = "block";
+            let dots = 0;
+            statusDiv.textContent = "🔍 Tracking your package";
+            const loadingInterval = setInterval(() => {
+                dots = (dots + 1) % 4;
+                statusDiv.textContent = "🔍 Tracking your package" + ".".repeat(dots);
+            }, 500);
+
+            // Step-by-step progress
+            setTimeout(() => trackingSteps[0].classList.add("in-transit"), 3000); // Order Placed
+            setTimeout(() => trackingSteps[1].classList.add("in-transit"), 5000); // Shipped
+            setTimeout(() => {
+                clearInterval(loadingInterval);
+                spinner.style.display = "none";
+                shipmentContainer.style.display = "block";
+                trackingNumberDisplay.textContent = trackingNumberInput;
+                statusDiv.textContent = "✅ Package status updated!";
+                trackingSteps[2].classList.add("in-transit"); // In Transit
+            }, 7000);
+        } else {
+            // Invalid tracking number
+            statusDiv.textContent = "❌ Invalid tracking number. Please try again.";
+            statusDiv.classList.add("shake");
+            setTimeout(() => statusDiv.classList.remove("shake"), 500);
         }
     });
-    navLinks.forEach(link=>{
-        link.classList.remove("active");
-        if(link.getAttribute("href")==="#"+current){link.classList.add("active");}
-    });
-});
-</script>
+    </script>
 </body>
 </html>
