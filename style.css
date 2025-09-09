@@ -392,3 +392,12 @@ html, body {
   100% { background-position: 0% 50%; }
 
 }
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* space between logo and text */
+}
+header img {
+    height: 50px; /* same as inline style, optional */
+}
