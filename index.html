@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Package Tracker</title>
-    
+
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="shortcut icon" href="favicon.png">
-    
+
 <link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/" />
 
 <!-- Open Graph and Twitter Meta Tags -->
@@ -32,6 +32,9 @@
 
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Google reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <style>
 html { scroll-behavior: smooth; }
@@ -79,9 +82,45 @@ html { scroll-behavior: smooth; }
     75% { transform: translateX(-5px); }
     100% { transform: translateX(0); }
 }
+
+/* Overlay for first-time reCAPTCHA */
+#recaptcha-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.95);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+}
+
+#recaptcha-overlay h2 {
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+    color: #007bff;
+}
+
+#recaptcha-overlay p {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 1.1em;
+}
 </style>
 </head>
 <body>
+
+<!-- reCAPTCHA Overlay for first-time visitors -->
+<div id="recaptcha-overlay" style="display:none;">
+    <h2>Welcome to Package Tracker</h2>
+    <p>Please verify that you are human to continue</p>
+    <div class="g-recaptcha" data-sitekey="YOUR_SITE_KEY" data-callback="onRecaptchaSuccess"></div>
+</div>
 
 <!-- Header -->
 <header>
@@ -235,6 +274,40 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
         setTimeout(() => statusDiv.classList.remove("shake"), 500);
     }
 });
+
+// reCAPTCHA first-time visitor handling
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days*24*60*60*1000);
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+
+function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+}
+
+// Show overlay if first-time visitor
+window.addEventListener("load", () => {
+    const visited = getCookie("visited_before");
+    if (!visited) {
+        document.getElementById("recaptcha-overlay").style.display = "flex";
+    } else {
+        setCookie("visited_before", "true", 365);
+    }
+});
+
+// Callback after successful reCAPTCHA
+function onRecaptchaSuccess() {
+    setCookie("visited_before", "true", 365);
+    const overlay = document.getElementById("recaptcha-overlay");
+    overlay.style.display = "none";
+}
 </script>
 
 </body>
