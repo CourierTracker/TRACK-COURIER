@@ -508,4 +508,13 @@ window.addEventListener("load", () => {
     }
 });
 
-// Callback after successful re
+// Callback after successful reCAPTCHA
+function onRecaptchaSuccess() {
+    setCookie("visited_before", "true", 365);
+    const overlay = document.getElementById("recaptcha-overlay");
+    overlay.style.display = "none";
+}
+</script>
+
+</body>
+</html
