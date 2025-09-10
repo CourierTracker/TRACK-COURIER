@@ -30,10 +30,8 @@
 <meta name="twitter:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png" />
 <meta name="twitter:image:alt" content="Package Tracker Logo" />
 
+<link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
 <!-- Google reCAPTCHA -->
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -41,102 +39,21 @@
 <style>
 html { scroll-behavior: smooth; }
 
-body {
-    font-family: 'Poppins', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: #f9fafb;
-    color: #111827;
-}
-
-/* Header */
-header {
-    background: #fff;
-    padding: 1rem 2rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo-title {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.logo-title img {
-    height: 50px;
-    width: auto;
-}
-
-.logo-title h1 {
-    margin: 0;
-    font-size: 1.5rem;
-    color: #2563eb;
-}
-
-.logo-title p {
-    margin: 0;
-    color: #6b7280;
-    font-size: 0.9rem;
-}
-
-nav a {
-    margin-left: 1.5rem;
-    text-decoration: none;
-    color: #374151;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-nav a:hover {
-    color: #2563eb;
-}
-
-/* Page container */
-.page-container {
-    padding: 2rem 1rem;
-    max-width: 1100px;
-    margin: auto;
-}
-
-/* Tracking Steps */
-.tracking-steps {
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-    padding: 0;
-    margin: 1.5rem 0;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.tracking-steps li {
-    padding: 1rem;
-    flex: 1;
-    text-align: center;
-    font-weight: 500;
-    color: #6b7280;
-}
-
-.tracking-steps li i {
-    display: block;
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-}
-
 /* Highlight "In Transit" step */
 #trackingSteps li.in-transit {
-    color: #2563eb;
+    color: #007bff;
     font-weight: bold;
-    background-color: rgba(37, 99, 235, 0.1);
-    border-radius: 8px;
+    background-color: rgba(0, 123, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
     transition: all 0.5s ease;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); }
+    50% { box-shadow: 0 0 15px rgba(0, 123, 255, 0.6); }
+    100% { box-shadow: 0 0 8px rgba(0, 123, 255, 0.3); }
 }
 
 /* Spinner */
@@ -145,7 +62,7 @@ nav a:hover {
     text-align: center;
     margin: 10px 0;
     font-size: 2em;
-    color: #2563eb;
+    color: #007bff;
     animation: spin 1s linear infinite;
 }
 @keyframes spin {
@@ -166,133 +83,7 @@ nav a:hover {
     100% { transform: translateX(0); }
 }
 
-/* Search Section */
-.search-section {
-    margin: 2rem auto;
-    text-align: center;
-}
-
-.search-section input {
-    width: 60%;
-    padding: 0.75rem;
-    border: 1px solid #d1d5db;
-    border-radius: 8px;
-    outline: none;
-    margin-right: 0.5rem;
-    font-size: 1rem;
-}
-
-.search-section button {
-    background: #2563eb;
-    color: white;
-    padding: 0.75rem 1.25rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background 0.2s, box-shadow 0.2s;
-}
-
-.search-section button:hover {
-    background: #1d4ed8;
-    box-shadow: 0 4px 8px rgba(37,99,235,0.3);
-}
-
-/* Products */
-.products {
-    margin-top: 3rem;
-    text-align: center;
-}
-
-.products h2 {
-    margin-bottom: 1.5rem;
-    font-size: 1.8rem;
-    color: #111827;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-}
-
-.product-card {
-    background: #fff;
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    text-align: center;
-}
-
-.product-card img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-}
-
-.buy-btn {
-    display: inline-block;
-    margin-top: 0.75rem;
-    padding: 0.6rem 1.2rem;
-    background: #2563eb;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background 0.2s, box-shadow 0.2s;
-}
-
-.buy-btn:hover {
-    background: #1d4ed8;
-    box-shadow: 0 4px 8px rgba(37,99,235,0.3);
-}
-
-/* Sections */
-.about, .contact, .shipment-container {
-    margin-top: 3rem;
-    background: #fff;
-    padding: 2rem;
-    border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-}
-
-.about h2, .contact h2 {
-    margin-bottom: 1rem;
-    color: #111827;
-}
-
-.contact-options {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-top: 1rem;
-}
-
-.contact-btn {
-    padding: 0.75rem 1.25rem;
-    background: #2563eb;
-    color: white;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.contact-btn:hover {
-    background: #1d4ed8;
-}
-
-/* Footer */
-footer {
-    margin-top: 3rem;
-    padding: 1rem;
-    background: #f3f4f6;
-    text-align: center;
-    font-size: 0.9rem;
-    color: #6b7280;
-}
-
-/* reCAPTCHA overlay */
+/* Overlay for first-time reCAPTCHA */
 #recaptcha-overlay {
     position: fixed;
     top: 0;
@@ -301,7 +92,7 @@ footer {
     height: 100%;
     background: rgba(255,255,255,0.95);
     z-index: 9999;
-    display: none;
+    display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
@@ -310,8 +101,9 @@ footer {
 }
 
 #recaptcha-overlay h2 {
+    font-family: Arial, sans-serif;
     margin-bottom: 20px;
-    color: #2563eb;
+    color: #007bff;
 }
 
 #recaptcha-overlay p {
@@ -323,8 +115,9 @@ footer {
 </head>
 <body>
 
-<!-- reCAPTCHA Overlay -->
-<div id="recaptcha-overlay">
+
+<!-- reCAPTCHA Overlay for first-time visitors -->
+<div id="recaptcha-overlay" style="display:none;">
     <h2>Welcome to Package Tracker</h2>
     <p>Please verify that you are human to continue</p>
     <div class="g-recaptcha" 
@@ -348,7 +141,7 @@ footer {
   </nav>
 </header>
 
-<!-- Main Content -->
+<!-- Main Page Content -->
 <div id="home" class="page-container">
 
   <ul id="trackingSteps" class="tracking-steps hidden">
@@ -373,6 +166,9 @@ footer {
           <tr><td>Receiver:</td><td>Jane Anabel</td></tr>
           <tr><td>Estimated Delivery:</td><td>15 Sep 2025</td></tr>
         </table>
+        <div class="ad-section">
+          <p>Check out our premium shipping services!</p>
+        </div>
       </div>
 
       <div class="search-section">
@@ -385,7 +181,7 @@ footer {
     <div id="status"></div>
   </main>
 
-  <!-- Products -->
+  <!-- Products Section -->
   <section class="products">
     <h2>Our Featured Products</h2>
     <div class="product-grid">
@@ -416,13 +212,13 @@ footer {
     </div>
   </section>
 
-  <!-- About -->
+  <!-- About Section -->
   <section id="about" class="about">
     <h2>About Us</h2>
-    <p>PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily. It's designed to be fast, secure and user-friendly. </p>
+    <p>PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily. It's designed to be fast, secure and user - friendly. </p>
   </section>
 
-  <!-- Contact -->
+  <!-- Contact Section -->
   <section id="contact" class="contact">
     <h2>Contact Us</h2>
     <p>Have questions about your shipment or our services? Reach out to us:</p>
@@ -432,7 +228,7 @@ footer {
     </div>
   </section>
 
-</div> <!-- End page-container -->
+</div> <!-- End of page-container -->
 
 <footer>
   © 2025 Package Tracker – All rights reserved
@@ -482,7 +278,7 @@ document.getElementById("trackingForm").addEventListener("submit", function(e) {
     }
 });
 
-// Cookie functions
+// reCAPTCHA first-time visitor handling
 function setCookie(name, value, days) {
     let expires = "";
     if (days) {
@@ -492,6 +288,7 @@ function setCookie(name, value, days) {
     }
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
+
 function getCookie(name) {
     const value = "; " + document.cookie;
     const parts = value.split("; " + name + "=");
@@ -517,4 +314,4 @@ function onRecaptchaSuccess() {
 </script>
 
 </body>
-</html
+</html>                                                                               
