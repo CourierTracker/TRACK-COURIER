@@ -486,11 +486,23 @@ body::after {
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 600px;   /* adjust ship size */
-  height: 400px;  /* keep proportions */
+  width: 600px;
+  height: 400px;
   background: url('ship.png') no-repeat center bottom;
   background-size: contain;
-  opacity: 0.8;   /* adjust transparency */
+  opacity: 0.8;
   z-index: -1;
   pointer-events: none;
+
+  /* Animation */
+  animation: floatShip 8s ease-in-out infinite;
+}
+
+@keyframes floatShip {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-15px);
+  }
 }
