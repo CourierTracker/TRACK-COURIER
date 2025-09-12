@@ -476,10 +476,6 @@ body::before {
   height: 100%;
   background: url('plane.png') no-repeat center center;
   background-size: contain;
-  opacity: 0.5; /* try higher first to confirm it works */
+  opacity: 0.5; /* adjust visibility */
   z-index: -1;
-}
-
-body {
-  background: red !important;
 }
