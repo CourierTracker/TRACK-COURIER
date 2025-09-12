@@ -479,3 +479,7 @@ body::before {
   opacity: 0.5; /* try higher first to confirm it works */
   z-index: -1;
 }
+
+body {
+  background: red !important;
+}
