@@ -476,6 +476,6 @@ body::before {
   height: 100%;
   background: url('plane.png') no-repeat center center;
   background-size: contain;
-  opacity: 0.08; /* faint watermark */
-  z-index: -1; /* keeps it behind everything */
+  opacity: 0.5; /* try higher first to confirm it works */
+  z-index: -1;
 }
