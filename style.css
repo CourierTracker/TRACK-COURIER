@@ -495,7 +495,7 @@ body::after {
   position: fixed;
   bottom: 0;
   left: 50%;
-  width: 600px;   /* ship size */
+  width: 600px;
   height: 400px;
   background: url('ship.png') no-repeat center bottom;
   background-size: contain;
@@ -508,10 +508,7 @@ body::after {
 }
 
 @keyframes floatShip {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
-  }
-  50% {
-    transform: translateX(-50%) translateY(-15px);
-  }
+  0%   { transform: translateX(-50%) translateY(0); }
+  50%  { transform: translateX(-50%) translateY(-15px); }
+  100% { transform: translateX(-50%) translateY(0); }
 }
