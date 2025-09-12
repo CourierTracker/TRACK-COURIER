@@ -479,3 +479,18 @@ body::before {
   opacity: 0.2;   /* adjust transparency */
   z-index: -1;    /* keep it behind everything */
 }
+
+body::after {
+  content: "";
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 500px;   /* adjust size */
+  height: 300px;  /* keeps image proportion */
+  background: url('ship.png') no-repeat center bottom;
+  background-size: contain;
+  opacity: 0.8;   /* make transparent */
+  z-index: -1;    /* keep behind content */
+  pointer-events: none; /* don’t block clicks */
+}
