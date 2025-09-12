@@ -113,15 +113,7 @@ html { scroll-behavior: smooth; }
 }
 </style>
 </head>
-<body>
-    
-<!-- Plane at the top, behind content -->
-<img id="plane" src="plane.png" 
-     style="position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 400px; z-index: 1;">
-
-<!-- Ship at the bottom, behind content -->
-<img id="ship" src="ship.png" 
-     style="position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 400px; z-index: 1;">
+<body style="background: url('plane.png') no-repeat center center; background-size: cover;">
 
 <!-- reCAPTCHA Overlay for first-time visitors -->
 <div id="recaptcha-overlay" style="display:none;">
@@ -318,22 +310,6 @@ function onRecaptchaSuccess() {
     const overlay = document.getElementById("recaptcha-overlay");
     overlay.style.display = "none";
 }
-
-function makeMovable(el) {
-    let isDragging = false;
-
-    el.addEventListener("mousedown", () => { isDragging = true; });
-    document.addEventListener("mouseup", () => { isDragging = false; });
-    document.addEventListener("mousemove", (e) => {
-        if (isDragging) {
-            el.style.left = e.pageX - el.width / 2 + "px";
-            el.style.top = e.pageY - el.height / 2 + "px";
-        }
-    });
-}
-
-makeMovable(document.getElementById("plane"));
-makeMovable(document.getElementById("ship"));
 </script>
         
 </body>
