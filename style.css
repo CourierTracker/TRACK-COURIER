@@ -467,13 +467,15 @@ header nav a:hover {
     }
 }
 
-html, body {
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-}
-
-body {
-  background-image: url("plane.png") !important;
-  background-repeat: no-repeat !important;
-  background-position: center center !important;
-  background-size: cover !important;
+  background: url("plane.png") no-repeat center center;
+  background-size: cover;
+  opacity: 0.2;   /* adjust transparency */
+  z-index: -1;    /* keep it behind everything */
 }
