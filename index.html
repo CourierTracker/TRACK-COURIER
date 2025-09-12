@@ -318,6 +318,22 @@ function onRecaptchaSuccess() {
     const overlay = document.getElementById("recaptcha-overlay");
     overlay.style.display = "none";
 }
+
+function makeMovable(el) {
+    let isDragging = false;
+
+    el.addEventListener("mousedown", () => { isDragging = true; });
+    document.addEventListener("mouseup", () => { isDragging = false; });
+    document.addEventListener("mousemove", (e) => {
+        if (isDragging) {
+            el.style.left = e.pageX - el.width / 2 + "px";
+            el.style.top = e.pageY - el.height / 2 + "px";
+        }
+    });
+}
+
+makeMovable(document.getElementById("plane"));
+makeMovable(document.getElementById("ship"));
 </script>
         
 </body>
