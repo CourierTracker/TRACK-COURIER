@@ -467,7 +467,13 @@ header nav a:hover {
     }
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
-  background: url('plane.png') no-repeat center center;
-  background-size: cover;
+  background-image: url("plane.png") !important;
+  background-repeat: no-repeat !important;
+  background-position: center center !important;
+  background-size: cover !important;
 }
