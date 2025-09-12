@@ -467,26 +467,35 @@ header nav a:hover {
     }
 }
 
+/* === Airplane Background === */
 body::before {
   content: "";
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: url("plane.png") no-repeat center center;
-  background-size: cover;
-  opacity: 0.2;   /* adjust transparency */
-  z-index: -1;    /* keep it behind everything */
+  top: 50px; /* move it down from top */
+  left: 20%;
+  width: 300px;   /* airplane size */
+  height: 200px;
+  background: url('plane.png') no-repeat center center;
+  background-size: contain;
+  opacity: 0.5;
+  z-index: -1;
+
+  /* plane animation */
+  animation: flyPlane 20s linear infinite;
 }
 
+@keyframes flyPlane {
+  0% { left: -300px; top: 80px; }
+  100% { left: 100%; top: 60px; }
+}
+
+/* === Ship Background === */
 body::after {
   content: "";
   position: fixed;
   bottom: 0;
   left: 50%;
-  transform: translateX(-50%);
-  width: 600px;
+  width: 600px;   /* ship size */
   height: 400px;
   background: url('ship.png') no-repeat center bottom;
   background-size: contain;
@@ -494,8 +503,8 @@ body::after {
   z-index: -1;
   pointer-events: none;
 
-  /* Animation */
-  animation: floatShip 8s ease-in-out infinite;
+  /* floating animation */
+  animation: floatShip 6s ease-in-out infinite;
 }
 
 @keyframes floatShip {
