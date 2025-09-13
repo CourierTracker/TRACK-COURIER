@@ -577,3 +577,43 @@ body::after {
     0% { left: -120px; }
     100% { left: 110%; }
 }
+
+
+.sea-section {
+    position: relative;
+    width: 100%;
+    height: 300px; /* height of the sea */
+    background: linear-gradient(to top, #1E90FF, #00BFFF); /* deep blue to light blue */
+    overflow: hidden;
+}
+
+#movingShip {
+    position: absolute;
+    bottom: 30px; /* ship floats near bottom */
+    left: -150px; /* start off-screen */
+    width: 150px; /* ship size */
+    animation: sail 20s linear infinite;
+}
+
+@keyframes sail {
+    0% { left: -200px; }
+    100% { left: 110%; }
+}
+
+.wave {
+    position: absolute;
+    bottom: 0;
+    width: 200%;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 100%;
+    animation: waveMove 10s linear infinite;
+}
+
+.wave1 { animation-duration: 12s; bottom: 20px; opacity: 0.3; }
+.wave2 { animation-duration: 15s; bottom: 10px; opacity: 0.2; }
+
+@keyframes waveMove {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
