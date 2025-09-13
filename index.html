@@ -347,7 +347,25 @@ function onRecaptchaSuccess() {
     const overlay = document.getElementById("recaptcha-overlay");
     overlay.style.display = "none";
 }
+
+<script>
+document.getElementById("languageSelect").addEventListener("change", function() {
+  const lang = this.value;
+  
+  // Example: different HTML files for each language
+  if (lang === "en") {
+    window.location.href = "index.html";
+  } else if (lang === "fr") {
+    window.location.href = "index-fr.html";
+  } else if (lang === "es") {
+    window.location.href = "index-es.html";
+  } else if (lang === "de") {
+    window.location.href = "index-de.html";
+  } else if (lang === "zh") {
+    window.location.href = "index-zh.html";
+  }
+});
 </script>
-        
+    
 </body>
 </html>                                                                           
