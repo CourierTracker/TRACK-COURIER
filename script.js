@@ -14,18 +14,23 @@ trackingForm.addEventListener('submit', (e) => {
     e.preventDefault();
     const trackingNumber = trackingNumberInput.value.trim();
 
-    // Validate format
+    // Validate format: Track- followed by 6-10 digits
     const regex = /^Track-\d{6,10}$/i;
     if (!regex.test(trackingNumber)) {
         alert("Invalid tracking number! Use format: Track-246800000");
+        trackingNumberInput.classList.add('vibrate');
+        setTimeout(() => trackingNumberInput.classList.remove('vibrate'), 500);
         return;
     }
 
-    // Reset
+    // Reset UI
     shipmentContainer.style.display = "none";
     statusDiv.textContent = "";
     const steps = trackingSteps.querySelectorAll('li');
-    steps.forEach(step => step.classList.remove('in-transit'));
+    steps.forEach(step => {
+        step.classList.remove('in-transit');
+        step.style.backgroundColor = "";
+    });
     trackingSteps.classList.remove('hidden');
 
     // Show spinner
@@ -37,22 +42,47 @@ trackingForm.addEventListener('submit', (e) => {
         statusDiv.textContent = "🔍 Tracking your package" + ".".repeat(dots);
     }, 500);
 
-    // Sequential step highlighting
+    // Sequential step highlighting with 7-second delay before "In Transit"
     setTimeout(() => steps[0].classList.add('in-transit'), 2000); // Placed
     setTimeout(() => steps[1].classList.add('in-transit'), 4000); // Shipped
+
     setTimeout(() => {
         clearInterval(loadingInterval);
         spinner.style.display = "none";
+
         if (trackingNumber === correctTrackingNumber) {
             steps[2].classList.add('in-transit'); // In Transit
+            steps[2].style.backgroundColor = "lightblue"; // highlight correct
             shipmentContainer.style.display = "block";
             statusDiv.textContent = "✅ Shipment found!";
         } else {
+            // Vibrate input for wrong tracking number
+            trackingNumberInput.classList.add('vibrate');
+            setTimeout(() => trackingNumberInput.classList.remove('vibrate'), 500);
+
             statusDiv.textContent = "❌ No results for this tracking number.";
         }
-    }, 6000);
-    setTimeout(() => steps[3].classList.add('in-transit'), 8000); // Delivered
+    }, 7000); // 7-second delay
+
+    setTimeout(() => steps[3].classList.add('in-transit'), 9000); // Delivered
 });
+
+// =======================
+// CSS Vibrate class
+// =======================
+/* Add this in your CSS file:
+.vibrate {
+    animation: vibrate 0.2s linear 2;
+}
+
+@keyframes vibrate {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+*/
 
 // =======================
 // Translation Logic
