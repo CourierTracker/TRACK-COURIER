@@ -84,10 +84,10 @@ html { scroll-behavior: smooth; }
 <div id="home" class="page-container">
 
   <ul id="trackingSteps" class="tracking-steps hidden">
-    <li id="step-placed"><i class="fas fa-cart-plus"></i> Order Placed</li>
-    <li id="step-shipped"><i class="fas fa-truck"></i> Shipped</li>
-    <li id="step-transit"><i class="fas fa-plane"></i> In Transit</li>
-    <li id="step-delivered"><i class="fas fa-box-open"></i> Delivered</li>
+    <li id="step-placed"><i class="fas fa-cart-plus"></i> <span>Order Placed</span></li>
+    <li id="step-shipped"><i class="fas fa-truck"></i> <span>Shipped</span></li>
+    <li id="step-transit"><i class="fas fa-plane"></i> <span>In Transit</span></li>
+    <li id="step-delivered"><i class="fas fa-box-open"></i> <span>Delivered</span></li>
   </ul>
 
   <div class="ad-section">
@@ -186,41 +186,69 @@ async function loadLanguage(lang) {
     const response = await fetch("languages.json");
     const translations = await response.json();
 
-    // Header & Hero
-    document.getElementById("site-title").textContent = translations[lang].title;
-    document.getElementById("site-subtitle").textContent = translations[lang].subtitle;
-    document.getElementById("nav-home").textContent = translations[lang].navHome;
-    document.getElementById("nav-about").textContent = translations[lang].navAbout;
-    document.getElementById("nav-contact").textContent = translations[lang].navContact;
+    const t = translations[lang];
 
-    // About
-    document.getElementById("about-title").textContent = translations[lang].aboutTitle;
-    document.getElementById("about-text").textContent = translations[lang].about;
+    // Header
+    document.getElementById("site-title").textContent = t.title;
+    document.getElementById("site-subtitle").textContent = t.subtitle;
+    document.getElementById("nav-home").textContent = t.navHome;
+    document.getElementById("nav-about").textContent = t.navAbout;
+    document.getElementById("nav-contact").textContent = t.navContact;
 
-    // Contact
-    document.getElementById("contact-title").textContent = translations[lang].contactTitle;
-    document.getElementById("contact-text").textContent = translations[lang].contact;
+    // reCAPTCHA overlay
+    document.getElementById("welcome-title").textContent = t.welcomeTitle;
+    document.getElementById("welcome-text").textContent = t.welcomeText;
+
+    // Tracking steps
+    document.querySelector("#step-placed span").textContent = t.stepPlaced;
+    document.querySelector("#step-shipped span").textContent = t.stepShipped;
+    document.querySelector("#step-transit span").textContent = t.stepTransit;
+    document.querySelector("#step-delivered span").textContent = t.stepDelivered;
+
+    // Tracking labels
+    document.getElementById("label-tracking").textContent = t.labelTracking;
+    document.getElementById("label-sender").textContent = t.labelSender;
+    document.getElementById("label-receiver").textContent = t.labelReceiver;
+    document.getElementById("label-estimated").textContent = t.labelEstimated;
+
+    // Buttons
+    document.getElementById("track-btn").textContent = t.trackBtn;
+
+    // Extra texts
+    document.getElementById("tip-text").textContent = t.tipText;
+    document.getElementById("special-text").textContent = t.specialText;
+    document.getElementById("premium-text").textContent = t.premiumText;
 
     // Products
-    document.getElementById("products-title").textContent = translations[lang].productsTitle;
-    document.getElementById("prod1-title").textContent = translations[lang].prod1Title;
-    document.getElementById("prod1-text").textContent = translations[lang].prod1Text;
-    document.getElementById("prod1-btn").textContent = translations[lang].prod1Btn;
+    document.getElementById("products-title").textContent = t.productsTitle;
+    document.getElementById("prod1-title").textContent = t.prod1Title;
+    document.getElementById("prod1-text").textContent = t.prod1Text;
+    document.getElementById("prod1-btn").textContent = t.prod1Btn;
 
-    document.getElementById("prod2-title").textContent = translations[lang].prod2Title;
-    document.getElementById("prod2-text").textContent = translations[lang].prod2Text;
-    document.getElementById("prod2-btn").textContent = translations[lang].prod2Btn;
+    document.getElementById("prod2-title").textContent = t.prod2Title;
+    document.getElementById("prod2-text").textContent = t.prod2Text;
+    document.getElementById("prod2-btn").textContent = t.prod2Btn;
 
-    document.getElementById("prod3-title").textContent = translations[lang].prod3Title;
-    document.getElementById("prod3-text").textContent = translations[lang].prod3Text;
-    document.getElementById("prod3-btn").textContent = translations[lang].prod3Btn;
+    document.getElementById("prod3-title").textContent = t.prod3Title;
+    document.getElementById("prod3-text").textContent = t.prod3Text;
+    document.getElementById("prod3-btn").textContent = t.prod3Btn;
 
-    document.getElementById("prod4-title").textContent = translations[lang].prod4Title;
-    document.getElementById("prod4-text").textContent = translations[lang].prod4Text;
-    document.getElementById("prod4-btn").textContent = translations[lang].prod4Btn;
+    document.getElementById("prod4-title").textContent = t.prod4Title;
+    document.getElementById("prod4-text").textContent = t.prod4Text;
+    document.getElementById("prod4-btn").textContent = t.prod4Btn;
+
+    // About
+    document.getElementById("about-title").textContent = t.aboutTitle;
+    document.getElementById("about-text").textContent = t.about;
+
+    // Contact
+    document.getElementById("contact-title").textContent = t.contactTitle;
+    document.getElementById("contact-text").textContent = t.contact;
+    document.getElementById("whatsapp-btn").textContent = t.whatsappBtn;
+    document.getElementById("email-btn").textContent = t.emailBtn;
 
     // Footer
-    document.getElementById("footer-text").textContent = translations[lang].footer;
+    document.getElementById("footer-text").textContent = t.footer;
   } catch (error) {
     console.error("Error loading language:", error);
   }
