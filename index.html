@@ -113,6 +113,27 @@ html { scroll-behavior: smooth; }
 }
 </style>
 </head>
+
+<script>
+async function loadLanguage(lang) {
+  try {
+    const response = await fetch("languages.json");
+    const translations = await response.json();
+
+    // Update texts
+    document.getElementById("site-title").textContent = translations[lang].title;
+    document.querySelector("#about p").textContent = translations[lang].about;
+    document.querySelector("#contact p").textContent = translations[lang].contact;
+  } catch (error) {
+    console.error("Error loading language:", error);
+  }
+}
+
+document.getElementById("languageSelect").addEventListener("change", function() {
+  loadLanguage(this.value);
+});
+</script>
+    
 <body>
 
 <!-- Top Hero Section -->
