@@ -1,0 +1,17 @@
+{
+  "en": {
+    "title": "PACKAGE TRACKER",
+    "about": "PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily. It's designed to be fast, secure and user-friendly.",
+    "contact": "Have questions about your shipment or our services? Reach out to us:"
+  },
+  "fr": {
+    "title": "SUIVI DE COLIS",
+    "about": "PACKAGE-TRACKER est un site simple de suivi de colis qui permet aux utilisateurs de vérifier rapidement et facilement l'état de livraison de leurs colis. Il est conçu pour être rapide, sécurisé et convivial.",
+    "contact": "Vous avez des questions sur votre envoi ou nos services ? Contactez-nous :"
+  },
+  "es": {
+    "title": "RASTREADOR DE PAQUETES",
+    "about": "PACKAGE-TRACKER es un sitio sencillo de seguimiento de mensajería que permite a los usuarios verificar rápidamente y fácilmente el estado de entrega de sus paquetes. Está diseñado para ser rápido, seguro y fácil de usar.",
+    "contact": "¿Tienes preguntas sobre tu envío o nuestros servicios? Contáctanos:"
+  }
+}
