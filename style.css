@@ -535,3 +535,45 @@ body::after {
     0% { left: -150px; }
     100% { left: 110%; }
 }
+
+/* Cloud base style */
+.cloud {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.1));
+}
+
+/* Individual cloud sizes and positions */
+.cloud1 {
+    width: 120px; height: 60px;
+    top: 40px; left: -150px;
+    animation: moveCloud1 60s linear infinite;
+}
+
+.cloud2 {
+    width: 80px; height: 40px;
+    top: 100px; left: -100px;
+    animation: moveCloud2 80s linear infinite;
+}
+
+.cloud3 {
+    width: 100px; height: 50px;
+    top: 150px; left: -120px;
+    animation: moveCloud3 100s linear infinite;
+}
+
+/* Cloud animations */
+@keyframes moveCloud1 {
+    0% { left: -150px; }
+    100% { left: 110%; }
+}
+@keyframes moveCloud2 {
+    0% { left: -100px; }
+    100% { left: 110%; }
+}
+@keyframes moveCloud3 {
+    0% { left: -120px; }
+    100% { left: 110%; }
+}
