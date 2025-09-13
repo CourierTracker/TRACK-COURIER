@@ -40,8 +40,13 @@ trackingForm.addEventListener('submit', (e) => {
     // Correct tracking number → show shipment container
     shipmentContainer.style.display = "block";
 
-    // Sequential highlighting
-    setTimeout(() => steps[0].style.backgroundColor = "lightblue", 3000); // Order Placed
-    setTimeout(() => steps[1].style.backgroundColor = "lightblue", 6000); // Shipped
-    setTimeout(() => steps[2].style.backgroundColor = "lightblue", 10000); // In Transit
+    // Sequential highlighting function
+    const delays = [3000, 3000, 4000]; // Order Placed, Shipped, In Transit
+    steps.forEach((step, index) => {
+        const delay = delays.slice(0, index + 1).reduce((a, b) => a + b, 0);
+        setTimeout(() => {
+            step.style.backgroundColor = "lightblue";
+            step.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, delay);
+    });
 });
