@@ -13,5 +13,15 @@
     "title": "RASTREADOR DE PAQUETES",
     "about": "PACKAGE-TRACKER es un sitio sencillo de seguimiento de mensajería que permite a los usuarios verificar rápidamente y fácilmente el estado de entrega de sus paquetes. Está diseñado para ser rápido, seguro y fácil de usar.",
     "contact": "¿Tienes preguntas sobre tu envío o nuestros servicios? Contáctanos:"
+  },
+  "de": {
+    "title": "PAKETVERFOLGER",
+    "about": "PACKAGE-TRACKER ist eine einfache Kurier-Tracking-Website, die es den Nutzern ermöglicht, den Lieferstatus ihrer Pakete schnell und einfach zu überprüfen. Sie ist schnell, sicher und benutzerfreundlich.",
+    "contact": "Haben Sie Fragen zu Ihrer Sendung oder unseren Dienstleistungen? Kontaktieren Sie uns:"
+  },
+  "zh": {
+    "title": "包裹追踪",
+    "about": "PACKAGE-TRACKER 是一个简单的快递追踪网站，用户可以快速轻松地查询包裹的配送状态。它旨在快速、安全且用户友好。",
+    "contact": "对您的货物或我们的服务有疑问？请联系我们："
   }
 }
