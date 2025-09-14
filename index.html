@@ -1,165 +1,136 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Package Tracker</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link rel="shortcut icon" href="favicon.png">
-  <link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/" />
-
-  <!-- Open Graph / Twitter -->
-  <meta property="og:title" content="Package Tracker">
-  <meta property="og:description" content="Track your packages easily with our simple tracking website.">
-  <meta property="og:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">
-  <meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/">
-  <meta property="og:type" content="website">
-  <meta name="twitter:card" content="summary_large_image">
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- reCAPTCHA (kept as in your file) -->
-  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-</head>
-<body>
-
-  <!-- ReCAPTCHA overlay (hidden by default) -->
-  <div id="recaptcha-overlay" class="hidden" aria-hidden="true">
-    <h2 id="welcome-title">Welcome to Package Tracker</h2>
-    <p id="welcome-text">Please verify that you are human to continue</p>
-    <div class="g-recaptcha" data-sitekey="6Le4h8QrAAAAAIv3HtuDMbUCz_8VLZBEWBw2Mozg"></div>
-  </div>
-
-  <!-- Header -->
-  <header>
-    <div class="language-switcher">
-      <select id="languageSelect" aria-label="Select language">
-        <option value="en">🇬🇧 English</option>
-        <option value="fr">🇫🇷 Français</option>
-        <option value="es">🇪🇸 Español</option>
-        <option value="de">🇩🇪 Deutsch</option>
-        <option value="zh">🇨🇳 中文</option>
-      </select>
-    </div>
-
-    <div class="logo-title">
-      <img src="logo.png" alt="Package Tracker Logo" />
-      <div>
-        <h1 id="site-title">PACKAGE TRACKER</h1>
-        <p id="site-subtitle">Track your shipments easily</p>
-      </div>
-    </div>
-
-    <nav>
-      <a href="#home" id="nav-home">Home</a>
-      <a href="#about" id="nav-about">About</a>
-      <a href="#contact" id="nav-contact">Contact</a>
-    </nav>
-  </header>
-
-  <!-- Hero -->
-  <section id="hero" class="hero-section">
-    <div class="cloud cloud1"></div>
-    <div class="cloud cloud2"></div>
-    <div class="cloud cloud3"></div>
-    <img id="movingPlane" src="plane.png" alt="Flying Plane" />
-  </section>
-
-  <!-- Main -->
-  <main id="home" class="page-container">
-
-    <!-- Tracking Steps (hidden until search) -->
-    <ul id="trackingSteps" class="tracking-steps hidden" aria-live="polite">
-      <li id="step-placed"><i class="fas fa-cart-plus"></i> <span id="step-placed-text">Order Placed</span></li>
-      <li id="step-shipped"><i class="fas fa-truck"></i> <span id="step-shipped-text">Shipped</span></li>
-      <li id="step-transit"><i class="fas fa-plane"></i> <span id="step-transit-text">In Transit</span></li>
-      <li id="step-delivered"><i class="fas fa-box-open"></i> <span id="step-delivered-text">Delivered</span></li>
-    </ul>
-
-    <div class="ad-section">
-      <p id="tip-text">💡 Tip: Track multiple packages easily with your account!</p>
-      <p id="special-text">📦 Special: Fast delivery for premium members.</p>
-    </div>
-
-    <!-- Form -->
-    <form id="trackingForm" autocomplete="off" novalidate>
-      <div class="search-section">
-        <input type="text" id="tracking-number" placeholder="Enter tracking number" aria-label="Tracking number">
-        <button type="submit" id="track-btn">Track</button>
-      </div>
-
-      <!-- spinner -->
-      <div id="spinner" class="spinner" aria-hidden="true" title="Loading">⏳</div>
-
-      <!-- Shipment details -->
-      <div class="shipment-container" id="shipmentContainer" style="display:none;">
-        <table class="shipment-details">
-          <tr><td id="label-tracking">Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
-          <tr><td id="label-sender">Sender:</td><td id="senderName">George Martin</td></tr>
-          <tr><td id="label-receiver">Receiver:</td><td id="receiverName">Jane Anabel</td></tr>
-          <tr><td id="label-estimated">Estimated Delivery:</td><td id="estimatedDate">15 Sep 2025</td></tr>
-        </table>
-        <div class="ad-section"><p id="premium-text">Check out our premium shipping services!</p></div>
-      </div>
-    </form>
-
-    <!-- Products -->
-    <section class="products">
-      <h2 id="products-title">Our Featured Products</h2>
-      <div class="product-grid">
-        <div class="product-card">
-          <img src="Box.png" alt="Fast Shipping Box">
-          <h3 id="prod1-title">Fast Shipping Box</h3>
-          <p id="prod1-text">Durable and affordable packaging for your shipments.</p>
-          <a href="#" class="buy-btn" id="prod1-btn" target="_blank">Buy Now</a>
-        </div>
-        <div class="product-card">
-          <img src="Luggage.png" alt="Courier Bag">
-          <h3 id="prod2-title">Courier Bag</h3>
-          <p id="prod2-text">Lightweight waterproof courier bags for safe delivery.</p>
-          <a href="#" class="buy-btn" id="prod2-btn" target="_blank">Shop Now</a>
-        </div>
-        <div class="product-card">
-          <img src="Throw.png" alt="Protective Envelope">
-          <h3 id="prod3-title">Protective Envelope</h3>
-          <p id="prod3-text">Bubble-lined envelopes to protect fragile shipments.</p>
-          <a href="#" class="buy-btn" id="prod3-btn" target="_blank">Buy Now</a>
-        </div>
-        <div class="product-card">
-          <img src="Tape.jpg" alt="Sealing Tape">
-          <h3 id="prod4-title">Sealing Tape</h3>
-          <p id="prod4-text">Strong adhesive tape for secure package sealing.</p>
-          <a href="#" class="buy-btn" id="prod4-btn" target="_blank">Shop Now</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="about">
-      <h2 id="about-title">About Us</h2>
-      <p id="about-text">PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily.</p>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="contact">
-      <h2 id="contact-title">Contact Us</h2>
-      <p id="contact-text">Have questions about your shipment or our services? Reach out to us:</p>
-      <div class="contact-options">
-        <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn" id="whatsapp-btn">💬 WhatsApp</a>
-        <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn" id="email-btn">📧 Email</a>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p id="footer-text">© 2025 Package Tracker – All rights reserved</p>
-  </footer>
-
-  <!-- Scripts -->
-  <script src="scripts.js"></script>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Package Tracker</title>  
+<link rel="icon" type="image/png" href="favicon.png">  
+<link rel="shortcut icon" href="favicon.png">  
+<link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/" />  <!-- Open Graph and Twitter Meta Tags -->  <meta property="og:title" content="Package Tracker">  
+<meta property="og:description" content="Track your packages easily with our simple tracking website.">  
+<meta property="og:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">  
+<meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/">  
+<meta property="og:type" content="website">  
+<meta property="og:site_name" content="Package Tracker">  
+<meta property="og:locale" content="en_US">  
+<meta name="twitter:card" content="summary_large_image">  
+<meta name="twitter:title" content="Package Tracker">  
+<meta name="twitter:description" content="Track your packages easily with our simple tracking website.">  
+<meta name="twitter:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">  <!-- CSS -->  <link rel="stylesheet" href="style.css">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <!-- Google reCAPTCHA -->  <script src="https://www.google.com/recaptcha/api.js" async defer></script>  <style>  
+html { scroll-behavior: smooth; }  
+  
+/* hidden helper */  
+.hidden { display: none !important; }  
+  
+/* Spinner */  
+#spinner { display:none; font-size: 20px; margin-top: 10px; text-align:center; }  
+  
+/* Shake animation */  
+@keyframes shake {  
+  0% { transform: translateX(0); }  
+  25% { transform: translateX(-5px); }  
+  50% { transform: translateX(5px); }  
+  75% { transform: translateX(-5px); }  
+  100% { transform: translateX(0); }  
+}  
+.shake { animation: shake 0.5s; }  
+</style>  </head>  
+<body>  <!-- ReCAPTCHA Overlay -->  <div id="recaptcha-overlay" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:9999;color:#fff;text-align:center;">  
+  <h2 id="welcome-title">Welcome to Package Tracker</h2>  
+  <p id="welcome-text">Please verify that you are human to continue</p>  
+  <div class="g-recaptcha" data-sitekey="6Le4h8QrAAAAAIv3HtuDMbUCz_8VLZBEWBw2Mozg" data-callback="onRecaptchaSuccess"></div>  
+</div>  <!-- Header -->  <header>  
+  <div class="language-switcher">  
+    <select id="languageSelect">  
+      <option value="en">🇬🇧 English</option>  
+      <option value="fr">🇫🇷 Français</option>  
+      <option value="es">🇪🇸 Español</option>  
+      <option value="de">🇩🇪 Deutsch</option>  
+      <option value="zh">🇨🇳 中文</option>  
+    </select>  
+  </div>  
+  <div class="logo-title">  
+    <img src="logo.png" alt="Package Tracker Logo">  
+    <div>  
+      <h1 id="site-title">PACKAGE TRACKER</h1>  
+      <p id="site-subtitle">Track your shipments easily</p>  
+    </div>  
+  </div>  
+  <nav>  
+    <a href="#home" id="nav-home">Home</a>  
+    <a href="#about" id="nav-about">About</a>  
+    <a href="#contact" id="nav-contact">Contact</a>  
+  </nav>  
+</header>  <!-- Hero Section -->  <section id="hero" class="hero-section" style="position:relative;height:300px;overflow:hidden;background:linear-gradient(to bottom,#87CEFA,#ffffff);">  
+  <div class="cloud cloud1"></div>  
+  <div class="cloud cloud2"></div>  
+  <div class="cloud cloud3"></div>  
+  <img id="movingPlane" src="plane.png" alt="Flying Plane" style="position:absolute;top:50px;left:-100px;width:100px;">  
+</section>  <!-- Main Content -->  <div id="home" class="page-container">    <!-- Tracking Steps -->    <ul id="trackingSteps" class="tracking-steps hidden">  
+    <li id="step-placed"><i class="fas fa-cart-plus"></i> <span>Order Placed</span></li>  
+    <li id="step-shipped"><i class="fas fa-truck"></i> <span>Shipped</span></li>  
+    <li id="step-transit"><i class="fas fa-plane"></i> <span>In Transit</span></li>  
+    <li id="step-delivered"><i class="fas fa-box-open"></i> <span>Delivered</span></li>  
+  </ul>    <div class="ad-section">  
+    <p id="tip-text">💡 Tip: Track multiple packages easily with your account!</p>  
+    <p id="special-text">📦 Special: Fast delivery for premium members.</p>  
+  </div>    <!-- Tracking Form -->    <form id="trackingForm">  
+    <div class="search-section">  
+      <input type="text" id="tracking-number" placeholder="Enter tracking number">  
+      <button type="submit" id="track-btn">Track</button>  
+    </div>  
+    <div id="spinner">⏳</div>  
+    <div class="shipment-container" id="shipmentContainer" style="display:none;">  
+      <table class="shipment-details">  
+        <tr><td id="label-tracking">Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>  
+        <tr><td id="label-sender">Sender:</td><td>George Martin</td></tr>  
+        <tr><td id="label-receiver">Receiver:</td><td>Jane Anabel</td></tr>  
+        <tr><td id="label-estimated">Estimated Delivery:</td><td>15 Sep 2025</td></tr>  
+      </table>  
+      <div class="ad-section">  
+        <p id="premium-text">Check out our premium shipping services!</p>  
+      </div>  
+    </div>  
+  </form>    <!-- Products Section -->    <section class="products">  
+    <h2 id="products-title">Our Featured Products</h2>  
+    <div class="product-grid">  
+      <div class="product-card">  
+        <img src="Box.png" alt="Fast Shipping Box">  
+        <h3 id="prod1-title">Fast Shipping Box</h3>  
+        <p id="prod1-text">Durable and affordable packaging for your shipments.</p>  
+        <a href="#" class="buy-btn" id="prod1-btn" target="_blank">Buy Now</a>  
+      </div>  
+      <div class="product-card">  
+        <img src="Luggage.png" alt="Courier Bag">  
+        <h3 id="prod2-title">Courier Bag</h3>  
+        <p id="prod2-text">Lightweight waterproof courier bags for safe delivery.</p>  
+        <a href="#" class="buy-btn" id="prod2-btn" target="_blank">Shop Now</a>  
+      </div>  
+      <div class="product-card">  
+        <img src="Throw.png" alt="Protective Envelope">  
+        <h3 id="prod3-title">Protective Envelope</h3>  
+        <p id="prod3-text">Bubble-lined envelopes to protect fragile shipments.</p>  
+        <a href="#" class="buy-btn" id="prod3-btn" target="_blank">Buy Now</a>  
+      </div>  
+      <div class="product-card">  
+        <img src="Tape.jpg" alt="Sealing Tape">  
+        <h3 id="prod4-title">Sealing Tape</h3>  
+        <p id="prod4-text">Strong adhesive tape for secure package sealing.</p>  
+        <a href="#" class="buy-btn" id="prod4-btn" target="_blank">Shop Now</a>  
+      </div>  
+    </div>  
+  </section>    <!-- About Section -->    <section id="about" class="about">  
+    <h2 id="about-title">About Us</h2>  
+    <p id="about-text">PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily.</p>  
+  </section>    <!-- Contact Section -->    <section id="contact" class="contact">  
+    <h2 id="contact-title">Contact Us</h2>  
+    <p id="contact-text">Have questions about your shipment or our services? Reach out to us:</p>  
+    <div class="contact-options">  
+      <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn" id="whatsapp-btn">💬 WhatsApp</a>  
+      <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn" id="email-btn">📧 Email</a>  
+    </div>  
+  </section>  </div>  <!-- Footer -->  <footer>  
+  <p id="footer-text">© 2025 Package Tracker – All rights reserved</p>  
+</footer>  
 </body>
 </html>
