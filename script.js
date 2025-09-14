@@ -590,7 +590,3 @@ border: 1px solid #ccc;
 font-size: 14px;
 cursor: pointer;
 }
-
-#trackingSteps {
-display: none;
-}
