@@ -1,57 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Package Tracker</title>
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="shortcut icon" href="favicon.png">
-<link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Package Tracker</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="shortcut icon" href="favicon.png">
+  <link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/" />
 
-<!-- Open Graph and Twitter Meta Tags -->
-<meta property="og:title" content="Package Tracker">
-<meta property="og:description" content="Track your packages easily with our simple tracking website.">
-<meta property="og:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">
-<meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Package Tracker">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Package Tracker">
-<meta name="twitter:description" content="Track your packages easily with our simple tracking website.">
-<meta name="twitter:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">
+  <!-- Open Graph and Twitter Meta Tags -->
+  <meta property="og:title" content="Package Tracker">
+  <meta property="og:description" content="Track your packages easily with our simple tracking website.">
+  <meta property="og:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">
+  <meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Package Tracker">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Package Tracker">
+  <meta name="twitter:description" content="Track your packages easily with our simple tracking website.">
+  <meta name="twitter:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">
 
-<!-- CSS -->
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Google reCAPTCHA -->
-<script src="https://www.google.com/recaptcha/api.js" async defer></script>
-
-<style>
-html { scroll-behavior: smooth; }
-
-/* hidden helper */
-.hidden { display: none !important; }
-
-/* Spinner */
-#spinner { display:none; font-size: 20px; margin-top: 10px; text-align:center; }
-
-/* Shake animation */
-@keyframes shake {
-  0% { transform: translateX(0); }
-  25% { transform: translateX(-5px); }
-  50% { transform: translateX(5px); }
-  75% { transform: translateX(-5px); }
-  100% { transform: translateX(0); }
-}
-.shake { animation: shake 0.5s; }
-</style>
+  <!-- Google reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
 
 <!-- ReCAPTCHA Overlay -->
-<div id="recaptcha-overlay" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:9999;color:#fff;text-align:center;">
+<div id="recaptcha-overlay" class="hidden">
   <h2 id="welcome-title">Welcome to Package Tracker</h2>
   <p id="welcome-text">Please verify that you are human to continue</p>
   <div class="g-recaptcha" data-sitekey="6Le4h8QrAAAAAIv3HtuDMbUCz_8VLZBEWBw2Mozg" data-callback="onRecaptchaSuccess"></div>
@@ -83,11 +63,11 @@ html { scroll-behavior: smooth; }
 </header>
 
 <!-- Hero Section -->
-<section id="hero" class="hero-section" style="position:relative;height:300px;overflow:hidden;background:linear-gradient(to bottom,#87CEFA,#ffffff);">
+<section id="hero" class="hero-section">
   <div class="cloud cloud1"></div>
   <div class="cloud cloud2"></div>
   <div class="cloud cloud3"></div>
-  <img id="movingPlane" src="plane.png" alt="Flying Plane" style="position:absolute;top:50px;left:-100px;width:100px;">
+  <img id="movingPlane" src="plane.png" alt="Flying Plane">
 </section>
 
 <!-- Main Content -->
@@ -180,5 +160,7 @@ html { scroll-behavior: smooth; }
   <p id="footer-text">© 2025 Package Tracker – All rights reserved</p>
 </footer>
 
+<!-- Scripts -->
+<script src="scripts.js"></script>
 </body>
 </html>
