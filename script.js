@@ -1,3 +1,6 @@
+// scripts.js - FULL replacement
+// Handles tracking sequence + language translations + UI safety
+
 // ---------- DOM ----------
 const trackingForm = document.getElementById('trackingForm');
 const trackingSteps = document.getElementById('trackingSteps');
@@ -7,13 +10,21 @@ const spinner = document.getElementById('spinner');
 const languageSelect = document.getElementById('languageSelect');
 const trackBtn = document.getElementById('track-btn');
 
-const correctTrackingNumber = "Track-246800000";
+// guard: if some element missing, log and stop (prevents runtime errors)
+if (!trackingForm || !trackingSteps || !trackingNumberInput || !trackBtn) {
+  console.error('scripts.js: required DOM elements missing. Make sure IDs match.');
+}
 
-// keep timeouts so we can clear on repeated submits
+// The single correct tracking code (case-insensitive)
+const CORRECT_TRACKING = "Track-246800000";
+
+// Keep references to timeouts so repeated submits are safe
 let timeouts = [];
 
-/* --------- Translations --------- */
-/* Keys = element IDs; values = translated strings */
+/* -----------------------
+   Translations dictionary
+   Keys are element IDs -> translated text
+   ----------------------- */
 const translations = {
   en: {
     "site-title": "PACKAGE TRACKER",
@@ -192,78 +203,100 @@ const translations = {
   }
 };
 
-// apply translations to elements with IDs
+// Helper: apply translations map for a language code
 function applyTranslations(lang) {
   const map = translations[lang] || translations.en;
   Object.keys(map).forEach(id => {
     const el = document.getElementById(id);
     if (!el) return;
-    // If the element is an anchor or button, we set textContent (keeps structure)
+    // For anchors/buttons that may contain extra HTML, replace only text content
     el.textContent = map[id];
   });
+
+  // Some button anchors may have emojis or formatting you want to keep
+  // If you want to keep specific icons (e.g., WhatsApp emoji), ensure mapping includes it.
 }
 
-// initialize language
-languageSelect.addEventListener('change', (e) => {
-  applyTranslations(e.target.value);
-});
+// Initialize language on load
+if (languageSelect) {
+  languageSelect.addEventListener('change', (e) => applyTranslations(e.target.value));
+  // apply default (try to read selected value)
+  applyTranslations(languageSelect.value || 'en');
+} else {
+  applyTranslations('en');
+}
 
-// apply default language at load
-applyTranslations('en');
+/* -----------------------------
+   Tracking simulation behavior
+   - steps highlight sequentially
+   - timings: 3s, +3s, +4s
+   - shipment details shown only for CORRECT_TRACKING
+   - invalid format or wrong number => shake input only
+   ----------------------------- */
 
-/* ---------- Tracking behavior ---------- */
-
+// Clear outstanding timeouts
 function clearAllTimeouts() {
   timeouts.forEach(t => clearTimeout(t));
   timeouts = [];
 }
 
-trackingForm.addEventListener('submit', (ev) => {
-  ev.preventDefault();
+// Small utility to safely add class
+function addClassSafe(el, cls) { if (el && !el.classList.contains(cls)) el.classList.add(cls); }
+function removeClassSafe(el, cls) { if (el && el.classList.contains(cls)) el.classList.remove(cls); }
 
-  // clear previous runs
+trackingForm && trackingForm.addEventListener('submit', (ev) => {
+  ev.preventDefault();
   clearAllTimeouts();
 
-  const value = trackingNumberInput.value.trim();
+  const value = (trackingNumberInput.value || '').trim();
+
+  // Validate format: Track- followed by 6-10 digits
   const regex = /^Track-\d{6,10}$/i;
-  // invalid format -> shake only
   if (!regex.test(value)) {
-    trackingNumberInput.classList.add('shake');
-    setTimeout(() => trackingNumberInput.classList.remove('shake'), 500);
+    // invalid format -> shake only
+    addClassSafe(trackingNumberInput, 'shake');
+    setTimeout(() => removeClassSafe(trackingNumberInput, 'shake'), 500);
     return;
   }
 
-  // start new simulation
-  spinner.style.display = 'block';
-  shipmentContainer.style.display = 'none';
-  trackBtn.disabled = true;
-  trackingSteps.classList.remove('hidden');
+  // Start new sequence
+  spinner && (spinner.style.display = 'block');
+  shipmentContainer && (shipmentContainer.style.display = 'none');
+  trackBtn && (trackBtn.disabled = true);
+  trackingSteps && removeClassSafe(trackingSteps, 'hidden');
 
-  // reset step classes
-  const steps = Array.from(trackingSteps.querySelectorAll('li'));
-  steps.forEach(s => s.classList.remove('show'));
+  // Reset steps
+  const steps = trackingSteps ? Array.from(trackingSteps.querySelectorAll('li')) : [];
+  steps.forEach(s => removeClassSafe(s, 'show'));
 
-  // timings: 3s -> Order Placed, +3s (6s) -> Shipped, +4s (10s) -> In Transit + show details
-  const t1 = setTimeout(() => steps[0].classList.add('show'), 3000);
-  const t2 = setTimeout(() => steps[1].classList.add('show'), 6000);
+  // Timings: 3s, 3s, 4s
+  // t1 = after 3000ms -> Order Placed
+  // t2 = after 6000ms -> Shipped
+  // t3 = after 10000ms -> In Transit + show shipment details if correct
+  const t1 = setTimeout(() => { if (steps[0]) addClassSafe(steps[0], 'show'); }, 3000);
+  const t2 = setTimeout(() => { if (steps[1]) addClassSafe(steps[1], 'show'); }, 6000);
   const t3 = setTimeout(() => {
-    steps[2].classList.add('show');
-    spinner.style.display = 'none';
+    if (steps[2]) addClassSafe(steps[2], 'show');
+    // stop spinner
+    spinner && (spinner.style.display = 'none');
 
-    // If correct tracking number (case-insensitive)
-    if (value.toLowerCase() === correctTrackingNumber.toLowerCase()) {
-      document.getElementById('trackingNumber').textContent = correctTrackingNumber;
-      shipmentContainer.style.display = 'block';
+    // check if correct (case-insensitive)
+    if (value.toLowerCase() === CORRECT_TRACKING.toLowerCase()) {
+      // fill tracking number into the table (if element exists)
+      const trackingNumberCell = document.getElementById('trackingNumber');
+      if (trackingNumberCell) trackingNumberCell.textContent = CORRECT_TRACKING;
+      // show shipment details
+      shipmentContainer && (shipmentContainer.style.display = 'block');
     } else {
-      // wrong tracking number -> shake input and keep shipment hidden
-      trackingNumberInput.classList.add('shake');
-      setTimeout(() => trackingNumberInput.classList.remove('shake'), 500);
+      // wrong number -> shake input only
+      addClassSafe(trackingNumberInput, 'shake');
+      setTimeout(() => removeClassSafe(trackingNumberInput, 'shake'), 500);
     }
 
     // re-enable UI
-    trackBtn.disabled = false;
+    trackBtn && (trackBtn.disabled = false);
   }, 10000);
 
-  // store timeouts so they can be cleared next submission
+  // keep timeouts for possible cancellation on next submit
   timeouts.push(t1, t2, t3);
 });
