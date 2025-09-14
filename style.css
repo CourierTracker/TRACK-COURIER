@@ -125,23 +125,26 @@ header nav a:hover {
     background-color: #0056b3;
 }
 
-/* Tracking Steps */
-.tracking-steps {
-    list-style: none;
-    padding: 0;
-    margin: 30px 0 0 0;
-    text-align: left;
+/* Add this into your style.css (replacing the old .tracking-steps highlight part) */
+
+.tracking-steps li.show {
+    opacity: 1;
+    font-weight: bold;
+    border-left-color: #1e90ff;   /* Blue */
+    background-color: #e6f0ff;    /* Light blue */
 }
 
-.tracking-steps li {
-    padding: 12px 15px;
-    margin-bottom: 10px;
-    border-left: 4px solid #007bff;
-    background-color: #f1f5f9;
-    border-radius: 6px;
-    opacity: 0.6;
-    transition: all 0.3s ease;
+/* Helper + Spinner + Shake moved here */
+.hidden { display: none !important; }
+#spinner { display:none; font-size: 20px; margin-top: 10px; text-align:center; }
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
 }
+.shake { animation: shake 0.5s; }
 
 /* Active step */
 .tracking-steps li.show,
