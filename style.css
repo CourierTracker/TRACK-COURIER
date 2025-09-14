@@ -57,11 +57,14 @@ header p {
     background-color: #0056b3;
 }
 
-/* Spinner */
 #spinner {
-    display: none;
     margin: 10px auto;
     font-size: 32px;
+    display: none; /* hidden by default */
+}
+
+#spinner.show {
+    display: block;  /* visible when spinning */
     animation: spin 1s linear infinite;
 }
 
