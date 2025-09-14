@@ -1,247 +1,310 @@
-<!DOCTYPE html>  <html lang="en">  
-<head>  
-<meta charset="UTF-8">  
-<meta name="viewport" content="width=device-width, initial-scale=1.0">  
-<title>Package Tracker</title>  <link rel="icon" type="image/png" href="favicon.png">  
-<link rel="shortcut icon" href="favicon.png">  <link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/" />  <!-- Open Graph and Twitter Meta Tags -->  <meta property="og:title" content="Package Tracker" />  
-<meta property="og:description" content="Track your packages easily with our simple tracking website." />  
-<meta property="og:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png" />  
-<meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/" />  
-<meta property="og:type" content="website" />  
-<meta property="og:site_name" content="Package Tracker" />  
-<meta property="og:locale" content="en_US" />  <meta name="twitter:card" content="summary_large_image" />  
-<meta name="twitter:title" content="Package Tracker" />  
-<meta name="twitter:description" content="Track your packages easily with our simple tracking website." />  
-<meta name="twitter:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png" />  <link rel="stylesheet" href="style.css">  
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <!-- Google reCAPTCHA -->  <script src="https://www.google.com/recaptcha/api.js" async defer></script>  <style>  
-html { scroll-behavior: smooth; }  
-</style>  </head>  <body>  <!-- Top Hero Section -->  <section id="hero" class="hero-section">  
-    <div class="cloud cloud1"></div>  
-    <div class="cloud cloud2"></div>  
-    <div class="cloud cloud3"></div>  
-    <img id="movingPlane" src="plane.png" alt="Flying Plane">  
-</section>  <!-- reCAPTCHA Overlay -->  <div id="recaptcha-overlay" style="display:none;">  
-    <h2 id="welcome-title">Welcome to Package Tracker</h2>  
-    <p id="welcome-text">Please verify that you are human to continue</p>  
-    <div class="g-recaptcha"   
-         data-sitekey="6Le4h8QrAAAAAIv3HtuDMbUCz_8VLZBEWBw2Mozg"   
-         data-callback="onRecaptchaSuccess"></div>  
-</div>  <!-- Header -->  <header>  
-  <div class="language-switcher">  
-    <select id="languageSelect">  
-      <option value="en">🇬🇧 English</option>  
-      <option value="fr">🇫🇷 Français</option>  
-      <option value="es">🇪🇸 Español</option>  
-      <option value="de">🇩🇪 Deutsch</option>  
-      <option value="zh">🇨🇳 中文</option>  
-    </select>  
-  </div>    <div class="logo-title">  
-    <img src="logo.png" alt="Package Tracker Logo">  
-    <div>  
-      <h1 id="site-title">PACKAGE TRACKER</h1>  
-      <p id="site-subtitle">Track your shipments easily</p>  
-    </div>  
-  </div>  
-  <nav>  
-    <a href="#home" id="nav-home">Home</a>  
-    <a href="#about" id="nav-about">About</a>  
-    <a href="#contact" id="nav-contact">Contact</a>  
-  </nav>  
-</header>  <!-- Main Page Content -->  <div id="home" class="page-container">    <ul id="trackingSteps" class="tracking-steps hidden">  
-    <li id="step-placed"><i class="fas fa-cart-plus"></i> <span>Order Placed</span></li>  
-    <li id="step-shipped"><i class="fas fa-truck"></i> <span>Shipped</span></li>  
-    <li id="step-transit"><i class="fas fa-plane"></i> <span>In Transit</span></li>  
-    <li id="step-delivered"><i class="fas fa-box-open"></i> <span>Delivered</span></li>  
-  </ul>    <div class="ad-section">  
-    <p id="tip-text">💡 Tip: Track multiple packages easily with your account!</p>  
-    <p id="special-text">📦 Special: Fast delivery for premium members.</p>  
-  </div>    <!-- Tracking Form -->    <main>  
-    <form id="trackingForm">  
-      <div class="shipment-container" id="shipmentContainer" style="display: none;">  
-        <table class="shipment-details">  
-          <tr><td id="label-tracking">Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>  
-          <tr><td id="label-sender">Sender:</td><td>George Martin</td></tr>  
-          <tr><td id="label-receiver">Receiver:</td><td>Jane Anabel</td></tr>  
-          <tr><td id="label-estimated">Estimated Delivery:</td><td>15 Sep 2025</td></tr>  
-        </table>  
-        <div class="ad-section">  
-          <p id="premium-text">Check out our premium shipping services!</p>  
-        </div>  
-      </div>  <div class="search-section">  
-    <input type="text" id="tracking-number" placeholder="Enter tracking number">  
-    <button type="submit" id="track-btn">Track</button>  
-  </div>  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Package Tracker</title>
 
-  <div id="spinner">⏳</div>  
-</form>  
-<div id="status"></div>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="shortcut icon" href="favicon.png">
 
-  </main>    <!-- Products Section -->    <section class="products">  
-    <h2 id="products-title">Our Featured Products</h2>  
-    <div class="product-grid">  
-      <div class="product-card">  
-        <img src="Box.png" alt="Fast Shipping Box">  
-        <h3 id="prod1-title">Fast Shipping Box</h3>  
-        <p id="prod1-text">Durable and affordable packaging for your shipments.</p>  
-        <a href="#" class="buy-btn" id="prod1-btn" target="_blank">Buy Now</a>  
-      </div>  
-      <div class="product-card">  
-        <img src="Luggage.png" alt="Courier Bag">  
-        <h3 id="prod2-title">Courier Bag</h3>  
-        <p id="prod2-text">Lightweight waterproof courier bags for safe delivery.</p>  
-        <a href="#" class="buy-btn" id="prod2-btn" target="_blank">Shop Now</a>  
-      </div>  
-      <div class="product-card">  
-        <img src="Throw.png" alt="Protective Envelope">  
-        <h3 id="prod3-title">Protective Envelope</h3>  
-        <p id="prod3-text">Bubble-lined envelopes to protect fragile shipments.</p>  
-        <a href="#" class="buy-btn" id="prod3-btn" target="_blank">Buy Now</a>  
-      </div>  
-      <div class="product-card">  
-        <img src="Tape.jpg" alt="Sealing Tape">  
-        <h3 id="prod4-title">Sealing Tape</h3>  
-        <p id="prod4-text">Strong adhesive tape for secure package sealing.</p>  
-        <a href="#" class="buy-btn" id="prod4-btn" target="_blank">Shop Now</a>  
-      </div>  
-    </div>  
-  </section>    <!-- About Section -->    <section id="about" class="about">  
-    <h2 id="about-title">About Us</h2>  
-    <p id="about-text">PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily.</p>  
-  </section>    <!-- Contact Section -->    <section id="contact" class="contact">  
-    <h2 id="contact-title">Contact Us</h2>  
-    <p id="contact-text">Have questions about your shipment or our services? Reach out to us:</p>  
-    <div class="contact-options">  
-      <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn" id="whatsapp-btn">💬 WhatsApp</a>  
-      <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn" id="email-btn">📧 Email</a>  
-    </div>  
-  </section>  </div> <!-- End of page-container -->  <!-- Sea Section with Ship -->  <section id="sea" class="sea-section">  
-    <div class="wave wave1"></div>  
-    <div class="wave wave2"></div>  
-</section>  <footer>  
-  <p id="footer-text">© 2025 Package Tracker – All rights reserved</p>  
-</footer>  <!-- Tracking + Translation Script -->  <script>  
-const correctTrackingNumber = "Track-246800000";  
-  
-document.getElementById("trackingForm").addEventListener("submit", function(e) {  
-    e.preventDefault();  
-    const trackingNumberInput = document.getElementById("tracking-number").value.trim();  
-    const statusDiv = document.getElementById("status");  
-    const shipmentContainer = document.getElementById("shipmentContainer");  
-    const trackingNumberDisplay = document.getElementById("trackingNumber");  
-    const trackingSteps = document.querySelectorAll("#trackingSteps li");  
-    const spinner = document.getElementById("spinner");  
-  
-    trackingSteps.forEach(li => li.classList.remove("in-transit"));  
-    shipmentContainer.style.display = "none";  
-    statusDiv.classList.remove("shake");  
-    spinner.style.display = "none";  
-  
-    if (trackingNumberInput === correctTrackingNumber) {  
-        spinner.style.display = "block";  
-        let dots = 0;  
-        statusDiv.textContent = "🔍 Tracking your package";  
-        const loadingInterval = setInterval(() => {  
-            dots = (dots + 1) % 4;  
-            statusDiv.textContent = "🔍 Tracking your package" + ".".repeat(dots);  
-        }, 500);  
-  
-        setTimeout(() => trackingSteps[0].classList.add("in-transit"), 3000);  
-        setTimeout(() => trackingSteps[1].classList.add("in-transit"), 5000);  
-        setTimeout(() => {  
-            clearInterval(loadingInterval);  
-            spinner.style.display = "none";  
-            shipmentContainer.style.display = "block";  
-            trackingNumberDisplay.textContent = trackingNumberInput;  
-            statusDiv.textContent = "✅ Package status updated!";  
-            trackingSteps[2].classList.add("in-transit");  
-        }, 7000);  
-    } else {  
-        statusDiv.textContent = "❌ Invalid tracking number. Please try again.";  
-        statusDiv.classList.add("shake");  
-        setTimeout(() => statusDiv.classList.remove("shake"), 500);  
-    }  
-});  
-  
-// reCAPTCHA first-time visitor handling  
-function setCookie(name, value, days) {  
-    let expires = "";  
-    if (days) {  
-        const date = new Date();  
-        date.setTime(date.getTime() + days*24*60*60*1000);  
-        expires = "; expires=" + date.toUTCString();  
-    }  
-    document.cookie = name + "=" + (value || "") + expires + "; path=/";  
-}  
-function getCookie(name) {  
-    const value = "; " + document.cookie;  
-    const parts = value.split("; " + name + "=");  
-    if (parts.length === 2) return parts.pop().split(";").shift();  
-}  
-window.addEventListener("load", () => {  
-    const visited = getCookie("visited_before");  
-    if (!visited) {  
-        document.getElementById("recaptcha-overlay").style.display = "flex";  
-    } else {  
-        setCookie("visited_before", "true", 365);  
-    }  
-});  
-function onRecaptchaSuccess() {  
-    setCookie("visited_before", "true", 365);  
-    document.getElementById("recaptcha-overlay").style.display = "none";  
-}  
-  
-// Language switcher  
-async function loadLanguage(lang) {  
-  try {  
-    const response = await fetch("languages.json");  
-    const translations = await response.json();  
-    const t = translations[lang];  
-  
-    document.getElementById("site-title").textContent = t.title;  
-    document.getElementById("site-subtitle").textContent = t.subtitle;  
-    document.getElementById("nav-home").textContent = t.navHome;  
-    document.getElementById("nav-about").textContent = t.navAbout;  
-    document.getElementById("nav-contact").textContent = t.navContact;  
-    document.getElementById("welcome-title").textContent = t.welcomeTitle;  
-    document.getElementById("welcome-text").textContent = t.welcomeText;  
-    document.querySelector("#step-placed span").textContent = t.stepPlaced;  
-    document.querySelector("#step-shipped span").textContent = t.stepShipped;  
-    document.querySelector("#step-transit span").textContent = t.stepTransit;  
-    document.querySelector("#step-delivered span").textContent = t.stepDelivered;  
-    document.getElementById("label-tracking").textContent = t.labelTracking;  
-    document.getElementById("label-sender").textContent = t.labelSender;  
-    document.getElementById("label-receiver").textContent = t.labelReceiver;  
-    document.getElementById("label-estimated").textContent = t.labelEstimated;  
-    document.getElementById("track-btn").textContent = t.trackBtn;  
-    document.getElementById("tip-text").textContent = t.tipText;  
-    document.getElementById("special-text").textContent = t.specialText;  
-    document.getElementById("premium-text").textContent = t.premiumText;  
-    document.getElementById("products-title").textContent = t.productsTitle;  
-    document.getElementById("prod1-title").textContent = t.prod1Title;  
-    document.getElementById("prod1-text").textContent = t.prod1Text;  
-    document.getElementById("prod1-btn").textContent = t.prod1Btn;  
-    document.getElementById("prod2-title").textContent = t.prod2Title;  
-    document.getElementById("prod2-text").textContent = t.prod2Text;  
-    document.getElementById("prod2-btn").textContent = t.prod2Btn;  
-    document.getElementById("prod3-title").textContent = t.prod3Title;  
-    document.getElementById("prod3-text").textContent = t.prod3Text;  
-    document.getElementById("prod3-btn").textContent = t.prod3Btn;  
-    document.getElementById("prod4-title").textContent = t.prod4Title;  
-    document.getElementById("prod4-text").textContent = t.prod4Text;  
-    document.getElementById("prod4-btn").textContent = t.prod4Btn;  
-    document.getElementById("about-title").textContent = t.aboutTitle;  
-    document.getElementById("about-text").textContent = t.about;  
-    document.getElementById("contact-title").textContent = t.contactTitle;  
-    document.getElementById("contact-text").textContent = t.contact;  
-    document.getElementById("whatsapp-btn").textContent = t.whatsappBtn;  
-    document.getElementById("email-btn").textContent = t.emailBtn;  
-    document.getElementById("footer-text").textContent = t.footer;  
-  } catch (error) {  
-    console.error("Error loading language:", error);  
-  }  
-}  
-document.getElementById("languageSelect").addEventListener("change", function() {  
-  loadLanguage(this.value);  
-});  
-</script>  </body>  
+<link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/" />
+
+<!-- Open Graph and Twitter Meta Tags -->
+<meta property="og:title" content="Package Tracker" />
+<meta property="og:description" content="Track your packages easily with our simple tracking website." />
+<meta property="og:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png" />
+<meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Package Tracker" />
+<meta property="og:locale" content="en_US" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Package Tracker" />
+<meta name="twitter:description" content="Track your packages easily with our simple tracking website." />
+<meta name="twitter:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png" />
+
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- Google reCAPTCHA -->
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<style>
+html { scroll-behavior: smooth; }
+</style>
+</head>
+    
+<body>
+
+<!-- Top Hero Section -->
+<section id="hero" class="hero-section">
+    <div class="cloud cloud1"></div>
+    <div class="cloud cloud2"></div>
+    <div class="cloud cloud3"></div>
+    <img id="movingPlane" src="plane.png" alt="Flying Plane">
+</section>
+
+<!-- reCAPTCHA Overlay -->
+<div id="recaptcha-overlay" style="display:none;">
+    <h2 id="welcome-title">Welcome to Package Tracker</h2>
+    <p id="welcome-text">Please verify that you are human to continue</p>
+    <div class="g-recaptcha" 
+         data-sitekey="6Le4h8QrAAAAAIv3HtuDMbUCz_8VLZBEWBw2Mozg" 
+         data-callback="onRecaptchaSuccess"></div>
+</div>
+
+<!-- Header -->
+<header>
+  <div class="language-switcher">
+    <select id="languageSelect">
+      <option value="en">🇬🇧 English</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="es">🇪🇸 Español</option>
+      <option value="de">🇩🇪 Deutsch</option>
+      <option value="zh">🇨🇳 中文</option>
+    </select>
+  </div>
+    
+  <div class="logo-title">
+    <img src="logo.png" alt="Package Tracker Logo">
+    <div>
+      <h1 id="site-title">PACKAGE TRACKER</h1>
+      <p id="site-subtitle">Track your shipments easily</p>
+    </div>
+  </div>
+  <nav>
+    <a href="#home" id="nav-home">Home</a>
+    <a href="#about" id="nav-about">About</a>
+    <a href="#contact" id="nav-contact">Contact</a>
+  </nav>
+</header>
+
+<!-- Main Page Content -->
+<div id="home" class="page-container">
+
+  <ul id="trackingSteps" class="tracking-steps hidden">
+    <li id="step-placed"><i class="fas fa-cart-plus"></i> <span>Order Placed</span></li>
+    <li id="step-shipped"><i class="fas fa-truck"></i> <span>Shipped</span></li>
+    <li id="step-transit"><i class="fas fa-plane"></i> <span>In Transit</span></li>
+    <li id="step-delivered"><i class="fas fa-box-open"></i> <span>Delivered</span></li>
+  </ul>
+
+  <div class="ad-section">
+    <p id="tip-text">💡 Tip: Track multiple packages easily with your account!</p>
+    <p id="special-text">📦 Special: Fast delivery for premium members.</p>
+  </div>
+
+  <!-- Tracking Form -->
+  <main>
+    <form id="trackingForm">
+      <div class="shipment-container" id="shipmentContainer" style="display: none;">
+        <table class="shipment-details">
+          <tr><td id="label-tracking">Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>
+          <tr><td id="label-sender">Sender:</td><td>George Martin</td></tr>
+          <tr><td id="label-receiver">Receiver:</td><td>Jane Anabel</td></tr>
+          <tr><td id="label-estimated">Estimated Delivery:</td><td>15 Sep 2025</td></tr>
+        </table>
+        <div class="ad-section">
+          <p id="premium-text">Check out our premium shipping services!</p>
+        </div>
+      </div>
+
+      <div class="search-section">
+        <input type="text" id="tracking-number" placeholder="Enter tracking number">
+        <button type="submit" id="track-btn">Track</button>
+      </div>
+
+      <div id="spinner">⏳</div>
+    </form>
+    <div id="status"></div>
+  </main>
+
+  <!-- Products Section -->
+  <section class="products">
+    <h2 id="products-title">Our Featured Products</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="Box.png" alt="Fast Shipping Box">
+        <h3 id="prod1-title">Fast Shipping Box</h3>
+        <p id="prod1-text">Durable and affordable packaging for your shipments.</p>
+        <a href="#" class="buy-btn" id="prod1-btn" target="_blank">Buy Now</a>
+      </div>
+      <div class="product-card">
+        <img src="Luggage.png" alt="Courier Bag">
+        <h3 id="prod2-title">Courier Bag</h3>
+        <p id="prod2-text">Lightweight waterproof courier bags for safe delivery.</p>
+        <a href="#" class="buy-btn" id="prod2-btn" target="_blank">Shop Now</a>
+      </div>
+      <div class="product-card">
+        <img src="Throw.png" alt="Protective Envelope">
+        <h3 id="prod3-title">Protective Envelope</h3>
+        <p id="prod3-text">Bubble-lined envelopes to protect fragile shipments.</p>
+        <a href="#" class="buy-btn" id="prod3-btn" target="_blank">Buy Now</a>
+      </div>
+      <div class="product-card">
+        <img src="Tape.jpg" alt="Sealing Tape">
+        <h3 id="prod4-title">Sealing Tape</h3>
+        <p id="prod4-text">Strong adhesive tape for secure package sealing.</p>
+        <a href="#" class="buy-btn" id="prod4-btn" target="_blank">Shop Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about">
+    <h2 id="about-title">About Us</h2>
+    <p id="about-text">PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily.</p>
+  </section>
+    
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <h2 id="contact-title">Contact Us</h2>
+    <p id="contact-text">Have questions about your shipment or our services? Reach out to us:</p>
+    <div class="contact-options">
+      <a href="https://wa.me/+2348144179339" target="_blank" class="contact-btn" id="whatsapp-btn">💬 WhatsApp</a>
+      <a href="mailto:Charlesowen01122@gmail.com" class="contact-btn" id="email-btn">📧 Email</a>
+    </div>
+  </section>
+
+</div> <!-- End of page-container -->
+
+<!-- Sea Section with Ship -->
+<section id="sea" class="sea-section">
+    <div class="wave wave1"></div>
+    <div class="wave wave2"></div>
+</section>
+
+<footer>
+  <p id="footer-text">© 2025 Package Tracker – All rights reserved</p>
+</footer>
+
+<!-- Tracking + Translation Script -->
+<script>
+const correctTrackingNumber = "Track-246800000";
+
+document.getElementById("trackingForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const trackingNumberInput = document.getElementById("tracking-number").value.trim();
+    const statusDiv = document.getElementById("status");
+    const shipmentContainer = document.getElementById("shipmentContainer");
+    const trackingNumberDisplay = document.getElementById("trackingNumber");
+    const trackingSteps = document.querySelectorAll("#trackingSteps li");
+    const spinner = document.getElementById("spinner");
+
+    trackingSteps.forEach(li => li.classList.remove("in-transit"));
+    shipmentContainer.style.display = "none";
+    statusDiv.classList.remove("shake");
+    spinner.style.display = "none";
+
+    if (trackingNumberInput === correctTrackingNumber) {
+        spinner.style.display = "block";
+        let dots = 0;
+        statusDiv.textContent = "🔍 Tracking your package";
+        const loadingInterval = setInterval(() => {
+            dots = (dots + 1) % 4;
+            statusDiv.textContent = "🔍 Tracking your package" + ".".repeat(dots);
+        }, 500);
+
+        setTimeout(() => trackingSteps[0].classList.add("in-transit"), 3000);
+        setTimeout(() => trackingSteps[1].classList.add("in-transit"), 5000);
+        setTimeout(() => {
+            clearInterval(loadingInterval);
+            spinner.style.display = "none";
+            shipmentContainer.style.display = "block";
+            trackingNumberDisplay.textContent = trackingNumberInput;
+            statusDiv.textContent = "✅ Package status updated!";
+            trackingSteps[2].classList.add("in-transit");
+        }, 7000);
+    } else {
+        statusDiv.textContent = "❌ Invalid tracking number. Please try again.";
+        statusDiv.classList.add("shake");
+        setTimeout(() => statusDiv.classList.remove("shake"), 500);
+    }
+});
+
+// reCAPTCHA first-time visitor handling
+function setCookie(name, value, days) {
+    let expires = "";
+    if (days) {
+        const date = new Date();
+        date.setTime(date.getTime() + days*24*60*60*1000);
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/";
+}
+function getCookie(name) {
+    const value = "; " + document.cookie;
+    const parts = value.split("; " + name + "=");
+    if (parts.length === 2) return parts.pop().split(";").shift();
+}
+window.addEventListener("load", () => {
+    const visited = getCookie("visited_before");
+    if (!visited) {
+        document.getElementById("recaptcha-overlay").style.display = "flex";
+    } else {
+        setCookie("visited_before", "true", 365);
+    }
+});
+function onRecaptchaSuccess() {
+    setCookie("visited_before", "true", 365);
+    document.getElementById("recaptcha-overlay").style.display = "none";
+}
+
+// Language switcher
+async function loadLanguage(lang) {
+  try {
+    const response = await fetch("languages.json");
+    const translations = await response.json();
+    const t = translations[lang];
+
+    document.getElementById("site-title").textContent = t.title;
+    document.getElementById("site-subtitle").textContent = t.subtitle;
+    document.getElementById("nav-home").textContent = t.navHome;
+    document.getElementById("nav-about").textContent = t.navAbout;
+    document.getElementById("nav-contact").textContent = t.navContact;
+    document.getElementById("welcome-title").textContent = t.welcomeTitle;
+    document.getElementById("welcome-text").textContent = t.welcomeText;
+    document.querySelector("#step-placed span").textContent = t.stepPlaced;
+    document.querySelector("#step-shipped span").textContent = t.stepShipped;
+    document.querySelector("#step-transit span").textContent = t.stepTransit;
+    document.querySelector("#step-delivered span").textContent = t.stepDelivered;
+    document.getElementById("label-tracking").textContent = t.labelTracking;
+    document.getElementById("label-sender").textContent = t.labelSender;
+    document.getElementById("label-receiver").textContent = t.labelReceiver;
+    document.getElementById("label-estimated").textContent = t.labelEstimated;
+    document.getElementById("track-btn").textContent = t.trackBtn;
+    document.getElementById("tip-text").textContent = t.tipText;
+    document.getElementById("special-text").textContent = t.specialText;
+    document.getElementById("premium-text").textContent = t.premiumText;
+    document.getElementById("products-title").textContent = t.productsTitle;
+    document.getElementById("prod1-title").textContent = t.prod1Title;
+    document.getElementById("prod1-text").textContent = t.prod1Text;
+    document.getElementById("prod1-btn").textContent = t.prod1Btn;
+    document.getElementById("prod2-title").textContent = t.prod2Title;
+    document.getElementById("prod2-text").textContent = t.prod2Text;
+    document.getElementById("prod2-btn").textContent = t.prod2Btn;
+    document.getElementById("prod3-title").textContent = t.prod3Title;
+    document.getElementById("prod3-text").textContent = t.prod3Text;
+    document.getElementById("prod3-btn").textContent = t.prod3Btn;
+    document.getElementById("prod4-title").textContent = t.prod4Title;
+    document.getElementById("prod4-text").textContent = t.prod4Text;
+    document.getElementById("prod4-btn").textContent = t.prod4Btn;
+    document.getElementById("about-title").textContent = t.aboutTitle;
+    document.getElementById("about-text").textContent = t.about;
+    document.getElementById("contact-title").textContent = t.contactTitle;
+    document.getElementById("contact-text").textContent = t.contact;
+    document.getElementById("whatsapp-btn").textContent = t.whatsappBtn;
+    document.getElementById("email-btn").textContent = t.emailBtn;
+    document.getElementById("footer-text").textContent = t.footer;
+  } catch (error) {
+    console.error("Error loading language:", error);
+  }
+}
+document.getElementById("languageSelect").addEventListener("change", function() {
+  loadLanguage(this.value);
+});
+</script>
+
+</body>
 </html>
