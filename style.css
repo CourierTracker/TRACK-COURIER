@@ -1,3 +1,23 @@
+/* Smooth animated sky-blue background */
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+
+    /* Gradient background */
+    background: linear-gradient(-45deg, #cceeff, #e0f7ff, #f0f9ff, #d0ecff);
+    background-size: 400% 400%;
+
+    /* Animation */
+    animation: gradientShift 20s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
 /* General Page Styling */
 body {
 margin: 0;
