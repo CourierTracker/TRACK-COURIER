@@ -164,85 +164,126 @@ trackingForm.addEventListener('submit', function(e) {
   }, 1000);
 });
 
- <script>
-let translations = {};
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // -------------------------
+  // Tracking Form
+  // -------------------------
+  const trackingForm = document.getElementById('trackingForm');
+  const trackingSteps = document.getElementById('trackingSteps');
+  const shipmentContainer = document.getElementById('shipmentContainer');
+  const spinner = document.getElementById('spinner');
+  const trackingInput = document.getElementById('tracking-number');
 
-// Load the JSON file
-fetch('languages.json')
-  .then(response => response.json())
-  .then(data => {
-    translations = data;
-    applyLanguage('en'); // Set default language to English on page load
-  })
-  .catch(err => console.error("Error loading languages.json:", err));
+  trackingForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const trackingNumber = trackingInput.value.trim();
+    if (!trackingNumber) {
+      alert("Please enter a tracking number");
+      trackingInput.classList.add('shake');
+      setTimeout(() => trackingInput.classList.remove('shake'), 500);
+      return;
+    }
 
-// Listen for language changes
-document.getElementById('languageSelect').addEventListener('change', function() {
-  applyLanguage(this.value);
+    // Show spinner
+    spinner.style.display = "block";
+
+    // Simulate API / delay
+    setTimeout(() => {
+      spinner.style.display = "none";
+
+      // Show tracking steps
+      trackingSteps.classList.remove("hidden");
+      trackingSteps.querySelectorAll('li').forEach((li) => {
+        li.classList.add("show"); // mark all steps as completed for demo
+      });
+
+      // Show shipment container
+      shipmentContainer.style.display = "block";
+      document.getElementById('trackingNumber').textContent = trackingNumber;
+    }, 1000);
+  });
+
+  // -------------------------
+  // Language Switcher
+  // -------------------------
+  let translations = {};
+
+  fetch('languages.json')
+    .then(res => res.json())
+    .then(data => {
+      translations = data;
+      applyLanguage('en'); // default
+    })
+    .catch(err => console.error("Error loading languages.json:", err));
+
+  const langSelect = document.getElementById('languageSelect');
+  langSelect.addEventListener('change', () => {
+    applyLanguage(langSelect.value);
+  });
+
+  function applyLanguage(lang) {
+    const t = translations[lang];
+    if (!t) return;
+
+    // Header & nav
+    document.getElementById('site-title').textContent = t.title;
+    document.getElementById('site-subtitle').textContent = t.subtitle;
+    document.getElementById('nav-home').textContent = t.navHome;
+    document.getElementById('nav-about').textContent = t.navAbout;
+    document.getElementById('nav-contact').textContent = t.navContact;
+
+    // Welcome / ReCAPTCHA
+    document.getElementById('welcome-title').textContent = t.welcomeTitle;
+    document.getElementById('welcome-text').textContent = t.welcomeText;
+
+    // Tracking form & tips
+    trackingInput.placeholder = t.labelTracking; // corrected
+    document.getElementById('tip-text').textContent = t.tipText;
+    document.getElementById('special-text').textContent = t.specialText;
+    document.getElementById('track-btn').textContent = t.trackBtn;
+
+    // Tracking steps
+    document.getElementById('step-placed').querySelector('span').textContent = t.stepPlaced;
+    document.getElementById('step-shipped').querySelector('span').textContent = t.stepShipped;
+    document.getElementById('step-transit').querySelector('span').textContent = t.stepTransit;
+    document.getElementById('step-delivered').querySelector('span').textContent = t.stepDelivered;
+
+    // Shipment labels
+    document.getElementById('label-tracking').textContent = t.labelTracking;
+    document.getElementById('label-sender').textContent = t.labelSender;
+    document.getElementById('label-receiver').textContent = t.labelReceiver;
+    document.getElementById('label-estimated').textContent = t.labelEstimated;
+
+    // Products
+    document.getElementById('products-title').textContent = t.productsTitle;
+    document.getElementById('prod1-title').textContent = t.prod1Title;
+    document.getElementById('prod1-text').textContent = t.prod1Text;
+    document.getElementById('prod1-btn').textContent = t.prod1Btn;
+    document.getElementById('prod2-title').textContent = t.prod2Title;
+    document.getElementById('prod2-text').textContent = t.prod2Text;
+    document.getElementById('prod2-btn').textContent = t.prod2Btn;
+    document.getElementById('prod3-title').textContent = t.prod3Title;
+    document.getElementById('prod3-text').textContent = t.prod3Text;
+    document.getElementById('prod3-btn').textContent = t.prod3Btn;
+    document.getElementById('prod4-title').textContent = t.prod4Title;
+    document.getElementById('prod4-text').textContent = t.prod4Text;
+    document.getElementById('prod4-btn').textContent = t.prod4Btn;
+
+    // About
+    document.getElementById('about-title').textContent = t.aboutTitle;
+    document.getElementById('about-text').textContent = t.about;
+
+    // Contact
+    document.getElementById('contact-title').textContent = t.contactTitle;
+    document.getElementById('contact-text').textContent = t.contact;
+    document.getElementById('whatsapp-btn').textContent = t.whatsappBtn;
+    document.getElementById('email-btn').textContent = t.emailBtn;
+
+    // Footer
+    document.getElementById('footer-text').textContent = t.footer;
+  }
 });
-
-// Function to apply translations
-function applyLanguage(lang) {
-  const t = translations[lang];
-  if(!t) return;
-
-  // Header & nav
-  document.getElementById('site-title').textContent = t.title;
-  document.getElementById('site-subtitle').textContent = t.subtitle;
-  document.getElementById('nav-home').textContent = t.navHome;
-  document.getElementById('nav-about').textContent = t.navAbout;
-  document.getElementById('nav-contact').textContent = t.navContact;
-
-  // Welcome / ReCAPTCHA
-  document.getElementById('welcome-title').textContent = t.welcomeTitle;
-  document.getElementById('welcome-text').textContent = t.welcomeText;
-
-  // Tracking form & tips
-  document.getElementById('tracking-number').placeholder = t.trackBtn;
-  document.getElementById('tip-text').textContent = t.tipText;
-  document.getElementById('special-text').textContent = t.specialText;
-  document.getElementById('track-btn').textContent = t.trackBtn;
-
-  // Tracking steps
-  document.getElementById('step-placed').querySelector('span').textContent = t.stepPlaced;
-  document.getElementById('step-shipped').querySelector('span').textContent = t.stepShipped;
-  document.getElementById('step-transit').querySelector('span').textContent = t.stepTransit;
-  document.getElementById('step-delivered').querySelector('span').textContent = t.stepDelivered;
-
-  // Shipment labels
-  document.getElementById('label-tracking').textContent = t.labelTracking;
-  document.getElementById('label-sender').textContent = t.labelSender;
-  document.getElementById('label-receiver').textContent = t.labelReceiver;
-  document.getElementById('label-estimated').textContent = t.labelEstimated;
-
-  // Products
-  document.getElementById('products-title').textContent = t.productsTitle;
-  document.getElementById('prod1-title').textContent = t.prod1Title;
-  document.getElementById('prod1-text').textContent = t.prod1Text;
-  document.getElementById('prod1-btn').textContent = t.prod1Btn;
-  document.getElementById('prod2-title').textContent = t.prod2Title;
-  document.getElementById('prod2-text').textContent = t.prod2Text;
-  document.getElementById('prod2-btn').textContent = t.prod2Btn;
-  document.getElementById('prod3-title').textContent = t.prod3Title;
-  document.getElementById('prod3-text').textContent = t.prod3Text;
-  document.getElementById('prod3-btn').textContent = t.prod3Btn;
-  document.getElementById('prod4-title').textContent = t.prod4Title;
-  document.getElementById('prod4-text').textContent = t.prod4Text;
-  document.getElementById('prod4-btn').textContent = t.prod4Btn;
-
-  // About
-  document.getElementById('about-title').textContent = t.aboutTitle;
-  document.getElementById('about-text').textContent = t.about;
-
-  // Contact
-  document.getElementById('contact-title').textContent = t.contactTitle;
-  document.getElementById('contact-text').textContent = t.contact;
-  document.getElementById('whatsapp-btn').textContent = t.whatsappBtn;
-  document.getElementById('email-btn').textContent = t.emailBtn;
-
-  // Footer
-  document.getElementById('footer-text').textContent = t.footer;
-}
 </script>
   
 </body>  
