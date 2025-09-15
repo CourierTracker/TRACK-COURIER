@@ -15,7 +15,6 @@ const correctTrackingNumber = "Track-246800000";
 // -------------------------
 let translations = {};
 
-// Load languages.json
 fetch('languages.json')
   .then(response => response.json())
   .then(data => {
@@ -97,10 +96,10 @@ trackingForm.addEventListener('submit', function(e) {
   e.preventDefault();
   const trackingNumber = trackingNumberInput.value.trim();
 
-  // Validate format: Track- followed by 6-10 digits
+  // Validate format
   const regex = /^Track-\d{6,10}$/i;
   if (!regex.test(trackingNumber)) {
-    shakeInput();
+    showError("❌ Invalid tracking number! Please try again.");
     return;
   }
 
@@ -110,6 +109,7 @@ trackingForm.addEventListener('submit', function(e) {
   trackingSteps.querySelectorAll('li').forEach(step => {
     step.classList.remove('show');
     step.style.backgroundColor = "";
+    step.style.fontWeight = "normal";
   });
 
   // Show spinner
@@ -120,27 +120,45 @@ trackingForm.addEventListener('submit', function(e) {
 
     if (trackingNumber === correctTrackingNumber) {
       trackingSteps.classList.remove('hidden');
-
-      // Sequential highlight
       const steps = trackingSteps.querySelectorAll('li');
-      setTimeout(() => { steps[0].classList.add('show'); steps[0].style.backgroundColor="lightblue"; }, 500);
-      setTimeout(() => { steps[1].classList.add('show'); steps[1].style.backgroundColor="lightblue"; }, 1500);
-      setTimeout(() => { steps[2].classList.add('show'); steps[2].style.backgroundColor="lightblue"; shipmentContainer.style.display="block"; }, 2500);
-      setTimeout(() => { steps[3].classList.add('show'); steps[3].style.backgroundColor="lightblue"; }, 3500);
 
-      // Fill tracking number in table
-      document.getElementById('trackingNumber').textContent = trackingNumber;
+      // Sequential highlight with delays
+      setTimeout(() => { 
+        steps[0].classList.add('show'); 
+        steps[0].style.backgroundColor = "lightblue"; 
+      }, 3000); // 3 sec
+
+      setTimeout(() => { 
+        steps[1].classList.add('show'); 
+        steps[1].style.backgroundColor = "lightblue"; 
+      }, 6000); // 6 sec
+
+      setTimeout(() => { 
+        steps[2].classList.add('show'); 
+        steps[2].style.backgroundColor = "lightblue"; 
+        steps[2].style.fontWeight = "bold"; // bold In Transit
+        shipmentContainer.style.display = "block"; 
+      }, 10000); // 10 sec total
+
+      // Delivered step remains untouched
     } else {
-      shakeInput();
+      showError("❌ Invalid tracking number! Please try again.");
     }
 
-  }, 1000);
+  }, 500); // spinner initial delay
 });
 
-// Shake animation for wrong input
+// -------------------------
+// Helper: Shake input and show error
+// -------------------------
 function shakeInput() {
   trackingNumberInput.classList.add("shake");
   setTimeout(() => {
     trackingNumberInput.classList.remove("shake");
   }, 500);
+}
+
+function showError(message) {
+  shakeInput();
+  alert(message); // You can replace this with a div to show error on page
 }
