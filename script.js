@@ -116,50 +116,40 @@ trackingForm.addEventListener('submit', function(e) {
     step.style.fontWeight = "normal";
   });
 
-  // Show spinner
-  spinnerContainer.innerHTML = `<div class="spinner"></div>`;
-  spinnerContainer.classList.remove("hidden");
+// Show spinner
+ spinnerContainer.style.display = "block";
 
-  setTimeout(() => {
-    spinnerContainer.classList.add("hidden");
+ setTimeout(() => {
+  // Hide spinner after delay
+  spinnerContainer.style.display = "none";
 
-    if (trackingNumber === correctTrackingNumber) {
-      trackingSteps.classList.remove('hidden');
-      const steps = trackingSteps.querySelectorAll('li');
+  if (trackingNumber === correctTrackingNumber) {
+    trackingSteps.classList.remove('hidden');
+    const steps = trackingSteps.querySelectorAll('li');
 
-      // Step highlights with total 10s
-      setTimeout(() => { 
-        steps[0].classList.add('show'); 
-        steps[0].style.backgroundColor = "lightblue"; 
-      }, 3000); // Order Placed
+    // Step highlights with total 10s
+    setTimeout(() => { 
+      steps[0].classList.add('show'); 
+      steps[0].style.backgroundColor = "lightblue"; 
+    }, 3000); // Order Placed
 
-      setTimeout(() => { 
-        steps[1].classList.add('show'); 
-        steps[1].style.backgroundColor = "lightblue"; 
-      }, 6000); // Shipped
+    setTimeout(() => { 
+      steps[1].classList.add('show'); 
+      steps[1].style.backgroundColor = "lightblue"; 
+    }, 6000); // Shipped
 
-      setTimeout(() => { 
-        steps[2].classList.add('show', 'in-transit'); 
-        steps[2].style.backgroundColor = "lightblue"; 
-        steps[2].style.fontWeight = "bold"; // In Transit bold
-        shipmentContainer.style.display = "block"; 
-      }, 10000); // In Transit
+    setTimeout(() => { 
+      steps[2].classList.add('show', 'in-transit'); 
+      steps[2].style.backgroundColor = "lightblue"; 
+      steps[2].style.fontWeight = "bold"; // In Transit bold
+      shipmentContainer.style.display = "block"; 
+    }, 10000); // In Transit
 
-    } else {
-      showError("❌ Invalid tracking number! Please try again.");
-    }
+  } else {
+    showError("❌ Invalid tracking number! Please try again.");
+  }
 
-  }, 500); // small delay to show spinner
-});
-
-// -------------------------
-// Helper: Shake input and show error
-// -------------------------
-function shakeInput() {
-  trackingNumberInput.classList.add("shake");
-  setTimeout(() => {
-    trackingNumberInput.classList.remove("shake");
-  }, 500);
+}, 500); // small delay to show spinner
 }
 
 function showError(message) {
