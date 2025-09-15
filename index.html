@@ -133,37 +133,6 @@ html { scroll-behavior: smooth; }
   <p id="footer-text">© 2025 Package Tracker – All rights reserved</p>  
 </footer>
 
-<script>
-const trackingForm = document.getElementById('trackingForm');
-const trackingSteps = document.getElementById('trackingSteps');
-const shipmentContainer = document.getElementById('shipmentContainer');
-const spinner = document.getElementById('spinner');
-
-trackingForm.addEventListener('submit', function(e) {
-  e.preventDefault();
-  const trackingNumber = document.getElementById('tracking-number').value.trim();
-  if(!trackingNumber) {
-    alert("Please enter a tracking number");
-    return;
-  }
-
-  // Show spinner
-  spinner.style.display = "block";
-
-  // Simulate API / delay
-  setTimeout(() => {
-    spinner.style.display = "none";
-    // Show tracking steps
-    trackingSteps.classList.remove("hidden");
-    trackingSteps.querySelectorAll('li').forEach((li, index) => {
-      li.classList.add("show"); // mark all steps as completed for demo
-    });
-    // Show shipment container
-    shipmentContainer.style.display = "block";
-    document.getElementById('trackingNumber').textContent = trackingNumber;
-  }, 1000);
-});
-
 <script src="script.js"></script>
   
 </body>  
