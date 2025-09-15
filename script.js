@@ -112,9 +112,11 @@ trackingForm.addEventListener('submit', function(e) {
     step.style.fontWeight = "normal";
   });
 
-   spinner.classList.remove("hidden");
-  
-   spinner.classList.add("hidden");
+  // Show spinner
+  spinner.style.display = "block";
+
+  setTimeout(() => {
+    spinner.style.display = "none";
 
     if (trackingNumber === correctTrackingNumber) {
       trackingSteps.classList.remove('hidden');
