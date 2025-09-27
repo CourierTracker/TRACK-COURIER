@@ -160,18 +160,20 @@ function shakeInput() {
 
 function showError(message) {
   shakeInput();
-  alert(message); // You can replace this with a div to show error on page
-}
 
-function showError(message) {
-  shakeInput();
+  // Show error box
   const errorBox = document.getElementById("errorBox");
   errorBox.textContent = message;
   errorBox.classList.add("show");
-  
+  errorBox.style.display = "block";
+
+  // Highlight input in red
+  trackingNumberInput.classList.add("error");
+
   // Auto-hide after 4 seconds
   setTimeout(() => {
     errorBox.classList.remove("show");
     errorBox.style.display = "none";
+    trackingNumberInput.classList.remove("error");
   }, 4000);
 }
