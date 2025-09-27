@@ -467,3 +467,14 @@ padding: 16px;
   from { opacity: 0; }
   to { opacity: 1; }
 }
+
+/* Error state for input */
+input.error {
+  border: 2px solid #e74c3c; /* red border */
+  background-color: #fff5f5; /* very light red background */
+}
+
+input.error:focus {
+  outline: none;
+  border-color: #c0392b; /* darker red on focus */
+}
