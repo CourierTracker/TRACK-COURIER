@@ -447,34 +447,3 @@ padding: 16px;
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
-
-.error {
-  color: #fff;
-  background-color: #e74c3c; /* red background */
-  padding: 8px 12px;
-  margin-top: 10px;
-  border-radius: 6px;
-  font-size: 14px;
-  display: none; /* hidden by default */
-}
-
-.error.show {
-  display: block;
-  animation: fadeIn 0.3s ease-in-out;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-/* Error state for input */
-input.error {
-  border: 2px solid #e74c3c; /* red border */
-  background-color: #fff5f5; /* very light red background */
-}
-
-input.error:focus {
-  outline: none;
-  border-color: #c0392b; /* darker red on focus */
-}
