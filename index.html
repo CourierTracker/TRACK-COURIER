@@ -1,266 +1,143 @@
-<!DOCTYPE html><html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Package Tracker — Professional</title>
-  <meta name="description" content="Professional package tracking for businesses and customers. Fast, secure, and easy to use.">
-  <!-- Open Graph -->
-  <meta property="og:title" content="Package Tracker — Professional">
-  <meta property="og:description" content="Professional package tracking for businesses and customers. Fast, secure, and easy to use.">
-  <meta property="og:image" content="Images/logo.png">
-  <meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/">
-  <meta property="og:type" content="website">
-  <link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/">  <!-- Structured data -->  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Organization","name":"Package Tracker","url":"https://couriertracker.github.io/TRACK-COURIER/","logo":"https://couriertracker.github.io/TRACK-COURIER/Images/logo.png","sameAs":[]}
-  </script>  <!-- Fonts & icons -->  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <style>
-    :root{
-      --blue-600:#0b66ff; --blue-400:#3b82f6; --muted:#6b7280; --bg:#f7f9fc; --card:#ffffff; --glass: rgba(255,255,255,0.6);
-      --radius:12px; --shadow: 0 6px 22px rgba(11,102,255,0.07);
-      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;background:linear-gradient(180deg,var(--bg),#ffffff);color:#0f172a;line-height:1.45}
-    header{backdrop-filter: blur(6px);position:sticky;top:0;z-index:50;background:rgba(255,255,255,0.7);border-bottom:1px solid rgba(15,23,42,0.04)}
-    .container{max-width:1100px;margin:0 auto;padding:20px}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand img{width:54px;height:54px;object-fit:contain;border-radius:10px}
-    .brand h1{font-size:18px;margin:0;font-weight:700;letter-spacing:0.6px}
-    nav a{margin-left:18px;text-decoration:none;color:var(--muted);font-weight:600}
-    .cta{display:flex;gap:10px}
-    .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:10px;background:var(--blue-600);color:#fff;text-decoration:none;font-weight:600;box-shadow:var(--shadow)}
-    .ghost{background:transparent;color:var(--blue-600);border:1px solid rgba(11,102,255,0.12)}
-
-    /* Hero */
-    .hero{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;padding:44px 0}
-    .hero-left h2{font-size:28px;margin:0 0 12px;font-weight:800}
-    .hero-left p{color:var(--muted);margin:0 0 18px}
-    .track-card{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--shadow)}
-    .search{display:flex;gap:8px}
-    .search input{flex:1;padding:12px 14px;border-radius:10px;border:1px solid #e6eefb;font-size:14px}
-    .search button{padding:11px 14px;border-radius:10px;border:none;background:var(--blue-600);color:#fff;font-weight:700}
-    .hint{font-size:13px;color:var(--muted);margin-top:8px}
-
-    /* Steps */
-    .steps{display:flex;gap:6px;align-items:center;margin-top:14px}
-    .step{flex:1;padding:12px;border-radius:10px;background:linear-gradient(90deg,rgba(11,102,255,0.06),rgba(11,102,255,0.03));font-weight:600;text-align:center;font-size:13px}
-    .step.active{background:linear-gradient(90deg,var(--blue-600),var(--blue-400));color:#fff;box-shadow:0 8px 30px rgba(59,130,246,0.15)}
-
-    /* Features */
-    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:26px 0}
-    .feature{background:var(--card);padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(13,26,60,0.04);text-align:center}
-    .feature h4{margin:10px 0 6px}
-    .feature p{color:var(--muted);font-size:14px;margin:0}
-
-    /* Products */
-    .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:18px}
-    .product{background:var(--card);padding:12px;border-radius:12px;text-align:center;box-shadow:0 6px 18px rgba(13,26,60,0.04)}
-    .product img{width:100%;height:120px;object-fit:contain}
-    .product h5{margin:10px 0 6px}
-    .product a{display:inline-block;margin-top:8px;padding:8px 12px;border-radius:8px;text-decoration:none;background:rgba(11,102,255,0.08);color:var(--blue-600);font-weight:700}
-
-    /* Shipment details */
-    .shipment{margin-top:18px;background:linear-gradient(180deg,#fff,#fbfdff);padding:16px;border-radius:12px}
-    .shipment table{width:100%;border-collapse:collapse}
-    .shipment td{padding:6px 8px;color:var(--muted)}
-    .progress{height:10px;background:#eef4ff;border-radius:10px;overflow:hidden}
-    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--blue-400),var(--blue-600));width:0%;transition:width 600ms ease}
-
-    /* Footer */
-    footer{padding:26px 0;margin-top:40px;color:var(--muted);font-size:14px}
-
-    /* Responsive */
-    @media (max-width:980px){.hero{grid-template-columns:1fr;}.product-grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:repeat(2,1fr)}}
-    @media (max-width:480px){nav a{display:none}.brand h1{font-size:16px}.product-grid{grid-template-columns:1fr} .features{grid-template-columns:1fr}}
-
-    /* small helpers */
-    .muted{color:var(--muted)}
-    .sr-only{position:absolute;left:-9999px}
-  </style></head>
-<body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <img src="Images/logo.png" alt="Package Tracker logo">
-        <div>
-          <h1>PACKAGE TRACKER</h1>
-          <div class="muted" style="font-size:12px">Fast • Secure • Transparent</div>
-        </div>
-      </div><div style="display:flex;align-items:center;gap:16px">
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#products">Products</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <div class="cta">
-      <a class="ghost btn" href="mailto:loganmoore7700@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-      <a class="btn" id="whatsappContact" href="https://wa.me/2349031408205?text=Hello%2C%20I%20need%20help%20with%20my%20shipment" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    </div>
-  </div>
-</div>
-
-  </header>  <main class="container" id="home">
-    <section class="hero">
-      <div class="hero-left">
-        <h2>Track your package in seconds</h2>
-        <p class="muted">Enter a tracking number and we’ll provide live-style shipment status, estimated delivery, and recent events. Built for courier businesses and end customers.</p><div class="track-card" role="region" aria-label="Tracking form">
-      <form id="trackingForm" class="search" onsubmit="return false;">
-        <input id="trackingNumberInput" type="text" inputmode="text" placeholder="e.g. TRK-246800000" aria-label="Tracking number">
-        <button id="trackBtn" type="submit">Track</button>
-      </form>
-      <div class="hint">Need help? Use <strong>TRK-246800000</strong> to try the demo.</div>
-
-      <div class="steps" id="trackingSteps" aria-hidden="true" style="display:none">
-        <div class="step" id="s1">Order Placed</div>
-        <div class="step" id="s2">Shipped</div>
-        <div class="step" id="s3">In Transit</div>
-        <div class="step" id="s4">Delivered</div>
-      </div>
-    </div>
-
-    <div class="features" aria-hidden="false">
-      <div class="feature"><i class="fas fa-clock fa-2x" aria-hidden></i><h4>Real-time ETA</h4><p>Estimated delivery windows and recent events.</p></div>
-      <div class="feature"><i class="fas fa-shield-alt fa-2x" aria-hidden></i><h4>Secure</h4><p>Data privacy and optional verification for each query.</p></div>
-      <div class="feature"><i class="fas fa-box-open fa-2x" aria-hidden></i><h4>Easy returns</h4><p>Streamlined process for returns and support.</p></div>
-    </div>
-  </div>
-
-  <aside>
-    <div class="track-card" id="resultCard" style="display:none">
-      <h3 style="margin:0 0 8px">Shipment Details</h3>
-      <div class="shipment" id="shipmentInfo">
-        <table>
-          <tr><td>Tracking:</td><td id="r_tracking">—</td></tr>
-          <tr><td>Sender:</td><td id="r_sender">—</td></tr>
-          <tr><td>Receiver:</td><td id="r_receiver">—</td></tr>
-          <tr><td>Estimated Delivery:</td><td id="r_eta">—</td></tr>
-        </table>
-
-        <div style="margin-top:12px">
-          <div class="muted" style="font-size:13px;margin-bottom:6px">Progress</div>
-          <div class="progress" aria-hidden>
-            <i id="progressBar"></i>
-          </div>
-
-          <div id="eventLog" style="margin-top:12px;font-size:13px;color:var(--muted)"></div>
-        </div>
-      </div>
-    </div>
-
-    <div style="margin-top:12px;text-align:center">
-      <img src="Images/plane.svg" alt="plane illustration" style="max-width:200px;opacity:0.95">
-    </div>
-  </aside>
-</section>
-
-<section id="products">
-  <h3>Our Featured Products</h3>
-  <div class="product-grid">
-    <div class="product"><img src="Images/Box.png" alt="Fast Shipping Box"><h5>Fast Shipping Box</h5><p class="muted">Durable and affordable packaging.</p><a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Fast%20Shipping%20Box" target="_blank">Order</a></div>
-    <div class="product"><img src="Images/Luggage.png" alt="Courier Bag"><h5>Courier Bag</h5><p class="muted">Waterproof courier bags.</p><a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Courier%20Bag" target="_blank">Order</a></div>
-    <div class="product"><img src="Images/Throw.png" alt="Protective Envelope"><h5>Protective Envelope</h5><p class="muted">Bubble-lined protection.</p><a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Protective%20Envelope" target="_blank">Order</a></div>
-    <div class="product"><img src="Images/Tape.jpg" alt="Sealing Tape"><h5>Sealing Tape</h5><p class="muted">Strong adhesive tape.</p><a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20Sealing%20Tape" target="_blank">Order</a></div>
-  </div>
-</section>
-
-<section id="about" style="margin-top:26px">
-  <h3>About Us</h3>
-  <p class="muted">Package Tracker is a lightweight, professional tracking interface that helps businesses and customers stay informed. This demo shows how a tracking UI can be integrated into a site or partner dashboard.</p>
-</section>
-
-<section id="contact" style="margin-top:20px">
-  <h3>Contact</h3>
-  <p class="muted">Questions? Reach our support on WhatsApp or email.</p>
-  <div style="display:flex;gap:12px;flex-wrap:wrap">
-    <a class="btn ghost" href="mailto:loganmoore7700@gmail.com">Email Support</a>
-    <a class="btn" href="https://wa.me/2349031408205?text=Hello%2C%20I%20need%20support%20with%20my%20shipment" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Support</a>
-  </div>
-</section>
-
-<footer>
-  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
-    <div>© 2025 Package Tracker — All rights reserved</div>
-    <div class="muted">Built with care • Demo</div>
-  </div>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Package Tracker</title>  
+<link rel="icon" type="image/png" href="favicon.png">  
+<link rel="shortcut icon" href="favicon.png">  
+<link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/" />  <!-- Open Graph and Twitter Meta Tags -->  <meta property="og:title" content="Package Tracker">  
+<meta property="og:description" content="Track your packages easily with our simple tracking website.">  
+<meta property="og:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">  
+<meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/">  
+<meta property="og:type" content="website">  
+<meta property="og:site_name" content="Package Tracker">  
+<meta property="og:locale" content="en_US">  
+<meta name="twitter:card" content="summary_large_image">  
+<meta name="twitter:title" content="Package Tracker">  
+<meta name="twitter:description" content="Track your packages easily with our simple tracking website.">  
+<meta name="twitter:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">  <!-- CSS -->  <link rel="stylesheet" href="style.css">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <!-- Google reCAPTCHA -->  <script src="https://www.google.com/recaptcha/api.js" async defer></script>  <style>  
+html { scroll-behavior: smooth; }  
+  
+/* hidden helper */  
+.hidden { display: none !important; }  
+  
+/* Spinner */  
+#spinner { display:none; font-size: 20px; margin-top: 10px; text-align:center; }  
+  
+/* Shake animation */  
+@keyframes shake {  
+  0% { transform: translateX(0); }  
+  25% { transform: translateX(-5px); }  
+  50% { transform: translateX(5px); }  
+  75% { transform: translateX(-5px); }  
+  100% { transform: translateX(0); }  
+}  
+.shake { animation: shake 0.5s; }  
+</style>  </head>  
+<body>  <!-- ReCAPTCHA Overlay -->  <div id="recaptcha-overlay" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:9999;color:#fff;text-align:center;">  
+  <h2 id="welcome-title">Welcome to Package Tracker</h2>  
+  <p id="welcome-text">Please verify that you are human to continue</p>  
+  <div class="g-recaptcha" data-sitekey="6Le4h8QrAAAAAIv3HtuDMbUCz_8VLZBEWBw2Mozg" data-callback="onRecaptchaSuccess"></div>  
+</div>  <!-- Header -->  <header>  
+  <div class="language-switcher">  
+    <select id="languageSelect">  
+      <option value="en">🇬🇧 English</option>  
+      <option value="fr">🇫🇷 Français</option>  
+      <option value="es">🇪🇸 Español</option>  
+      <option value="de">🇩🇪 Deutsch</option>  
+      <option value="zh">🇨🇳 中文</option>  
+    </select>  
+  </div>  
+  <div class="logo-title">  
+    <img src="logo.png" alt="Package Tracker Logo">  
+    <div>  
+      <h1 id="site-title">PACKAGE TRACKER</h1>  
+      <p id="site-subtitle">Track your shipments easily</p>  
+    </div>  
+  </div>  
+  <nav>  
+    <a href="#home" id="nav-home">Home</a>  
+    <a href="#about" id="nav-about">About</a>  
+    <a href="#contact" id="nav-contact">Contact</a>  
+  </nav>  
+</header>  <!-- Hero Section -->  <section id="hero" class="hero-section" style="position:relative;height:300px;overflow:hidden;background:linear-gradient(to bottom,#87CEFA,#ffffff);">  
+  <div class="cloud cloud1"></div>  
+  <div class="cloud cloud2"></div>  
+  <div class="cloud cloud3"></div>  
+  <img id="movingPlane" src="plane.png" alt="Flying Plane" style="position:absolute;top:50px;left:-100px;width:100px;">  
+</section>  <!-- Main Content -->  <div id="home" class="page-container">    <!-- Tracking Steps -->    <ul id="trackingSteps" class="tracking-steps hidden">  
+    <li id="step-placed"><i class="fas fa-cart-plus"></i> <span>Order Placed</span></li>  
+    <li id="step-shipped"><i class="fas fa-truck"></i> <span>Shipped</span></li>  
+    <li id="step-transit"><i class="fas fa-plane"></i> <span>In Transit</span></li>  
+    <li id="step-delivered"><i class="fas fa-box-open"></i> <span>Delivered</span></li>  
+  </ul>    <div class="ad-section">  
+    <p id="tip-text">💡 Tip: Track multiple packages easily with your account!</p>  
+    <p id="special-text">📦 Special: Fast delivery for premium members.</p>  
+  </div>    <!-- Tracking Form -->    <form id="trackingForm">  
+    <div class="search-section">  
+      <input type="text" id="tracking-number" placeholder="Enter tracking number">  
+      <button type="submit" id="track-btn">Track</button>  
+    </div>  
+    <div id="spinner" class="spinner hidden"></div>  
+    <div class="shipment-container" id="shipmentContainer" style="display:none;">  
+      <table class="shipment-details">  
+        <tr><td id="label-tracking">Tracking Number:</td><td id="trackingNumber">Track-246800000</td></tr>  
+        <tr><td id="label-sender">Sender:</td><td>Sgt. George Martin</td></tr>  
+        <tr><td id="label-receiver">Receiver:</td><td>Ms. Rafaela manfrini de oliveira</td></tr>  
+        <tr><td id="label-estimated">Estimated Delivery:</td><td>05 Nov 2025</td></tr>  
+      </table>  
+      <div class="ad-section">  
+        <p id="premium-text">Check out our premium shipping services!</p>  
+      </div>  
+    </div>  
+  </form>    <!-- Products Section -->    <section class="products">  
+    <h2 id="products-title">Our Featured Products</h2>  
+    <div class="product-grid">  
+      <div class="product-card">  
+        <img src="Box.png" alt="Fast Shipping Box">  
+        <h3 id="prod1-title">Fast Shipping Box</h3>  
+        <p id="prod1-text">Durable and affordable packaging for your shipments.</p>  
+        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Fast%20Shipping%20Box"
+   class="buy-btn" id="prod1-btn" target="_blank">Buy Now</a>  
+      </div>  
+      <div class="product-card">  
+        <img src="Luggage.png" alt="Courier Bag">  
+        <h3 id="prod2-title">Courier Bag</h3>  
+        <p id="prod2-text">Lightweight waterproof courier bags for safe delivery.</p>  
+        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Courier%20Bag"
+   class="buy-btn" id="prod2-btn" target="_blank">Shop Now</a>  
+      </div>  
+      <div class="product-card">  
+        <img src="Throw.png" alt="Protective Envelope">  
+        <h3 id="prod3-title">Protective Envelope</h3>  
+        <p id="prod3-text">Bubble-lined envelopes to protect fragile shipments.</p>  
+        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Protective%20Envelope"
+   class="buy-btn" id="prod3-btn" target="_blank">Buy Now</a>  
+      </div>  
+      <div class="product-card">  
+        <img src="Tape.jpg" alt="Sealing Tape">  
+        <h3 id="prod4-title">Sealing Tape</h3>  
+        <p id="prod4-text">Strong adhesive tape for secure package sealing.</p>  
+        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20Sealing%20Tape"
+   class="buy-btn" id="prod4-btn" target="_blank">Shop Now</a>   
+      </div>  
+    </div>  
+  </section>    <!-- About Section -->    <section id="about" class="about">  
+    <h2 id="about-title">About Us</h2>  
+    <p id="about-text">PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily.</p>  
+  </section>    <!-- Contact Section -->    <section id="contact" class="contact">  
+    <h2 id="contact-title">Contact Us</h2>  
+    <p id="contact-text">Have questions about your shipment or our services? Reach out to us:</p>  
+    <div class="contact-options">  
+      <a href="https://wa.me/2349031408205" target="_blank" class="contact-btn" id="whatsapp-btn">💬 WhatsApp</a>  
+      <a href="mailto: loganmoore7700@gmail.com" class="contact-btn" id="email-btn">📧 Email</a>  
+    </div>  
+  </section>  </div>  <!-- Footer -->  <footer>  
+  <p id="footer-text">© 2025 Package Tracker – All rights reserved</p>  
 </footer>
 
-  </main>  <script>
-    // Demo: simple tracking simulation
-    const demoData = {
-      'TRK-246800000': {
-        tracking: 'TRK-246800000', sender: 'Sgt. George Martin', receiver: 'Ms. Rafaela Manfrini de Oliveira', eta: '05 Nov 2025', events:[
-          {time:'2025-11-01 09:00', text:'Order placed at seller'},
-          {time:'2025-11-02 11:35', text:'Picked up by courier'},
-          {time:'2025-11-03 18:20', text:'Arrived at sorting facility'},
-          {time:'2025-11-04 07:40', text:'Out for delivery'}
-        ]
-      }
-    };
-
-    const form = document.getElementById('trackingForm');
-    const input = document.getElementById('trackingNumberInput');
-    const trackBtn = document.getElementById('trackBtn');
-    const steps = document.getElementById('trackingSteps');
-    const resultCard = document.getElementById('resultCard');
-
-    function resetSteps(){
-      document.querySelectorAll('.step').forEach(el=>el.classList.remove('active'));
-      document.getElementById('progressBar').style.width='0%';
-      document.getElementById('eventLog').innerHTML='';
-    }
-
-    function showResult(data){
-      resultCard.style.display='block';
-      document.getElementById('r_tracking').textContent = data.tracking;
-      document.getElementById('r_sender').textContent = data.sender;
-      document.getElementById('r_receiver').textContent = data.receiver;
-      document.getElementById('r_eta').textContent = data.eta;
-
-      // show steps and animate progress
-      steps.style.display='flex';
-      resetSteps();
-      const stepEls = [document.getElementById('s1'),document.getElementById('s2'),document.getElementById('s3'),document.getElementById('s4')];
-
-      // mark steps based on number of events (simple heuristic)
-      const filled = Math.min(data.events.length, stepEls.length);
-      stepEls.forEach((el,i)=>{
-        if(i<filled) el.classList.add('active');
-      });
-
-      const progressPerc = (filled / stepEls.length) * 100;
-      document.getElementById('progressBar').style.width = progressPerc + '%';
-
-      // events
-      const log = data.events.slice().reverse().map(ev => `<div style=\"margin-bottom:6px\"><strong>${ev.time}</strong><div class=\"muted\">${ev.text}</div></div>`).join('');
-      document.getElementById('eventLog').innerHTML = log;
-    }
-
-    trackBtn.addEventListener('click', ()=>{
-      const val = input.value.trim() || 'TRK-246800000';
-      trackBtn.disabled = true; trackBtn.textContent='Searching...';
-      setTimeout(()=>{
-        trackBtn.disabled=false; trackBtn.textContent='Track';
-        const data = demoData[val.toUpperCase()];
-        if(data){
-          showResult(data);
-        } else {
-          // not found behavior
-          resetSteps(); steps.style.display='none'; resultCard.style.display='block';
-          document.getElementById('r_tracking').textContent = val.toUpperCase();
-          document.getElementById('r_sender').textContent = '—';
-          document.getElementById('r_receiver').textContent = '—';
-          document.getElementById('r_eta').textContent = 'Not available';
-          document.getElementById('eventLog').innerHTML = '<div class="muted">No tracking information found. Please verify the number or contact support.</div>';
-        }
-      },800);
-    });
-
-    // quick-access: allow pressing Enter
-    input.addEventListener('keydown', (e)=>{ if(e.key==='Enter'){ e.preventDefault(); trackBtn.click(); }});
-
-    // Accessibility: focus management
-    trackBtn.addEventListener('click', ()=>{ document.getElementById('r_tracking').focus && document.getElementById('r_tracking').focus(); });
-  </script></body>
+<script src="script.js"></script>
+  
+</body>  
 </html>
