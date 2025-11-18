@@ -53,13 +53,7 @@ function applyLanguage(lang) {
   document.getElementById('step-shipped').querySelector('span').textContent = t.stepShipped;
   document.getElementById('step-transit').querySelector('span').textContent = t.stepTransit;
   document.getElementById('step-delivered').querySelector('span').textContent = t.stepDelivered;
-
-  // Shipment labels
-  document.getElementById('label-tracking').textContent = t.labelTracking;
-  document.getElementById('label-sender').textContent = t.labelSender;
-  document.getElementById('label-receiver').textContent = t.labelReceiver;
-  document.getElementById('label-location').textContent = t.labelLocation; // ✅ ADD THIS
-  document.getElementById('label-estimated').textContent = t.labelEstimated;
+  
 
   // Products
   document.getElementById('products-title').textContent = t.productsTitle;
