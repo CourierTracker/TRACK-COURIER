@@ -16,6 +16,7 @@
     "labelTracking": "Tracking Number:",
     "labelSender": "Sender:",
     "labelReceiver": "Receiver:",
+    "labelLocation": "Current Location:",
     "labelEstimated": "Estimated Delivery:",
     "trackBtn": "Track",
     "productsTitle": "Our Featured Products",
@@ -56,6 +57,7 @@
     "labelTracking": "Numéro de suivi :",
     "labelSender": "Expéditeur :",
     "labelReceiver": "Destinataire :",
+    "labelLocation": "Emplacement actuel :",
     "labelEstimated": "Livraison estimée :",
     "trackBtn": "Suivre",
     "productsTitle": "Nos produits vedettes",
@@ -96,6 +98,7 @@
     "labelTracking": "Número de seguimiento:",
     "labelSender": "Remitente:",
     "labelReceiver": "Destinatario:",
+    "labelLocation": "Ubicación actual:",
     "labelEstimated": "Entrega estimada:",
     "trackBtn": "Rastrear",
     "productsTitle": "Nuestros productos destacados",
@@ -136,6 +139,7 @@
     "labelTracking": "Sendungsnummer:",
     "labelSender": "Absender:",
     "labelReceiver": "Empfänger:",
+    "labelLocation": "Aktueller Standort:",
     "labelEstimated": "Voraussichtliche Lieferung:",
     "trackBtn": "Verfolgen",
     "productsTitle": "Unsere Top-Produkte",
@@ -176,6 +180,7 @@
     "labelTracking": "追踪号码：",
     "labelSender": "寄件人：",
     "labelReceiver": "收件人：",
+    "labelLocation": "当前位置：",
     "labelEstimated": "预计送达：",
     "trackBtn": "追踪",
     "productsTitle": "特色产品",
@@ -199,4 +204,4 @@
     "emailBtn": "📧 邮件",
     "footer": "© 2025 包裹追踪器 – 版权所有"
   }
-}
+  }
