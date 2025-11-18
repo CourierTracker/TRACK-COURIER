@@ -154,7 +154,7 @@ trackingForm.addEventListener('submit', function(e) {
       showError("❌ Invalid tracking number! Please try again.");
     }
 
-  }, 5000); // spinner initial delay
+  }, 900); // spinner initial delay
 });
 
 // -------------------------
