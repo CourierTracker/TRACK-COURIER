@@ -411,8 +411,7 @@ cursor: pointer;
 /* Hidden helper */
 .hidden { display: none !important; }
 
-/* Spinner */
-#spinner { display:none; font-size: 20px; margin-top: 10px; text-align:center; }
+#spinner { font-size: 20px; margin-top: 10px; text-align:center; }
 
 /* Shake animation */
 @keyframes shake {
