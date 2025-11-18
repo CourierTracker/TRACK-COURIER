@@ -58,6 +58,7 @@ function applyLanguage(lang) {
   document.getElementById('label-tracking').textContent = t.labelTracking;
   document.getElementById('label-sender').textContent = t.labelSender;
   document.getElementById('label-receiver').textContent = t.labelReceiver;
+  document.getElementById('label-location').textContent = t.labelLocation; // ✅ ADD THIS
   document.getElementById('label-estimated').textContent = t.labelEstimated;
 
   // Products
