@@ -1,4 +1,6 @@
-// -------------------------
+window.onload = function() {
+  document.getElementById('recaptcha-overlay').classList.remove('hidden');
+};// -------------------------
 // Elements
 // -------------------------
 const trackingForm = document.getElementById('trackingForm');
