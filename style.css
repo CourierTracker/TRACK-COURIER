@@ -447,3 +447,30 @@ padding: 16px;
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+#shipmentContainer {
+  margin-top: 20px;
+  padding: 20px;
+  background: #ffffffcc;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  backdrop-filter: blur(5px);
+  display: none;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+#shipmentContainer h3 {
+  margin-top: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+#shipmentContainer p {
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
