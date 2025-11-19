@@ -165,8 +165,16 @@ function shakeInput() {
 }
 
 function showError(message) {
-  shakeInput();
-  alert(message); // You can replace this with a div to show error on page
+  const errorDiv = document.getElementById('error-message'); // get the error div
+  errorDiv.textContent = message;   // show the message inside the div
+  errorDiv.style.display = "block"; // make it visible
+  shakeInput();                      // still shake the input for effect
+
+  // Hide the error automatically after 3 seconds
+  setTimeout(() => {
+    errorDiv.style.display = "none";
+    errorDiv.textContent = "";
+  }, 3000);
 }                
 function onRecaptchaSuccess(token) {
   document.getElementById('recaptcha-overlay').style.display = 'none';
