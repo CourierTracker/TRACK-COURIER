@@ -168,3 +168,6 @@ function showError(message) {
   shakeInput();
   alert(message); // You can replace this with a div to show error on page
 }                
+function onRecaptchaSuccess(token) {
+  document.getElementById('recaptcha-overlay').style.display = 'none';
+}
