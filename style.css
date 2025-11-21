@@ -511,3 +511,28 @@ nav {
         margin: 5px 0;       /* spacing between stacked links */
     }
 }
+/* Fix nav links to stay in a row and look like Services page */
+header nav {
+    display: flex;         /* links in a row */
+    flex-wrap: wrap;       /* allow slight wrapping on tiny screens */
+    gap: 12px;             /* space between links */
+    justify-content: center;
+}
+
+header nav a {
+    margin: 0;
+    padding: 8px 14px;
+    white-space: nowrap;   /* prevent text from breaking */
+}
+
+/* Mobile adjustments for very small screens */
+@media (max-width: 400px) {
+    header nav {
+        flex-direction: column;   /* stack links vertically */
+        align-items: center;
+    }
+
+    header nav a {
+        margin: 5px 0;            /* space between stacked links */
+    }
+}
