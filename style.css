@@ -470,3 +470,26 @@ padding: 16px;
   transform: scale(1.1);
   text-decoration: none;
 }
+
+/* Make nav links fit nicely on small screens */
+nav {
+    flex-wrap: wrap; /* allow links to move to next line if needed */
+}
+
+@media (max-width: 600px) {
+    nav a {
+        margin: 5px 10px;  /* smaller margins on mobile */
+        font-size: 14px;   /* reduce font size on mobile */
+    }
+}
+
+@media (max-width: 400px) {
+    nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    nav a {
+        margin: 5px 0;  /* stack links vertically on very small screens */
+    }
+}
