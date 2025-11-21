@@ -493,3 +493,21 @@ nav {
         margin: 5px 0;  /* stack links vertically on very small screens */
     }
   }
+
+  @media (max-width: 600px) {
+    nav a {
+        margin: 5px 10px;   /* smaller spacing so links fit */
+        font-size: 14px;    /* reduce font size */
+    }
+}
+
+@media (max-width: 400px) {
+    nav {
+        flex-direction: column; /* stack links vertically only on very small screens */
+        align-items: center;
+    }
+    
+    nav a {
+        margin: 5px 0;       /* spacing between stacked links */
+    }
+}
