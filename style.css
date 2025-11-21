@@ -538,20 +538,3 @@ nav a.active {
 .faq-card p {
     margin: 0;
 }
-
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #f7f7f7;
-    font-size: 14px;
-}
-
-footer a {
-    text-decoration: none;
-    color: #007bff;
-    margin: 0 5px;
-}
-
-footer a:hover {
-    text-decoration: underline;
-}
