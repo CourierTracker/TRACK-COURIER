@@ -1,463 +1,138 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Package Tracker</title>
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="shortcut icon" href="favicon.png">
-<link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/">
-
-<!-- Open Graph & Twitter -->
-<meta property="og:title" content="Package Tracker">
-<meta property="og:description" content="Track your packages easily with our simple tracking website.">
-<meta property="og:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">
-<meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Package Tracker">
-<meta property="og:locale" content="en_US">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Package Tracker">
-<meta name="twitter:description" content="Track your packages easily with our simple tracking website.">
-<meta name="twitter:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">
-
-<!-- CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-/* General */
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #a1c4fd 0%, #b3d9fc 50%, #c2e9fb 100%);
-  background-size: 200% 200%;
-  animation: gradientShift 20s ease infinite;
-  color: #333;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 25px;
-  background-color: rgba(255,255,255,0.9);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-
-header .logo-title {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-header .logo-title img {
-  height: 50px;
-}
-
-header nav a {
-  text-decoration: none;
-  color: #007bff;
-  margin-left: 15px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  transition: background 0.3s, color 0.3s;
-}
-
-header nav a:hover {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.language-switcher select {
-  padding: 5px 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  cursor: pointer;
-}
-
-/* Hero */
-.hero-section {
-  position: relative;
-  height: 300px;
-  overflow: hidden;
-  background: linear-gradient(to bottom,#87CEFA,#ffffff);
-}
-
-.cloud {
-  position: absolute;
-  background: #fff;
-  border-radius: 50%;
-  opacity: 0.8;
-  filter: drop-shadow(0 0 8px rgba(0,0,0,0.1));
-}
-
-.cloud1 { width: 120px; height: 60px; top: 40px; left: -150px; animation: moveCloud1 60s linear infinite; }
-.cloud2 { width: 80px; height: 40px; top: 100px; left: -100px; animation: moveCloud2 80s linear infinite; }
-.cloud3 { width: 100px; height: 50px; top: 150px; left: -120px; animation: moveCloud3 100s linear infinite; }
-
-@keyframes moveCloud1 { 0% { left:-150px; } 100% { left:110%; } }
-@keyframes moveCloud2 { 0% { left:-100px; } 100% { left:110%; } }
-@keyframes moveCloud3 { 0% { left:-120px; } 100% { left:110%; } }
-
-#movingPlane {
-  position: absolute;
-  top: 50px;
-  left: -100px;
-  width: 100px;
-  animation: fly 12s linear infinite;
-}
-
-@keyframes fly { 0% { left: -150px; } 100% { left: 110%; } }
-
-/* Page Container */
-.page-container {
-  max-width: 900px;
-  margin: 30px auto;
-  background-color: #fff;
-  padding: 25px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-/* Tracking Form */
-#trackingForm {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 25px;
-}
-
-#trackingForm input {
-  padding: 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-}
-
-#trackingForm button {
-  padding: 12px;
-  border-radius: 6px;
-  border: none;
-  background-color: #007bff;
-  color: #fff;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-#trackingForm button:hover {
-  background-color: #0056b3;
-}
-
-/* Tracking Steps */
-.tracking-steps {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0;
-}
-
-.tracking-steps li {
-  padding: 12px 15px;
-  margin-bottom: 10px;
-  border-left: 4px solid #007bff;
-  background-color: #f1f5f9;
-  border-radius: 6px;
-  opacity: 0.6;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 15px;
-}
-
-.tracking-steps li.show,
-.tracking-steps li.in-transit {
-  opacity: 1;
-  font-weight: bold;
-  border-left-color: #28a745;
-  background-color: #e6f5ea;
-}
-
-/* Products */
-.products {
-  margin-top: 30px;
-}
-
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 20px;
-}
-
-.product-card {
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  padding: 15px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.product-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.product-card img {
-  width: 100%;
-  height: 150px;
-  object-fit: contain;
-  margin-bottom: 10px;
-  border-radius: 6px;
-}
-
-.product-card h3 {
-  margin: 10px 0;
-  color: #007bff;
-  font-size: 17px;
-}
-
-.product-card p {
-  font-size: 14px;
-  color: #555;
-  margin-bottom: 12px;
-}
-
-.buy-btn {
-  display: inline-block;
-  padding: 10px 15px;
-  background-color: #007bff;
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: background 0.3s;
-}
-
-.buy-btn:hover {
-  background-color: #0056b3;
-}
-
-/* About / Contact */
-.about, .contact {
-  margin-top: 30px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.05);
-}
-
-.about h2, .contact h2 {
-  color: #007bff;
-}
-
-.contact .contact-options a {
-  margin-right: 10px;
-  margin-top: 10px;
-  text-decoration: none;
-  padding: 10px 18px;
-  border-radius: 6px;
-  color: #fff;
-  display: inline-block;
-  transition: background 0.3s;
-}
-
-.contact-btn:hover {
-  opacity: 0.9;
-}
-
-.contact .contact-btn:first-child {
-  background-color: #007bff;
-}
-
-.contact .contact-btn:last-child {
-  background-color: #25D366;
-}
-
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #222;
-  color: #fff;
-  font-size: 14px;
-  margin-top: 40px;
-  border-top: 3px solid #007bff;
-}
-
-/* Floating WhatsApp */
-#whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #25D366;
-  color: #fff;
-  padding: 12px 18px;
-  border-radius: 50px;
-  font-size: 16px;
-  text-decoration: none;
-  box-shadow: 0 5px 12px rgba(0,0,0,0.3);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  z-index: 1000;
-  transition: transform 0.2s;
-}
-
-#whatsapp-float:hover {
-  transform: scale(1.1);
-}
-
-/* Responsive */
-@media (max-width:768px){
-  .page-container, .about, .contact {margin:15px;padding:15px;}
-  header {flex-direction: column; gap:10px;}
-  nav {flex-wrap: wrap; justify-content: center;}
-  nav a {margin:5px;}
-  .product-grid {grid-template-columns: repeat(auto-fit,minmax(180px,1fr));}
-}
-</style>
-</head>
-<body>
-
-<!-- Header -->
-<header>
-  <div class="language-switcher">
-    <select id="languageSelect">
-      <option value="en">🇬🇧 English</option>
-      <option value="fr">🇫🇷 Français</option>
-      <option value="es">🇪🇸 Español</option>
-      <option value="de">🇩🇪 Deutsch</option>
-      <option value="zh">🇨🇳 中文</option>
-    </select>
-  </div>
-  <div class="logo-title">
-    <img src="logo.png" alt="Package Tracker Logo">
-    <div>
-      <h1 id="site-title">PACKAGE TRACKER</h1>
-      <p id="site-subtitle">Track your shipments easily</p>
-    </div>
-  </div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <a href="services.html">Services</a>
+<!DOCTYPE html>  <html lang="en">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>Package Tracker</title>  
+<link rel="icon" type="image/png" href="favicon.png">  
+<link rel="shortcut icon" href="favicon.png">  
+<link rel="canonical" href="https://couriertracker.github.io/TRACK-COURIER/" />  <!-- Open Graph and Twitter Meta Tags -->  <meta property="og:title" content="Package Tracker">  
+<meta property="og:description" content="Track your packages easily with our simple tracking website.">  
+<meta property="og:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">  
+<meta property="og:url" content="https://couriertracker.github.io/TRACK-COURIER/">  
+<meta property="og:type" content="website">  
+<meta property="og:site_name" content="Package Tracker">  
+<meta property="og:locale" content="en_US">  
+<meta name="twitter:card" content="summary_large_image">  
+<meta name="twitter:title" content="Package Tracker">  
+<meta name="twitter:description" content="Track your packages easily with our simple tracking website.">  
+<meta name="twitter:image" content="https://couriertracker.github.io/TRACK-COURIER/Images/logo.png">  <!-- CSS -->  <link rel="stylesheet" href="style.css">  
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  <!-- Google reCAPTCHA -->  <script src="https://www.google.com/recaptcha/api.js" async defer></script>  <style>  
+html { scroll-behavior: smooth; }
+</style>  
+</head>  
+<body>  <!-- ReCAPTCHA Overlay -->  <div id="recaptcha-overlay" class="hidden" style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:9999;color:#fff;text-align:center;">  
+  <h2 id="welcome-title">Welcome to Package Tracker</h2>  
+  <p id="welcome-text">Please verify that you are human to continue</p>  
+  <div class="g-recaptcha" data-sitekey="6Le4h8QrAAAAAIv3HtuDMbUCz_8VLZBEWBw2Mozg" data-callback="onRecaptchaSuccess"></div>  
+</div>  <!-- Header -->  <header>  
+  <div class="language-switcher">  
+    <select id="languageSelect">  
+      <option value="en">🇬🇧 English</option>  
+      <option value="fr">🇫🇷 Français</option>  
+      <option value="es">🇪🇸 Español</option>  
+      <option value="de">🇩🇪 Deutsch</option>  
+      <option value="zh">🇨🇳 中文</option>  
+    </select>  
+  </div>  
+  <div class="logo-title">  
+    <img src="logo.png" alt="Package Tracker Logo">  
+    <div>  
+      <h1 id="site-title">PACKAGE TRACKER</h1>  
+      <p id="site-subtitle">Track your shipments easily</p>  
+    </div>  
+  </div>  
+  <nav>  
+    <a href="#home" id="nav-home">Home</a>  
+    <a href="#about" id="nav-about">About</a>  
+    <a href="#contact" id="nav-contact">Contact</a>  
+    <a href="services.html" id="nav-services">Services</a> <!-- NEW LINK -->
   </nav>
-</header>
-
-<!-- Hero -->
-<section class="hero-section">
-  <div class="cloud cloud1"></div>
-  <div class="cloud cloud2"></div>
-  <div class="cloud cloud3"></div>
-  <img id="movingPlane" src="plane.png" alt="Flying Plane">
-</section>
-
-<!-- Main -->
-<div id="home" class="page-container">
-
-  <!-- Tracking Steps -->
-  <ul id="trackingSteps" class="tracking-steps hidden">
-    <li id="step-placed"><i class="fas fa-cart-plus"></i> Order Placed</li>
-    <li id="step-shipped"><i class="fas fa-truck"></i> Shipped</li>
-    <li id="step-transit"><i class="fas fa-plane"></i> In Transit</li>
-    <li id="step-delivered"><i class="fas fa-box-open"></i> Delivered</li>
-  </ul>
-
-  <!-- Tracking Form -->
-  <form id="trackingForm">
-    <input type="text" id="tracking-number" placeholder="Enter tracking number">
-    <button type="submit">Track</button>
-  </form>
-
-  <!-- Ad Section -->
-  <div class="ad-section">
-    <p>💡 Tip: Track multiple packages easily with your account!</p>
-    <p>📦 Special: Fast delivery for premium members.</p>
-  </div>
-
-  <!-- Shipment Container -->
-  <div class="shipment-container" id="shipmentContainer" style="display:none;">
-    <table class="shipment-details">
-      <tr><td>Tracking Number:</td><td>Track-246800000</td></tr>
-      <tr><td>Sender:</td><td>Charles Williams</td></tr>
-      <tr><td>Receiver:</td><td>Sandra Allen</td></tr>
-      <tr><td>Current Location:</td><td>Turkey, Istanbul</td></tr>
-      <tr><td>Estimated Delivery:</td><td>05 Jan 2026</td></tr>
-    </table>
-    <div class="ad-section">
-      <p>Check out our premium shipping services!</p>
+</header>  <!-- Hero Section -->  <section id="hero" class="hero-section" style="position:relative;height:300px;overflow:hidden;background:linear-gradient(to bottom,#87CEFA,#ffffff);">  
+  <div class="cloud cloud1"></div>  
+  <div class="cloud cloud2"></div>  
+  <div class="cloud cloud3"></div>  
+  <img id="movingPlane" src="plane.png" alt="Flying Plane" style="position:absolute;top:50px;left:-100px;width:100px;">  
+</section>  <!-- Main Content -->  <div id="home" class="page-container">    <!-- Tracking Steps -->    <ul id="trackingSteps" class="tracking-steps hidden">  
+    <li id="step-placed"><i class="fas fa-cart-plus"></i> <span>Order Placed</span></li>  
+    <li id="step-shipped"><i class="fas fa-truck"></i> <span>Shipped</span></li>  
+    <li id="step-transit"><i class="fas fa-plane"></i> <span>In Transit</span></li>  
+    <li id="step-delivered"><i class="fas fa-box-open"></i> <span>Delivered</span></li>  
+  </ul>    <div class="ad-section">  
+    <p id="tip-text">💡 Tip: Track multiple packages easily with your account!</p>  
+    <p id="special-text">📦 Special: Fast delivery for premium members.</p>  
+  </div>    <!-- Tracking Form -->    <form id="trackingForm">  
+    <div class="search-section">  
+      <input type="text" id="tracking-number" placeholder="Enter tracking number">  
+      <button type="submit" id="track-btn">Track</button>  
+    </div>  
+    <div id="spinner" class="spinner">
+  <i class="fas fa-spinner fa-spin fa-2x"></i> Loading...
+    </div>  
+    <div class="shipment-container" id="shipmentContainer" style="display:none;">
+  <table class="shipment-details">
+    <tr><td>Tracking Number:</td><td>Track-246800000</td></tr>
+    <tr><td>Sender:</td><td>Charles Williams</td></tr>
+    <tr><td>Receiver:</td><td>Sandra Allen</td></tr>
+    <tr><td>Current Location:</td><td>Turkey, Istanbul</td></tr>
+    <tr><td>Estimated Delivery:</td><td>05 Jan 2026</td></tr>
+    </table>  
+      <div class="ad-section">  
+        <p id="premium-text">Check out our premium shipping services!</p>  
+      </div>  
+    </div>  
+  </form>    <!-- Products Section -->    <section class="products">  
+    <h2 id="products-title">Our Featured Products</h2>  
+    <div class="product-grid">  
+      <div class="product-card">  
+        <img src="Box.png" alt="Fast Shipping Box">  
+        <h3 id="prod1-title">Fast Shipping Box</h3>  
+        <p id="prod1-text">Durable and affordable packaging for your shipments.</p>  
+        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Fast%20Shipping%20Box"
+   class="buy-btn" id="prod1-btn" target="_blank">Buy Now</a>  
+      </div>  
+      <div class="product-card">  
+        <img src="Luggage.png" alt="Courier Bag">  
+        <h3 id="prod2-title">Courier Bag</h3>  
+        <p id="prod2-text">Lightweight waterproof courier bags for safe delivery.</p>  
+        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Courier%20Bag"
+   class="buy-btn" id="prod2-btn" target="_blank">Shop Now</a>  
+      </div>  
+      <div class="product-card">  
+        <img src="Throw.png" alt="Protective Envelope">  
+        <h3 id="prod3-title">Protective Envelope</h3>  
+        <p id="prod3-text">Bubble-lined envelopes to protect fragile shipments.</p>  
+        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Protective%20Envelope"
+   class="buy-btn" id="prod3-btn" target="_blank">Buy Now</a>  
+      </div>  
+      <div class="product-card">  
+        <img src="Tape.png" alt="Sealing Tape">  
+        <h3 id="prod4-title">Sealing Tape</h3>  
+        <p id="prod4-text">Strong adhesive tape for secure package sealing.</p>  
+        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20Sealing%20Tape"
+   class="buy-btn" id="prod4-btn" target="_blank">Shop Now</a>   
+      </div>  
+    </div>  
+  </section>    <!-- About Section -->    <section id="about" class="about">  
+    <h2 id="about-title">About Us</h2>  
+    <p id="about-text">PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily.</p>  
+  </section>    <!-- Contact Section -->    <section id="contact" class="contact">  
+    <h2 id="contact-title">Contact Us</h2>  
+    <p id="contact-text">Have questions about your shipment or our services? Reach out to us:</p>  
+    <div class="contact-options">  
+  <a href="help.html" class="contact-btn" id="help-btn">❓ Help / FAQ</a>  
+  <a href="mailto: toppmanking@gmail.com" class="contact-btn" id="email-btn">📧 Email</a>  
     </div>
-  </div>
-
-  <!-- Products -->
-  <section class="products">
-    <h2>Our Featured Products</h2>
-    <div class="product-grid">
-      <div class="product-card">
-        <img src="Box.png" alt="Fast Shipping Box">
-        <h3>Fast Shipping Box</h3>
-        <p>Durable and affordable packaging for your shipments.</p>
-        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Fast%20Shipping%20Box" class="buy-btn">Buy Now</a>
-      </div>
-      <div class="product-card">
-        <img src="Luggage.png" alt="Courier Bag">
-        <h3>Courier Bag</h3>
-        <p>Lightweight waterproof courier bags for safe delivery.</p>
-        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Courier%20Bag" class="buy-btn">Shop Now</a>
-      </div>
-      <div class="product-card">
-        <img src="Throw.png" alt="Protective Envelope">
-        <h3>Protective Envelope</h3>
-        <p>Bubble-lined envelopes to protect fragile shipments.</p>
-        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Protective%20Envelope" class="buy-btn">Buy Now</a>
-      </div>
-      <div class="product-card">
-        <img src="Tape.png" alt="Sealing Tape">
-        <h3>Sealing Tape</h3>
-        <p>Strong adhesive tape for secure package sealing.</p>
-        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20Sealing%20Tape" class="buy-btn">Shop Now</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- About -->
-  <section id="about" class="about">
-    <h2>About Us</h2>
-    <p>PACKAGE-TRACKER is a simple courier tracking site that allows users to check the delivery status of their packages quickly and easily.</p>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="contact">
-    <h2>Contact Us</h2>
-    <p>Have questions about your shipment or our services? Reach out to us:</p>
-    <div class="contact-options">
-      <a href="help.html" class="contact-btn">❓ Help / FAQ</a>
-      <a href="mailto:toppmanking@gmail.com" class="contact-btn">📧 Email</a>
-    </div>
-  </section>
-
 </div>
 
-<!-- Footer -->
-<footer>
-  <p>© 2025 Package Tracker – All rights reserved</p>
+</section>  </div>  <!-- Footer -->  <footer>  
+  <p id="footer-text">© 2025 Package Tracker – All rights reserved</p>  
 </footer>
 
-<!-- Floating WhatsApp -->
+<script src="script.js"></script>
+<!-- Floating WhatsApp Button -->
 <a href="https://wa.me/2348144179339" target="_blank" id="whatsapp-float">
   <i class="fab fa-whatsapp"></i> Chat Now
 </a>
-
-<script src="script.js"></script>
-</body>
+  
+</body>  
 </html>
