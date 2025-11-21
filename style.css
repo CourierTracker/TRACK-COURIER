@@ -493,28 +493,3 @@ nav {
         margin: 5px 0;  /* stack links vertically on very small screens */
     }
 }
-
-body {
-    background-color: #f7f7f7;
-}
-
-.container {
-    max-width: 1000px;
-    margin: 40px auto;
-    padding: 25px;
-    background-color: #ffffff;
-    border-radius: 12px;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
-}
-
-.faq-card {
-    background-color: #ffffff;
-    padding: 25px;
-    margin-bottom: 25px;
-    border-radius: 10px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-}
-
-.faq-card h3 {
-    color: #007bff;
-}
