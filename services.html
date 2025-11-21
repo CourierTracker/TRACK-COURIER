@@ -3,24 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Services | Your Website Name</title>
+  <title>Services | Track Courier</title>
   <style>
+    /* General Styles */
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      padding: 0;
       line-height: 1.6;
-      background-color: #f9f9f9;
+      background: linear-gradient(135deg, #a1c4fd 0%, #b3d9fc 50%, #c2e9fb 100%);
+      background-size: 200% 200%;
+      animation: gradientShift 20s ease infinite;
       color: #333;
     }
 
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 50px auto;
+      padding: 25px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    }
+
     h1 {
-      color: #2c3e50;
       text-align: center;
+      font-size: 28px;
+      color: #007bff;
+      margin-bottom: 20px;
+    }
+
+    p.description {
+      text-align: center;
+      font-size: 16px;
       margin-bottom: 30px;
+      color: #555;
     }
 
     h2 {
-      color: #2c3e50;
+      color: #007bff;
       margin-bottom: 15px;
       position: relative;
       padding-left: 15px;
@@ -38,10 +65,10 @@
     }
 
     .section {
-      background-color: #fff;
-      padding: 20px;
+      background-color: #f9f9f9;
+      padding: 20px 25px;
       border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
       margin-bottom: 25px;
     }
 
@@ -51,6 +78,8 @@
 
     ul li {
       margin-bottom: 8px;
+      font-size: 15px;
+      color: #555;
     }
 
     a {
@@ -66,12 +95,13 @@
 
     .contact a {
       display: inline-block;
-      padding: 8px 15px;
+      padding: 10px 18px;
       margin-right: 10px;
-      border-radius: 5px;
+      border-radius: 8px;
       color: #fff;
       text-decoration: none;
       transition: background 0.3s;
+      font-size: 14px;
     }
 
     .whatsapp {
@@ -83,15 +113,11 @@
     }
 
     .email {
-      background-color: #3498db;
+      background-color: #007bff;
     }
 
     .email:hover {
-      background-color: #2c80b4;
-    }
-
-    .section p {
-      margin-bottom: 10px;
+      background-color: #0056b3;
     }
 
     .highlight {
@@ -99,59 +125,87 @@
       font-weight: bold;
     }
 
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #222;
+      color: #fff;
+      font-size: 14px;
+      margin-top: 40px;
+      border-top: 3px solid #007bff;
+    }
+
+    footer a {
+      text-decoration: none;
+      color: #007bff;
+      margin: 0 5px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
     @media (max-width: 600px) {
-      body {
-        margin: 10px;
+      .container {
+        margin: 20px;
+        padding: 20px;
       }
       .contact a {
         margin-bottom: 10px;
+      }
+      h1 {
+        font-size: 24px;
+      }
+      h2 {
+        font-size: 18px;
       }
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Fast, Affordable Services – Online & Offline!</h1>
+    <p class="description">Need help with websites, social media, or local delivery? I can do it for you — quickly and at a fair price.</p>
 
-  <h1>Fast, Affordable Services – Online & Offline!</h1>
-  <p style="text-align:center;">Need help with websites, social media, or local delivery? I can do it for you — quickly and at a fair price.</p>
+    <div class="section">
+      <h2>Website & Online Help</h2>
+      <ul>
+        <li><strong>Simple Website:</strong> Basic setup for your business or personal project – <span class="highlight">$50</span></li>
+        <li><strong>Social Media Setup:</strong> Instagram/Facebook page creation + branding – <span class="highlight">$20</span></li>
+        <li><strong>Social Media Management:</strong> Weekly posts & updates – <span class="highlight">$30/week</span></li>
+      </ul>
+    </div>
 
-  <div class="section">
-    <h2>Website & Online Help</h2>
-    <ul>
-      <li><strong>Simple Website:</strong> Basic setup for your business or personal project – <span class="highlight">$50</span></li>
-      <li><strong>Social Media Setup:</strong> Instagram/Facebook page creation + branding – <span class="highlight">$20</span></li>
-      <li><strong>Social Media Management:</strong> Weekly posts & updates – <span class="highlight">$30/week</span></li>
-    </ul>
+    <div class="section">
+      <h2>Delivery & Errand Services</h2>
+      <ul>
+        <li>Local Delivery (within 5 km): <span class="highlight">$5</span></li>
+        <li>Longer Distance Delivery (5–15 km): <span class="highlight">$10</span></li>
+        <li>Shopping / Errands: Price depends on distance</li>
+      </ul>
+      <p>✅ Fast, safe, and reliable. Contact me today!</p>
+    </div>
+
+    <div class="section">
+      <h2>Recommended Products (Affiliate)</h2>
+      <p>Buy trusted products like phone accessories & groceries. Support me while shopping — no extra cost for you!</p>
+      <p>Check them out here: <a href="[Not available now]" target="_blank">Deals & Products</a></p>
+    </div>
+
+    <div class="section">
+      <h2>Contact Me Instantly</h2>
+      <p class="contact">
+        📱 WhatsApp: <a href="https://wa.me/[your number]" class="whatsapp">+2349031408205</a>
+        📧 Email: <a href="mailto:toppmanking@gmail.com" class="email">toppmanking@gmail.com</a>
+      </p>
+      <p>💬 Message me now — let’s get your website ready or your delivery done today!</p>
+    </div>
   </div>
 
-  <div class="section">
-    <h2>Delivery & Errand Services</h2>
-    <ul>
-      <li>Local Delivery (within 5 km): <span class="highlight">$5</span></li>
-      <li>Longer Distance Delivery (5–15 km): <span class="highlight">$10</span></li>
-      <li>Shopping / Errands: Price depends on distance</li>
-    </ul>
-    <p>✅ Fast, safe, and reliable. Contact me today!</p>
-  </div>
-
-  <div class="section">
-    <h2>Recommended Products (Affiliate)</h2>
-    <p>Buy trusted products like phone accessories & groceries. Support me while shopping — no extra cost for you!</p>
-    <p>Check them out here: <a href="[Not available now]" target="_blank">Deals & Products</a></p>
-  </div>
-
-  <div class="section">
-    <h2>Contact Me Instantly</h2>
-    <p class="contact">
-      📱 WhatsApp: <a href="https://wa.me/[your number]" class="whatsapp">+2349031408205</a>
-      📧 Email: <a href="mailto:[your email]" class="email">toppmanking@gmail.com</a>
-    </p>
-    <p>💬 Message me now — let’s get your website ready or your delivery done today!</p>
-  </div>
-  <!-- Footer -->
   <footer>
     <p>© 2025 Track Courier • 
       <a href="help.html">Help / FAQ</a> • 
-      <a href="privacy.html">Privacy Policy</a> • 
+      <a href="privacy.html">Privacy Policy</a>
     </p>
   </footer>
 </body>
