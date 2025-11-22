@@ -3,17 +3,11 @@
 -------------------------------------------------- */
 body {
     margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #a1c4fd 0%, #b3d9fc 50%, #c2e9fb 100%);
-    background-size: 200% 200%;
-    animation: gradientShift 20s ease infinite;
-    color: #333;
-}
-
-@keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    background: #f1f1f1;  /* Light gray background for the whole page */
+    color: #2a2a2a;       /* Dark text */
+    scroll-behavior: smooth;
 }
 
 .page-container {
@@ -30,75 +24,107 @@ body {
    HEADER
 -------------------------------------------------- */
 header {
+    background-color: #4b4b4b; /* Modern grey header */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-bottom: 3px solid #d4a017; /* Gold accent */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo-title {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    padding: 10px 20px;
-    background-color: transparent;
-    box-sizing: border-box;
+    gap: 10px;
 }
 
-header .logo-title {
+.logo-title img {
+    width: 60px;
+    height: 60px;
+}
+
+nav {
+    margin-top: 15px;
     display: flex;
-    align-items: center;
-    gap: 12px;
+    gap: 25px;
 }
 
-header .logo-title img {
-    height: 50px;
-    flex-shrink: 0;
-}
-
-header .logo-title h1 {
-    margin: 0;
-    font-size: 1.5em;
-    color: #333;
-}
-
-header .logo-title p {
-    margin: 0;
-    font-size: 0.9em;
-    color: #555;
-}
-
-header nav {
-    display: flex;
-    gap: 12px;
-}
-
-header nav a {
+nav a {
     text-decoration: none;
-    padding: 8px 14px;
-    background-color: #007bff;
-    color: #fff;
+    color: #ffffff; /* White links */
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #d4a017; /* Gold hover */
+    color: #000;
+}
+
+/* --------------------------------------------------
+   LANGUAGE SWITCHER
+-------------------------------------------------- */
+.language-switcher {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.language-switcher select {
+    padding: 6px 10px;
     border-radius: 6px;
-    font-size: 0.95em;
-    transition: background 0.3s ease;
+    border: none;
+    background-color: #d1d1d1;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-header nav a:hover {
-    background-color: #0056b3;
+/* --------------------------------------------------
+   HERO SECTION (Clouds & Plane)
+-------------------------------------------------- */
+.hero-section {
+    height: 280px;
+    background: linear-gradient(135deg, #2a2a2a, #4b4b4b);
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    position: relative;
+    overflow: hidden;
 }
 
-/* Mobile header */
-@media (max-width: 480px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        text-align: center;
-    }
-    header .logo-title {
-        flex-direction: column;
-        gap: 4px;
-    }
-    header nav {
-        justify-content: center;
-        margin-top: 8px;
-        width: 100%;
-    }
+#movingPlane {
+    position: absolute;
+    top: 50px;
+    left: -100px;
+    width: 100px;
+    animation: fly 10s linear infinite;
 }
+
+@keyframes fly {
+    0% { left: -150px; }
+    100% { left: 110%; }
+}
+
+.cloud {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.1));
+}
+
+.cloud1 { width: 120px; height: 60px; top: 40px;  left: -150px; animation: moveCloud1 60s linear infinite; }
+.cloud2 { width: 80px;  height: 40px; top: 100px; left: -100px; animation: moveCloud2 80s linear infinite; }
+.cloud3 { width: 100px; height: 50px; top: 150px; left: -120px; animation: moveCloud3 100s linear infinite; }
+
+@keyframes moveCloud1 { 0% { left:-150px; } 100% { left:110%; } }
+@keyframes moveCloud2 { 0% { left:-100px; } 100% { left:110%; } }
+@keyframes moveCloud3 { 0% { left:-120px; } 100% { left:110%; } }
 
 /* --------------------------------------------------
    TRACKING FORM
@@ -110,30 +136,38 @@ header nav a:hover {
     margin-top: 20px;
 }
 
-#trackingForm input {
-    padding: 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
+.search-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
-#trackingForm button {
+#tracking-number {
+    width: 70%;
+    max-width: 400px;
     padding: 12px;
-    font-size: 16px;
-    background-color: #007bff;
-    color: white;
+    border: 2px solid #d4a017;
+    border-radius: 8px 0 0 8px;
+    outline: none;
+    background: #ffffff;
+}
+
+#track-btn {
+    padding: 12px 20px;
     border: none;
-    border-radius: 6px;
+    background: #d4a017;
+    color: #000;
+    font-weight: bold;
+    border-radius: 0 8px 8px 0;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-#trackingForm button:hover {
-    background-color: #0056b3;
+#track-btn:hover {
+    background: #b78b14;
 }
 
-/* --------------------------------------------------
-   TRACKING STEPS
--------------------------------------------------- */
+/* TRACKING STEPS */
 .tracking-steps {
     list-style: none;
     padding: 0;
@@ -144,7 +178,7 @@ header nav a:hover {
 .tracking-steps li {
     padding: 12px 15px;
     margin-bottom: 10px;
-    border-left: 4px solid #007bff;
+    border-left: 4px solid #d4a017;
     background-color: #f1f5f9;
     border-radius: 6px;
     opacity: 0.6;
@@ -159,9 +193,7 @@ header nav a:hover {
     background-color: #e6f5ea;
 }
 
-/* --------------------------------------------------
-   SHIPMENT CONTAINER
--------------------------------------------------- */
+/* SHIPMENT CONTAINER */
 .shipment-container {
     margin-top: 20px;
     padding: 20px;
@@ -202,421 +234,6 @@ header nav a:hover {
 -------------------------------------------------- */
 .products {
     padding: 40px 20px;
-    background: #f9f9f9;
-    text-align: center;
-}
-
-.products h2 {
-    font-size: 28px;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
-}
-
-.product-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 20px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.product-card img {
-    width: 100%;
-    max-height: 180px;
-    object-fit: contain;
-    border-radius: 8px;
-    margin-bottom: 15px;
-}
-
-.product-card h3 {
-    font-size: 18px;
-    margin: 10px 0;
-    color: #222;
-}
-
-.product-card p {
-    font-size: 14px;
-    color: #666;
-    margin-bottom: 15px;
-}
-
-.buy-btn {
-    display: inline-block;
-    padding: 10px 18px;
-    background: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    transition: background 0.2s ease;
-}
-
-.buy-btn:hover {
-    background: #0056b3;
-}
-
-/* --------------------------------------------------
-   ABOUT SECTION
--------------------------------------------------- */
-.about {
-    padding: 40px 20px;
-    background: #fff;
-    text-align: center;
-    max-width: 900px;
-    margin: 0 auto 40px auto;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-}
-
-.about h2 {
-    font-size: 26px;
-    margin: 15px 0;
-    color: #333;
-}
-
-.about p {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.6;
-}
-
-/* --------------------------------------------------
-   CONTACT SECTION
--------------------------------------------------- */
-.contact {
-    padding: 40px 20px;
-    background: #f0f4ff;
-    text-align: center;
-    margin-top: 40px;
-    border-radius: 12px;
-}
-
-.contact h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #333;
-}
-
-.contact p {
-    font-size: 15px;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-.contact-options {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    flex-wrap: wrap;
-}
-
-.contact-btn {
-    display: inline-block;
-    padding: 12px 20px;
-    background: #007bff;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-size: 15px;
-    transition: background 0.2s ease;
-}
-
-.contact-btn:hover {
-    background: #0056b3;
-}
-
-/* --------------------------------------------------
-   FOOTER
--------------------------------------------------- */
-footer {
-    text-align: center;
-    padding: 15px;
-    background: #222;
-    color: #fff;
-    font-size: 14px;
-    margin-top: 40px;
-    border-top: 3px solid #007bff;
-}
-
-/* --------------------------------------------------
-   HERO SECTION (Clouds & Plane)
--------------------------------------------------- */
-.hero-section {
-    position: relative;
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-    background: linear-gradient(to bottom, #87CEFA, #ffffff);
-}
-
-#movingPlane {
-    position: absolute;
-    top: 50px;
-    left: -100px;
-    width: 100px;
-    animation: fly 10s linear infinite;
-}
-
-@keyframes fly {
-    0% { left: -150px; }
-    100% { left: 110%; }
-}
-
-.cloud {
-    position: absolute;
-    background: #fff;
-    border-radius: 50%;
-    opacity: 0.8;
-    filter: drop-shadow(0 0 8px rgba(0,0,0,0.1));
-}
-
-.cloud1 { width: 120px; height: 60px; top: 40px;  left: -150px; animation: moveCloud1 60s linear infinite; }
-.cloud2 { width: 80px;  height: 40px; top: 100px; left: -100px; animation: moveCloud2 80s linear infinite; }
-.cloud3 { width: 100px; height: 50px; top: 150px; left: -120px; animation: moveCloud3 100s linear infinite; }
-
-@keyframes moveCloud1 { 0% { left:-150px; } 100% { left:110%; } }
-@keyframes moveCloud2 { 0% { left:-100px; } 100% { left:110%; } }
-@keyframes moveCloud3 { 0% { left:-120px; } 100% { left:110%; } }
-
-/* --------------------------------------------------
-   FLOATING SHIP
--------------------------------------------------- */
-body::after {
-    content: "";
-    position: fixed;
-    bottom: 0;
-    left: 50%;
-    width: 600px;
-    height: 400px;
-    background: url('ship.png') no-repeat center bottom;
-    background-size: contain;
-    opacity: 0.8;
-    z-index: -1;
-    pointer-events: none;
-    animation: floatShip 6s ease-in-out infinite;
-}
-
-@keyframes floatShip {
-    0%   { transform: translateX(-50%) translateY(0); }
-    50%  { transform: translateX(-50%) translateY(-15px); }
-    100% { transform: translateX(-50%) translateY(0); }
-}
-
-/* --------------------------------------------------
-   LANGUAGE SWITCHER
--------------------------------------------------- */
-.language-switcher {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-}
-
-.language-switcher select {
-    padding: 5px 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-/* --------------------------------------------------
-   UTILITIES
--------------------------------------------------- */
-.hidden { display: none !important; }
-
-#spinner {
-    display: none;
-    font-size: 20px;
-    margin-top: 10px;
-    text-align: center;
-}
-
-@keyframes shake {
-    0% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    50% { transform: translateX(5px); }
-    75% { transform: translateX(-5px); }
-    100% { transform: translateX(0); }
-}
-
-.shake { animation: shake 0.5s; }
-
-/* --------------------------------------------------
-   RESPONSIVE ADJUSTMENTS
--------------------------------------------------- */
-@media (max-width: 768px) {
-    .page-container {
-        margin: 20px;
-        padding: 16px;
-    }
-
-    /* Spinner */
-    .spinner {
-        border: 5px solid #f3f3f3;
-        border-top: 5px solid #3498db;
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 1s linear infinite;
-        margin: 10px auto;
-    }
-
-    @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
-    }
-
-    /* Floating WhatsApp */
-    #whatsapp-float {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #25D366;
-        color: #fff;
-        padding: 12px 18px;
-        border-radius: 50px;
-        font-size: 16px;
-        text-decoration: none;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        z-index: 1000;
-        transition: transform 0.2s;
-    }
-
-    #whatsapp-float:hover {
-        transform: scale(1.1);
-        text-decoration: none;
-    }
-
-    /* Nav links mobile */
-    nav {
-        flex-wrap: wrap;
-    }
-}
-
-@media (max-width: 600px) {
-    nav a {
-        margin: 5px 10px;
-        font-size: 14px;
-    }
-   }
-
-/* PREMIUM GOLD + GRAY THEME FOR PACKAGE TRACKER */
-
-/* GENERAL */
-body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: #f1f1f1;
-    color: #2a2a2a;
-}
-
-/* HEADER */
-header {
-    background: #ffffff;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 15px 10px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border-bottom: 3px solid #d4a017;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-}
-
-.logo-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.logo-title img {
-    width: 60px;
-    height: 60px;
-}
-
-/* NAVIGATION */
-nav {
-    margin-top: 10px;
-    display: flex;
-    gap: 20px;
-}
-
-nav a {
-    text-decoration: none;
-    color: #2a2a2a;
-    font-weight: bold;
-    padding: 6px 12px;
-    border-radius: 6px;
-    transition: 0.3s;
-}
-
-nav a:hover {
-    background: #d4a017;
-    color: #000;
-}
-
-/* HERO SECTION */
-.hero-section {
-    height: 280px;
-    background: linear-gradient(135deg, #2a2a2a, #4b4b4b);
-    border-bottom-left-radius: 20px;
-    border-bottom-right-radius: 20px;
-    position: relative;
-    overflow: hidden;
-}
-
-/* TRACKING FORM */
-.search-section {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-#tracking-number {
-    width: 70%;
-    max-width: 400px;
-    padding: 12px;
-    border: 2px solid #d4a017;
-    border-radius: 8px 0 0 8px;
-    outline: none;
-    background: #ffffff;
-}
-
-#track-btn {
-    padding: 12px 20px;
-    border: none;
-    background: #d4a017;
-    color: #000;
-    font-weight: bold;
-    border-radius: 0 8px 8px 0;
-    cursor: pointer;
-    transition: 0.3s;
-}
-
-#track-btn:hover {
-    background: #b78b14;
-}
-
-/* PRODUCT CARDS */
-.products {
-    padding: 40px 20px;
     text-align: center;
 }
 
@@ -647,6 +264,18 @@ nav a:hover {
     object-fit: contain;
 }
 
+.product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #222;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
 .buy-btn {
     display: inline-block;
     margin-top: 10px;
@@ -663,7 +292,9 @@ nav a:hover {
     background: #b78b14;
 }
 
-/* ABOUT & CONTACT SECTIONS */
+/* --------------------------------------------------
+   ABOUT & CONTACT SECTIONS
+-------------------------------------------------- */
 .about, .contact {
     padding: 30px 20px;
     text-align: center;
@@ -695,52 +326,72 @@ nav a:hover {
     background: #b78b14;
 }
 
-header {
-  background: #f1f1f1;  /* Soft modern grey */
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #222;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 40px;
+    border-top: 3px solid #d4a017;
 }
 
-body {
-  background: #f1f1f1;  /* Light grey for whole page */
-  color: #2a2a2a;       /* Dark text */
-}
-
-header {
-    background-color: #4b4b4b; /* Modern grey */
+/* --------------------------------------------------
+   FLOATING WHATSAPP BUTTON
+-------------------------------------------------- */
+#whatsapp-float {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #25D366;
+    color: #fff;
+    padding: 12px 18px;
+    border-radius: 50px;
+    font-size: 16px;
+    text-decoration: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
     display: flex;
-    flex-direction: column;
     align-items: center;
-    padding: 20px 15px; /* thick, spacious padding */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* subtle professional shadow */
-    border-bottom: 3px solid #d4a017; /* gold accent */
-    position: sticky;
-    top: 0;
+    gap: 8px;
     z-index: 1000;
+    transition: transform 0.2s;
 }
 
-nav {
-    margin-top: 15px;
-    display: flex;
-    gap: 25px;
+#whatsapp-float:hover {
+    transform: scale(1.1);
+    text-decoration: none;
 }
 
-nav a {
-    color: #ffffff; /* white links */
-    font-weight: bold;
-    padding: 8px 15px;
-    border-radius: 8px;
-    transition: 0.3s;
+/* --------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+-------------------------------------------------- */
+@media (max-width: 768px) {
+    .page-container {
+        margin: 20px;
+        padding: 16px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+    }
+
+    #whatsapp-float {
+        bottom: 15px;
+        right: 15px;
+    }
 }
 
-nav a:hover {
-    background-color: #d4a017; /* gold hover */
-    color: #000;
-}
+@media (max-width: 600px) {
+    nav a {
+        margin: 5px 10px;
+        font-size: 14px;
+    }
 
-.language-switcher select {
-    padding: 6px 10px;
-    border-radius: 6px;
-    border: none;
-    background-color: #d1d1d1;
-    font-weight: bold;
-    cursor: pointer;
+    .product-card img {
+        width: 80px;
+        height: 80px;
+    }
 }
