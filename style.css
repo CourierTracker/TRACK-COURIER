@@ -30,16 +30,17 @@ body {
    HEADER
 -------------------------------------------------- */
 header {
-    background-color: #4b4b4b; /* Modern grey header */
+    background-color: #4b4b4b; 
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 15px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    border-bottom: 3px solid #d4a017; /* Gold accent */
-    position: sticky;
+    border-bottom: 3px solid #d4a017;
+    position: sticky; /* keep this */
     top: 0;
     z-index: 1000;
+    position: relative; /* <-- ADD THIS */
 }
 
 .logo-title {
