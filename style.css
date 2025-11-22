@@ -703,3 +703,44 @@ body {
   background: #f1f1f1;  /* Light grey for whole page */
   color: #2a2a2a;       /* Dark text */
 }
+
+header {
+    background-color: #4b4b4b; /* Modern grey */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px; /* thick, spacious padding */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2); /* subtle professional shadow */
+    border-bottom: 3px solid #d4a017; /* gold accent */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    margin-top: 15px;
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #ffffff; /* white links */
+    font-weight: bold;
+    padding: 8px 15px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    background-color: #d4a017; /* gold hover */
+    color: #000;
+}
+
+.language-switcher select {
+    padding: 6px 10px;
+    border-radius: 6px;
+    border: none;
+    background-color: #d1d1d1;
+    font-weight: bold;
+    cursor: pointer;
+}
