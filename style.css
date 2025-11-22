@@ -694,3 +694,7 @@ nav a:hover {
 .contact-btn:hover {
     background: #b78b14;
 }
+
+header {
+  background: #f1f1f1;  /* Soft modern grey */
+}
