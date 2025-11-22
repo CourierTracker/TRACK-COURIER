@@ -37,7 +37,6 @@ function applyLanguage(lang) {
   document.getElementById('nav-home').textContent = t.navHome;
   document.getElementById('nav-about').textContent = t.navAbout;
   document.getElementById('nav-contact').textContent = t.navContact;
-  document.getElementById('nav-services').textContent = t.navServices;
 
   // Welcome / ReCAPTCHA
   document.getElementById('welcome-title').textContent = t.welcomeTitle;
