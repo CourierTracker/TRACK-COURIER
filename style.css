@@ -4,21 +4,537 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #f1f1f1;  /* Light grey background */
-    color: #2a2a2a;       /* Dark text for readability */
+    background: linear-gradient(135deg, #a1c4fd 0%, #b3d9fc 50%, #c2e9fb 100%);
+    background-size: 200% 200%;
+    animation: gradientShift 20s ease infinite;
+    color: #333;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.page-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    text-align: center;
 }
 
 /* --------------------------------------------------
    HEADER
 -------------------------------------------------- */
 header {
-    background: #f1f1f1;  /* Soft modern grey */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: transparent;
+    box-sizing: border-box;
+}
+
+header .logo-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+header .logo-title img {
+    height: 50px;
+    flex-shrink: 0;
+}
+
+header .logo-title h1 {
+    margin: 0;
+    font-size: 1.5em;
+    color: #333;
+}
+
+header .logo-title p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+}
+
+header nav {
+    display: flex;
+    gap: 12px;
+}
+
+header nav a {
+    text-decoration: none;
+    padding: 8px 14px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 0.95em;
+    transition: background 0.3s ease;
+}
+
+header nav a:hover {
+    background-color: #0056b3;
+}
+
+/* Mobile header */
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        text-align: center;
+    }
+    header .logo-title {
+        flex-direction: column;
+        gap: 4px;
+    }
+    header nav {
+        justify-content: center;
+        margin-top: 8px;
+        width: 100%;
+    }
+}
+
+/* --------------------------------------------------
+   TRACKING FORM
+-------------------------------------------------- */
+#trackingForm {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+#trackingForm input {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+#trackingForm button {
+    padding: 12px;
+    font-size: 16px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+#trackingForm button:hover {
+    background-color: #0056b3;
+}
+
+/* --------------------------------------------------
+   TRACKING STEPS
+-------------------------------------------------- */
+.tracking-steps {
+    list-style: none;
+    padding: 0;
+    margin: 30px 0 0 0;
+    text-align: left;
+}
+
+.tracking-steps li {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-left: 4px solid #007bff;
+    background-color: #f1f5f9;
+    border-radius: 6px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+.tracking-steps li.show,
+.tracking-steps li.in-transit {
+    opacity: 1;
+    font-weight: bold;
+    border-left-color: #28a745;
+    background-color: #e6f5ea;
+}
+
+/* --------------------------------------------------
+   SHIPMENT CONTAINER
+-------------------------------------------------- */
+.shipment-container {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    max-width: 500px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.shipment-details {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 15px;
+}
+
+.shipment-details td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.shipment-details td:first-child {
+    font-weight: bold;
+    width: 40%;
+}
+
+.ad-section {
+    padding: 10px;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    text-align: center;
+    font-style: italic;
+    color: #0d47a1;
+}
+
+/* --------------------------------------------------
+   PRODUCTS
+-------------------------------------------------- */
+.products {
+    padding: 40px 20px;
+    background: #f9f9f9;
+    text-align: center;
+}
+
+.products h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.product-card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.product-card img {
+    width: 100%;
+    max-height: 180px;
+    object-fit: contain;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #222;
+}
+
+.product-card p {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.buy-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background 0.2s ease;
+}
+
+.buy-btn:hover {
+    background: #0056b3;
+}
+
+/* --------------------------------------------------
+   ABOUT SECTION
+-------------------------------------------------- */
+.about {
+    padding: 40px 20px;
+    background: #fff;
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.about h2 {
+    font-size: 26px;
+    margin: 15px 0;
+    color: #333;
+}
+
+.about p {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------
+   CONTACT SECTION
+-------------------------------------------------- */
+.contact {
+    padding: 40px 20px;
+    background: #f0f4ff;
+    text-align: center;
+    margin-top: 40px;
+    border-radius: 12px;
+}
+
+.contact h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.contact p {
+    font-size: 15px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.contact-options {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    display: inline-block;
+    padding: 12px 20px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 15px;
+    transition: background 0.2s ease;
+}
+
+.contact-btn:hover {
+    background: #0056b3;
+}
+
+/* --------------------------------------------------
+   FOOTER
+-------------------------------------------------- */
+footer {
+    text-align: center;
+    padding: 15px;
+    background: #222;
+    color: #fff;
+    font-size: 14px;
+    margin-top: 40px;
+    border-top: 3px solid #007bff;
+}
+
+/* --------------------------------------------------
+   HERO SECTION (Clouds & Plane)
+-------------------------------------------------- */
+.hero-section {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+    background: linear-gradient(to bottom, #87CEFA, #ffffff);
+}
+
+#movingPlane {
+    position: absolute;
+    top: 50px;
+    left: -100px;
+    width: 100px;
+    animation: fly 10s linear infinite;
+}
+
+@keyframes fly {
+    0% { left: -150px; }
+    100% { left: 110%; }
+}
+
+.cloud {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    opacity: 0.8;
+    filter: drop-shadow(0 0 8px rgba(0,0,0,0.1));
+}
+
+.cloud1 { width: 120px; height: 60px; top: 40px;  left: -150px; animation: moveCloud1 60s linear infinite; }
+.cloud2 { width: 80px;  height: 40px; top: 100px; left: -100px; animation: moveCloud2 80s linear infinite; }
+.cloud3 { width: 100px; height: 50px; top: 150px; left: -120px; animation: moveCloud3 100s linear infinite; }
+
+@keyframes moveCloud1 { 0% { left:-150px; } 100% { left:110%; } }
+@keyframes moveCloud2 { 0% { left:-100px; } 100% { left:110%; } }
+@keyframes moveCloud3 { 0% { left:-120px; } 100% { left:110%; } }
+
+/* --------------------------------------------------
+   FLOATING SHIP
+-------------------------------------------------- */
+body::after {
+    content: "";
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 600px;
+    height: 400px;
+    background: url('ship.png') no-repeat center bottom;
+    background-size: contain;
+    opacity: 0.8;
+    z-index: -1;
+    pointer-events: none;
+    animation: floatShip 6s ease-in-out infinite;
+}
+
+@keyframes floatShip {
+    0%   { transform: translateX(-50%) translateY(0); }
+    50%  { transform: translateX(-50%) translateY(-15px); }
+    100% { transform: translateX(-50%) translateY(0); }
+}
+
+/* --------------------------------------------------
+   LANGUAGE SWITCHER
+-------------------------------------------------- */
+.language-switcher {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+.language-switcher select {
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* --------------------------------------------------
+   UTILITIES
+-------------------------------------------------- */
+.hidden { display: none !important; }
+
+#spinner {
+    display: none;
+    font-size: 20px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+.shake { animation: shake 0.5s; }
+
+/* --------------------------------------------------
+   RESPONSIVE ADJUSTMENTS
+-------------------------------------------------- */
+@media (max-width: 768px) {
+    .page-container {
+        margin: 20px;
+        padding: 16px;
+    }
+
+    /* Spinner */
+    .spinner {
+        border: 5px solid #f3f3f3;
+        border-top: 5px solid #3498db;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 10px auto;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* Floating WhatsApp */
+    #whatsapp-float {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: #25D366;
+        color: #fff;
+        padding: 12px 18px;
+        border-radius: 50px;
+        font-size: 16px;
+        text-decoration: none;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        z-index: 1000;
+        transition: transform 0.2s;
+    }
+
+    #whatsapp-float:hover {
+        transform: scale(1.1);
+        text-decoration: none;
+    }
+
+    /* Nav links mobile */
+    nav {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 600px) {
+    nav a {
+        margin: 5px 10px;
+        font-size: 14px;
+    }
+   }
+
+/* PREMIUM GOLD + GRAY THEME FOR PACKAGE TRACKER */
+
+/* GENERAL */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: #f1f1f1;
+    color: #2a2a2a;
+}
+
+/* HEADER */
+header {
+    background: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 15px 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    border-bottom: 3px solid #d4a017;  /* Gold accent */
+    border-bottom: 3px solid #d4a017;
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -35,6 +551,7 @@ header {
     height: 60px;
 }
 
+/* NAVIGATION */
 nav {
     margin-top: 10px;
     display: flex;
@@ -51,25 +568,21 @@ nav a {
 }
 
 nav a:hover {
-    background: #d4a017;  /* Gold hover */
+    background: #d4a017;
     color: #000;
 }
 
-/* --------------------------------------------------
-   HERO SECTION
--------------------------------------------------- */
+/* HERO SECTION */
 .hero-section {
     height: 280px;
-    background: linear-gradient(135deg, #2a2a2a, #4b4b4b); /* Dark grey gradient */
+    background: linear-gradient(135deg, #2a2a2a, #4b4b4b);
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     position: relative;
     overflow: hidden;
 }
 
-/* --------------------------------------------------
-   TRACKING FORM
--------------------------------------------------- */
+/* TRACKING FORM */
 .search-section {
     display: flex;
     justify-content: center;
@@ -80,7 +593,7 @@ nav a:hover {
     width: 70%;
     max-width: 400px;
     padding: 12px;
-    border: 2px solid #d4a017;  /* Gold border */
+    border: 2px solid #d4a017;
     border-radius: 8px 0 0 8px;
     outline: none;
     background: #ffffff;
@@ -101,9 +614,7 @@ nav a:hover {
     background: #b78b14;
 }
 
-/* --------------------------------------------------
-   PRODUCT CARDS
--------------------------------------------------- */
+/* PRODUCT CARDS */
 .products {
     padding: 40px 20px;
     text-align: center;
@@ -117,7 +628,7 @@ nav a:hover {
 }
 
 .product-card {
-    background: #ffffff;  /* White for contrast */
+    background: #ffffff;
     padding: 15px;
     border-radius: 12px;
     border: 1px solid #e1e1e1;
@@ -127,7 +638,7 @@ nav a:hover {
 
 .product-card:hover {
     transform: translateY(-5px);
-    border-color: #d4a017; /* Gold on hover */
+    border-color: #d4a017;
 }
 
 .product-card img {
@@ -152,9 +663,7 @@ nav a:hover {
     background: #b78b14;
 }
 
-/* --------------------------------------------------
-   ABOUT & CONTACT SECTIONS
--------------------------------------------------- */
+/* ABOUT & CONTACT SECTIONS */
 .about, .contact {
     padding: 30px 20px;
     text-align: center;
@@ -186,49 +695,11 @@ nav a:hover {
     background: #b78b14;
 }
 
-/* --------------------------------------------------
-   FOOTER
--------------------------------------------------- */
-footer {
-    text-align: center;
-    padding: 15px;
-    background: #2a2a2a;  /* Dark grey footer */
-    color: #fff;
-    font-size: 14px;
-    margin-top: 40px;
-    border-top: 3px solid #d4a017; /* Gold accent */
+header {
+  background: #f1f1f1;  /* Soft modern grey */
 }
 
-/* --------------------------------------------------
-   RESPONSIVE ADJUSTMENTS
--------------------------------------------------- */
-@media (max-width: 768px) {
-    .page-container, .about, .contact {
-        margin: 15px;
-        padding: 15px;
-    }
-
-    nav {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 480px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        text-align: center;
-    }
-
-    .logo-title {
-        flex-direction: column;
-        gap: 4px;
-    }
-
-    nav a {
-        margin: 5px 10px;
-        font-size: 14px;
-    }
+body {
+  background: #f1f1f1;  /* Light grey for whole page */
+  color: #2a2a2a;       /* Dark text */
 }
