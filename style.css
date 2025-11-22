@@ -413,6 +413,7 @@ body::after {
     position: absolute;
     top: 15px;
     right: 20px;
+    z-index: 2000;
 }
 
 .language-switcher select {
