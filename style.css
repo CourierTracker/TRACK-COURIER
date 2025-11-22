@@ -698,3 +698,8 @@ nav a:hover {
 header {
   background: #f1f1f1;  /* Soft modern grey */
 }
+
+body {
+  background: #f1f1f1;  /* Light grey for whole page */
+  color: #2a2a2a;       /* Dark text */
+}
