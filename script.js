@@ -78,7 +78,7 @@ function applyLanguage(lang) {
   // Contact
   document.getElementById('contact-title').textContent = t.contactTitle;
   document.getElementById('contact-text').textContent = t.contact;
-  document.getElementById('whatsapp-btn').textContent = t.whatsappBtn;
+  document.getElementById('whatsapp-float').textContent = t.whatsappBtn;
   document.getElementById('email-btn').textContent = t.emailBtn;
 
   // Footer
