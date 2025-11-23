@@ -10,11 +10,11 @@
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
-      line-height: 1.6;
       background: linear-gradient(135deg, #a1c4fd 0%, #b3d9fc 50%, #c2e9fb 100%);
       background-size: 200% 200%;
       animation: gradientShift 20s ease infinite;
       color: #333;
+      line-height: 1.6;
     }
 
     @keyframes gradientShift {
@@ -33,37 +33,34 @@
     header nav {
       display: flex;
       justify-content: center;
-      flex-wrap: wrap;
       gap: 12px;
+      flex-wrap: wrap;
     }
 
     header nav a {
       text-decoration: none;
-      padding: 8px 14px;
+      padding: 10px 18px;
       background-color: #007bff;
       color: white;
-      border-radius: 6px;
-      transition: background 0.3s;
-      white-space: nowrap;
+      border-radius: 8px;
       font-weight: bold;
+      transition: background 0.3s;
     }
 
     header nav a:hover {
       background-color: #0056b3;
     }
 
+    /* Main container */
     .container {
       max-width: 900px;
       margin: 50px auto;
-      padding: 25px;
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      padding: 0 15px;
     }
 
     h1 {
       text-align: center;
-      font-size: 28px;
+      font-size: 32px;
       color: #007bff;
       margin-bottom: 20px;
     }
@@ -71,18 +68,28 @@
     p.description {
       text-align: center;
       font-size: 16px;
-      margin-bottom: 30px;
       color: #555;
+      margin-bottom: 30px;
     }
 
-    h2 {
+    /* Card sections */
+    .card {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      padding: 25px;
+      margin-bottom: 25px;
+    }
+
+    .card h2 {
       color: #007bff;
       margin-bottom: 15px;
       position: relative;
       padding-left: 15px;
+      font-size: 22px;
     }
 
-    h2::before {
+    .card h2::before {
       content: '';
       position: absolute;
       left: 0;
@@ -93,20 +100,12 @@
       border-radius: 2px;
     }
 
-    .section {
-      background-color: #f9f9f9;
-      padding: 20px 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-      margin-bottom: 25px;
-    }
-
-    ul {
+    .card ul {
       padding-left: 20px;
     }
 
-    ul li {
-      margin-bottom: 8px;
+    .card ul li {
+      margin-bottom: 10px;
       font-size: 15px;
       color: #555;
     }
@@ -129,31 +128,22 @@
       border-radius: 8px;
       color: #fff;
       text-decoration: none;
-      transition: background 0.3s;
       font-size: 14px;
+      transition: background 0.3s;
     }
 
-    .whatsapp {
-      background-color: #25D366;
-    }
+    .whatsapp { background-color: #25D366; }
+    .whatsapp:hover { background-color: #128C4A; }
 
-    .whatsapp:hover {
-      background-color: #128C4A;
-    }
-
-    .email {
-      background-color: #007bff;
-    }
-
-    .email:hover {
-      background-color: #0056b3;
-    }
+    .email { background-color: #007bff; }
+    .email:hover { background-color: #0056b3; }
 
     .highlight {
       color: #27ae60;
       font-weight: bold;
     }
 
+    /* Footer */
     footer {
       text-align: center;
       padding: 20px;
@@ -175,47 +165,37 @@
     }
 
     @media (max-width: 600px) {
-      .container {
-        margin: 20px;
-        padding: 20px;
-      }
-      .contact a {
-        margin-bottom: 10px;
-      }
-      h1 {
-        font-size: 24px;
-      }
-      h2 {
-        font-size: 18px;
-      }
+      h1 { font-size: 26px; }
+      .card h2 { font-size: 18px; }
+      .contact a { margin-bottom: 10px; }
     }
   </style>
 
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-XQTH8T4YVN');
-</script>
-  
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XQTH8T4YVN');
+  </script>
 </head>
 <body>
   
+  <!-- Header -->
   <header>
     <nav>
       <a href="index.html">Home</a>
       <a href="about.html">About</a>
     </nav>
   </header>
-    
+  
+  <!-- Main Content -->
   <div class="container">
     <h1>Fast, Affordable Services – Online & Offline!</h1>
     <p class="description">Need help with websites, social media, or local delivery? I can do it for you — quickly and at a fair price.</p>
 
-    <div class="section">
+    <div class="card">
       <h2>Website & Online Help</h2>
       <ul>
         <li><strong>Simple Website:</strong> Basic setup for your business or personal project – <span class="highlight">$50</span></li>
@@ -224,7 +204,7 @@
       </ul>
     </div>
 
-    <div class="section">
+    <div class="card">
       <h2>Delivery & Errand Services</h2>
       <ul>
         <li>Local Delivery (within 5 km): <span class="highlight">$5</span></li>
@@ -234,13 +214,13 @@
       <p>✅ Fast, safe, and reliable. Contact me today!</p>
     </div>
 
-    <div class="section">
+    <div class="card">
       <h2>Recommended Products (Affiliate)</h2>
       <p>Buy trusted products like phone accessories & groceries. Support me while shopping — no extra cost for you!</p>
       <p>Check them out here: <a href="[Not available now]" target="_blank">Deals & Products</a></p>
     </div>
 
-    <div class="section">
+    <div class="card">
       <h2>Contact Me Instantly</h2>
       <p class="contact">
         📱 WhatsApp: <a href="https://wa.me/[your number]" class="whatsapp">+2349031408205</a>
@@ -250,10 +230,11 @@
     </div>
   </div>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 Track Courier • 
       <a href="help.html">Help / FAQ</a> • 
-      <a href="privacy.html">Privacy Policy</a> •
+      <a href="privacy.html">Privacy Policy</a>
     </p>
   </footer>
 </body>
