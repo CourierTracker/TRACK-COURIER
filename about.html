@@ -5,104 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About | Track Courier</title>
   <style>
-    /* General Styles */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background: linear-gradient(135deg, #a1c4fd 0%, #b3d9fc 50%, #c2e9fb 100%);
-      background-size: 200% 200%;
-      animation: gradientShift 20s ease infinite;
-      color: #333;
-    }
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #a1c4fd 0%, #b3d9fc 50%, #c2e9fb 100%);
+  background-size: 200% 200%;
+  animation: gradientShift 20s ease infinite;
+  color: #333;
+}
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 
-    /* Header */
-    header {
-      background: transparent;
-      padding: 15px 20px;
-      text-align: center;
-    }
+/* Header */
+header {
+  background: transparent;
+  padding: 15px 20px;
+  text-align: center;
+}
 
-    header nav {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
+header nav {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
 
-    header nav a {
-      text-decoration: none;
-      padding: 8px 14px;
-      background-color: #007bff;
-      color: white;
-      border-radius: 6px;
-      transition: background 0.3s;
-      white-space: nowrap;
-      font-weight: bold;
-    }
+header nav a {
+  text-decoration: none;
+  padding: 8px 14px;
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  transition: background 0.3s;
+  white-space: nowrap;
+  font-weight: bold;
+}
 
-    header nav a:hover {
-      background-color: #0056b3;
-    }
+header nav a:hover {
+  background-color: #0056b3;
+}
 
-    /* Main Box */
-    .container {
-      max-width: 850px;
-      margin: 40px auto;
-      padding: 25px;
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+/* Main Box */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+}
 
-    .page-title {
-      text-align: center;
-      font-size: 30px;
-      color: #007bff;
-      margin-bottom: 25px;
-    }
+.page-title {
+  text-align: center;
+  font-size: 30px;
+  color: #007bff;
+  margin-bottom: 25px;
+}
 
-    .section {
-      margin-bottom: 25px;
-    }
+/* Section Cards */
+.section {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
-    .section h2 {
-      color: #007bff;
-      margin-bottom: 10px;
-    }
+.section:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
 
-    .section p {
-      line-height: 1.6;
-      margin: 0;
-    }
+.section h2 {
+  color: #007bff;
+  margin-bottom: 12px;
+}
 
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #222;
-      color: #fff;
-      font-size: 14px;
-      margin-top: 40px;
-      border-top: 3px solid #007bff;
-    }
+.section p {
+  line-height: 1.6;
+  margin: 0;
+}
 
-    footer a {
-      text-decoration: none;
-      color: #007bff;
-      margin: 0 5px;
-    }
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #222;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 40px;
+  border-top: 3px solid #007bff;
+}
 
-    footer a:hover {
-      text-decoration: underline;
-    }
-  </style>
+footer a {
+  text-decoration: none;
+  color: #007bff;
+  margin: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+</style>
 
   <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN"></script>
