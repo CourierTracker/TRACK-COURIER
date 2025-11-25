@@ -154,6 +154,9 @@ html { scroll-behavior: smooth; }
 
 <script src="https://js.paystack.co/v1/inline.js"></script>
 
+<!-- Add this hidden input in your HTML somewhere (e.g., inside the form) -->
+<input type="hidden" id="recaptchaToken" name="recaptchaToken">
+
 <script>
 function payWithPaystack(amount, email) {
   if (!email) {
@@ -161,24 +164,35 @@ function payWithPaystack(amount, email) {
     return;
   }
 
-  // Optional: add a custom message before payment
-  let confirmPayment = confirm(`You are about to pay ₦${amount}. Receipt will be sent to ${email}. Proceed?`);
-  if (!confirmPayment) return;
+  // Trigger Google reCAPTCHA first
+  grecaptcha.ready(function() {
+    grecaptcha.execute('6Le4h8QrAAAAAIv3HtuDMbUCz_8VLZBEWBw2Mozg', {action: 'submit'}).then(function(token) {
+      
+      // Store token in hidden input (optional, if you need it on server)
+      document.getElementById('recaptchaToken').value = token;
 
-  var handler = PaystackPop.setup({
-    key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7', // Your Live Public Key
-    email: email,
-    amount: amount * 100, // Amount in kobo
-    currency: 'NGN',
-    ref: '' + Math.floor((Math.random() * 1000000000) + 1), // Unique transaction reference
-    callback: function(response){
-      alert('Payment successful! Reference: ' + response.reference);
-    },
-    onClose: function(){
-      alert('Payment cancelled.');
-    }
+      // Confirm before payment
+      let confirmPayment = confirm(`You are about to pay ₦${amount}. Receipt will be sent to ${email}. Proceed?`);
+      if (!confirmPayment) return;
+
+      // Open Paystack popup
+      var handler = PaystackPop.setup({
+        key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7',
+        email: email,
+        amount: amount * 100,
+        currency: 'NGN',
+        ref: '' + Math.floor((Math.random() * 1000000000) + 1),
+        callback: function(response){
+          alert('Payment successful! Reference: ' + response.reference);
+        },
+        onClose: function(){
+          alert('Payment cancelled.');
+        }
+      });
+      handler.openIframe();
+
+    });
   });
-  handler.openIframe();
 }
 </script>
   
