@@ -145,6 +145,27 @@ html { scroll-behavior: smooth; }
 </a>
 
 <script src="https://js.paystack.co/v1/inline.js"></script>
+
+<script>
+function payWithPaystack(amount, email) {
+  var handler = PaystackPop.setup({
+    key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7', // Your Live Public Key
+    email: email,
+    amount: amount * 100, // Amount in kobo
+    currency: 'NGN',
+    ref: '' + Math.floor((Math.random() * 1000000000) + 1), // Unique transaction reference
+    callback: function(response){
+      alert('Payment successful! Reference: ' + response.reference);
+      // Optional: redirect to a thank-you page
+      // window.location.href = "thankyou.html";
+    },
+    onClose: function(){
+      alert('Payment cancelled.');
+    }
+  });
+  handler.openIframe();
+}
+</script>
   
 </body>  
 </html>
