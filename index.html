@@ -161,6 +161,13 @@ html { scroll-behavior: smooth; }
 <script src="https://js.paystack.co/v1/inline.js"></script>
 
 <script>
+function onRecaptchaSuccess(token) {
+  // Enable all Paystack buttons after user ticks checkbox
+  document.querySelectorAll('.paystack-btn').forEach(btn => btn.disabled = false);
+}
+</script>
+
+<script>
 function payWithPaystack(amount, email) {
   if (!email) {
     alert("Please enter your email before payment!");
