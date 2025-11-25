@@ -88,9 +88,17 @@ html { scroll-behavior: smooth; }
       </div>  
     </div>  
   </form>
+
   <!-- Products Section -->
 <section class="products">  
   <h2 id="products-title">Our Featured Products</h2>  
+
+  <!-- Customer Email Input -->
+  <div class="email-input">
+    <label for="customerEmail">Enter your email:</label>
+    <input type="email" id="customerEmail" placeholder="you@example.com" required>
+  </div>
+
   <div class="product-grid">  
 
     <!-- Product 1: Fast Shipping Box -->
@@ -98,7 +106,7 @@ html { scroll-behavior: smooth; }
       <img src="Box.png" alt="Fast Shipping Box">  
       <h3 id="prod1-title">Fast Shipping Box</h3>  
       <p id="prod1-text">Durable and affordable packaging for your shipments.</p>  
-      <button type="button" onclick="payWithPaystack(5000, 'customer@example.com')">Pay ₦5,000</button>  
+      <button type="button" onclick="payWithPaystack(5000, document.getElementById('customerEmail').value)">Pay ₦5,000</button>  
     </div>  
 
     <!-- Product 2: Courier Bag -->
@@ -106,7 +114,7 @@ html { scroll-behavior: smooth; }
       <img src="Luggage.png" alt="Courier Bag">  
       <h3 id="prod2-title">Courier Bag</h3>  
       <p id="prod2-text">Lightweight waterproof courier bags for safe delivery.</p>  
-      <button type="button" onclick="payWithPaystack(3500, 'customer@example.com')">Pay ₦3,500</button>  
+      <button type="button" onclick="payWithPaystack(3500, document.getElementById('customerEmail').value)">Pay ₦3,500</button>  
     </div>  
 
     <!-- Product 3: Protective Envelope -->
@@ -114,7 +122,7 @@ html { scroll-behavior: smooth; }
       <img src="Throw.png" alt="Protective Envelope">  
       <h3 id="prod3-title">Protective Envelope</h3>  
       <p id="prod3-text">Bubble-lined envelopes to protect fragile shipments.</p>  
-      <button type="button" onclick="payWithPaystack(1500, 'customer@example.com')">Pay ₦1,500</button>  
+      <button type="button" onclick="payWithPaystack(1500, document.getElementById('customerEmail').value)">Pay ₦1,500</button>  
     </div>  
 
     <!-- Product 4: Sealing Tape -->
@@ -122,8 +130,8 @@ html { scroll-behavior: smooth; }
       <img src="Tape.png" alt="Sealing Tape">  
       <h3 id="prod4-title">Sealing Tape</h3>  
       <p id="prod4-text">Strong adhesive tape for secure package sealing.</p>  
-      <button type="button" onclick="payWithPaystack(800, 'customer@example.com')">Pay ₦800</button>  
-    </div>  
+      <button type="button" onclick="payWithPaystack(800, document.getElementById('customerEmail').value)">Pay ₦800</button>  
+    </div>
     
   </section>    <!-- Contact Section -->    <section id="contact" class="contact">  
     <h2 id="contact-title">Contact Us</h2>  
