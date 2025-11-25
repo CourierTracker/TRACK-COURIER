@@ -162,8 +162,12 @@ html { scroll-behavior: smooth; }
 
 <script>
 function onRecaptchaSuccess(token) {
-  // Enable all Paystack buttons after user ticks checkbox
+  // Enable all Paystack buttons
   document.querySelectorAll('.paystack-btn').forEach(btn => btn.disabled = false);
+  
+  // Hide the overlay so users can interact with the page
+  const overlay = document.getElementById('recaptcha-overlay');
+  if (overlay) overlay.style.display = 'none';
 }
 </script>
 
