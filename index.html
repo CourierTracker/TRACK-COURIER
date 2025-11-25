@@ -87,37 +87,42 @@ html { scroll-behavior: smooth; }
         <p id="premium-text">Check out our premium shipping services!</p>  
       </div>  
     </div>  
-  </form>    <!-- Products Section -->    <section class="products">  
-    <h2 id="products-title">Our Featured Products</h2>  
-    <div class="product-grid">  
-      <div class="product-card">  
-        <img src="Box.png" alt="Fast Shipping Box">  
-        <h3 id="prod1-title">Fast Shipping Box</h3>  
-        <p id="prod1-text">Durable and affordable packaging for your shipments.</p>  
-        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Fast%20Shipping%20Box"
-   class="buy-btn" id="prod1-btn" target="_blank">Buy Now</a>  
-      </div>  
-      <div class="product-card">  
-        <img src="Luggage.png" alt="Courier Bag">  
-        <h3 id="prod2-title">Courier Bag</h3>  
-        <p id="prod2-text">Lightweight waterproof courier bags for safe delivery.</p>  
-        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Courier%20Bag"
-   class="buy-btn" id="prod2-btn" target="_blank">Shop Now</a>  
-      </div>  
-      <div class="product-card">  
-        <img src="Throw.png" alt="Protective Envelope">  
-        <h3 id="prod3-title">Protective Envelope</h3>  
-        <p id="prod3-text">Bubble-lined envelopes to protect fragile shipments.</p>  
-        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20the%20Protective%20Envelope"
-   class="buy-btn" id="prod3-btn" target="_blank">Buy Now</a>  
-      </div>  
-      <div class="product-card">  
-        <img src="Tape.png" alt="Sealing Tape">  
-        <h3 id="prod4-title">Sealing Tape</h3>  
-        <p id="prod4-text">Strong adhesive tape for secure package sealing.</p>  
-        <a href="https://wa.me/2349031408205?text=I%20want%20to%20order%20Sealing%20Tape"
-   class="buy-btn" id="prod4-btn" target="_blank">Shop Now</a>   
-      </div>  
+  </form>
+  <!-- Products Section -->
+<section class="products">  
+  <h2 id="products-title">Our Featured Products</h2>  
+  <div class="product-grid">  
+
+    <!-- Product 1: Fast Shipping Box -->
+    <div class="product-card">  
+      <img src="Box.png" alt="Fast Shipping Box">  
+      <h3 id="prod1-title">Fast Shipping Box</h3>  
+      <p id="prod1-text">Durable and affordable packaging for your shipments.</p>  
+      <button type="button" onclick="payWithPaystack(5000, 'customer@example.com')">Pay ₦5,000</button>  
+    </div>  
+
+    <!-- Product 2: Courier Bag -->
+    <div class="product-card">  
+      <img src="Luggage.png" alt="Courier Bag">  
+      <h3 id="prod2-title">Courier Bag</h3>  
+      <p id="prod2-text">Lightweight waterproof courier bags for safe delivery.</p>  
+      <button type="button" onclick="payWithPaystack(3500, 'customer@example.com')">Pay ₦3,500</button>  
+    </div>  
+
+    <!-- Product 3: Protective Envelope -->
+    <div class="product-card">  
+      <img src="Throw.png" alt="Protective Envelope">  
+      <h3 id="prod3-title">Protective Envelope</h3>  
+      <p id="prod3-text">Bubble-lined envelopes to protect fragile shipments.</p>  
+      <button type="button" onclick="payWithPaystack(1500, 'customer@example.com')">Pay ₦1,500</button>  
+    </div>  
+
+    <!-- Product 4: Sealing Tape -->
+    <div class="product-card">  
+      <img src="Tape.png" alt="Sealing Tape">  
+      <h3 id="prod4-title">Sealing Tape</h3>  
+      <p id="prod4-text">Strong adhesive tape for secure package sealing.</p>  
+      <button type="button" onclick="payWithPaystack(800, 'customer@example.com')">Pay ₦800</button>  
     </div>  
     
   </section>    <!-- Contact Section -->    <section id="contact" class="contact">  
