@@ -173,7 +173,8 @@ function onRecaptchaSuccess(token) {
 <script>
 function payWithPaystack(amount, email) {
   if (!email) {
-    alert("Please enter your email before payment!");
+    alert("Please enter your email before payment!
+          (Receipt will be sent there)");
     return;
   }
 
