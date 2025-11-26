@@ -57,10 +57,10 @@ function setLanguage(lang) {
   setText('track-btn', t.trackBtn);
 
   // Tracking steps
-  setText('step-placed-text', t.stepPlaced);
-  setText('step-shipped-text', t.stepShipped);
-  setText('step-transit-text', t.stepTransit);
-  setText('step-delivered-text', t.stepDelivered);
+  document.getElementById('step-placed')?.querySelector('span')?.textContent = t.stepPlaced;
+  document.getElementById('step-shipped')?.querySelector('span')?.textContent = t.stepShipped;
+  document.getElementById('step-transit')?.querySelector('span')?.textContent = t.stepTransit;
+  document.getElementById('step-delivered')?.querySelector('span')?.textContent = t.stepDelivered;
 
   // Tracking form labels
   const emailLabel = document.querySelector("label[for='customerEmail']");
