@@ -1,11 +1,6 @@
-// -------------------------
-// On page load
-// -------------------------
 window.onload = function() {
   document.getElementById('recaptcha-overlay').classList.remove('hidden');
-};
-
-// -------------------------
+};// -------------------------
 // Elements
 // -------------------------
 const trackingForm = document.getElementById('trackingForm');
@@ -18,87 +13,75 @@ const spinner = document.getElementById('spinner');
 const correctTrackingNumber = "Track-246800000";
 
 // -------------------------
-// Translations
+// Language handling
 // -------------------------
-const translations = {
-  "en": { /* ... your English JSON content ... */ },
-  "fr": { /* ... your French JSON content ... */ },
-  "es": { /* ... your Spanish JSON content ... */ },
-  "de": { /* ... your German JSON content ... */ },
-  "zh": { /* ... your Chinese JSON content ... */ }
-};
+let translations = {};
 
-// -------------------------
-// Language switching
-// -------------------------
-  function setLanguage(lang) {
+fetch('languages.json')
+  .then(response => response.json())
+  .then(data => {
+    translations = data;
+    applyLanguage('en'); // default language
+  })
+  .catch(err => console.error("Error loading languages.json:", err));
+
+document.getElementById('languageSelect').addEventListener('change', function() {
+  applyLanguage(this.value);
+});
+
+function applyLanguage(lang) {
   const t = translations[lang];
   if (!t) return;
 
-  function setText(id, text) {
-    const el = document.getElementById(id);
-    if (el) el.textContent = text;
-  }
+  // Header & nav
+  document.getElementById('nav-home').textContent = t.navHome;
+  document.getElementById('nav-about').textContent = t.navAbout;
+  document.getElementById('nav-contact').textContent = t.navContact;
 
-  // Header / Nav
-  setText('nav-home', t.navHome);
-  setText('nav-about', t.navAbout);
-  setText('nav-services', t.navServices);
-  setText('nav-contact', t.navContact);
+  // Welcome / ReCAPTCHA
+  document.getElementById('welcome-title').textContent = t.welcomeTitle;
+  document.getElementById('welcome-text').textContent = t.welcomeText;
 
-  // Welcome overlay
-  setText('welcome-title', t.welcomeTitle);
-  setText('welcome-text', t.welcomeText);
+  // Tracking form & tips
+  trackingNumberInput.placeholder = t.labelTracking;
+  document.getElementById('tip-text').textContent = t.tipText;
+  document.getElementById('special-text').textContent = t.specialText;
+  document.getElementById('track-btn').textContent = t.trackBtn;
 
-  // Tracking tips
-  setText('tip-text', t.tipText);
-  setText('special-text', t.specialText);
-  setText('track-btn', t.trackBtn);
-
-  // Tracking steps (update the <span> inside each li)
-  document.getElementById('step-placed')?.querySelector('span')?.textContent = t.stepPlaced;
-  document.getElementById('step-shipped')?.querySelector('span')?.textContent = t.stepShipped;
-  document.getElementById('step-transit')?.querySelector('span')?.textContent = t.stepTransit;
-  document.getElementById('step-delivered')?.querySelector('span')?.textContent = t.stepDelivered;
-
-  // Tracking form labels
-  const emailLabel = document.querySelector("label[for='customerEmail']");
-  if (emailLabel) emailLabel.textContent = t.emailLabel;
+  // Tracking steps
+  document.getElementById('step-placed').querySelector('span').textContent = t.stepPlaced;
+  document.getElementById('step-shipped').querySelector('span').textContent = t.stepShipped;
+  document.getElementById('step-transit').querySelector('span').textContent = t.stepTransit;
+  document.getElementById('step-delivered').querySelector('span').textContent = t.stepDelivered;
+  
 
   // Products
-  setText('products-title', t.productsTitle);
-  setText('prod1-title', t.prod1Title);
-  setText('prod1-text', t.prod1Text);
-  setText('prod2-title', t.prod2Title);
-  setText('prod2-text', t.prod2Text);
-  setText('prod3-title', t.prod3Title);
-  setText('prod3-text', t.prod3Text);
-  setText('prod4-title', t.prod4Title);
-  setText('prod4-text', t.prod4Text);
+  document.getElementById('products-title').textContent = t.productsTitle;
+  document.getElementById('prod1-title').textContent = t.prod1Title;
+  document.getElementById('prod1-text').textContent = t.prod1Text;
+  document.getElementById('prod1-btn').textContent = t.prod1Btn;
+  document.getElementById('prod2-title').textContent = t.prod2Title;
+  document.getElementById('prod2-text').textContent = t.prod2Text;
+  document.getElementById('prod2-btn').textContent = t.prod2Btn;
+  document.getElementById('prod3-title').textContent = t.prod3Title;
+  document.getElementById('prod3-text').textContent = t.prod3Text;
+  document.getElementById('prod3-btn').textContent = t.prod3Btn;
+  document.getElementById('prod4-title').textContent = t.prod4Title;
+  document.getElementById('prod4-text').textContent = t.prod4Text;
+  document.getElementById('prod4-btn').textContent = t.prod4Btn;
 
-  // About & Contact
-  setText('about-title', t.aboutTitle);
-  setText('about-text', t.about);
-  setText('contact-title', t.contactTitle);
-  setText('contact-text', t.contact);
+  // About
+  document.getElementById('about-title').textContent = t.aboutTitle;
+  document.getElementById('about-text').textContent = t.about;
 
-  // Buttons
-  setText('whatsapp-float', t.whatsappBtn);
-  setText('email-btn', t.emailBtn);
+  // Contact
+  document.getElementById('contact-title').textContent = t.contactTitle;
+  document.getElementById('contact-text').textContent = t.contact;
+  document.getElementById('whatsapp-btn').textContent = t.whatsappBtn;
+  document.getElementById('email-btn').textContent = t.emailBtn;
 
   // Footer
-  setText('footer-text', t.footer);
-}
-
-// Set default language
-setLanguage('en');
-
-// Listen to language selector
-const languageSelect = document.getElementById('languageSelect');
-if (languageSelect) {
-  languageSelect.addEventListener('change', (e) => {
-    setLanguage(e.target.value);
-  });
+  document.getElementById('footer-text').textContent = t.footer;
 }
 
 // -------------------------
@@ -134,21 +117,39 @@ trackingForm.addEventListener('submit', function(e) {
       trackingSteps.classList.remove('hidden');
       const steps = trackingSteps.querySelectorAll('li');
 
-      setTimeout(() => { steps[0].classList.add('show'); steps[0].style.backgroundColor = "lightblue"; }, 3000);
-      setTimeout(() => { steps[1].classList.add('show'); steps[1].style.backgroundColor = "lightblue"; }, 6000);
+      // Sequential highlight with delays
       setTimeout(() => { 
-        steps[2].classList.add('show'); 
-        steps[2].style.backgroundColor = "lightblue"; 
-        steps[2].style.fontWeight = "bold";
-        shipmentContainer.style.display = "block";
-        shipmentContainer.scrollIntoView({ behavior: "smooth", block: "start" });
-      }, 10000);
+        steps[0].classList.add('show'); 
+        steps[0].style.backgroundColor = "lightblue"; 
+      }, 3000); // 3 sec
 
+      setTimeout(() => { 
+        steps[1].classList.add('show'); 
+        steps[1].style.backgroundColor = "lightblue"; 
+      }, 6000); // 6 sec
+
+      setTimeout(() => { 
+       steps[2].classList.add('show'); 
+       steps[2].style.backgroundColor = "lightblue"; 
+       steps[2].style.fontWeight = "bold"; // bold In Transit
+
+      // Show the tracking table
+    shipmentContainer.style.display = "block"; 
+
+      // Scroll smoothly to the tracking table
+    shipmentContainer.scrollIntoView({ 
+      behavior: "smooth", 
+      block: "start" 
+    });
+
+  }, 10000); // 10 sec total
+
+      // Delivered step remains untouched
     } else {
       showError("❌ Invalid tracking number! Please try again.");
     }
 
-  }, 500);
+  }, 500); // spinner initial delay
 });
 
 // -------------------------
@@ -156,15 +157,15 @@ trackingForm.addEventListener('submit', function(e) {
 // -------------------------
 function shakeInput() {
   trackingNumberInput.classList.add("shake");
-  setTimeout(() => trackingNumberInput.classList.remove("shake"), 500);
+  setTimeout(() => {
+    trackingNumberInput.classList.remove("shake");
+  }, 500);
 }
 
 function showError(message) {
   shakeInput();
-  alert(message);
-}
-
+  alert(message); // You can replace this with a div to show error on page
+}                
 function onRecaptchaSuccess(token) {
-  const overlay = document.getElementById('recaptcha-overlay');
-  if (overlay) overlay.style.display = 'none';
+  document.getElementById('recaptcha-overlay').style.display = 'none';
 }
