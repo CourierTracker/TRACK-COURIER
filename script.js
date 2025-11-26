@@ -31,11 +31,10 @@ const translations = {
 // -------------------------
 // Language switching
 // -------------------------
-function setLanguage(lang) {
+  function setLanguage(lang) {
   const t = translations[lang];
   if (!t) return;
 
-  // Utility function to set text safely
   function setText(id, text) {
     const el = document.getElementById(id);
     if (el) el.textContent = text;
@@ -56,7 +55,7 @@ function setLanguage(lang) {
   setText('special-text', t.specialText);
   setText('track-btn', t.trackBtn);
 
-  // Tracking steps
+  // Tracking steps (update the <span> inside each li)
   document.getElementById('step-placed')?.querySelector('span')?.textContent = t.stepPlaced;
   document.getElementById('step-shipped')?.querySelector('span')?.textContent = t.stepShipped;
   document.getElementById('step-transit')?.querySelector('span')?.textContent = t.stepTransit;
@@ -70,16 +69,12 @@ function setLanguage(lang) {
   setText('products-title', t.productsTitle);
   setText('prod1-title', t.prod1Title);
   setText('prod1-text', t.prod1Text);
-  setText('prod1-btn', t.prod1Btn);
   setText('prod2-title', t.prod2Title);
   setText('prod2-text', t.prod2Text);
-  setText('prod2-btn', t.prod2Btn);
   setText('prod3-title', t.prod3Title);
   setText('prod3-text', t.prod3Text);
-  setText('prod3-btn', t.prod3Btn);
   setText('prod4-title', t.prod4Title);
   setText('prod4-text', t.prod4Text);
-  setText('prod4-btn', t.prod4Btn);
 
   // About & Contact
   setText('about-title', t.aboutTitle);
@@ -88,7 +83,7 @@ function setLanguage(lang) {
   setText('contact-text', t.contact);
 
   // Buttons
-  setText('whatsapp-btn', t.whatsappBtn);
+  setText('whatsapp-float', t.whatsappBtn);
   setText('email-btn', t.emailBtn);
 
   // Footer
