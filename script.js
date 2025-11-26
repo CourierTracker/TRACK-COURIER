@@ -169,3 +169,76 @@ function showError(message) {
 function onRecaptchaSuccess(token) {
   document.getElementById('recaptcha-overlay').style.display = 'none';
 }
+
+// Assuming your JSON is stored in a variable called 'translations'
+const translations = {
+  "en": { /* ... your JSON English content ... */ },
+  "fr": { /* ... your JSON French content ... */ },
+  "es": { /* ... your JSON Spanish content ... */ },
+  "de": { /* ... your JSON German content ... */ },
+  "zh": { /* ... your JSON Chinese content ... */ }
+};
+
+// Function to update all text content based on selected language
+function setLanguage(lang) {
+  const t = translations[lang];
+
+  if (!t) return;
+
+  // Header / Nav
+  document.getElementById('nav-home').textContent = t.navHome;
+  document.getElementById('nav-about').textContent = t.navAbout;
+  document.getElementById('nav-services').textContent = t.navServices;
+  document.getElementById('nav-contact').textContent = t.navContact;
+
+  // Welcome overlay
+  document.getElementById('welcome-title').textContent = t.welcomeTitle;
+  document.getElementById('welcome-text').textContent = t.welcomeText;
+
+  // Tracking tips
+  document.getElementById('tip-text').textContent = t.tipText;
+  document.getElementById('special-text').textContent = t.specialText;
+
+  // Tracking steps
+  document.getElementById('step-placed').querySelector('span').textContent = t.stepPlaced;
+  document.getElementById('step-shipped').querySelector('span').textContent = t.stepShipped;
+  document.getElementById('step-transit').querySelector('span').textContent = t.stepTransit;
+  document.getElementById('step-delivered').querySelector('span').textContent = t.stepDelivered;
+
+  // Tracking form labels
+  document.querySelector("label[for='customerEmail']").textContent = t.emailLabel;
+
+  // Products
+  document.getElementById('products-title').textContent = t.productsTitle;
+  document.getElementById('prod1-title').textContent = t.prod1Title;
+  document.getElementById('prod1-text').textContent = t.prod1Text;
+  document.getElementById('prod1-title').nextElementSibling.textContent = t.prod1Btn; // optional, if button text next to title
+  document.getElementById('prod2-title').textContent = t.prod2Title;
+  document.getElementById('prod2-text').textContent = t.prod2Text;
+  document.getElementById('prod3-title').textContent = t.prod3Title;
+  document.getElementById('prod3-text').textContent = t.prod3Text;
+  document.getElementById('prod4-title').textContent = t.prod4Title;
+  document.getElementById('prod4-text').textContent = t.prod4Text;
+
+  // About & Contact
+  document.getElementById('aboutTitle')?.textContent && (document.getElementById('aboutTitle').textContent = t.aboutTitle);
+  document.getElementById('about')?.textContent && (document.getElementById('about').textContent = t.about);
+  document.getElementById('contact-title').textContent = t.contactTitle;
+  document.getElementById('contact-text').textContent = t.contact;
+
+  // Buttons
+  document.getElementById('whatsapp-float').title = t.whatsappBtn;
+  document.getElementById('email-btn').textContent = t.emailBtn;
+
+  // Footer
+  document.getElementById('footer-text').textContent = t.footer;
+}
+
+// Set default language
+let defaultLang = 'en';
+setLanguage(defaultLang);
+
+// Listen to the language selector
+document.getElementById('languageSelect').addEventListener('change', (e) => {
+  setLanguage(e.target.value);
+});
