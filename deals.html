@@ -81,22 +81,15 @@
   <footer>
     <p>&copy; 2025 Courier Tracker. All rights reserved.</p>
   </footer>
-
-  <!-- JS to enable buttons when email is valid -->
-  <script>
-    const emailInput = document.getElementById('customerEmail');
-    const payButtons = document.querySelectorAll('.paystack-btn');
-
-    emailInput.addEventListener('input', () => {
-      const valid = emailInput.checkValidity();
-      payButtons.forEach(btn => btn.disabled = !valid);
-    });
-  </script>
   
 <!-- Paystack script must load BEFORE your JS function -->
 <script src="https://js.paystack.co/v1/inline.js"></script>
+  
 
 <script>
+const emailInput = document.getElementById('customerEmail');
+const payButtons = document.querySelectorAll('.paystack-btn');
+
 // Enable buttons only if email is valid
 emailInput.addEventListener('input', () => {
   const valid = emailInput.checkValidity();
@@ -106,7 +99,6 @@ emailInput.addEventListener('input', () => {
 function payWithPaystack(amount, email) {
     const emailInputField = document.getElementById('customerEmail');
 
-    // Always check email
     if (!email || !email.includes('@')) {
         alert('Please enter a valid email before paying.');
         emailInputField.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -116,11 +108,10 @@ function payWithPaystack(amount, email) {
 
     alert('Starting payment...'); // TEST: shows if click fires
 
-    // Paystack setup
     let handler = PaystackPop.setup({
         key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7',
         email: email,
-        amount: amount, // in kobo
+        amount: amount,
         currency: 'NGN',
         callback: function(response){
             alert('Payment complete! Reference: ' + response.reference);
