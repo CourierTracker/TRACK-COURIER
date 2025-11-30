@@ -94,19 +94,35 @@
   </script>
   
   <script src="https://js.paystack.co/v1/inline.js"></script>
+<!-- Paystack script must load BEFORE your JS function -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
 <script>
+const emailInput = document.getElementById('customerEmail');
+const payButtons = document.querySelectorAll('.paystack-btn');
+
+// Enable buttons only if email is valid
+emailInput.addEventListener('input', () => {
+  const valid = emailInput.checkValidity();
+  payButtons.forEach(btn => btn.disabled = !valid);
+});
+
 function payWithPaystack(amount, email) {
-    // Check if email is empty or invalid
-    const emailInput = document.getElementById('customerEmail');
+    const emailInputField = document.getElementById('customerEmail');
+
+    // Always check email
     if (!email || !email.includes('@')) {
         alert('Please enter a valid email before paying.');
-        emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        emailInput.focus(); // optional, puts cursor in the input
-        return; // stop execution
+        emailInputField.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        emailInputField.focus();
+        return;
     }
 
+    alert('Starting payment...'); // TEST: shows if click fires
+
+    // Paystack setup
     let handler = PaystackPop.setup({
-        key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7', // replace with your public key
+        key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7',
         email: email,
         amount: amount, // in kobo
         currency: 'NGN',
@@ -117,6 +133,7 @@ function payWithPaystack(amount, email) {
             alert('Payment cancelled.');
         }
     });
+
     handler.openIframe();
 }
 </script>
