@@ -361,6 +361,10 @@ footer {
     animation: fly 10s linear infinite;
 }
 
+@keyframes fly {
+    0% { left: -150px; }
+    100% { left: 110%; }
+}
 
 .cloud {
     position: absolute;
@@ -502,10 +506,4 @@ body::after {
         margin: 5px 10px;
         font-size: 14px;
     }
-}
-
-@keyframes fly {
-    0% { transform: translateX(-150px) translateY(0); }
-    50% { transform: translateX(50vw) translateY(-5px); }
-    100% { transform: translateX(110vw) translateY(0); }
 }
