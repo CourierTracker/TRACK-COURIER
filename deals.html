@@ -93,14 +93,10 @@
     });
   </script>
   
-  <script src="https://js.paystack.co/v1/inline.js"></script>
 <!-- Paystack script must load BEFORE your JS function -->
 <script src="https://js.paystack.co/v1/inline.js"></script>
 
 <script>
-const emailInput = document.getElementById('customerEmail');
-const payButtons = document.querySelectorAll('.paystack-btn');
-
 // Enable buttons only if email is valid
 emailInput.addEventListener('input', () => {
   const valid = emailInput.checkValidity();
