@@ -100,7 +100,7 @@ function payWithPaystack(amount, email) {
     const emailInputField = document.getElementById('customerEmail');
 
     if (!email || !email.includes('@')) {
-        alert('Please enter a valid email before paying.');
+        alert('Please enter a valid email before payment! Receipt will be sent there');
         emailInputField.scrollIntoView({ behavior: 'smooth', block: 'center' });
         emailInputField.focus();
         return;
