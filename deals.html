@@ -96,8 +96,17 @@
   <script src="https://js.paystack.co/v1/inline.js"></script>
 <script>
 function payWithPaystack(amount, email) {
+    // Check if email is empty or invalid
+    const emailInput = document.getElementById('customerEmail');
+    if (!email || !email.includes('@')) {
+        alert('Please enter a valid email before paying.');
+        emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        emailInput.focus(); // optional, puts cursor in the input
+        return; // stop execution
+    }
+
     let handler = PaystackPop.setup({
-        key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7', // Replace with your Paystack public key
+        key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7', // replace with your public key
         email: email,
         amount: amount, // in kobo
         currency: 'NGN',
@@ -110,7 +119,7 @@ function payWithPaystack(amount, email) {
     });
     handler.openIframe();
 }
-      </script>
+</script>
 
 </body>
 </html>
