@@ -92,6 +92,25 @@
       payButtons.forEach(btn => btn.disabled = !valid);
     });
   </script>
+  
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+<script>
+function payWithPaystack(amount, email) {
+    let handler = PaystackPop.setup({
+        key: 'YOUR_PUBLIC_KEY', // Replace with your Paystack public key
+        email: email,
+        amount: amount, // in kobo
+        currency: 'NGN',
+        callback: function(response){
+            alert('Payment complete! Reference: ' + response.reference);
+        },
+        onClose: function(){
+            alert('Payment cancelled.');
+        }
+    });
+    handler.openIframe();
+}
+      </script>
 
 </body>
 </html>
