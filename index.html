@@ -174,6 +174,17 @@ function onRecaptchaSuccess(token) {
 function payWithPaystack(amount, email) {
   if (!email) {
     alert("Please enter your email before payment! Receipt will be sent there");
+
+    // 👉 Scroll to email input (smoothly)
+    const emailField = document.getElementById("customerEmail");
+    emailField.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    });
+
+    // 👉 Put cursor inside the field
+    emailField.focus();
+
     return;
   }
 
@@ -195,7 +206,6 @@ function payWithPaystack(amount, email) {
   });
   handler.openIframe();
 }
-  
 </script>
 
 </body>  
