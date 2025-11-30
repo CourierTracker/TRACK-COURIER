@@ -1,1 +1,27 @@
+<!-- Products Section -->
+<section class="products">  
+  <h2 id="products-title">Our Featured Products</h2>  
 
+  <!-- Customer Email Input -->
+  <div class="email-input">
+    <label for="customerEmail">Enter your email (Receipt will be sent here):</label>
+    <input type="email" id="customerEmail" placeholder="youremail@example.com" required>
+  </div>
+
+  <div class="product-grid">  
+
+    <!-- Product 1: Fast Shipping Box -->
+    <div class="product-card">  
+      <img src="Boxx1.png" alt="Fast Shipping Box">  
+      <h3 id="prod1-title">Masturbator Dual Vibrating Female G-Spot Sex Toy</h3>  
+      <p id="prod1-text">Pack of 25 Medium Shipping Cartons (40×30×30 cm) – Perfect for safely packing clothes, shoes, books, and more.</p>  
+      <button type="button" class="paystack-btn" disabled onclick="payWithPaystack(14500, document.getElementById('customerEmail').value)">Pay $11.25</button>  
+    </div>  
+
+    <!-- Product 2: Courier Bag -->
+    <div class="product-card">  
+      <img src="Luggagee1.png" alt="Courier Bag">  
+      <h3 id="prod2-title">Vibrator Flapping Sex Toys G Spot Adult Toys, 3 in 1 Sex toys4couples Men & Women</h3>  
+      <p id="prod2-text">Generic Waterproof and Tear‑proof Nylon Courier Mailer Bag (100 pcs).</p>  
+      <button type="button" class="paystack-btn" disabled onclick="payWithPaystack(12500, document.getElementById('customerEmail').value)">Pay $10</button> 
+    </div>
