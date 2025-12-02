@@ -94,8 +94,13 @@ html { scroll-behavior: smooth; }
     </div>  
   </form>
 
-  <!-- Products Section -->
-<section class="products">  
+  <!-- Shipping Materials Toggle Button -->
+  <button id="toggleProductsBtn" style="margin:20px;padding:10px 20px;font-size:16px;cursor:pointer;">
+  Shipping Materials
+  </button>
+
+  <!-- Products Section (Hidden by Default) -->
+  <section class="products" id="productsSection" style="display: none;">  
   <h2 id="products-title">Our Featured Products</h2>  
 
   <!-- Customer Email Input -->
@@ -206,6 +211,20 @@ function payWithPaystack(amount, email) {
   });
   handler.openIframe();
 }
+</script>
+
+<script>
+document.getElementById("toggleProductsBtn").addEventListener("click", function() {
+    const section = document.getElementById("productsSection");
+    
+    if (section.style.display === "none") {
+        section.style.display = "block";
+        this.textContent = "Hide Shipping Materials";
+    } else {
+        section.style.display = "none";
+        this.textContent = "Shipping Materials";
+    }
+});
 </script>
 
 </body>  
