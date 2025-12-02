@@ -98,30 +98,47 @@
     });
 
     function payWithPaystack(amount, email) {
-      const emailInputField = document.getElementById('customerEmail');
+  const nameInput = document.getElementById('customerName');
+  const addressInput = document.getElementById('customerAddress');
 
-      if (!email || !email.includes('@')) {
-        alert('Please enter a valid email before payment! Receipt will be sent there');
-        emailInputField.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        emailInputField.focus();
-        return;
-      }
+  const name = nameInput.value.trim();
+  const address = addressInput.value.trim();
 
-      let handler = PaystackPop.setup({
-        key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7',
-        email: email,
-        amount: amount,
-        currency: 'NGN',
-        callback: function(response){
-          alert('Payment complete! Reference: ' + response.reference);
-        },
-        onClose: function(){
-          alert('Payment cancelled.');
-        }
-      });
+  if (!email || !email.includes('@')) {
+    alert('Please enter a valid email before payment! Receipt will be sent there');
+    document.getElementById('customerEmail').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    document.getElementById('customerEmail').focus();
+    return;
+  }
 
-      handler.openIframe();
+  if (!name || !address) {
+    alert('Please enter your name and address before payment!');
+    if (!name) nameInput.focus();
+    else addressInput.focus();
+    return;
+  }
+
+  let handler = PaystackPop.setup({
+    key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7',
+    email: email,
+    amount: amount,
+    currency: 'NGN',
+    metadata: {
+      custom_fields: [
+        { display_name: "Name", variable_name: "name", value: name },
+        { display_name: "Address", variable_name: "address", value: address }
+      ]
+    },
+    callback: function(response){
+      alert('Payment complete! Reference: ' + response.reference);
+    },
+    onClose: function(){
+      alert('Payment cancelled.');
     }
+  });
+
+  handler.openIframe();
+}
   </script>
 
 </body>
