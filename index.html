@@ -181,19 +181,24 @@ function onRecaptchaSuccess(token) {
   
 <script>
 function payWithPaystack(amount, email) {
-  if (!email) {
+  const nameInput = document.getElementById('customerName');
+  const addressInput = document.getElementById('customerAddress');
+
+  const name = nameInput.value.trim();
+  const address = addressInput.value.trim();
+
+  if (!email || !email.includes('@')) {
     alert("Please enter your email before payment! Receipt will be sent there");
-
-    // 👉 Scroll to email input (smoothly)
     const emailField = document.getElementById("customerEmail");
-    emailField.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
-    });
-
-    // 👉 Put cursor inside the field
+    emailField.scrollIntoView({ behavior: "smooth", block: "center" });
     emailField.focus();
+    return;
+  }
 
+  if (!name || !address) {
+    alert("Please enter your name and address before payment!");
+    if (!name) nameInput.focus();
+    else addressInput.focus();
     return;
   }
 
@@ -206,6 +211,12 @@ function payWithPaystack(amount, email) {
     amount: amount * 100,
     currency: 'NGN',
     ref: '' + Math.floor((Math.random() * 1000000000) + 1),
+    metadata: {
+      custom_fields: [
+        { display_name: "Name", variable_name: "name", value: name },
+        { display_name: "Address", variable_name: "address", value: address }
+      ]
+    },
     callback: function(response){
       alert('Payment successful! Reference: ' + response.reference);
     },
@@ -214,7 +225,6 @@ function payWithPaystack(amount, email) {
     }
   });
   handler.openIframe();
-}
 </script>
 
 <script>
