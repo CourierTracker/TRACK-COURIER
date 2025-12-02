@@ -762,3 +762,17 @@ body::after {
   opacity: 0.9;
   margin-top: 0;
 }
+
+button {
+  transition: all 0.3s ease;
+}
+button:hover {
+  background-color: #4a90e2; /* Slightly darker blue */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+input:focus {
+  border-color: #4a90e2;
+  box-shadow: 0 0 5px rgba(74,144,226,0.5);
+  outline: none;
+}
