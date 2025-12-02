@@ -740,3 +740,25 @@ body::after {
 #track-btn:hover {
   background-color: #0b6cd4;
 }
+
+.page-banner {
+  text-align: center;
+  padding: 80px 20px;
+  background: linear-gradient(135deg, #4A90E2, #6EB5FF);
+  color: white;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.page-banner h1 {
+  font-size: 40px;
+  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.page-banner p {
+  font-size: 18px;
+  opacity: 0.9;
+  margin-top: 0;
+}
