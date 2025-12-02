@@ -103,10 +103,13 @@ html { scroll-behavior: smooth; }
   <section class="products" id="productsSection" style="display: none;">  
   <h2 id="products-title">Our Featured Products</h2>  
 
-  <!-- Customer Email Input -->
-  <div class="email-input">
-    <label for="customerEmail">Enter your email (Receipt will be sent here):</label>
-    <input type="email" id="customerEmail" placeholder="youremail@example.com" required>
+  <!-- Customer Email & Address Input -->
+  <div class="customer-info">
+  <label for="customerEmail">Email (for receipt):</label>
+  <input type="email" id="customerEmail" placeholder="youremail@example.com" required>
+
+  <label for="customerAddress">Shipping Address:</label>
+  <textarea id="customerAddress" placeholder="Enter your full shipping address" rows="3" required></textarea>
   </div>
 
   <div class="product-grid">  
