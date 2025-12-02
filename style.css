@@ -642,3 +642,33 @@ body::after {
   -webkit-text-fill-color: transparent;
   margin-bottom: 25px;
 }
+
+.customer-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.customer-info label {
+  font-weight: bold;
+  font-size: 14px;
+  color: #333;
+}
+
+.customer-info input,
+.customer-info textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border 0.3s ease;
+}
+
+.customer-info input:focus,
+.customer-info textarea:focus {
+  border-color: #00BFFF;
+  outline: none;
+}
