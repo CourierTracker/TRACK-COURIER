@@ -96,3 +96,18 @@ function showError(message) {
 function onRecaptchaSuccess(token) {
   document.getElementById('recaptcha-overlay').style.display = 'none';
 }
+
+function payWithPaystack(amount) {
+  const email = document.getElementById('customerEmail').value;
+  const address = document.getElementById('customerAddress').value;
+
+  if (!email || !address) {
+    alert("Please enter your email AND shipping address before payment!");
+    if (!email) document.getElementById("customerEmail").focus();
+    else document.getElementById("customerAddress").focus();
+    return;
+  }
+
+  // Continue with your existing Paystack setup here...
+}
+
