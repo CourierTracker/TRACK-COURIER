@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deals - Featured Products</title>
-  <link rel="stylesheet" href="style.css"> <!-- Your main CSS file -->
+  <link rel="stylesheet" href="style.css">
   <link rel="icon" href="favicon.png" type="image/png">
 </head>
-<body>
+<body class="deals-page">
 
-  <!-- Header / Navigation (reuse your Home page header) -->
+  <!-- Header / Navigation -->
   <header>
     <nav>
       <ul>
@@ -30,18 +30,17 @@
   <section class="products">
     <h2>Our Featured Deals</h2>
 
-  <div class="customer-info">
-    <h3>Enter Your Details</h3>
-    <label for="customerName">Name</label>
-    <input id="customerName" type="text" placeholder="Your name">
-    <label for="customerEmail">Email</label>
-    <input id="customerEmail" type="email" placeholder="you@example.com">
-    <label for="customerAddress">Address</label>
-    <textarea id="customerAddress" placeholder="Shipping address"></textarea>
-  </div>
+    <div class="customer-info">
+      <h3>Enter Your Details</h3>
+      <label for="customerName">Name</label>
+      <input id="customerName" type="text" placeholder="Your name">
+      <label for="customerEmail">Email</label>
+      <input id="customerEmail" type="email" placeholder="you@example.com">
+      <label for="customerAddress">Address</label>
+      <textarea id="customerAddress" placeholder="Shipping address"></textarea>
+    </div>
 
     <div class="product-grid">
-
       <!-- Product 1 -->
       <div class="product-card">
         <img src="dido.webp" alt="Product 1">
@@ -81,54 +80,49 @@
     </div>
   </section>
 
-  <!-- Footer (reuse your Home page footer) -->
+  <!-- Footer -->
   <footer>
     <p>&copy; 2025 Courier Tracker. All rights reserved.</p>
   </footer>
   
-<!-- Paystack script must load BEFORE your JS function -->
-<script src="https://js.paystack.co/v1/inline.js"></script>
-  
+  <!-- Paystack script -->
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+  <script>
+    const emailInput = document.getElementById('customerEmail');
+    const payButtons = document.querySelectorAll('.paystack-btn');
 
-<script>
-const emailInput = document.getElementById('customerEmail');
-const payButtons = document.querySelectorAll('.paystack-btn');
+    // Enable buttons only if email is valid
+    emailInput.addEventListener('input', () => {
+      const valid = emailInput.checkValidity();
+      payButtons.forEach(btn => btn.disabled = !valid);
+    });
 
-// Enable buttons only if email is valid
-emailInput.addEventListener('input', () => {
-  const valid = emailInput.checkValidity();
-  payButtons.forEach(btn => btn.disabled = !valid);
-});
+    function payWithPaystack(amount, email) {
+      const emailInputField = document.getElementById('customerEmail');
 
-function payWithPaystack(amount, email) {
-    const emailInputField = document.getElementById('customerEmail');
-
-    if (!email || !email.includes('@')) {
+      if (!email || !email.includes('@')) {
         alert('Please enter a valid email before payment! Receipt will be sent there');
         emailInputField.scrollIntoView({ behavior: 'smooth', block: 'center' });
         emailInputField.focus();
         return;
-    }
+      }
 
-    alert('Starting payment...'); // TEST: shows if click fires
-
-    let handler = PaystackPop.setup({
+      let handler = PaystackPop.setup({
         key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7',
         email: email,
         amount: amount,
         currency: 'NGN',
         callback: function(response){
-            alert('Payment complete! Reference: ' + response.reference);
+          alert('Payment complete! Reference: ' + response.reference);
         },
         onClose: function(){
-            alert('Payment cancelled.');
+          alert('Payment cancelled.');
         }
-    });
+      });
 
-    handler.openIframe();
-}
-</script>
-  
-<body class="deals-page">
+      handler.openIframe();
+    }
+  </script>
 
+</body>
 </html>
