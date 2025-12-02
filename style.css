@@ -717,7 +717,26 @@ body::after {
   box-shadow: 0 6px 10px rgba(0,0,0,0.2);
 }
 
+/* Track button icon spacing and styling */
 #track-btn i {
-  margin-right: 6px;
-  color: white; /* match your button text color */
+  margin-right: 6px; /* space between icon and text */
+  color: white;      /* matches button text */
+}
+
+/* Optional: make the button visually nicer */
+#track-btn {
+  background-color: #1E90FF; /* blue button */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+#track-btn:hover {
+  background-color: #0b6cd4;
 }
