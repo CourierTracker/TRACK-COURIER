@@ -789,3 +789,7 @@ nav#navMenu a {
 nav#navMenu.active {
   left: 0;
 }
+
+.page-container {
+  padding-top: 80px; /* makes space so content is not hidden behind header */
+}
