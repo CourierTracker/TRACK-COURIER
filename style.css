@@ -766,7 +766,7 @@ header {
 /* Navigation Menu */
 nav#navMenu {
   position: fixed;
-  top: 60px; /* below header */
+  top: 80px; /* below header */
   left: -220px; /* hidden offscreen */
   width: 220px;
   background-color: #444;
