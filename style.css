@@ -26,32 +26,51 @@ body {
     text-align: center;
 }
 
-/* ----- ONLY HEADER / NAV ----- */
+/* --------------------------------------------------
+   HEADER
+-------------------------------------------------- */
 header {
-    background-color: #1f2937; /* deep dark header */
+    background-color: #4b4b4b;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-    border-bottom: 2px solid #2563eb; /* professional blue accent */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    border-bottom: 3px solid #d4a017;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
+.logo-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo-title img {
+    width: 60px;
+    height: 60px;
+}
+
+nav {
+    margin-top: 15px;
+    display: flex;
+    gap: 25px;
+}
+
 nav a {
     text-decoration: none;
-    color: #ffffff;
-    font-weight: 600;
+    color: #ffffff; /* White links */
+    font-weight: bold;
     padding: 8px 15px;
-    border-radius: 6px;
-    transition: all 0.2s ease;
+    border-radius: 8px;
+    transition: 0.3s;
 }
 
 nav a:hover {
-    background-color: #2563eb;
-    color: #ffffff;
+    background-color: #d4a017; /* Gold hover */
+    color: #000;
 }
 
 /* Mobile header */
