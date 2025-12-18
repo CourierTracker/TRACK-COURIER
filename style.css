@@ -344,8 +344,8 @@ footer {
    HERO SECTION (Clouds & Plane)
 -------------------------------------------------- */
 .hero-section {
-    background: linear-gradient(to bottom, #eaf3ff, #ffffff);
-}
+    background: linear-gradient(to bottom, #f0f4f8, #ffffff);
+   }
 
 .cloud {
     position: absolute;
@@ -449,10 +449,7 @@ footer {
 
 /* Page Banner */
 .page-banner {
-  padding: 60px 20px;
-  background: linear-gradient(135deg, #a1c4fd 0%, #b3d9fc 100%);
-  color: #fff;
-  text-align: center;
+    background: linear-gradient(135deg, #a3c4ff, #cce0ff);
 }
 
 .page-banner h1 {
@@ -724,4 +721,11 @@ input:focus {
   width: 90%;
   max-width: 600px;
   z-index: 10;
+}
+
+#track-btn, .buy-btn, .paystack-btn {
+    background-color: #5a8fcf; /* softer blue */
+}
+#track-btn:hover, .buy-btn:hover, .paystack-btn:hover {
+    background-color: #4a7cb0; /* darker but still soft */
 }
