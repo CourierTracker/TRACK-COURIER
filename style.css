@@ -20,6 +20,7 @@ body {
     max-width: 600px;
     margin: 40px auto;
     padding: 20px;
+    padding-top: 80px; /* space for fixed header */
     background-color: #fff;
     box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     border-radius: 10px;
@@ -774,8 +775,4 @@ nav#navMenu a {
 /* Show menu */
 nav#navMenu.active {
   left: 0;
-}
-
-.page-container {
-  padding-top: 80px; /* makes space so content is not hidden behind header */
 }
