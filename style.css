@@ -2,10 +2,8 @@
    GENERAL PAGE STYLING
 -------------------------------------------------- */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f4f6f8;
-    color: #333;
+  background: #1e1e2f; /* dark muted gray/blue */
+  color: #e0e0e0; /* soft light text */
 }
 
 @keyframes gradientShift {
@@ -15,13 +13,8 @@ body {
 }
 
 .page-container {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    border-radius: 10px;
-    text-align: center;
+  background-color: #2a2a3a; /* soft dark container */
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 /* --------------------------------------------------
@@ -449,7 +442,12 @@ footer {
 
 /* Page Banner */
 .page-banner {
-    background: linear-gradient(135deg, #a3c4ff, #cce0ff);
+  background: linear-gradient(135deg, #2c3e50, #34495e); /* calm dark blue/gray */
+  color: #ecf0f1; /* soft light text */
+  text-align: center;
+  padding: 80px 20px;
+  border-radius: 0 0 25px 25px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 .page-banner h1 {
@@ -496,14 +494,10 @@ footer {
 }
 
 /* Product Card */
-.product-card {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
-  width: 100%;
-  max-width: 280px;
+.product-card, .about, .contact, .shipment-container {
+  background: #2c2c3c; /* dark soft gray/blue */
+  color: #e0e0e0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3); /* subtle shadow */
 }
 
 .product-card:hover {
@@ -724,8 +718,10 @@ input:focus {
 }
 
 #track-btn, .buy-btn, .paystack-btn {
-    background-color: #5a8fcf; /* softer blue */
+    background-color: #4b6fa9; /* muted blue */
+    color: #fff;
 }
+
 #track-btn:hover, .buy-btn:hover, .paystack-btn:hover {
-    background-color: #4a7cb0; /* darker but still soft */
+    background-color: #3b5d8c; /* darker muted blue */
 }
