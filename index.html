@@ -42,11 +42,33 @@ html { scroll-behavior: smooth; }
     <a href="#contact" id="nav-contact">Contact</a>  
     <a href="services.html" id="nav-services">Services</a> <!-- NEW LINK -->
   </nav>
-</header>  <!-- Hero Section -->  <section id="hero" class="hero-section" style="position:relative;height:300px;overflow:hidden;background:linear-gradient(to bottom,#87CEFA,#ffffff);">  
-  <div class="cloud cloud1"></div>  
-  <div class="cloud cloud2"></div>  
+</header>
+  <section id="hero" class="hero-section"
+  style="position:relative;height:300px;overflow:hidden;
+  background:linear-gradient(to bottom,#87CEFA,#ffffff);">
+
+  <div class="cloud cloud1"></div>
+  <div class="cloud cloud2"></div>
   <div class="cloud cloud3"></div>
-</section>  <!-- Main Content -->  <div id="home" class="page-container">    <!-- Tracking Steps -->    <ul id="trackingSteps" class="tracking-steps hidden">  
+
+  <!-- Tracking Form INSIDE HERO -->
+  <form id="trackingForm" class="hero-tracking">
+    <div class="search-section">
+      <input type="text" id="tracking-number" placeholder="Enter tracking number">
+      <button type="submit" id="track-btn">
+        <i class="fas fa-map-marker-alt"></i> Track
+      </button>
+    </div>
+
+    <input type="hidden" id="recaptchaToken" name="recaptchaToken">
+
+    <div id="spinner" class="spinner">
+      <i class="fas fa-spinner fa-spin fa-2x"></i> Loading...
+    </div>
+  </form>
+
+  </section>
+    <!-- Main Content -->  <div id="home" class="page-container">    <!-- Tracking Steps -->    <ul id="trackingSteps" class="tracking-steps hidden">  
     <li id="step-placed"><i class="fas fa-cart-plus"></i> <span>Order Placed</span></li>  
     <li id="step-shipped"><i class="fas fa-truck"></i> <span>Shipped</span></li>  
     <li id="step-transit"><i class="fas fa-plane"></i> <span>In Transit</span></li>  
@@ -54,21 +76,7 @@ html { scroll-behavior: smooth; }
   </ul>    <div class="ad-section">  
     <p id="tip-text">💡 Tip: Track multiple packages easily with your account!</p>  
     <p id="special-text">📦 Special: Fast delivery for premium members.</p>  
-  </div>    <!-- Tracking Form -->    <form id="trackingForm">  
-    <div class="search-section">  
-      <input type="text" id="tracking-number" placeholder="Enter tracking number">  
-      <button type="submit" id="track-btn">
-  <i class="fas fa-map-marker-alt"></i> Track
-      </button>  
-    </div>
-
-    <input type="hidden"
-  id="recaptchaToken"
-  name="recaptchaToken">
-    
-    <div id="spinner" class="spinner">
-  <i class="fas fa-spinner fa-spin fa-2x"></i> Loading...
-    </div>  
+  </div>  
     <div class="shipment-container" id="shipmentContainer" style="display:none;">
   <table class="shipment-details">
     <tr><td>Tracking Number:</td><td>Track-246800000</td></tr>
