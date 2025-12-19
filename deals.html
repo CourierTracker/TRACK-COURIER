@@ -127,10 +127,12 @@
 
     // Centralized click handler
     payButtons.forEach(btn => {
-    payButtons.forEach(btn => {
-  btn.addEventListener('click', (e) => {
+      btn.addEventListener('click', (e) => 
+    {
     // Check each field individually
-    if (nameInput.value.trim() === '') {
+    if (nameInput.value.trim() === '') 
+      
+   {
       alert('Please enter your name!');
       nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
       nameInput.focus();
