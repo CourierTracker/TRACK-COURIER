@@ -93,46 +93,41 @@
 
   <!-- Paystack script -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
+
   <script>
-    // Replace this with a server-provided value or a safe config mechanism as needed.
-    // It's okay to expose the public key to the client, but avoid embedding secret keys in client code.
-    const PAYSTACK_PUBLIC_KEY = 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7'; // replace if needed
+const form = document.getElementById('customerForm');
+const nameInput = document.getElementById('customerName');
+const emailInput = document.getElementById('customerEmail');
+const addressInput = document.getElementById('customerAddress');
+const payButtons = Array.from(document.querySelectorAll('.paystack-btn'));
+const PAYSTACK_PUBLIC_KEY = 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7';
 
-    const form = document.getElementById('customerForm');
-    const nameInput = document.getElementById('customerName');
-    const emailInput = document.getElementById('customerEmail');
-    const addressInput = document.getElementById('customerAddress');
-    const payButtons = Array.from(document.querySelectorAll('.paystack-btn'));
+// Helper: check form validity
+function isFormValid() {
+  return nameInput.value.trim() !== '' &&
+         addressInput.value.trim() !== '' &&
+         emailInput.checkValidity();
+}
 
-    // Helper: check form validity (returns boolean)
-    function isFormValid() {
-      return nameInput.value.trim() !== '' &&
-             addressInput.value.trim() !== '' &&
-             emailInput.checkValidity();
-    }
+// Enable/disable pay buttons
+function updatePayButtons() {
+  const valid = isFormValid();
+  payButtons.forEach(btn => btn.disabled = !valid);
+}
 
-    // Enable/disable pay buttons based on form validity
-    function updatePayButtons() {
-      const valid = isFormValid();
-      payButtons.forEach(btn => btn.disabled = !valid);
-    }
+// Listen for changes
+[nameInput, emailInput, addressInput].forEach(el => {
+  el.addEventListener('input', updatePayButtons);
+});
 
-    // Initial check (buttons are disabled in markup)
-    updatePayButtons();
+// Initial state
+updatePayButtons();
 
-    // Re-check when any input changes
-    [nameInput, emailInput, addressInput].forEach(el => {
-      el.addEventListener('input', updatePayButtons);
-    });
-
-    // Centralized click handler
-    payButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => 
-    {
-    // Check each field individually
-    if (nameInput.value.trim() === '') 
-      
-   {
+// Click handler for Paystack buttons
+payButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Check each field individually and scroll/focus
+    if (nameInput.value.trim() === '') {
       alert('Please enter your name!');
       nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
       nameInput.focus();
@@ -153,67 +148,57 @@
       return;
     }
 
-    // All fields are valid, proceed with payment
-    const amount = parseInt(btn.dataset.amount, 10); 
+    // All fields valid → open Paystack
+    const amount = parseInt(btn.dataset.amount, 10);
     const product = btn.dataset.product || 'Product';
     payWithPaystack(amount, emailInput.value.trim(), product);
   });
 });
 
-    function payWithPaystack(amount, email, productName) {
-      const name = nameInput.value.trim();
-      const address = addressInput.value.trim();
+function payWithPaystack(amount, email, productName) {
+  const name = nameInput.value.trim();
+  const address = addressInput.value.trim();
 
-      if (!email || !email.includes('@')) {
-        alert('Please enter a valid email before payment. Receipt will be sent there.');
-        emailInput.focus();
-        return;
-      }
-
-      // Setup Paystack pop-up
-      const handler = PaystackPop.setup({
-        key: PAYSTACK_PUBLIC_KEY,
-        email: email,
-        amount: amount,
-        currency: 'NGN',
-        metadata: {
-          custom_fields: [
-            { display_name: "Name", variable_name: "name", value: name },
-            { display_name: "Address", variable_name: "address", value: address },
-            { display_name: "Product", variable_name: "product", value: productName }
-          ]
-        },
-        callback: function(response){
-          // Client notified, now verify on server-side
-          alert('Payment complete! Reference: ' + response.reference + '. Verifying on server...');
-
-          // POST reference to your server for verification
-          fetch('/verify-payment', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ reference: response.reference })
-          })
-          .then(res => res.json())
-          .then(data => {
-            if (data && data.success) {
-              alert('Payment verified by server. Thank you!');
-              // Optionally clear form or redirect to success page
-            } else {
-              alert('Payment could not be verified on server. Contact support with reference: ' + response.reference);
-            }
-          })
-          .catch(err => {
-            console.error('Verification error', err);
-            alert('Error verifying payment. Please contact support with reference: ' + response.reference);
-          });
-        },
-        onClose: function(){
-          alert('Payment cancelled.');
+  const handler = PaystackPop.setup({
+    key: PAYSTACK_PUBLIC_KEY,
+    email: email,
+    amount: amount,
+    currency: 'NGN',
+    metadata: {
+      custom_fields: [
+        { display_name: "Name", variable_name: "name", value: name },
+        { display_name: "Address", variable_name: "address", value: address },
+        { display_name: "Product", variable_name: "product", value: productName }
+      ]
+    },
+    callback: function(response){
+      alert('Payment complete! Reference: ' + response.reference + '. Verifying on server...');
+      fetch('/verify-payment', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ reference: response.reference })
+      })
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.success) {
+          alert('Payment verified by server. Thank you!');
+        } else {
+          alert('Payment could not be verified. Contact support with reference: ' + response.reference);
         }
+      })
+      .catch(err => {
+        console.error('Verification error', err);
+        alert('Error verifying payment. Contact support with reference: ' + response.reference);
       });
-
-      handler.openIframe();
+    },
+    onClose: function(){
+      alert('Payment cancelled.');
     }
+  });
+
+  handler.openIframe();
+}
   </script>
+  
 </body>
 </html>
