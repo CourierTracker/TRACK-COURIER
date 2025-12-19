@@ -54,7 +54,7 @@
         <div class="product-card">
           <img src="dido.webp" alt="Masturbator dual vibrating toy product image" />
           <h3>Masturbator Dual Vibrating Female G-Spot Toy</h3>
-          <button type="button" class="paystack-btn" data-amount="5900000" data-product="Masturbator Dual" disabled>
+          <button type="button" class="paystack-btn" data-amount="5900000" data-product="Masturbator Dual">
             Pay ₦59,000
           </button>
         </div>
@@ -62,7 +62,7 @@
         <div class="product-card">
           <img src="allsex.jpg" alt="3-in-1 couples vibrator product image" />
           <h3>Vibrator Flapping Sex Toy for Couples (3-in-1)</h3>
-          <button type="button" class="paystack-btn" data-amount="9500000" data-product="3-in-1 Vibrator" disabled>
+          <button type="button" class="paystack-btn" data-amount="9500000" data-product="3-in-1 Vibrator">
             Pay ₦95,000
           </button>
         </div>
@@ -70,7 +70,7 @@
         <div class="product-card">
           <img src="mensex.jpeg" alt="Male masturbator toy product image" />
           <h3>Vaginal Sex Male Masturbator Sex Toy For Men</h3>
-          <button type="button" class="paystack-btn" data-amount="1800000" data-product="Male Masturbator" disabled>
+          <button type="button" class="paystack-btn" data-amount="1800000" data-product="Male Masturbator">
             Pay ₦18,000
           </button>
         </div>
@@ -78,7 +78,7 @@
         <div class="product-card">
           <img src="singlesex.jpg" alt="Strong amateur vibrator product image" />
           <h3>Strong Amateur female students vibrator sensational</h3>
-          <button type="button" class="paystack-btn" data-amount="2300000" data-product="Strong Vibrator" disabled>
+          <button type="button" class="paystack-btn" data-amount="2300000" data-product="Strong Vibrator" >
             Pay ₦23,000
           </button>
         </div>
@@ -109,19 +109,12 @@ function isFormValid() {
          emailInput.checkValidity();
 }
 
-// Enable/disable pay buttons
-function updatePayButtons() {
-  const valid = isFormValid();
-  payButtons.forEach(btn => btn.disabled = !valid);
-}
 
 // Listen for changes
 [nameInput, emailInput, addressInput].forEach(el => {
   el.addEventListener('input', updatePayButtons);
 });
 
-// Initial state
-updatePayButtons();
 
 // Click handler for Paystack buttons
 payButtons.forEach(btn => {
