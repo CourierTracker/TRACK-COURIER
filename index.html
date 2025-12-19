@@ -321,26 +321,26 @@ document.getElementById('trackingForm').addEventListener('submit', function(e) {
     trackingSteps.classList.remove('hidden');
 
     // Step-by-step highlight (ONLY first 3)
+    const stepDelay = 3000; // 3 seconds per step
+
     steps.forEach((step, index) => {
-        if (index > 2) return; // stops at "In Transit"
+    if (index > 2) return; // stop at "In Transit"
 
-        setTimeout(() => {
-            step.classList.add('active');
+    setTimeout(() => {
+        step.classList.add('active');
 
-            // After last step, show shipment
-            if (index === 2) {
-                setTimeout(() => {
-                    spinner.style.display = 'none';
-                    shipment.style.display = 'block';
-
-                    shipment.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }, 600);
-            }
-        }, (index + 1) * 800);
-    });
+        if (index === 2) {
+            setTimeout(() => {
+                spinner.style.display = 'none';
+                shipment.style.display = 'block';
+                shipment.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 500);
+        }
+    }, stepDelay * (index + 1));
+});
 
     // Update tracking number in table
     shipment.querySelector('table tr td:nth-child(2)').textContent = trackingNumber;
