@@ -497,7 +497,7 @@ footer {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 30px;
-  justify-items: center;
+  justify-items: stretch; /* makes all cards align properly */
 }
 
 /* Product Card */
