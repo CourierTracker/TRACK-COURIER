@@ -278,55 +278,74 @@ document.getElementById("toggleProductsBtn").addEventListener("click", function(
 
 <script>
 document.getElementById('trackingForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // stop page from reloading
+    e.preventDefault();
 
-    const trackingNumber = document.getElementById('tracking-number').value.trim();
-    const shipmentContainer = document.getElementById('shipmentContainer');
+    const input = document.getElementById('tracking-number');
+    const trackingNumber = input.value.trim();
     const spinner = document.getElementById('spinner');
+    const steps = document.querySelectorAll('#trackingSteps li');
     const trackingSteps = document.getElementById('trackingSteps');
+    const shipment = document.getElementById('shipmentContainer');
 
-    // Hide previous results
-    shipmentContainer.style.display = 'none';
+    // Reset UI
+    spinner.style.display = 'none';
+    shipment.style.display = 'none';
     trackingSteps.classList.add('hidden');
+    steps.forEach(step => step.classList.remove('active'));
+    input.classList.remove('shake');
 
-    // Check if field is empty
+    // Empty check
     if (!trackingNumber) {
         alert("Please enter a tracking number!");
         return;
     }
 
-    // Optional: check format (example: must start with Track- and 9 digits)
-    const trackingPattern = /^Track-\d{9}$/;
-    if (!trackingPattern.test(trackingNumber)) {
-        alert("Invalid tracking number! Example: Track-123456789");
+    // Format check
+    const pattern = /^Track-\d{9}$/;
+    if (!pattern.test(trackingNumber)) {
+        input.classList.add('shake');
+        alert("Invalid tracking number!");
         return;
     }
 
-    // Show loading spinner
+    // Allowed demo numbers
+    const validNumbers = ["Track-246800000", "Track-123456789"];
+    if (!validNumbers.includes(trackingNumber)) {
+        input.classList.add('shake');
+        alert("Invalid tracking number!");
+        return;
+    }
+
+    // Show spinner
     spinner.style.display = 'block';
+    trackingSteps.classList.remove('hidden');
 
-    // Simulate fetching tracking info
-    setTimeout(() => {
-        spinner.style.display = 'none';
+    // Step-by-step highlight (ONLY first 3)
+    steps.forEach((step, index) => {
+        if (index > 2) return; // stops at "In Transit"
 
-        // Example: only accept certain tracking numbers
-        const validNumbers = ["Track-246800000", "Track-123456789"];
-        if (!validNumbers.includes(trackingNumber)) {
-            alert("Tracking number not found. Please check and try again.");
-            return;
-        }
+        setTimeout(() => {
+            step.classList.add('active');
 
-        // Show shipment container & steps
-        shipmentContainer.style.display = 'block';
-        trackingSteps.classList.remove('hidden');
+            // After last step, show shipment
+            if (index === 2) {
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    shipment.style.display = 'block';
 
-        // Update table with tracking number
-        const rows = shipmentContainer.querySelectorAll('table tr');
-        rows[0].querySelector('td:nth-child(2)').textContent = trackingNumber;
+                    shipment.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 600);
+            }
+        }, (index + 1) * 800);
+    });
 
-    }, 1000);
+    // Update tracking number in table
+    shipment.querySelector('table tr td:nth-child(2)').textContent = trackingNumber;
 });
-  </script>
+</script>
 
 </body>  
 </html>
