@@ -87,10 +87,12 @@
     }
     nav a:focus{
       box-shadow: 0 0 0 3px rgba(58,160,255,0.18);
-    }
+   }
 
     /* Main container */
     main.container {
+    flex: 1 0 auto;
+    overflow: auto;  /* <-- add this */
     width: 100%;
     max-width: var(--max-width);
     margin: 32px auto;
@@ -99,8 +101,6 @@
     border-radius: var(--radius);
     box-shadow: 0 8px 30px var(--shadow);
     box-sizing: border-box;
-
-    flex: 1 0 auto; /* <-- add this line */
   }
 
     .page-title{
