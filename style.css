@@ -430,3 +430,13 @@ footer {
 @media (max-width: 480px){
   footer { font-size: 0.85rem; }
 }
+
+/* Highlighted / Active step */
+#trackingSteps li.active {
+  opacity: 1;
+  font-weight: 700;
+  border-left-color: var(--success); /* green */
+  background-color: #e6f5ea;         /* light green background */
+  color: #08320f;                     /* dark text for contrast */
+  transition: all 0.25s ease;
+}
