@@ -195,18 +195,27 @@ nav a:hover {
     color: #333;
 }
 
+/* Product Grid */
 .product-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 30px;
-    max-width: 1200px; /* keeps the grid contained */
-    margin: 0 auto;    /* centers the grid in the page */
+    max-width: 1200px;  /* keeps the grid contained */
+    margin: 0 auto;     /* centers the grid */
+    justify-items: stretch; /* makes cards fill each grid cell */
 }
 
+/* Product Card */
 .product-card {
-    width: 100%;         /* makes the card fill its grid cell */
-    margin: 0;           /* remove extra margin */
+    width: 100%;         /* fills its grid cell */
+    margin: 0;           /* remove any extra margin */
     box-sizing: border-box;
+    background: #2c2c3c;
+    color: #e0e0e0;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .product-card:hover {
