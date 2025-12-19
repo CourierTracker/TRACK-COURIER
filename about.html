@@ -6,8 +6,25 @@
   <meta name="description" content="Track Courier — simple, fast, and reliable package tracking. Enter your tracking number for real-time progress updates." />
   <title>About | Track Courier</title>
 
-  <!-- Favicon (replace with your icon) -->
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <!-- Social / SEO -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Track Courier — About" />
+  <meta property="og:description" content="Simple, fast, and reliable online package tracking. Enter a tracking number for real-time progress updates." />
+  <meta property="og:url" content="https://yourdomain.example/about.html" />
+  <meta property="og:image" content="/social-preview.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Track Courier — About" />
+  <meta name="twitter:description" content="Simple, fast, and reliable online package tracking." />
+  <meta name="twitter:image" content="/social-preview.png" />
+  <meta name="theme-color" content="#12121a" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#0a84ff" />
+
+  <!-- Performance: preconnect analytics host (still gate actual script by consent) -->
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 
   <style>
     /* Theme variables — easy to adjust or move to an external stylesheet */
@@ -159,28 +176,53 @@
       outline-offset: 3px;
     }
 
+    /* Cookie banner */
+    .cookie-banner{
+      position: fixed;
+      left: 16px;
+      right: 16px;
+      bottom: 16px;
+      background: linear-gradient(180deg,var(--panel), #11121a);
+      border-radius: 12px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+      padding: 14px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      z-index: 1200;
+      color: var(--muted);
+      flex-wrap:wrap;
+    }
+    .cookie-actions{ display:flex; gap:8px; }
+    .btn{
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-weight:600;
+      cursor:pointer;
+      border: none;
+      color: white;
+      background: var(--brand);
+    }
+    .btn.secondary{
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
     /* Responsive spacing */
     @media (max-width:600px){
       .container{ padding: 12px; margin: 20px 12px; }
       nav a { padding: 8px 10px; font-size: .95rem; }
+      .cookie-banner{ flex-direction:column; align-items:stretch; gap:8px; }
     }
   </style>
-  
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN"></script>
-<script>
-  // Call this after user consents to analytics
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XQTH8T4YVN', { 'anonymize_ip': true });
-</script>
-   
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <header>
-    <nav aria-label="Primary">
+    <nav aria-label="Primary" role="navigation">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="help.html">Help</a>
@@ -224,5 +266,79 @@
   <footer role="contentinfo">
     <p>© 2025 Track Courier • <a href="privacy.html">Privacy Policy</a></p>
   </footer>
+
+  <!-- Cookie / analytics consent UI -->
+  <div id="cookieBanner" class="cookie-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" style="display:none;">
+    <div>
+      <strong>We value your privacy</strong>
+      <div style="margin-top:6px;">We use analytics to improve the site. Do you consent to anonymous analytics?</div>
+    </div>
+    <div class="cookie-actions" role="group" aria-label="Cookie actions">
+      <button id="acceptAnalytics" class="btn">Accept</button>
+      <button id="declineAnalytics" class="btn secondary">Decline</button>
+    </div>
+  </div>
+
+  <script>
+    // Consent & analytics loader
+    (function () {
+      var STORAGE_KEY = 'tc_analytics_consent'; // 'granted' | 'denied'
+      var cookieBanner = document.getElementById('cookieBanner');
+      var acceptBtn = document.getElementById('acceptAnalytics');
+      var declineBtn = document.getElementById('declineAnalytics');
+
+      function showBanner() {
+        cookieBanner.style.display = 'flex';
+        // Move focus for a11y
+        acceptBtn.focus();
+      }
+
+      function hideBanner() {
+        cookieBanner.style.display = 'none';
+      }
+
+      function loadAnalytics() {
+        if (window._tc_analytics_loaded) return;
+        window._tc_analytics_loaded = true;
+
+        // dynamically insert the gtag script
+        var s = document.createElement('script');
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN';
+        s.async = true;
+        s.onload = function () {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', 'G-XQTH8T4YVN', { 'anonymize_ip': true });
+        };
+        document.head.appendChild(s);
+      }
+
+      acceptBtn.addEventListener('click', function () {
+        localStorage.setItem(STORAGE_KEY, 'granted');
+        loadAnalytics();
+        hideBanner();
+      });
+
+      declineBtn.addEventListener('click', function () {
+        localStorage.setItem(STORAGE_KEY, 'denied');
+        hideBanner();
+      });
+
+      // On load, check existing consent
+      var consent = localStorage.getItem(STORAGE_KEY);
+      if (consent === 'granted') {
+        // user has previously granted -> load analytics immediately
+        loadAnalytics();
+      } else if (consent === 'denied') {
+        // nothing to do
+      } else {
+        // show banner for first-time visitors
+        // delay slightly to avoid jank on page load
+        window.addEventListener('load', function () { setTimeout(showBanner, 600); });
+      }
+    })();
+  </script>
 </body>
 </html>
