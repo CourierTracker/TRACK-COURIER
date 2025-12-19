@@ -276,5 +276,91 @@ document.getElementById("toggleProductsBtn").addEventListener("click", function(
 })();
 </script>
 
+<script>
+// TRACKING FORM HANDLER
+document.getElementById('trackingForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // Stop page reload
+
+    const trackingNumber = document.getElementById('tracking-number').value.trim();
+    const shipmentContainer = document.getElementById('shipmentContainer');
+    const spinner = document.getElementById('spinner');
+    const trackingSteps = document.getElementById('trackingSteps');
+
+    if (!trackingNumber) {
+        alert("Please enter a tracking number!");
+        return;
+    }
+
+    // Show loading spinner
+    spinner.style.display = 'block';
+    shipmentContainer.style.display = 'none';
+    trackingSteps.classList.add('hidden');
+
+    // Simulate fetching tracking info (replace this with your API later)
+    setTimeout(() => {
+        spinner.style.display = 'none';
+        shipmentContainer.style.display = 'block';
+        trackingSteps.classList.remove('hidden');
+
+        // Update table with entered tracking number
+        const rows = shipmentContainer.querySelectorAll('table tr');
+        rows[0].querySelector('td:nth-child(2)').textContent = trackingNumber;
+
+        // You can update other fields dynamically if needed
+    }, 1000);
+});
+  </script>
+  <script>
+document.getElementById('trackingForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // stop page from reloading
+
+    const trackingNumber = document.getElementById('tracking-number').value.trim();
+    const shipmentContainer = document.getElementById('shipmentContainer');
+    const spinner = document.getElementById('spinner');
+    const trackingSteps = document.getElementById('trackingSteps');
+
+    // Hide previous results
+    shipmentContainer.style.display = 'none';
+    trackingSteps.classList.add('hidden');
+
+    // Check if field is empty
+    if (!trackingNumber) {
+        alert("Please enter a tracking number!");
+        return;
+    }
+
+    // Optional: check format (example: must start with Track- and 9 digits)
+    const trackingPattern = /^Track-\d{9}$/;
+    if (!trackingPattern.test(trackingNumber)) {
+        alert("Invalid tracking number! Example: Track-123456789");
+        return;
+    }
+
+    // Show loading spinner
+    spinner.style.display = 'block';
+
+    // Simulate fetching tracking info
+    setTimeout(() => {
+        spinner.style.display = 'none';
+
+        // Example: only accept certain tracking numbers
+        const validNumbers = ["Track-246800000", "Track-123456789"];
+        if (!validNumbers.includes(trackingNumber)) {
+            alert("Tracking number not found. Please check and try again.");
+            return;
+        }
+
+        // Show shipment container & steps
+        shipmentContainer.style.display = 'block';
+        trackingSteps.classList.remove('hidden');
+
+        // Update table with tracking number
+        const rows = shipmentContainer.querySelectorAll('table tr');
+        rows[0].querySelector('td:nth-child(2)').textContent = trackingNumber;
+
+    }, 1000);
+});
+  </script>
+
 </body>  
 </html>
