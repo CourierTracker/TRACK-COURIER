@@ -17,7 +17,7 @@ payButtons.forEach(btn => {
   btn.addEventListener('click', () => {
     // Check form fields individually
     if (nameInput.value.trim() === '') {
-      alert('Please enter your name!');
+      alert('Please enter your Shipping details!');
       nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
       nameInput.focus();
       return;
