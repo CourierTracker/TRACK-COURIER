@@ -197,18 +197,16 @@ nav a:hover {
 
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-    max-width: 1000px;
-    margin: 0 auto;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    max-width: 1200px; /* keeps the grid contained */
+    margin: 0 auto;    /* centers the grid in the page */
 }
 
 .product-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    padding: 20px;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;         /* makes the card fill its grid cell */
+    margin: 0;           /* remove extra margin */
+    box-sizing: border-box;
 }
 
 .product-card:hover {
