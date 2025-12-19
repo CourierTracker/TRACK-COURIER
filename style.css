@@ -417,3 +417,12 @@ button[disabled],
 button { transition: all .18s ease; }
 
 /* End of consolidated stylesheet */
+footer {
+  background-color: #17182a; /* match your site's dark panel color */
+  color: #cfd8ff;            /* light text for contrast */
+  text-align: center;         /* center the text horizontally */
+  padding: 16px 0;            /* space above and below text */
+  margin: 0;                  /* remove default margin */
+  box-sizing: border-box;
+  width: 100%;
+}
