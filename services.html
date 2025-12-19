@@ -1,236 +1,242 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Services | Track Courier</title>
+  <meta name="description" content="Fast, affordable website, social media and local delivery services from Track Courier — contact via WhatsApp or email to get started." />
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-XQTH8T4YVN');
+</script>
+
   <style>
-    /* General Styles */
-  body {
-  background: #1e1e2f; /* dark muted gray/blue */
-  color: #e0e0e0; /* soft light text */
-}
-    
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    :root{
+      --bg: #14141a;
+      --panel: #1e2030;
+      --muted-panel: #252536;
+      --text: #e6eef8;
+      --muted-text: #c9d6ea;
+      --accent: #3ea0ff;
+      --accent-strong: #007bff;
+      --success: #27ae60;
+      --card-radius: 12px;
+      --gap: 20px;
+      --container-max: 980px;
+      --shadow: 0 8px 22px rgba(3,6,23,0.6);
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    }
+
+    /* Page */
+    html,body{height:100%}
+    body{
+      margin:0;
+      min-height:100%;
+      background:linear-gradient(180deg,var(--bg),#0f1014);
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
     }
 
     /* Header */
-    header {
-      background: transparent;
-      padding: 15px 20px;
-      text-align: center;
+    header{
+      padding:18px 16px;
+      text-align:center;
+      background:transparent;
     }
-
-    header nav {
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      flex-wrap: wrap;
+    nav{
+      display:flex;
+      gap:10px;
+      justify-content:center;
+      flex-wrap:wrap;
+      align-items:center;
     }
-
-    header nav a {
-      text-decoration: none;
-      padding: 10px 18px;
-      background-color: #007bff;
-      color: white;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background 0.3s;
+    .nav-link{
+      display:inline-block;
+      padding:10px 16px;
+      background:linear-gradient(180deg,var(--accent-strong),#0066cc);
+      color:#fff;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:600;
+      transition:transform .12s ease,background .12s;
     }
-
-    header nav a:hover {
-      background-color: #0056b3;
-    }
+    .nav-link:focus,
+    .nav-link:hover{ transform:translateY(-2px); outline:none; }
 
     /* Main container */
-    .container {
-      max-width: 900px;
-      margin: 50px auto;
-      padding: 0 15px;
+    .container{
+      max-width:var(--container-max);
+      margin:36px auto;
+      padding:0 16px;
+    }
+    h1{
+      text-align:center;
+      font-size:28px;
+      color:var(--accent);
+      margin:6px 0 8px;
+    }
+    p.description{
+      text-align:center;
+      font-size:15px;
+      color:var(--muted-text);
+      margin:0 0 24px;
     }
 
-    h1 {
-      text-align: center;
-      font-size: 32px;
-      color: #007bff;
-      margin-bottom: 20px;
+    /* Cards grid */
+    .grid{
+      display:grid;
+      gap:var(--gap);
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      align-items:start;
+    }
+    .card{
+      background:linear-gradient(180deg,var(--panel),var(--muted-panel));
+      border-radius:var(--card-radius);
+      padding:20px;
+      box-shadow:var(--shadow);
+      color:var(--text);
+    }
+    .card h2{
+      margin:0 0 10px;
+      font-size:18px;
+      color:var(--accent);
+      position:relative;
+      padding-left:14px;
+    }
+    .card h2::before{
+      content:'';
+      position:absolute;
+      left:0;
+      top:0;
+      width:6px;
+      height:100%;
+      background:linear-gradient(180deg,var(--accent),#1e90ff);
+      border-radius:2px;
+    }
+    .card ul{ padding-left:20px; margin:0 0 10px; color:var(--muted-text); }
+    .card li{ margin-bottom:10px; }
+    .price{ color:var(--success); font-weight:700; }
+
+    a, a:visited { color:var(--accent); text-decoration:none; }
+    a:hover, a:focus { text-decoration:underline; outline:none; }
+
+    .contact{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+      margin-top:6px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:10px;
+      color:#fff;
+      text-decoration:none;
+      font-weight:600;
+      font-size:14px;
+      transition:transform .12s ease,opacity .12s;
+    }
+    .btn:focus, .btn:hover{ transform:translateY(-2px); opacity:.95; outline:none; }
+    .btn.whatsapp{ background:#25D366; }
+    .btn.email{ background:var(--accent-strong); }
+
+    footer{
+      margin-top:34px;
+      padding:18px 12px;
+      text-align:center;
+      color:var(--muted-text);
+      font-size:14px;
+      border-top:1px solid rgba(255,255,255,0.04);
+    }
+    footer a { color:var(--accent); text-decoration:none; }
+    footer a:hover { text-decoration:underline; }
+
+    /* Utility */
+    .visually-hidden{
+      position:absolute!important;
+      height:1px;width:1px;
+      overflow:hidden;clip:rect(1px,1px,1px,1px);
+      white-space:nowrap;border:0;padding:0;margin:-1px;
     }
 
-    p.description {
-      text-align: center;
-      font-size: 16px;
-      color: #555;
-      margin-bottom: 30px;
-    }
-
-    /* Card sections */
-    .card {
-      background-color: #fff;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-      padding: 25px;
-      margin-bottom: 25px;
-    }
-
-    .card h2 {
-      color: #007bff;
-      margin-bottom: 15px;
-      position: relative;
-      padding-left: 15px;
-      font-size: 22px;
-    }
-
-    .card h2::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 5px;
-      height: 100%;
-      background-color: #3498db;
-      border-radius: 2px;
-    }
-
-    .card ul {
-      padding-left: 20px;
-    }
-
-    .card ul li {
-      margin-bottom: 10px;
-      font-size: 15px;
-      color: #555;
-    }
-
-    a {
-      color: #3498db;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    a:hover {
-      text-decoration: underline;
-      color: #2c80b4;
-    }
-
-    .contact a {
-      display: inline-block;
-      padding: 10px 18px;
-      margin-right: 10px;
-      border-radius: 8px;
-      color: #fff;
-      text-decoration: none;
-      font-size: 14px;
-      transition: background 0.3s;
-    }
-
-    .whatsapp { background-color: #25D366; }
-    .whatsapp:hover { background-color: #128C4A; }
-
-    .email { background-color: #007bff; }
-    .email:hover { background-color: #0056b3; }
-
-    .highlight {
-      color: #27ae60;
-      font-weight: bold;
-    }
-
-    /* Footer */
-    footer {
-      text-align: center;
-      padding: 20px;
-      background-color: #222;
-      color: #fff;
-      font-size: 14px;
-      margin-top: 40px;
-      border-top: 3px solid #007bff;
-    }
-
-    footer a {
-      text-decoration: none;
-      color: #007bff;
-      margin: 0 5px;
-    }
-
-    footer a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 600px) {
-      h1 { font-size: 26px; }
-      .card h2 { font-size: 18px; }
-      .contact a { margin-bottom: 10px; }
+    @media (max-width:600px){
+      h1{ font-size:22px; }
+      .card{ padding:16px; }
     }
   </style>
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XQTH8T4YVN');
-  </script>
 </head>
 <body>
-  
-  <!-- Header -->
   <header>
-  <nav>
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="deals.html">Deals</a>
-  </nav>
+    <nav role="navigation" aria-label="Primary">
+      <a class="nav-link" href="index.html">Home</a>
+      <a class="nav-link" href="about.html">About</a>
+      <a class="nav-link" href="deals.html">Deals</a>
+    </nav>
   </header>
-  
-  <!-- Main Content -->
-  <div class="container">
-    <h1>Fast, Affordable Services – Online & Offline!</h1>
-    <p class="description">Need help with websites, social media, or local delivery? I can do it for you — quickly and at a fair price.</p>
 
-    <div class="card">
-      <h2>Website & Online Help</h2>
-      <ul>
-        <li><strong>Simple Website:</strong> Basic setup for your business or personal project – <span class="highlight">$50</span></li>
-        <li><strong>Social Media Setup:</strong> Instagram/Facebook page creation + branding – <span class="highlight">$20</span></li>
-        <li><strong>Social Media Management:</strong> Weekly posts & updates – <span class="highlight">$30/week</span></li>
-      </ul>
-    </div>
+  <main class="container" id="main">
+    <h1>Fast, Affordable Services — Online & Offline</h1>
+    <p class="description">Need a website, social media help, or a local delivery? I deliver quality work quickly and at fair prices.</p>
 
-    <div class="card">
-      <h2>Delivery & Errand Services</h2>
-      <ul>
-        <li>Local Delivery (within 5 km): <span class="highlight">$5</span></li>
-        <li>Longer Distance Delivery (5–15 km): <span class="highlight">$10</span></li>
-        <li>Shopping / Errands: Price depends on distance</li>
-      </ul>
-      <p>✅ Fast, safe, and reliable. Contact me today!</p>
-    </div>
+    <section class="grid" aria-label="Services">
+      <article class="card" aria-labelledby="web-heading">
+        <h2 id="web-heading">Website & Online Help</h2>
+        <ul>
+          <li><strong>Simple Website</strong> — Basic business or personal site — <span class="price">$50</span></li>
+          <li><strong>Social Media Setup</strong> — Instagram/Facebook + branding — <span class="price">$20</span></li>
+          <li><strong>Social Media Management</strong> — Weekly posts & updates — <span class="price">$30/week</span></li>
+        </ul>
+      </article>
 
-    <div class="card">
-      <h2>Recommended Products (Affiliate)</h2>
-      <p>Buy trusted products like phone accessories & groceries. Support me while shopping — no extra cost for you!</p>
-      <p>Check them out here: <a href="deals.html" target="_blank">Deals & Products</a></p>
-    </div>
+      <article class="card" aria-labelledby="delivery-heading">
+        <h2 id="delivery-heading">Delivery & Errand Services</h2>
+        <ul>
+          <li>Local Delivery (within 5 km): <span class="price">$5</span></li>
+          <li>Longer Distance (5–15 km): <span class="price">$10</span></li>
+          <li>Shopping / Errands: Price depends on distance</li>
+        </ul>
+        <p style="margin:6px 0 0;">✅ Fast, safe, and reliable.</p>
+      </article>
 
-    <div class="card">
-      <h2>Contact Me Instantly</h2>
-      <p class="contact">
-        📱 WhatsApp: <a href="https://wa.me/[your number]" class="whatsapp">+2349031408205</a>
-        📧 Email: <a href="mailto:toppmanking@gmail.com" class="email">toppmanking@gmail.com</a>
-      </p>
-      <p>💬 Message me now — let’s get your website ready or your delivery done today!</p>
-    </div>
-  </div>
+      <article class="card" aria-labelledby="products-heading">
+        <h2 id="products-heading">Recommended Products (Affiliate)</h2>
+        <p style="color:var(--muted-text);margin:0 0 8px;">Phone accessories, groceries and trusted items — support my work at no extra cost to you.</p>
+        <p style="margin:0;"><a href="deals.html" rel="noopener noreferrer">See deals & products</a></p>
+      </article>
 
-  <!-- Footer -->
+      <article class="card" aria-labelledby="contact-heading">
+        <h2 id="contact-heading">Contact Me Instantly</h2>
+        <p style="margin:0 0 10px;color:var(--muted-text);">Message now — I can get your website ready or deliver for you today.</p>
+
+        <div class="contact" role="group" aria-label="Contact options">
+          <!-- WhatsApp: use international format without + or parentheses for wa.me (example: 2349031408205) -->
+          <a class="btn whatsapp" href="https://wa.me/2349031408205?text=Hello%2C%20I%20would%20like%20to%20book%20a%20service" aria-label="Chat on WhatsApp" rel="noopener noreferrer" target="_blank">
+            WhatsApp
+            <span class="visually-hidden">Open WhatsApp chat with +2349031408205</span>
+          </a>
+
+          <a class="btn email" href="mailto:toppmanking@gmail.com" aria-label="Send an email to toppmanking at gmail dot com">
+            Email
+            <span class="visually-hidden">Send email to toppmanking@gmail.com</span>
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
+
   <footer>
-    <p>© 2025 Track Courier • 
-      <a href="help.html">Help / FAQ</a> • 
-      <a href="privacy.html">Privacy Policy</a> •
-    </p>
+    <p>© 2025 Track Courier • <a href="help.html">Help / FAQ</a> • <a href="privacy.html">Privacy Policy</a></p>
   </footer>
 </body>
 </html>
