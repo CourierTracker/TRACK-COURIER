@@ -1,113 +1,171 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Track Courier — simple, fast, and reliable package tracking. Enter your tracking number for real-time progress updates." />
   <title>About | Track Courier</title>
+
+  <!-- Favicon (replace with your icon) -->
+  <link rel="icon" href="/favicon.ico" />
+
   <style>
-/* General Styles */
-body {
-  background: #1e1e2f; /* dark muted gray/blue */
-  color: #e0e0e0; /* soft light text */
-}
+    /* Theme variables — easy to adjust or move to an external stylesheet */
+    :root{
+      --bg: #12121a;
+      --panel: #17182a;
+      --muted: #cfd8ff;
+      --brand: #0a84ff;
+      --brand-dark: #0661c6;
+      --card-radius: 12px;
+      --card-shadow: 0 6px 18px rgba(0,0,0,0.5);
+      --max-width: 960px;
+      --gap: 20px;
+    }
 
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+    }
 
-/* Header */
-header {
-  background: transparent;
-  padding: 15px 20px;
-  text-align: center;
-}
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg, var(--bg), #0f0f16 80%);
+      color: var(--muted);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.45;
+    }
 
-header nav {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  flex-wrap: wrap;
-}
+    /* Skip link for keyboard users */
+    .skip-link{
+      position: absolute;
+      left: -999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+    .skip-link:focus{
+      position: static;
+      width: auto;
+      height: auto;
+      background: #fff;
+      color: #000;
+      padding: 8px 12px;
+      border-radius: 6px;
+      margin: 8px;
+      z-index: 1000;
+    }
 
-header nav a {
-  text-decoration: none;
-  padding: 8px 14px;
-  background-color: #007bff;
-  color: white;
-  border-radius: 6px;
-  transition: background 0.3s;
-  white-space: nowrap;
-  font-weight: bold;
-}
+    header{
+      padding: 18px 16px;
+      text-align:center;
+    }
 
-header nav a:hover {
-  background-color: #0056b3;
-}
+    nav[aria-label="Primary"]{
+      display:flex;
+      justify-content:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
 
-/* Main Box */
-.container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 20px;
-}
+    nav a{
+      text-decoration:none;
+      padding:8px 14px;
+      background: linear-gradient(180deg,var(--brand),var(--brand-dark));
+      color:white;
+      border-radius:8px;
+      transition: transform .12s ease, box-shadow .12s ease, background .12s ease;
+      font-weight:600;
+      white-space:nowrap;
+      box-shadow: 0 4px 10px rgba(10,136,255,0.15);
+    }
 
-.page-title {
-  text-align: center;
-  font-size: 30px;
-  color: #007bff;
-  margin-bottom: 25px;
-}
+    nav a:focus,
+    nav a:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(10,136,255,0.18);
+      outline: none;
+    }
 
-/* Section Cards */
-.section {
-  background-color: #fff;
-  border-radius: 12px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-  padding: 20px 25px;
-  margin-bottom: 20px;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
+    /* Main container */
+    .container{
+      max-width: var(--max-width);
+      margin: 32px auto;
+      padding: 20px;
+    }
 
-.section:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-}
+    .page-title{
+      text-align:center;
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      color: var(--brand);
+      margin-bottom: 22px;
+    }
 
-.section h2 {
-  color: #007bff;
-  margin-bottom: 12px;
-}
+    /* Card/Section styling — dark cards to match the dark theme */
+    .section{
+      background-color: var(--panel);
+      border-radius: var(--card-radius);
+      box-shadow: var(--card-shadow);
+      padding: 20px 22px;
+      margin-bottom: var(--gap);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
 
-.section p {
-  line-height: 1.6;
-  margin: 0;
-}
+    .section:hover{
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.55);
+    }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 20px;
-  background-color: #222;
-  color: #fff;
-  font-size: 14px;
-  margin-top: 40px;
-  border-top: 3px solid #007bff;
-}
+    .section h2{
+      color: var(--brand);
+      margin: 0 0 10px 0;
+      font-size: 1.1rem;
+    }
 
-footer a {
-  text-decoration: none;
-  color: #007bff;
-  margin: 0 5px;
-}
+    .section p{
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
 
-footer a:hover {
-  text-decoration: underline;
-}
-</style>
+    /* Use a semantic list instead of inline bullets */
+    .benefits{
+      margin: 0;
+      padding-left: 1.2rem;
+      color: var(--muted);
+    }
+    .benefits li{
+      margin: 6px 0;
+    }
 
-  <!-- Google tag (gtag.js) -->
+    footer{
+      text-align:center;
+      padding:18px 12px;
+      color: #dbe9ff;
+      border-top: 1px solid rgba(10,136,255,0.09);
+      margin-top: 28px;
+      font-size: .95rem;
+    }
+    footer a{ color: var(--brand); text-decoration:none; }
+    footer a:focus, footer a:hover { text-decoration: underline; }
+
+    /* Focus visible for keyboard navigation */
+    :focus{
+      outline: 3px solid rgba(10,136,255,0.18);
+      outline-offset: 3px;
+    }
+
+    /* Responsive spacing */
+    @media (max-width:600px){
+      .container{ padding: 12px; margin: 20px 12px; }
+      nav a { padding: 8px 10px; font-size: .95rem; }
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -116,57 +174,55 @@ footer a:hover {
 
   gtag('config', 'G-XQTH8T4YVN');
 </script>
-
+  
 </head>
 <body>
-  <!-- Header -->
+  <a class="skip-link" href="#main">Skip to main content</a>
+
   <header>
-    <nav>
+    <nav aria-label="Primary">
       <a href="index.html">Home</a>
       <a href="services.html">Services</a>
       <a href="help.html">Help</a>
     </nav>
   </header>
 
-  <!-- About Page Content -->
-  <main class="container">
+  <main id="main" class="container" role="main">
     <h1 class="page-title">About Track Courier</h1>
 
-    <div class="section">
-      <h2>Who We Are</h2>
+    <section class="section" aria-labelledby="who-we-are">
+      <h2 id="who-we-are">Who We Are</h2>
       <p>Track Courier is a simple, fast, and reliable online tool designed to help users check their shipment status using a tracking number. Our goal is to make package tracking effortless for everyone.</p>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>What We Do</h2>
+    <section class="section" aria-labelledby="what-we-do">
+      <h2 id="what-we-do">What We Do</h2>
       <p>We provide a clean and user-friendly platform where customers can instantly view their parcel status without complicated steps. Just enter your tracking number and get real-time progress updates.</p>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>Our Mission</h2>
+    <section class="section" aria-labelledby="mission">
+      <h2 id="mission">Our Mission</h2>
       <p>Our mission is to make shipment tracking transparent, accessible, and stress-free. Whether you're expecting a local or international delivery, Track Courier helps you stay informed.</p>
-    </div>
+    </section>
 
-    <div class="section">
-      <h2>Why Choose Us?</h2>
-      <p>• Fast and simple interface<br>
-         • Accurate tracking updates<br>
-         • Easy navigation<br>
-         • Secure and privacy-friendly</p>
-    </div>
+    <section class="section" aria-labelledby="why-choose">
+      <h2 id="why-choose">Why Choose Us?</h2>
+      <ul class="benefits" aria-label="Benefits list">
+        <li>Fast and simple interface</li>
+        <li>Accurate tracking updates</li>
+        <li>Easy navigation</li>
+        <li>Secure and privacy-friendly</li>
+      </ul>
+    </section>
 
-    <div class="section">
-      <h2>Our Commitment</h2>
+    <section class="section" aria-labelledby="commitment">
+      <h2 id="commitment">Our Commitment</h2>
       <p>Your privacy and convenience are our priority. We do not store or share your tracking number with third parties. Every session is encrypted and secure.</p>
-    </div>
-
+    </section>
   </main>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Track Courier •  
-      <a href="privacy.html">Privacy Policy</a> •
-    </p>
+  <footer role="contentinfo">
+    <p>© 2025 Track Courier • <a href="privacy.html">Privacy Policy</a></p>
   </footer>
 </body>
 </html>
