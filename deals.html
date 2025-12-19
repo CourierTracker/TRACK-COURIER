@@ -127,20 +127,36 @@
 
     // Centralized click handler
     payButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        if (!isFormValid()) {
-          // Focus the first invalid field
-          if (nameInput.value.trim() === '') nameInput.focus();
-          else if (!emailInput.checkValidity()) emailInput.focus();
-          else addressInput.focus();
-          return;
-        }
+    payButtons.forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    // Check each field individually
+    if (nameInput.value.trim() === '') {
+      alert('Please enter your name!');
+      nameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      nameInput.focus();
+      return;
+    }
 
-        const amount = parseInt(btn.dataset.amount, 10); // amount already in kobo
-        const product = btn.dataset.product || 'Product';
-        payWithPaystack(amount, emailInput.value.trim(), product);
-      });
-    });
+    if (!emailInput.checkValidity()) {
+      alert('Please enter a valid email! Receipt will be sent there.');
+      emailInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      emailInput.focus();
+      return;
+    }
+
+    if (addressInput.value.trim() === '') {
+      alert('Please enter your address!');
+      addressInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      addressInput.focus();
+      return;
+    }
+
+    // All fields are valid, proceed with payment
+    const amount = parseInt(btn.dataset.amount, 10); 
+    const product = btn.dataset.product || 'Product';
+    payWithPaystack(amount, emailInput.value.trim(), product);
+  });
+});
 
     function payWithPaystack(amount, email, productName) {
       const name = nameInput.value.trim();
