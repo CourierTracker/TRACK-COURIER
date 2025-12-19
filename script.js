@@ -111,3 +111,24 @@ function payWithPaystack(amount) {
   // Continue with your existing Paystack setup here...
 }
 
+// Get all tracking steps
+const steps = document.querySelectorAll('#trackingSteps li');
+
+function setActiveStep(currentIndex) {
+  steps.forEach((step, index) => {
+    step.classList.remove('active', 'completed'); // reset
+
+    if (index < currentIndex) {
+      step.classList.add('completed'); // already done
+    } else if (index === currentIndex) {
+      step.classList.add('active'); // current step
+    }
+    // steps after currentIndex stay default (no class)
+  });
+}
+
+// Example: highlight step 2 (0-based index)
+setActiveStep(1);
+
+// Optional: if you update dynamically after API / tracking data
+// you can call setActiveStep(newIndex) whenever status changes
