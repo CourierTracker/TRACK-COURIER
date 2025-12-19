@@ -1,19 +1,19 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Deals - Featured Products</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.png" type="image/png" />
   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-XQTH8T4YVN');
-</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XQTH8T4YVN');
+  </script>
 </head>
 <body class="deals-page">
 
@@ -28,122 +28,174 @@
     </nav>
   </header>
 
-  <!-- Page Banner -->
-  <section class="page-banner">
-    <h1>Exclusive Deals</h1>
-    <p>Grab these special deals while they last!</p>
-  </section>
+  <main>
+    <!-- Page Banner -->
+    <section class="page-banner">
+      <h1>Exclusive Deals</h1>
+      <p>Grab these special deals while they last!</p>
+    </section>
 
-    <div class="customer-info">
-      <h3>Enter Your Details</h3>
-      <label for="customerName">Name</label>
-      <input id="customerName" type="text" placeholder="Your name">
-      <label for="customerEmail">Email</label>
-      <input id="customerEmail" type="email" placeholder="you@example.com">
-      <label for="customerAddress">Address</label>
-      <textarea id="customerAddress" placeholder="Shipping address"></textarea>
-    </div>
+    <section class="checkout-section">
+      <form id="customerForm" class="customer-info" autocomplete="on" novalidate>
+        <h3>Enter Your Details</h3>
 
-    <div class="product-grid">
-      <!-- Product 1 -->
-      <div class="product-card">
-        <img src="dido.webp" alt="Product 1">
-        <h3>Masturbator Dual Vibrating Female G-Spot Toy</h3>
-        <button type="button" class="paystack-btn" onclick="payWithPaystack(59000*100, document.getElementById('customerEmail').value)">
-          Pay $40
-        </button>
+        <label for="customerName">Name</label>
+        <input id="customerName" name="name" type="text" placeholder="Your name" required />
+
+        <label for="customerEmail">Email</label>
+        <input id="customerEmail" name="email" type="email" placeholder="you@example.com" required />
+
+        <label for="customerAddress">Address</label>
+        <textarea id="customerAddress" name="address" placeholder="Shipping address" required></textarea>
+      </form>
+
+      <div class="product-grid" aria-live="polite">
+        <!-- Use data-amount in kobo (NGN * 100). Labels below show NGN -->
+        <div class="product-card">
+          <img src="dido.webp" alt="Masturbator dual vibrating toy product image" />
+          <h3>Masturbator Dual Vibrating Female G-Spot Toy</h3>
+          <button type="button" class="paystack-btn" data-amount="5900000" data-product="Masturbator Dual" disabled>
+            Pay ₦59,000
+          </button>
+        </div>
+
+        <div class="product-card">
+          <img src="allsex.jpg" alt="3-in-1 couples vibrator product image" />
+          <h3>Vibrator Flapping Sex Toy for Couples (3-in-1)</h3>
+          <button type="button" class="paystack-btn" data-amount="9500000" data-product="3-in-1 Vibrator" disabled>
+            Pay ₦95,000
+          </button>
+        </div>
+
+        <div class="product-card">
+          <img src="mensex.jpeg" alt="Male masturbator toy product image" />
+          <h3>Vaginal Sex Male Masturbator Sex Toy For Men</h3>
+          <button type="button" class="paystack-btn" data-amount="1800000" data-product="Male Masturbator" disabled>
+            Pay ₦18,000
+          </button>
+        </div>
+
+        <div class="product-card">
+          <img src="singlesex.jpg" alt="Strong amateur vibrator product image" />
+          <h3>Strong Amateur female students vibrator sensational</h3>
+          <button type="button" class="paystack-btn" data-amount="2300000" data-product="Strong Vibrator" disabled>
+            Pay ₦23,000
+          </button>
+        </div>
       </div>
-
-      <!-- Product 2 -->
-      <div class="product-card">
-        <img src="allsex.jpg" alt="Product 2">
-        <h3>Vibrator Flapping Sex Toy for Couples (3-in-1)</h3>
-        <button type="button" class="paystack-btn" onclick="payWithPaystack(95000*100, document.getElementById('customerEmail').value)">
-          Pay $65.25
-        </button>
-      </div>
-
-      <!-- Product 3 -->
-      <div class="product-card">
-       <img src="mensex.jpeg" alt="Product 3">
-       <h3>Vaginal Sex Male Masturbator Sex Toy For Men</h3>
-       <button type="button" class="paystack-btn" onclick="payWithPaystack(18000*100, document.getElementById('customerEmail').value)">
-        Pay $11.25
-      </button>
-    </div>
-
-     <!-- Product 4 -->
-     <div class="product-card">
-      <img src="singlesex.jpg" alt="Product 4">
-      <h3>Strong Amateur female students vibrator sensational</h3>
-      <button type="button" class="paystack-btn" onclick="payWithPaystack(23000*100, document.getElementById('customerEmail').value)">
-      Pay $15.00
-    </button>
-  </div>
-
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Footer -->
   <footer>
     <p>&copy; 2025 Courier Tracker. All rights reserved.</p>
   </footer>
-  
+
   <!-- Paystack script -->
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
-    const emailInput = document.getElementById('customerEmail');
-    const payButtons = document.querySelectorAll('.paystack-btn');
+    // Replace this with a server-provided value or a safe config mechanism as needed.
+    // It's okay to expose the public key to the client, but avoid embedding secret keys in client code.
+    const PAYSTACK_PUBLIC_KEY = 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7'; // replace if needed
 
-    // Enable buttons only if email is valid
-    emailInput.addEventListener('input', () => {
-      const valid = emailInput.checkValidity();
+    const form = document.getElementById('customerForm');
+    const nameInput = document.getElementById('customerName');
+    const emailInput = document.getElementById('customerEmail');
+    const addressInput = document.getElementById('customerAddress');
+    const payButtons = Array.from(document.querySelectorAll('.paystack-btn'));
+
+    // Helper: check form validity (returns boolean)
+    function isFormValid() {
+      return nameInput.value.trim() !== '' &&
+             addressInput.value.trim() !== '' &&
+             emailInput.checkValidity();
+    }
+
+    // Enable/disable pay buttons based on form validity
+    function updatePayButtons() {
+      const valid = isFormValid();
       payButtons.forEach(btn => btn.disabled = !valid);
+    }
+
+    // Initial check (buttons are disabled in markup)
+    updatePayButtons();
+
+    // Re-check when any input changes
+    [nameInput, emailInput, addressInput].forEach(el => {
+      el.addEventListener('input', updatePayButtons);
     });
 
-    function payWithPaystack(amount, email) {
-  const nameInput = document.getElementById('customerName');
-  const addressInput = document.getElementById('customerAddress');
+    // Centralized click handler
+    payButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        if (!isFormValid()) {
+          // Focus the first invalid field
+          if (nameInput.value.trim() === '') nameInput.focus();
+          else if (!emailInput.checkValidity()) emailInput.focus();
+          else addressInput.focus();
+          return;
+        }
 
-  const name = nameInput.value.trim();
-  const address = addressInput.value.trim();
+        const amount = parseInt(btn.dataset.amount, 10); // amount already in kobo
+        const product = btn.dataset.product || 'Product';
+        payWithPaystack(amount, emailInput.value.trim(), product);
+      });
+    });
 
-  if (!email || !email.includes('@')) {
-    alert('Please enter a valid email before payment! Receipt will be sent there');
-    document.getElementById('customerEmail').scrollIntoView({ behavior: 'smooth', block: 'center' });
-    document.getElementById('customerEmail').focus();
-    return;
-  }
+    function payWithPaystack(amount, email, productName) {
+      const name = nameInput.value.trim();
+      const address = addressInput.value.trim();
 
-  if (!name || !address) {
-    alert('Please enter your name and address before payment!');
-    if (!name) nameInput.focus();
-    else addressInput.focus();
-    return;
-  }
+      if (!email || !email.includes('@')) {
+        alert('Please enter a valid email before payment. Receipt will be sent there.');
+        emailInput.focus();
+        return;
+      }
 
-  let handler = PaystackPop.setup({
-    key: 'pk_live_410ea0d7cf10bc1c518a2f1d96872cfab0231be7',
-    email: email,
-    amount: amount,
-    currency: 'NGN',
-    metadata: {
-      custom_fields: [
-        { display_name: "Name", variable_name: "name", value: name },
-        { display_name: "Address", variable_name: "address", value: address }
-      ]
-    },
-    callback: function(response){
-      alert('Payment complete! Reference: ' + response.reference);
-    },
-    onClose: function(){
-      alert('Payment cancelled.');
+      // Setup Paystack pop-up
+      const handler = PaystackPop.setup({
+        key: PAYSTACK_PUBLIC_KEY,
+        email: email,
+        amount: amount,
+        currency: 'NGN',
+        metadata: {
+          custom_fields: [
+            { display_name: "Name", variable_name: "name", value: name },
+            { display_name: "Address", variable_name: "address", value: address },
+            { display_name: "Product", variable_name: "product", value: productName }
+          ]
+        },
+        callback: function(response){
+          // Client notified, now verify on server-side
+          alert('Payment complete! Reference: ' + response.reference + '. Verifying on server...');
+
+          // POST reference to your server for verification
+          fetch('/verify-payment', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ reference: response.reference })
+          })
+          .then(res => res.json())
+          .then(data => {
+            if (data && data.success) {
+              alert('Payment verified by server. Thank you!');
+              // Optionally clear form or redirect to success page
+            } else {
+              alert('Payment could not be verified on server. Contact support with reference: ' + response.reference);
+            }
+          })
+          .catch(err => {
+            console.error('Verification error', err);
+            alert('Error verifying payment. Please contact support with reference: ' + response.reference);
+          });
+        },
+        onClose: function(){
+          alert('Payment cancelled.');
+        }
+      });
+
+      handler.openIframe();
     }
-  });
-
-  handler.openIframe();
-}
   </script>
-
 </body>
 </html>
