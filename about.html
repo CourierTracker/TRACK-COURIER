@@ -165,16 +165,16 @@
       nav a { padding: 8px 10px; font-size: .95rem; }
     }
   </style>
-<!-- Google tag (gtag.js) -->
+  
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-XQTH8T4YVN"></script>
 <script>
+  // Call this after user consents to analytics
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
-  gtag('config', 'G-XQTH8T4YVN');
+  gtag('config', 'G-XQTH8T4YVN', { 'anonymize_ip': true });
 </script>
-  
+   
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to main content</a>
