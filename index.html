@@ -304,17 +304,17 @@ document.getElementById('trackingForm').addEventListener('submit', function(e) {
     const pattern = /^Track-\d{9}$/;
     if (!pattern.test(trackingNumber)) {
         input.classList.add('shake');
-        alert("Invalid tracking number!");
+        alert("❌ Invalid tracking number! Please try again.");
         return;
     }
 
-    // Allowed demo numbers
-    const validNumbers = ["Track-246800000", "Track-123456789"];
-    if (!validNumbers.includes(trackingNumber)) {
-        input.classList.add('shake');
-        alert("Invalid tracking number!");
-        return;
-    }
+    // Only your real tracking number
+   const validNumbers = ["Track-246800000"]; // remove any extra numbers
+   if (!validNumbers.includes(trackingNumber)) {
+    trackingNumberInput.classList.add('shake');
+    alert("❌ Invalid tracking number! Please try again.");
+    return;
+   }
 
     // Show spinner
     spinner.style.display = 'block';
