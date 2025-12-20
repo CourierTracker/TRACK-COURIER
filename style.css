@@ -460,3 +460,47 @@ footer {
   background: #e6f5ea;             /* light green background */
   font-weight: 600;
 }
+
+.field-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.field-group label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+}
+
+.field-group select,
+.field-group input {
+  height: 46px;
+  padding: 0 12px;
+  font-size: 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+}
+
+.field-group select:focus,
+.field-group input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+button {
+  height: 46px;
+  width: 100%;
+  background: #2563eb;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
