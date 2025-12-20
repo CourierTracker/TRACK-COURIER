@@ -132,3 +132,29 @@ setActiveStep(1);
 
 // Optional: if you update dynamically after API / tracking data
 // you can call setActiveStep(newIndex) whenever status changes
+const trackingForm = document.getElementById("trackingForm");
+const countrySelect = document.getElementById("country");
+const trackingInput = document.getElementById("tracking-number");
+
+trackingForm.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const country = countrySelect.value;
+  const trackingNumber = trackingInput.value.trim();
+
+  if (!country) {
+    alert("Please select a country");
+    return;
+  }
+
+  if (!trackingNumber) {
+    alert("Please enter a tracking number");
+    return;
+  }
+
+  console.log("Country:", country);
+  console.log("Tracking Number:", trackingNumber);
+
+  // TODO: Add your tracking logic here (API call or simulated tracking)
+  alert(`Tracking package ${trackingNumber} for ${country}`);
+});
