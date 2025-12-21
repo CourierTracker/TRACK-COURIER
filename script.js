@@ -115,15 +115,12 @@ function payWithPaystack(amount) {
 const steps = document.querySelectorAll('#trackingSteps li');
 
 function setActiveStep(currentIndex) {
+  const maxStep = 2; // stop at In Transit
   steps.forEach((step, index) => {
-    step.classList.remove('active', 'completed'); // reset
+    step.classList.remove('active', 'completed');
 
-    if (index < currentIndex) {
-      step.classList.add('completed'); // already done
-    } else if (index === currentIndex) {
-      step.classList.add('active'); // current step
-    }
-    // steps after currentIndex stay default (no class)
+    if (index < currentIndex && index <= maxStep) step.classList.add('completed');
+    else if (index === currentIndex && index <= maxStep) step.classList.add('active');
   });
 }
 
