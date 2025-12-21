@@ -60,7 +60,7 @@ html { scroll-behavior: smooth; }
         <option value="ES">Spain</option>
         <option value="NL">Netherlands</option>
         <option value="BE">Belgium</option>
-        <option value="CH" data-highlight="true">Switzerland</option>
+        <option value="CH">Switzerland</option>
         <option value="AT">Austria</option>
         <option value="SE">Sweden</option>
         <option value="NO">Norway</option>
@@ -285,6 +285,19 @@ function payWithPaystack(amount, email) {
 }
 </script>
 
+<script>
+document.getElementById("toggleProductsBtn").addEventListener("click", function() {
+    const section = document.getElementById("productsSection");
+    
+    if (section.style.display === "none") {
+        section.style.display = "block";
+        this.textContent = "Hide Shipping Materials";
+    } else {
+        section.style.display = "none";
+        this.textContent = "Shipping Materials";
+    }
+});
+</script>
 <!-- Consent Banner -->
 <div id="consentBanner" style="display:none; position:fixed; bottom:16px; left:16px; right:16px; background:#17182a; color:#cfd8ff; padding:16px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.5); z-index:9999; display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center;">
   <div>
@@ -345,6 +358,7 @@ document.getElementById('trackingForm').addEventListener('submit', function(e) {
 
     const input = document.getElementById('tracking-number');
     const trackingNumber = input.value.trim();
+    const country = document.getElementById('country').value;
     const spinner = document.getElementById('spinner');
     const steps = document.querySelectorAll('#trackingSteps li');
     const trackingSteps = document.getElementById('trackingSteps');
@@ -356,6 +370,12 @@ document.getElementById('trackingForm').addEventListener('submit', function(e) {
     trackingSteps.classList.add('hidden');
     steps.forEach(step => step.classList.remove('active'));
     input.classList.remove('shake');
+
+    // Validate country
+    if (country !== "CH") {
+        alert("⚠️ Tracking is only available for Switzerland!");
+        return;
+    }
 
     // Empty check
     if (!trackingNumber) {
@@ -371,73 +391,10 @@ document.getElementById('trackingForm').addEventListener('submit', function(e) {
         return;
     }
 
-    // Only your real tracking number
-   const validNumbers = ["Track-246800000"]; // remove any extra numbers
-   if (!validNumbers.includes(trackingNumber)) {
-    trackingNumberInput.classList.add('shake');
-    alert("❌ Invalid tracking number! Please try again.");
-    return;
-   }
-
-    // Show spinner
-    spinner.style.display = 'block';
-    trackingSteps.classList.remove('hidden');
-
-    // Step-by-step highlight (ONLY first 3)
-    const stepDelay = 3000; // 3 seconds per step
-
-    steps.forEach((step, index) => {
-    if (index > 2) return; // stop at "In Transit"
-
-    setTimeout(() => {
-        step.classList.add('active');
-
-        if (index === 2) {
-            setTimeout(() => {
-                spinner.style.display = 'none';
-                shipment.style.display = 'block';
-                shipment.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }, 500);
-        }
-    }, stepDelay * (index + 1));
-});
-
-    // Update tracking number in table
-    shipment.querySelector('table tr td:nth-child(2)').textContent = trackingNumber;
-});
-
-document.getElementById('trackingForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const country = document.getElementById('country').value;
-    const trackingNumber = document.getElementById('tracking-number').value.trim();
-    const spinner = document.getElementById('spinner');
-    const trackingSteps = document.getElementById('trackingSteps');
-    const shipment = document.getElementById('shipmentContainer');
-
-    // ONLY allow Switzerland
-    if (country !== "CH") {
-        alert("⚠️ Tracking is only available for Switzerland!");
-        return; // Stop here for other countries
-    }
-
-    // Validate tracking number
-    if (!trackingNumber) {
-        alert("Please enter a tracking number!");
-        return;
-    }
-
-    const pattern = /^Track-\d{9}$/;
-    if (!pattern.test(trackingNumber)) {
-        alert("❌ Invalid tracking number! Please try again.");
-        return;
-    }
-
+    // Only allow valid tracking numbers
     const validNumbers = ["Track-246800000"];
     if (!validNumbers.includes(trackingNumber)) {
+        input.classList.add('shake');
         alert("❌ Invalid tracking number! Please try again.");
         return;
     }
@@ -446,12 +403,9 @@ document.getElementById('trackingForm').addEventListener('submit', function(e) {
     spinner.style.display = 'block';
     trackingSteps.classList.remove('hidden');
 
-    // Highlight steps step-by-step
-    const steps = document.querySelectorAll('#trackingSteps li');
+    // Step-by-step highlight
     const stepDelay = 3000;
-
     steps.forEach((step, index) => {
-        if (index > 2) return;
         setTimeout(() => {
             step.classList.add('active');
             if (index === 2) {
@@ -464,10 +418,10 @@ document.getElementById('trackingForm').addEventListener('submit', function(e) {
         }, stepDelay * (index + 1));
     });
 
+    // Update tracking number in table
     shipment.querySelector('table tr td:nth-child(2)').textContent = trackingNumber;
 });
 </script>
-  
-  
+
 </body>  
 </html>
