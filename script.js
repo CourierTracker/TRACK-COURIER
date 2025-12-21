@@ -110,23 +110,3 @@ function payWithPaystack(amount) {
 
   // Continue with your existing Paystack setup here...
 }
-
-// Get all tracking steps
-const steps = document.querySelectorAll('#trackingSteps li');
-
-function setActiveStep(currentIndex) {
-  const maxStep = 2; // stop at In Transit
-  steps.forEach((step, index) => {
-    step.classList.remove('active', 'completed');
-
-    if (index < currentIndex && index <= maxStep) step.classList.add('completed');
-    else if (index === currentIndex && index <= maxStep) step.classList.add('active');
-  });
-}
-
-// Example: highlight step 2 (0-based index)
-setActiveStep(1);
-
-if (trackingNumber === correctTrackingNumber) {
-
-trackingSteps.querySelectorAll('li')[3].classList.remove('show');
