@@ -371,11 +371,14 @@ document.getElementById('trackingForm').addEventListener('submit', function(e) {
     steps.forEach(step => step.classList.remove('active'));
     input.classList.remove('shake');
 
-    // Validate country
-    if (country !== "CH") {
-        alert("⚠️ Tracking is only available for Switzerland!");
-        return;
-    }
+    // Get the selected option element
+    const selectedOption = document.querySelector(`#country option[value="${country}"]`);
+
+    // Check if it has data-valid="true"
+    if (!selectedOption || selectedOption.dataset.valid !== "true") {
+    alert("⚠️ Tracking is not available for this country!");
+    return;
+   }
 
     // Empty check
     if (!trackingNumber) {
