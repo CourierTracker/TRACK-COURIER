@@ -511,3 +511,10 @@ button:hover {
   padding: 10px 20px; /* your existing padding */
   cursor: pointer;
 }
+
+.highlight-tracking {
+  border: 2px solid #ff9800;
+  background-color: #fff3e0;
+  box-shadow: 0 0 8px rgba(255, 152, 0, 0.6);
+}
+
