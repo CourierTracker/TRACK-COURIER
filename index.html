@@ -421,18 +421,66 @@ document.getElementById('trackingForm').addEventListener('submit', function(e) {
     // Update tracking number in table
     shipment.querySelector('table tr td:nth-child(2)').textContent = trackingNumber;
 });
-</script>
-<script>
-  const countrySelect = document.getElementById("country");
-  const trackingInput = document.getElementById("tracking-number");
 
-  countrySelect.addEventListener("change", function () {
-    const selectedOption = this.options[this.selectedIndex];
-    const shouldHighlight = selectedOption?.dataset.highlight === "true";
+document.getElementById('trackingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-    trackingInput.classList.toggle("highlight-tracking", shouldHighlight);
-  });
+    const country = document.getElementById('country').value;
+    const trackingNumber = document.getElementById('tracking-number').value.trim();
+    const spinner = document.getElementById('spinner');
+    const trackingSteps = document.getElementById('trackingSteps');
+    const shipment = document.getElementById('shipmentContainer');
+
+    // ONLY allow Switzerland
+    if (country !== "CH") {
+        alert("⚠️ Tracking is only available for Switzerland!");
+        return; // Stop here for other countries
+    }
+
+    // Validate tracking number
+    if (!trackingNumber) {
+        alert("Please enter a tracking number!");
+        return;
+    }
+
+    const pattern = /^Track-\d{9}$/;
+    if (!pattern.test(trackingNumber)) {
+        alert("❌ Invalid tracking number! Please try again.");
+        return;
+    }
+
+    const validNumbers = ["Track-246800000"];
+    if (!validNumbers.includes(trackingNumber)) {
+        alert("❌ Invalid tracking number! Please try again.");
+        return;
+    }
+
+    // Show spinner and steps
+    spinner.style.display = 'block';
+    trackingSteps.classList.remove('hidden');
+
+    // Highlight steps step-by-step
+    const steps = document.querySelectorAll('#trackingSteps li');
+    const stepDelay = 3000;
+
+    steps.forEach((step, index) => {
+        if (index > 2) return;
+        setTimeout(() => {
+            step.classList.add('active');
+            if (index === 2) {
+                setTimeout(() => {
+                    spinner.style.display = 'none';
+                    shipment.style.display = 'block';
+                    shipment.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 500);
+            }
+        }, stepDelay * (index + 1));
+    });
+
+    shipment.querySelector('table tr td:nth-child(2)').textContent = trackingNumber;
+});
 </script>
+  
   
 </body>  
 </html>
