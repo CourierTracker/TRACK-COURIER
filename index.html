@@ -285,19 +285,6 @@ function payWithPaystack(amount, email) {
 }
 </script>
 
-<script>
-document.getElementById("toggleProductsBtn").addEventListener("click", function() {
-    const section = document.getElementById("productsSection");
-    
-    if (section.style.display === "none") {
-        section.style.display = "block";
-        this.textContent = "Hide Shipping Materials";
-    } else {
-        section.style.display = "none";
-        this.textContent = "Shipping Materials";
-    }
-});
-</script>
 <!-- Consent Banner -->
 <div id="consentBanner" style="display:none; position:fixed; bottom:16px; left:16px; right:16px; background:#17182a; color:#cfd8ff; padding:16px; border-radius:12px; box-shadow:0 6px 20px rgba(0,0,0,0.5); z-index:9999; display:flex; justify-content:space-between; flex-wrap:wrap; align-items:center;">
   <div>
