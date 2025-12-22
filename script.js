@@ -29,7 +29,7 @@ trackingForm.addEventListener('submit', function(e) {
   trackingSteps.classList.add('hidden');
   shipmentContainer.style.display = "none";
   trackingSteps.querySelectorAll('li').forEach(step => {
-    step.classList.remove('show');
+    step.classList.remove('show', 'completed');  // remove completed class
     step.style.backgroundColor = "";
     step.style.fontWeight = "normal";
   });
@@ -43,14 +43,21 @@ trackingForm.addEventListener('submit', function(e) {
     if (trackingNumber === correctTrackingNumber) {
       trackingSteps.classList.remove('hidden');
       const steps = trackingSteps.querySelectorAll('li');
-      
 
-      // Delivered step remains untouched
+      // Sequential highlight — skip Delivered
+      setTimeout(() => { steps[0].classList.add('completed'); }, 3000);
+      setTimeout(() => { steps[1].classList.add('completed'); }, 6000);
+      setTimeout(() => { steps[2].classList.add('completed'); }, 10000);
+
+      // Show the tracking table
+      shipmentContainer.style.display = "block";
+      shipmentContainer.scrollIntoView({ behavior: "smooth", block: "start" });
+
     } else {
       showError("❌ Invalid tracking number! Please try again.");
     }
 
-  }, 500); // spinner initial delay
+  }, 500);
 });
 
 // -------------------------
