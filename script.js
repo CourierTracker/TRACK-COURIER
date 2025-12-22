@@ -110,3 +110,11 @@ function payWithPaystack(amount) {
 
   // Continue with your existing Paystack setup here...
 }
+
+// Sequential highlight for tracking (skips Delivered)
+const steps = trackingSteps.querySelectorAll('li');
+
+setTimeout(() => { steps[0].classList.add('completed'); }, 3000);
+setTimeout(() => { steps[1].classList.add('completed'); }, 6000);
+setTimeout(() => { steps[2].classList.add('completed'); }, 10000);
+// Do NOT touch steps[3] (Delivered)
