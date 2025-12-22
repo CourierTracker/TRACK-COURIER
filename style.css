@@ -490,3 +490,11 @@ button:hover {
   padding: 10px 20px; /* your existing padding */
   cursor: pointer;
 }
+
+/* Make the last step (Delivered) look neutral */
+#trackingSteps li:last-child {
+  background: #f9f9f9;      /* same as default step */
+  color: #555;              /* default text color */
+  font-weight: 500;         /* default font weight */
+  border-left-color: #ccc;  /* default left border */
+}
