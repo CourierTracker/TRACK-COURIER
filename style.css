@@ -433,10 +433,10 @@ footer {
 }
 
 /* Completed / in-transit steps */
-#trackingSteps li.completed {
-  color: #08320f;                  /* dark text for contrast */
-  border-left-color: #28a745;      /* green for completed */
-  background: #e6f5ea;             /* light green background */
+#trackingSteps li.completed:not(:last-child) {
+  color: #08320f;
+  border-left-color: #28a745;
+  background: #e6f5ea;
   font-weight: 600;
 }
 
