@@ -204,27 +204,6 @@ button[disabled],
   text-align:left;
 }
 
-.tracking-steps li{
-  padding:12px 15px;
-  margin-bottom:10px;
-  border-left:4px solid var(--muted-blue);
-  background-color: var(--card-bg-light);
-  color: var(--text-dark);
-  border-radius:6px;
-  opacity:0.7;
-  transition: all .22s ease;
-}
-
-/* Active / in-transit */
-.tracking-steps li.show,
-.tracking-steps li.in-transit {
-  opacity: 1;
-  font-weight:700;
-  border-left-color: var(--success);
-  background-color: #e6f5ea;
-  color: #08320f;
-}
-
 /* --------------------------------------------------
    SHIPMENT / AD / DETAILS
 -------------------------------------------------- */
