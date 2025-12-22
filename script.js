@@ -43,33 +43,7 @@ trackingForm.addEventListener('submit', function(e) {
     if (trackingNumber === correctTrackingNumber) {
       trackingSteps.classList.remove('hidden');
       const steps = trackingSteps.querySelectorAll('li');
-
-      // Sequential highlight with delays
-      setTimeout(() => { 
-        steps[0].classList.add('show'); 
-        steps[0].style.backgroundColor = "lightblue"; 
-      }, 3000); // 3 sec
-
-      setTimeout(() => { 
-        steps[1].classList.add('show'); 
-        steps[1].style.backgroundColor = "lightblue"; 
-      }, 6000); // 6 sec
-
-      setTimeout(() => { 
-       steps[2].classList.add('show'); 
-       steps[2].style.backgroundColor = "lightblue"; 
-       steps[2].style.fontWeight = "bold"; // bold In Transit
-
-      // Show the tracking table
-    shipmentContainer.style.display = "block"; 
-
-      // Scroll smoothly to the tracking table
-    shipmentContainer.scrollIntoView({ 
-      behavior: "smooth", 
-      block: "start" 
-    });
-
-  }, 10000); // 10 sec total
+      
 
       // Delivered step remains untouched
     } else {
